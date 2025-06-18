@@ -1,57 +1,80 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>EcoRide - Accueil</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>EcoRide - Rechercher</title>
+      <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
 
-        <!-- HEADER -->
-        <div class="menu">
-            <!-- Logo cliquable -->
-            <a href="index.html" class="logo">Ecoride</a>
-        
-            <!-- Navigation principale -->
-            <nav>
+      <!-- HEADER -->
+      <header>
+          <div class="menu">
+              <!-- Logo cliquable -->
+              <a href="index.html" class="logo">Ecoride</a>
+          
+              <!-- Navigation principale -->
+              <nav>
               <ul>
-                <li><a href="#">Covoiturages</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="Rechercher.html">Rechercher</a></li>
+                  <li><a href="Covoiturages.html">Covoiturages</a></li>
+                  <li><a href="Contact.html">Contact</a></li>
+                  <li><a href="Rechercher.html">Rechercher</a></li>
               </ul>
-            </nav>
-        
-            <!-- Bouton profil avec menu déroulant -->
-            <div class="bouton-profile">
-              <button id="menu-deroulant">Profil ▼</button>
-              <div id="menu-profile" class="menu-profile">
-                <a href="connexion.html">Se connecter</a>
-                <a href="inscription.html">S’inscrire</a>
+              </nav>
+          
+              <!-- Bouton profil avec menu déroulant -->
+              <div class="bouton-profile">
+                  <button id="menu-deroulant">Profil ▼</button>
+                  <div id="menu-profile" class="menu-profile">
+                      <a href="Connexion.html">Se connecter</a>
+                      <a href="Inscription.html">S’inscrire</a>
+                  </div>
               </div>
-            </div>
           </div>
-        </header>
+      </header>
 
-         <!-- OU ALLER -->
-          <h1>Où voulez-vous aller ?</h1>
+        <!-- OU ALLER -->
+        <h1>Où voulez-vous aller ?</h1>
 
-         <!-- BARRE DE RECHERCHE -->
-         <section class="recherche">
-            <form>
-                <input type="text" placeholder="Départ">
-                <input type="text" placeholder="Déstination">
-                <input type="date">
-                <select>
-                    <option>1 passager</option>
-                    <option>2 passagers</option>
-                    <option>3 passagers</option>
-                    <option>4 passagers</option>
-                    <option>5 passagers</option>
-                    <option>6 passagers</option>
-                    <option>7 passagers</option>
-                    <option>8 passagers</option>
-                </select>
-                <button type="submit">Rechercher</button>
-            </form>
-           </section>
+        <!-- BARRE DE RECHERCHE -->
+        <section class="recherche">
+          <form action="Covoiturages.html" method="get">
+            <input type="text" name="depart" placeholder="Départ" required>
+            <input type="text" name="destination" placeholder="Destination" required>
+            <input type="date" name="date" required>
+
+            <select name="passagers">
+              <option value="1">1 passager</option>
+              <option value="2">2 passagers</option>
+              <option value="3">3 passagers</option>
+              <option value="4">4 passagers</option>
+              <option value="5">5 passagers</option>
+              <option value="6">6 passagers</option>
+              <option value="7">7 passagers</option>
+              <option value="8">8 passagers</option>
+            </select>
+
+            <button type="submit">Rechercher</button>
+          </form>
+        </section>
+  </body>
+
+  <!-- FOOTER -->
+  <footer>
+      <div class="footer-contenu">
+          <a href="index.html" class="logo">Ecoride</a>
+          <div class="footer-infos">
+              <p><strong>Informations</strong><br>
+              mail : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a><br>
+              <a href="Mentionslegales.html">Mentions légales</a></p>
+          </div>
+          <div class="footer-menu">
+              <p><strong>Menu</strong><br>
+              <a href="Covoiturages.html">Covoiturages</a><br>
+              <a href="Rechercher.html">Rechercher</a><br>
+              <a href="Inscription.html">Inscription</a></p>
+          </div>                    
+      </div>
+  </footer>
+</html>

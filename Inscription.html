@@ -1,24 +1,90 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>EcoRide - Accueil</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>EcoRide - Inscription</title>
+      <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
 
-        <!-- HEADER -->
-        <div class="menu">
-            <!-- Logo cliquable -->
+    <!-- HEADER -->
+    <header>
+      <div class="menu">
+        <!-- Logo cliquable -->
+        <a href="index.html" class="logo">Ecoride</a>
+    
+        <!-- Navigation principale -->
+        <nav>
+          <ul>
+            <li><a href="Covoiturages.html">Covoiturages</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="Rechercher.html">Rechercher</a></li>
+          </ul>
+        </nav>
+    
+        <!-- Bouton profil avec menu déroulant -->
+        <div class="bouton-profile">
+          <button id="menu-deroulant">Profil ▼</button>
+          <div id="menu-profile" class="menu-profile">
+              <a href="Connexion.html">Se connecter</a>
+              <a href="Inscription.html">S’inscrire</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <h1>Je m’inscris et bénéficie de 20 crédits !</h1>
+
+    <section class="inscription">
+      <form action="" method="get" class="form-inscription">
+        <div class="form-group">
+          <label for="email">Entrez votre adresse mail</label>
+          <input type="email" name="email" id="email" required />
+        </div>    
+
+        <div class="form-group">  
+          <label for="password">Entrez votre mot de passe</label>
+          <input type="password" name="password" id="password" required />
+        </div>
+
+        <div class="form-group">
+          <label for="password2">Confirmez votre mot de passe</label>
+          <input type="password" name="password2" id="password2" required />
+        </div>
+
+        <div>
+          <input type="checkbox" id="cgu" name="cgu" required />
+          <label for="cgu">J'accepte les <a href="Mentionslegales.html">Conditions Générales d'Utilisation</a></label>
+        </div>
+
+        <button type="submit">S'inscrire</button>
+        <a href="Connexion.html">Déjà un compte ?</a>          
+      </form>
+
+      <p><em>En vous inscrivant, vous acceptez nos mentions légales. Les informations collectées par EcoRide sont traitées dans le but de créer de votre compte, gérer votre réservation, l'utilisation et l'amélioration de nos services et pour assurer la sécurité de notre plateforme. Vous avez des droits concernant vos données personnelles et vous pouvez les exercer en contactant EcoRide par le biais de notre mail de contact. </em></p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-contenu">
             <a href="index.html" class="logo">Ecoride</a>
+            <div class="footer-infos">
+                <p><strong>Informations</strong><br>
+                mail : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a><br>
+                <a href="Mentionslegales.html">Mentions légales</a></p>
+            </div>
+            <div class="footer-menu">
+                <p><strong>Menu</strong><br>
+                <a href="Covoiturages.html">Covoiturages</a><br>
+                <a href="Rechercher.html">Rechercher</a><br>
+                <a href="Inscription.html">Inscription</a></p>
+            </div>                    
+        </div>
+    </footer>
+  </body>
+</html>
+  
+
         
-            <!-- Navigation principale -->
-            <nav>
-              <ul>
-                <li><a href="Covoiturages.html">Covoiturages</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-                <li><a href="Rechercher.html">Rechercher</a></li>
-              </ul>
-            </nav>
             

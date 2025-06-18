@@ -3,130 +3,144 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>EcoRide - Accueil</title>
+        <title>EcoRide - Voyagez ensemble, préservez la planète</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
 
         <!-- HEADER -->
-        <div class="menu">
-            <!-- Logo cliquable -->
-            <a href="index.html" class="logo">Ecoride</a>
-        
-            <!-- Navigation principale -->
-            <nav>
-              <ul>
-                <li><a href="Covoiturages.html">Covoiturages</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-                <li><a href="Rechercher.html">Rechercher</a></li>
-              </ul>
-            </nav>
-        
-            <!-- Bouton profil avec menu déroulant -->
-            <div class="bouton-profile">
-              <button id="menu-deroulant">Profil ▼</button>
-              <div id="menu-profile" class="menu-profile">
-                <a href="Connexion.html">Se connecter</a>
-                <a href="Inscription.html">S’inscrire</a>
-              </div>
+        <header>
+            <div class="menu">
+                <!-- Logo cliquable -->
+                <a href="index.html" class="logo">Ecoride</a>
+            
+                <!-- Navigation principale -->
+                <nav>
+                <ul>
+                    <li><a href="Covoiturages.html">Covoiturages</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                    <li><a href="Rechercher.html">Rechercher</a></li>
+                </ul>
+                </nav>
+            
+                <!-- Bouton profil avec menu déroulant -->
+                <div class="bouton-profile">
+                    <button id="menu-deroulant">Profil ▼</button>
+                    <div id="menu-profile" class="menu-profile">
+                        <a href="Connexion.html">Se connecter</a>
+                        <a href="Inscription.html">S’inscrire</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </header>
 
-         <!-- BANNIERE VOITURE ET TEXTE -->
-          <section class="banniere">
+        <!-- BANNIERE VOITURE ET TEXTE -->
+        <section class="banniere">
             <img src="img/Accueil/banniere.png" alt="Voiture écologique verte">
             <div class="banniere-texte">
                 <h1>Voyagez ensemble,<br>Préservez la planète.</h1>
             </div>
-          </section>
+        </section>
 
-          <!-- BARRE DE RECHERCHE -->
-           <section class="recherche">
-            <form>
-                <input type="text" placeholder="Départ">
-                <input type="text" placeholder="Déstination">
-                <input type="date">
-                <select>
-                    <option>1 passager</option>
-                    <option>2 passagers</option>
-                    <option>3 passagers</option>
-                    <option>4 passagers</option>
-                    <option>5 passagers</option>
-                    <option>6 passagers</option>
-                    <option>7 passagers</option>
-                    <option>8 passagers</option>
+        <!-- BARRE DE RECHERCHE -->
+        <section class="recherche">
+            <form action="Covoiturages.html" method="get">
+                <div class="choix">
+                    <label for="depart">Départ</label>
+                    <input type="text" name="depart" id="depart" required />
+                </div>
+
+                <div class="choix">
+                    <label for="destination">Déstination</label>
+                    <input type="text" name="destination" id="destination" required />
+                </div>
+
+                <div class="choix">
+                    <label for="date">Date</label>
+                    <input type="date" name="date" id="date"required>
+                </div>
+
+                <select name="passagers">
+                    <option value="1">1 passager</option>
+                    <option value="2">2 passagers</option>
+                    <option value="3">3 passagers</option>
+                    <option value="4">4 passagers</option>
+                    <option value="5">5 passagers</option>
+                    <option value="6">6 passagers</option>
+                    <option value="7">7 passagers</option>
+                    <option value="8">8 passagers</option>
                 </select>
+
                 <button type="submit">Rechercher</button>
             </form>
-           </section>
+        </section>
 
-           <!-- CARDS TEXTE -->
-            <section class="valeurs">
-                <div class="card">
-                    <img src="img/Accueil/icone_simple.png" alt="icône">
-                    <h3>Simple, humain et responsable</h3>
-                    <p>Une plateforme pensée pour des trajets entre personnes de confiance, engagées dans une démarche solidaire. L’interface va à l’essentiel : trouver un trajet, échanger facilement, voyager sereinement.</p>     
-                </div>
-                <div class="card">
-                    <img src="img/Accueil/icone_econom.png" alt="icône">
-                    <h3>Économique et sans surprises</h3>
-                    <p>Partage équitable des frais entre conducteurs et passagers. Pas de commissions opaques, pas de publicité invasive : tout est transparent pour favoriser la confiance et l’accessibilité.</p>     
-                </div>
-                <div class="card">
-                    <img src="img/Accueil/icone_ecolo.png" alt="icône">
-                    <h3>Écologique par essence</h3>
-                    <p>EcoRide met en avant les véhicules électriques, mais accepte aussi les thermiques pour maximiser les trajets partagés. Chaque trajet évite des émissions grâce au covoiturage, et vous pouvez suivre votre impact carbone évité.</p>     
-                </div>
+        <!-- CARDS TEXTE -->
+        <section class="valeurs">
+            <div class="card">
+                <img src="img/Accueil/icone_simple.png" alt="icône">
+                <h3>Simple, humain et responsable</h3>
+                <p>Une plateforme pensée pour des trajets entre personnes de confiance, engagées dans une démarche solidaire. L’interface va à l’essentiel : trouver un trajet, échanger facilement, voyager sereinement.</p>     
+            </div>
+            <div class="card">
+                <img src="img/Accueil/icone_econom.png" alt="icône">
+                <h3>Économique et sans surprises</h3>
+                <p>Partage équitable des frais entre conducteurs et passagers. Pas de commissions opaques, pas de publicité invasive : tout est transparent pour favoriser la confiance et l’accessibilité.</p>     
+            </div>
+            <div class="card">
+                <img src="img/Accueil/icone_ecolo.png" alt="icône">
+                <h3>Écologique par essence</h3>
+                <p>EcoRide met en avant les véhicules électriques, mais accepte aussi les thermiques pour maximiser les trajets partagés. Chaque trajet évite des émissions grâce au covoiturage, et vous pouvez suivre votre impact carbone évité.</p>     
+            </div>
+        </section>
+
+        <!-- FLECHE VERS LE BAS -->
+        <a href="#ecoride" class="scroll-bas">&#x25BC;</a>
+
+        <!-- 3 IMAGES AVEC TEXTES -->
+            <section class="galerie">
+            <figure>
+                <img src="img/Accueil/img_liberte.png" alt="Tête sur une fenêtre ouverte en montagne">
+                <figcaption>Respirez la liberté, partagez la route.</figcaption>
+            </figure>
+            <figure>
+                <img src="img/Accueil/img_groupe_voiture.png" alt="Groupe dans un véhicule">
+                <figcaption>Un trajet, des rencontres, moins d’impact.</figcaption>
+            </figure>
+            <figure>
+                <img src="img/Accueil/img_echange_vehicule.png" alt="Échange entre deux adultes sans un véhicule">
+                <figcaption>Connectés, complices, responsables.</figcaption>
+            </figure>
             </section>
 
-            <!-- FLECHE VERS LE BAS -->
-            <a href="#ecoride" class="scroll-bas">&#x25BC;</a>
+        <!-- TEXTE DE PRESENTATION DE LA START-UP -->
+        <section class="presentation" id="ecoride">
+            <h2>Découvrez EcoRide</h2>
+            <p>
+                Chez EcoRide, nous croyons qu’il est possible de se déplacer autrement, de façon plus responsable, plus humaine et plus économique.<br>  
+                Notre mission est simple : réduire l’impact environnemental des trajets en voiture en favorisant le covoiturage écologique, en particulier grâce à l’usage de véhicules électriques.<br>
+                En connectant les voyageurs soucieux de l’environnement, nous construisons chaque jour une communauté engagée pour une mobilité durable.<br>
+                Que vous soyez conducteur ou passager, EcoRide vous accompagne pour voyager ensemble, tout en préservant la planète.
+            </p>
+            <img src="img/Accueil/img_tesla.png" alt="Voiture électrique sur route avec éoliennes" />
+        </section>
 
-            <!-- 3 IMAGES AVEC TEXTES -->
-             <section class="galerie">
-                <figure>
-                    <img src="img/Accueil/img_liberte.png" alt="Tête sur une fenêtre ouverte en montagne">
-                    <figcaption>Respirez la liberté, partagez la route.</figcaption>
-                </figure>
-                <figure>
-                    <img src="img/Accueil/img_groupe_voiture.png" alt="Groupe dans un véhicule">
-                    <figcaption>Un trajet, des rencontres, moins d’impact.</figcaption>
-                </figure>
-                <figure>
-                    <img src="img/Accueil/img_echange_vehicule.png" alt="Échange entre deux adultes sans un véhicule">
-                    <figcaption>Connectés, complices, responsables.</figcaption>
-                </figure>
-             </section>
-
-             <!-- TEXTE DE PRESENTATION DE LA START-UP -->
-              <section class="presentation" id="ecoride">
-                <h2>Découvrez EcoRide</h2>
-                <p>
-                    Chez EcoRide, nous croyons qu’il est possible de se déplacer autrement, de façon plus responsable, plus humaine et plus économique.<br>  
-      Notre mission est simple : réduire l’impact environnemental des trajets en voiture en favorisant le covoiturage écologique, en particulier grâce à l’usage de véhicules électriques.<br>
-      En connectant les voyageurs soucieux de l’environnement, nous construisons chaque jour une communauté engagée pour une mobilité durable.<br>
-      Que vous soyez conducteur ou passager, EcoRide vous accompagne pour voyager ensemble, tout en préservant la planète.
-                </p>
-                <img src="img/Accueil/img_tesla.png" alt="Voiture électrique sur route avec éoliennes" />
-              </section>
-
-              <!-- FOOTER -->
-               <footer>
-                    <div class="footer-contenu">
-                        <a href="index.html" class="logo">Ecoride</a>
-                        <div class="footer-infos">
-                            <p><strong>Informations</strong><br>
-                            mail : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a><br>
-                            <a href="Mentionslegales.html">Mentions légales</a></p>
-                        </div>
-                        <div class="footer-menu">
-                            <p><strong>Menu</strong><br>
-                            <a href="Covoiturages.html">Covoiturages</a><br>
-                            <a href="Rechercher.html">Rechercher</a><br>
-                            <a href="Inscription.html">Inscription</a></p>
-                        </div>                    
-                    </div>
-               </footer>
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-contenu">
+                <a href="index.html" class="logo">Ecoride</a>
+                <div class="footer-infos">
+                    <p><strong>Informations</strong><br>
+                    mail : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a><br>
+                    <a href="Mentionslegales.html">Mentions légales</a></p>
+                </div>
+                <div class="footer-menu">
+                    <p><strong>Menu</strong><br>
+                    <a href="Covoiturages.html">Covoiturages</a><br>
+                    <a href="Rechercher.html">Rechercher</a><br>
+                    <a href="Inscription.html">Inscription</a></p>
+                </div>                    
+            </div>
+        </footer>
     </body>
 </html>
