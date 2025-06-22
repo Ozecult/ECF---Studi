@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EcoRide - Détails du covoiturage</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    </head>
+    <body>
+
+        <!-- HEADER -->
+        <header>
+            <div class="menu">
+                <!-- Logo cliquable -->
+                <a href="index.html" class="logo">Ecoride</a>
+            
+                <!-- Navigation principale -->
+                <nav>
+                <ul>
+                    <li><a href="Covoiturages.html">Covoiturages</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                    <li><a href="Rechercher.html">Rechercher</a></li>
+                </ul>
+                </nav>
+            
+                <!-- Bouton profil avec menu déroulant -->
+                <div class="bouton-profile">
+                    <button id="menu-deroulant">Profil ▼</button>
+                    <div id="menu-profile" class="menu-profile">
+                        <a href="Connexion.html">Se connecter</a>
+                        <a href="Inscription.html">S’inscrire</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN -->
+        <main class="details">
+            
+            <!-- BARRE DE RECHERCHE -->
+            <section class="recherche">
+                <h1>Détails de votre covoiturage</h1>
+                <form action="Covoiturages.html" method="get" autocomplete="on">
+                    <div class="choix">
+                        <label for="depart">Départ</label>
+                        <input type="text" name="depart" id="depart" required>
+                    </div>
+
+                    <div class="choix">
+                        <label for="destination">Déstination</label>
+                        <input type="text" name="destination" id="destination" required>
+                    </div>
+
+                    <div class="choix">
+                        <label for="date">Date</label>
+                        <input type="date" name="date" id="date" required>
+                    </div>
+
+                    <select name="passagers">
+                        <option value="1">1 passager</option>
+                        <option value="2">2 passagers</option>
+                        <option value="3">3 passagers</option>
+                        <option value="4">4 passagers</option>
+                        <option value="5">5 passagers</option>
+                        <option value="6">6 passagers</option>
+                        <option value="7">7 passagers</option>
+                        <option value="8">8 passagers</option>
+                    </select>
+
+                    <button type="submit">Rechercher</button>
+                </form>
+            </section>
+
+            <!-- RESUME DU COVOITURAGE -->
+            <!-- Card trajet -->
+            <section class="card-profil">
+                <h2>Profil du conducteur</h2> 
+
+                <img src="img/Covoiturages/Elisa.png" alt="Photo de profil" class="photo-profil" width="100" height="100">
+
+                <div class="profil">
+                    <p class="pseudo">Elisa</p>
+
+                    <div class="etoiles">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star vide">☆</span>
+                    </div>
+
+                    <p>Bonjour! Je suis une conductrice agréable et qui roule en toute sécurité.</p>
+
+                    <ul class="infos-trajets">
+                        <li><span class="material-symbols-outlined" aria-label="Cigarette" role="img">smoke_free</span>Non fumeur</li>
+                        <li><span class="material-symbols-outlined" aria-label="Chien" role="img">sound_detection_dog_barking</span>Animaux autorisés</li>
+                        <li><span class="material-symbols-outlined" aria-label="Enfant" role="img">account_child</span>Enfants acceptés</li>
+                        <li><span class="material-icons" aria-label="Voiture électrique" role="img">electric_car</span>Tesla model 3</li>                 
+                    </ul>
+                </div>                 
+            </section>
+        
+            <section class="avis">
+                <h2>Avis du conducteur</h2>
+                <!-- Avis 1 -->
+                <article class="avis-item">
+                    <img src="img/Détails/profil1.png" alt="Photo de Elisa, conductrice" class="photo-profil" width="60" height="60">
+
+                    <div class="etoiles">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                    </div>
+
+                    <p>Conductrice très ponctuelle et agréable. Le trajet s’est super bien passé, je recommande à 100 % !</p>
+                </article>
+
+                <!-- Avis 2 -->
+                <article class="avis-item">
+                    <img src="img/Détails/profil2.png" alt="Photo de profil" class="photo-profil" width="60" height="60">
+
+                    <div class="etoiles">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                    </div>
+
+                    <p>Voiture propre, conduite souple, et très bon échange pendant le trajet. Merci encore !</p>
+                </article>
+
+                <!-- Avis 3 -->
+                <article class="avis-item">
+                    <span class="material-symbols-outlined" aria-label="Photo profil" role="img">account_circle</span>
+
+                    <div class="etoiles">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star vide">☆</span>
+                    </div>
+
+                    <p>Conductrice fiable et respectueuse des horaires. Trajet agréable, je me suis senti en confiance.</p>
+                </article>
+
+                <!-- Avis 4 -->
+                <article class="avis-item">
+                    <img src="img/Détails/profil3.png" alt="Photo de profil" class="photo-profil" width="60" height="60">
+
+                    <div class="etoiles">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star vide">☆</span>
+                    </div>
+
+                    <p>Un covoiturage fluide, sans stress. Merci pour la conduite prudente et les échanges intéressants.</p>
+                </article>
+            </section>
+
+            <!-- RESERVATION -->            
+            <section class="reservation">
+                <h2>Réservation</h2>
+                <!-- Résumé trajet -->
+                <div class="time-bar">
+                    <span class="heure-depart">06h00</span>
+                    <div class="barre-verte"></div>
+                    <span class="heure-arrivee">08h35</span>
+                </div>
+
+                <img src="img/Covoiturages/Elisa.png" alt="Photo de profil" class="photo-profil" width="100" height="100">
+                
+                <p>Elisa</p>
+
+                <ul class="infos-trajets">
+                    <li><span class="material-icons" aria-label="Véhicule électrique" role="img">electric_car</span>Véhicule électrique !</li>
+                    <li><span class="material-icons" aria-label="Prise électrique" role="img">power_off</span>Pas besoin de recharge !</li>
+                </ul>
+
+                <!-- Bouton réservation -->
+                <button class="bouton-validation" type="button"><span class="material-symbols-outlined">task_alt</span><strong>Payer 16 crédits</strong></button>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-contenu">
+                <a href="index.html" class="logo">Ecoride</a>
+                <div class="footer-infos">
+                    <p><strong>Informations</strong><br>
+                    mail : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a><br>
+                    <a href="Mentionslegales.html">Mentions légales</a></p>
+                </div>
+                <div class="footer-menu">
+                    <p><strong>Menu</strong><br>
+                    <a href="Covoiturages.html">Covoiturages</a><br>
+                    <a href="Rechercher.html">Rechercher</a><br>
+                    <a href="Inscription.html">Inscription</a></p>
+                </div>                    
+            </div>
+        </footer>
+    </body>
+</html>             

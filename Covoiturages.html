@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EcoRide - Covoiturages</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+
+        <!-- HEADER -->
+        <header>
+            <div class="menu">
+                <!-- Logo cliquable -->
+                <a href="index.html" class="logo">Ecoride</a>
+            
+                <!-- Navigation principale -->
+                <nav>
+                <ul>
+                    <li><a href="Covoiturages.html">Covoiturages</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                    <li><a href="Rechercher.html">Rechercher</a></li>
+                </ul>
+                </nav>
+            
+                <!-- Bouton profil avec menu déroulant -->
+                <div class="bouton-profile">
+                    <button id="menu-deroulant">Profil ▼</button>
+                    <div id="menu-profile" class="menu-profile">
+                        <a href="Connexion.html">Se connecter</a>
+                        <a href="Inscription.html">S’inscrire</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN -->
+        <main class="Covoiturages">
+
+            <!-- BARRE DE RECHERCHE -->
+            <section class="recherche">
+                <h2>Rechercher un covoiturage</h2>
+                <form action="Covoiturages.html" method="get" autocomplete="on">
+                    <div class="choix">
+                        <label for="depart">Départ</label>
+                        <input type="text" name="depart" id="depart" required>
+                    </div>
+
+                    <div class="choix">
+                        <label for="destination">Déstination</label>
+                        <input type="text" name="destination" id="destination" required>
+                    </div>
+
+                    <div class="choix">
+                        <label for="date">Date</label>
+                        <input type="date" name="date" id="date" required>
+                    </div>
+
+                    <select name="passagers">
+                        <option value="1">1 passager</option>
+                        <option value="2">2 passagers</option>
+                        <option value="3">3 passagers</option>
+                        <option value="4">4 passagers</option>
+                        <option value="5">5 passagers</option>
+                        <option value="6">6 passagers</option>
+                        <option value="7">7 passagers</option>
+                        <option value="8">8 passagers</option>
+                    </select>
+
+                    <button type="submit">Rechercher</button>
+                </form>
+            </section>
+
+            <!--TITRE -->
+            <h1> Choississez votre covoiturage :</h1>
+
+            <!-- FILTRES -->
+            <aside class="filtres">
+                <h2>Filtres <button type="reset">Tout effacer</button></h2>
+
+                <form method="get">
+                    <!-- Horaire de départ -->
+                    <fieldset>
+                        <legend>Horaire de départ</legend>
+
+                        <input type="checkbox" id="nuit" name="nuit" value="N">
+                        <label for="nuit">Nuit (00h-06h)</label>
+
+                        <input type="checkbox" id="matin" name="matin" value="M">
+                        <label for="matin">Matin (06h-12h)</label>
+
+                        <input type="checkbox" id="am" name="am" value="A">
+                        <label for="am">Après-midi (12h-18h)</label>
+
+                        <input type="checkbox" id="soir" name="soir" value="S">
+                        <label for="soir">Soir (18h-00h)</label>
+                    </fieldset>
+
+                    <!-- Type de motorisation -->
+                    <fieldset>
+                        <legend>Type de motorisation</legend>
+
+                        <input type="checkbox" id="elec" name="elec" value="E">
+                        <label for="elec">Électrique</label>
+
+                        <input type="checkbox" id="therm" name="therm" value="T">
+                        <label for="therm">Thermique</label>
+                    </fieldset>
+
+                    <!--Durée du trajet -->
+                    <fieldset>
+                        <legend>Durée du trajet</legend>
+
+                        <span>0 min</span>
+                        <input type="range" id="duree" name="duree" min="0" max="300" step="10" value="120">
+                        <label for="duree"></label>
+                        <span>3h</span>
+                    </fieldset>
+
+                    <!-- Prix du voyage -->
+                    <fieldset>
+                        <legend>Prix du voyage</legend>
+
+                        <span>0 €</span>
+                        <input type="range" id="prix" name="prix" min="0" max="100" step="10" value="40">
+                        <label for="duree"></label>
+                        <span>100 €</span> 
+                    </fieldset>
+
+                    <!-- Note covoitureur-->
+                    <fieldset>
+                        <legend>Note covoitureur</legend>
+                        <div class="etoiles">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star vide">☆</span>
+                        </div> 
+                    </fieldset>
+                </form>
+            </aside>
+
+            <!-- RESULTATS COVOITURAGES-->
+            <section class="resultats">
+                <h2>Résultats de covoiturage</h2>
+                <!-- Résultat 1 -->
+                <article class="card-covoit">
+                  <h3>Elisa</h3>  
+                  <div class="time-bar">
+                        <span class="heure-depart">06h00</span>
+                        <div class="barre-verte"></div>
+                        <span class="heure-arrivee">08h35</span>
+                  </div>  
+                  <img src="img/Covoiturages/Elisa.png" alt="Photo de profil" class="photo-profil" width="80" height="80">
+                  <div class="infos-principales">
+                    <p class="pseudo">Elisa</p>
+                    <div class="etoiles">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star vide">☆</span>
+                    </div>
+                  </div>
+                  <ul class="infos-trajets">
+                    <li><strong>Lille :</strong> Gare Lille Europe</li>
+                    <li><strong>Paris :</strong> Gare de Lyon</li>
+                    <li><span class="material-icons" aria-label="Véhicule électrique" role="img">electric_car</span>Véhicule électrique !</li>
+                    <li><span class="material-icons" aria-label="Prise électrique" role="img">power_off</span>Pas besoin de recharge !</li>
+                    <li><span class="material-icons" aria-label="Passager" role="img">how_to_reg</span>Place(s) restante(s) : 2</li>
+                    <li><strong>Prix : 16 crédits</strong></li>
+                  </ul>
+                  <a href="Details.html" class="details">Détails</a>  
+                </article>
+
+                <!-- Résultat 2 -->
+                <article class="card-covoit">
+                  <h3>Marc</h3>   
+                  <div class="time-bar">
+                        <span class="heure-depart">06h35</span>
+                        <div class="barre-verte"></div>
+                        <span class="heure-arrivee">09h10</span>
+                  </div>  
+                  <img src="img/Covoiturages/Marc.png" alt="Photo de profil" class="photo-profil" width="80" height="80">
+                  <div class="infos-principales">
+                    <p class="pseudo">Marc</p>
+                    <div class="etoiles">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star vide">☆</span>
+                    </div>
+                  </div>
+                  <ul class="infos-trajets">
+                    <li><strong>Lille :</strong> Gare Lille Europe</li>
+                    <li><strong>Paris :</strong> Gare de Lyon</li>
+                    <li><span class="material-icons" aria-label="Véhicule thermique" role="img">drive_eta</span>Véhicule thermique</li>
+                    <li><span class="material-icons" aria-label="Passager" role="img">how_to_reg</span>Place(s) restante(s) : 1</li>
+                    <li><strong>Prix : 16 crédits</strong></li>
+                  </ul>
+                  <a href="Details.html" class="details">Détails</a>  
+                </article>
+
+                <!-- Résultat 3 -->
+                <article class="card-covoit">
+                  <h3>Jennifer</h3>   
+                  <div class="time-bar">
+                        <span class="heure-depart">06h45</span>
+                        <div class="barre-verte"></div>
+                        <span class="heure-arrivee">09h23</span>
+                  </div>  
+                  <img src="img/Covoiturages/Jennifer.png" alt="Photo de profil" class="photo-profil" width="80" height="80">
+                  <div class="infos-principales">
+                    <p class="pseudo">Jennifer</p>
+                    <div class="etoiles">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star vide">☆</span>
+                    </div>
+                  </div>
+                  <ul class="infos-trajets">
+                    <li><strong>Lille :</strong> Gare Lille Europe</li>
+                    <li><strong>Paris :</strong> Gare de Lyon</li>
+                    <li><span class="material-icons" aria-label="Véhicule thermique" role="img">drive_eta</span>Véhicule thermique</li>
+                    <li><span class="material-icons" aria-label="Passager" role="img">how_to_reg</span>Place(s) restante(s) : 1</li>
+                    <li><strong>Prix : 17 crédits</strong></li>
+                  </ul>
+                  <a href="Details.html" class="details">Détails</a>  
+                </article>
+
+                <!-- Résultat 4 -->
+                <article class="card-covoit">
+                  <h3>Paul</h3>   
+                  <div class="time-bar">
+                        <span class="heure-depart">07h15</span>
+                        <div class="barre-verte"></div>
+                        <span class="heure-arrivee">09h57</span>
+                  </div>  
+                  <img src="img/Covoiturages/Paul.png" alt="Photo de profil" class="photo-profil" width="80" height="80">
+                  <div class="infos-principales">
+                    <p class="pseudo">Paul</p>
+                    <div class="etoiles">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star vide">☆</span>
+                    </div>
+                  </div>
+                  <ul class="infos-trajets">
+                    <li><strong>Lille :</strong> Gare Lille Europe</li>
+                    <li><strong>Paris :</strong> Gare de Lyon</li>
+                    <li><span class="material-icons" aria-label="Véhicule électrique" role="img">electric_car</span>Véhicule électrique !</li>
+                    <li><span class="material-icons" aria-label="Prise électrique" role="img">power_off</span>Pas besoin de recharge !</li>
+                    <li><span class="material-icons" aria-label="Passager" role="img">how_to_reg</span>Place(s) restante(s) : 3</li>
+                    <li><strong>Prix : 17 crédits</strong></li>
+                  </ul>
+                  <a href="Details.html" class="details">Détails</a>  
+                </article>
+
+                <!-- Résultat 5 -->
+                <article class="card-covoit">
+                  <h3>Léa</h3>   
+                  <div class="time-bar">
+                        <span class="heure-depart">08h00</span>
+                        <div class="barre-verte"></div>
+                        <span class="heure-arrivee">10h47</span>
+                  </div>  
+                  <img src="img/Covoiturages/Léa.png" alt="Photo de profil" class="photo-profil" width="80" height="80">
+                  <div class="infos-principales">
+                    <p class="pseudo">Léa</p>
+                    <div class="etoiles">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star vide">☆</span>
+                    </div>
+                  </div>
+                  <ul class="infos-trajets">
+                    <li><strong>Lille :</strong> Gare Lille Europe</li>
+                    <li><strong>Paris :</strong> Gare de Lyon</li>
+                    <li><span class="material-icons" aria-label="Véhicule électrique" role="img">electric_car</span>Véhicule électrique !</li>
+                    <li><span class="material-icons" aria-label="Prise électrique" role="img">power_off</span>Pas besoin de recharge !</li>
+                    <li><span class="material-icons" aria-label="Passager" role="img">how_to_reg</span>Place(s) restante(s) : 2</li>
+                    <li><strong>Prix : 18 crédits</strong></li>
+                  </ul>
+                  <a href="Details.html" class="details">Détails</a>  
+                </article>
+            </section> 
+        </main>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-contenu">
+                <a href="index.html" class="logo">Ecoride</a>
+                <div class="footer-infos">
+                    <p><strong>Informations</strong><br>
+                    mail : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a><br>
+                    <a href="Mentionslegales.html">Mentions légales</a></p>
+                </div>
+                <div class="footer-menu">
+                    <p><strong>Menu</strong><br>
+                    <a href="Covoiturages.html">Covoiturages</a><br>
+                    <a href="Rechercher.html">Rechercher</a><br>
+                    <a href="Inscription.html">Inscription</a></p>
+                </div>                    
+            </div>
+        </footer>
+    </body>
+</html>

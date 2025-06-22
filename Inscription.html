@@ -34,37 +34,50 @@
       </div>
     </header>
 
-    <h1>Je m’inscris et bénéficie de 20 crédits !</h1>
+    <!-- MAIN-->
+    <main class="inscription">
+      <h1>Je m’inscris et bénéficie de 20 crédits !</h1>
 
-    <section class="inscription">
-      <form action="" method="get" class="form-inscription">
-        <div class="form-group">
-          <label for="email">Entrez votre adresse mail</label>
-          <input type="email" name="email" id="email" required />
-        </div>    
+      <section class="inscription">
+        <h2>Formulaire d'inscription</h2>
+        <!-- Formulaire -->
+        <form method="get" class="form-inscription" autocomplete="on">
 
-        <div class="form-group">  
-          <label for="password">Entrez votre mot de passe</label>
-          <input type="password" name="password" id="password" required />
-        </div>
+          <!-- email -->
+          <div class="form-group">
+            <label for="email">Entrez votre adresse mail</label>
+            <input type="email" name="email" id="email" required>
+          </div>    
 
-        <div class="form-group">
-          <label for="password2">Confirmez votre mot de passe</label>
-          <input type="password" name="password2" id="password2" required />
-        </div>
+          <!-- Mot de passe -->
+          <div class="form-group">  
+            <label for="password">Entrez votre mot de passe</label>
+            <input type="password" name="password" id="password" required>
+          </div>
 
-        <div>
-          <input type="checkbox" id="cgu" name="cgu" required />
-          <label for="cgu">J'accepte les <a href="Mentionslegales.html">Conditions Générales d'Utilisation</a></label>
-        </div>
+          <!-- Vérif mot de passe -->
+          <div class="form-group">
+            <label for="password2">Confirmez votre mot de passe</label>
+            <input type="password" name="password2" id="password2" required>
+          </div>
 
-        <button type="submit">S'inscrire</button>
-        <a href="Connexion.html">Déjà un compte ?</a>          
-      </form>
+          <!-- Accepter les CGU -->
+          <div>
+            <input type="checkbox" id="cgu" name="cgu" required>
+            <label for="cgu">J'accepte les <a href="Mentionslegales.html">Conditions Générales d'Utilisation</a></label>
+          </div>
 
-      <p><em>En vous inscrivant, vous acceptez nos mentions légales. Les informations collectées par EcoRide sont traitées dans le but de créer de votre compte, gérer votre réservation, l'utilisation et l'amélioration de nos services et pour assurer la sécurité de notre plateforme. Vous avez des droits concernant vos données personnelles et vous pouvez les exercer en contactant EcoRide par le biais de notre mail de contact. </em></p>
-    </section>
+          <!-- Boutton s'inscrire -->
+          <div class="button">
+            <button type="submit">S'inscrire</button>
+          </div>
+          <a href="Connexion.html">Déjà un compte ?</a>          
+        </form>
 
+        <p><em>En vous inscrivant, vous acceptez nos mentions légales. Les informations collectées par EcoRide sont traitées dans le but de créer de votre compte, gérer votre réservation, l'utilisation et l'amélioration de nos services et pour assurer la sécurité de notre plateforme. Vous avez des droits concernant vos données personnelles et vous pouvez les exercer en contactant EcoRide par le biais de notre mail de contact. </em></p>
+      </section>
+    </main>
+  
     <!-- FOOTER -->
     <footer>
         <div class="footer-contenu">
