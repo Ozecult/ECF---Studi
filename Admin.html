@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EcoRide - Espace administrateur</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    </head>
+    <body>
+
+        <!-- HEADER -->
+        <header>
+            <div class="menu">
+                <!-- Logo cliquable -->
+                <a href="index.html" class="logo">Ecoride</a>
+            
+                <!-- Navigation principale -->
+                <nav>
+                <ul>
+                    <li><a href="Covoiturages.html">Covoiturages</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                    <li><a href="Rechercher.html">Rechercher</a></li>
+                </ul>
+                </nav>
+            
+                <!-- Bouton profil avec menu déroulant -->
+                <div class="bouton-profile">
+                    <button id="menu-deroulant">Profil ▼</button>
+                    <div id="menu-profile" class="menu-profile">
+                        <a href="Connexion.html">Se connecter</a>
+                        <a href="Inscription.html">S’inscrire</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN -->
+        <main class="administrateur">
+            <h1>Espace administrateur</h1>
+
+            <!-- Créer un compte employé -->
+            <section class="creation-employe">
+                <h2>Créer un compte employé</h2>
+
+                <!-- formulaire -->
+                <form method="post" class="compte" autocomplete="on">
+                    <fieldset>
+                        <legend>Créer un compte employé</legend>
+                        <!-- nom -->
+                        <div class="compte">
+                            <label for="nom">Nom :</label>
+                            <input type="text" name="nom" id="nom" required>
+                        </div>
+                        <!-- prénom -->
+                        <div class="compte">
+                            <label for="prenom">Prénom :</label>
+                            <input type="text" name="prenom" id="prenom" required>
+                        </div>
+                        <!-- email -->
+                        <div class="compte">
+                            <label for="email">Email :</label>
+                            <input type="email" name="email" id="email" required>
+                        </div>
+                        <!-- password -->
+                        <div class="compte">
+                            <label for="password">Mot de passe :</label>
+                            <input type="password" name="password" id="password" required>
+                        </div>
+                        <!-- password2 -->
+                        <div class="compte">
+                            <label for="password2">Confirmez le mot de passe :</label>
+                            <input type="password" name="password2" id="password2" required>
+                        </div>
+
+                        <button class="boutton" type="button" aria-label="creer">Créer le compte</button>
+                    </fieldset>
+                </form>
+            </section>
+
+            <!-- Statistiques -->
+            <section class="statistiques">
+                <h2>Statistiques</h2>
+
+                <!-- graphique : Covoiturages du jour -->
+                <div class="graphique" id="graph-covoiturages">
+                    <!-- Le graphique viendra ici -->
+                    <p>Covoiturages du jour</p>
+                </div>
+
+                <!-- graphique : Crédits gagnés -->
+                <div class="graphique" id="graph-credits">
+                    <!-- Le graphique viendra ici -->
+                    <p>Crédits gagnés du jour</p>
+                </div>
+
+                <!-- total -->
+                <p><strong>Total de crédits générés : 21936 crédits</strong></p>
+            </section>
+
+            <!-- Liste des utilisateurs -->
+            <section class="liste-utilisateur">
+                <h2>Liste des utilisateurs</h2>
+                <table class="user">
+                    <!-- colonnes -->
+                    <thead>
+                        <tr>
+                            <th scope="col"><span class="material-symbols-outlined" aria-label="Utilisateur" role="img">person</span>Utilisateur</th>
+                            <th scope="col"><span class="material-symbols-outlined" aria-label="Rôle" role="img">assignment_ind</span>Rôle</th>
+                            <th scope="col"><span class="material-symbols-outlined" aria-label="Action" role="img">touch_app</span>Action</th>
+                        </tr>
+                    </thead>
+                    <!-- lignes -->  
+                    <tbody>
+                        <!-- ligne 1 -->
+                        <tr>
+                            <td>Elisa</td>
+                            <td>Conducteur</td>
+                            <td><button type="button" aria-label="Suspendre">Suspendre</button></td>
+                        </tr>
+                        <!-- ligne 2 -->
+                        <tr>
+                            <td>Romain</td>
+                            <td>Conducteur</td>
+                            <td><button type="button" aria-label="Suspendre">Suspendre</button></td>
+                        </tr>
+                        <!-- ligne 3 -->
+                        <tr>
+                            <td><strong>Thomas</strong></td>
+                            <td><strong>Employé</strong></td>
+                            <td><button type="button" aria-label="Suspendre">Suspendre</button></td>
+                        </tr>
+                        <!-- ligne 4 -->
+                        <tr>
+                            <td>Benjamin</td>
+                            <td>Conducteur</td>
+                            <td><button type="button" aria-label="Suspendre">Suspendre</button></td>
+                        </tr>
+                        <!-- ligne 5 -->
+                        <tr>
+                            <td>Léa</td>
+                            <td>Conducteur</td>
+                            <td><button type="button" aria-label="Suspendre">Suspendre</button></td>
+                        </tr>
+                        <!-- ligne 6 -->
+                        <tr>
+                            <td>Paul</td>
+                            <td>Conducteur</td>
+                            <td><button type="button" aria-label="Suspendre">Suspendre</button></td>
+                        </tr>
+                        <!-- ligne 7 -->
+                        <tr>
+                            <td>Jennifer</td>
+                            <td>Conducteur</td>
+                            <td><button type="button" aria-label="Suspendre">Suspendre</button></td>
+                        </tr>
+                        <!-- ligne 8 -->
+                        <tr>
+                            <td><strong>Jean</strong></td>
+                            <td><strong>Employé</strong></td>
+                            <td><button type="button" aria-label="Suspendre">Suspendre</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-contenu">
+                <a href="index.html" class="logo">Ecoride</a>
+                <div class="footer-infos">
+                    <p><strong>Informations</strong><br>
+                    mail : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a><br>
+                    <a href="Mentionslegales.html">Mentions légales</a></p>
+                </div>
+                <div class="footer-menu">
+                    <p><strong>Menu</strong><br>
+                    <a href="Covoiturages.html">Covoiturages</a><br>
+                    <a href="Rechercher.html">Rechercher</a><br>
+                    <a href="Inscription.html">Inscription</a></p>
+                </div>                    
+            </div>
+        </footer>
+    </body>
+</html>
