@@ -1,0 +1,12 @@
+@import url("reset.css");
+@import url("fonts.css");
+@import url("base.css");
+@import url("components.css");
+@import url("barre-recherche.css");
+@import url("./page/index.css");
+@import url("./page/forms.css");
+@import url("./page/covoiturages.css");
+@import url("./page/details.css");
+@import url("./page/employe.css");
+@import url("./page/utilisateur.css");
+@import url("./page/admin.css");

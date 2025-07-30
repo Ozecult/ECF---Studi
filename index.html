@@ -3,31 +3,44 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !">
         <title>EcoRide - Voyagez ensemble, préservez la planète</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./css/style.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+        <script type="module" src="./js/script.js"></script>
     </head>
     <body>
 
         <!-- HEADER -->
         <header>
+            <!-- MENU -->
             <div class="menu">
                 <!-- Logo cliquable -->
-                <a href="index.html" class="logo">Ecoride</a>
+                <a href="index.html" class="logo hover-underline gradient-hover"><img src="./img/logo.svg" alt="Logo EcoRide"><span>EcoRide</span></a>
             
                 <!-- Navigation principale -->
-                <nav>
-                <ul>
-                    <li><a href="Covoiturages.html">Covoiturages</a></li>
-                    <li><a href="Contact.html">Contact</a></li>
-                    <li><a href="Rechercher.html">Rechercher</a></li>
-                </ul>
+                <nav aria-label="Menu principal">
+                    <ul class="nav">
+                        <li class="nav-item"><a href="Covoiturages.html" class="hover-underline gradient-hover">Covoiturages</a></li>
+                        <li class="nav-item"><a href="Contact.html" class="hover-underline gradient-hover">Contact</a></li>
+                        <li class="nav-item"><a href="Rechercher.html" class="hover-underline gradient-hover">Rechercher</a></li>
+                    </ul>
                 </nav>
             
                 <!-- Bouton profil avec menu déroulant -->
                 <div class="bouton-profile">
-                    <button id="menu-deroulant">Profil ▼</button>
+                    <button id="menu-deroulant">
+                        <span class="material-symbols-outlined burger-icon">menu</span>
+                        <span class="material-symbols-outlined" aria-label="menu-deroulant" role="img">account_circle</span>
+                    </button>
+                    <nav class="mobile-nav-menu" id="mobile-nav-menu">
+                        <ul>
+                            <li><a href="Covoiturages.html">Covoiturages</a></li>
+                            <li><a href="Contact.html">Contact</a></li>
+                            <li><a href="Rechercher.html">Rechercher</a></li>
+                        </ul>
+                    </nav>
                     <div id="menu-profile" class="menu-profile">
                         <a href="Connexion.html">Se connecter</a>
                         <a href="Inscription.html">S’inscrire</a>
@@ -37,45 +50,51 @@
         </header>
 
         <!-- MAIN -->
-        <main class="accueil">
-            <!-- BANNIERE VOITURE ET TEXTE -->
+        <main id="contenu" class="accueil">
+            <!-- H1 - BANNIERE -->
             <section class="banniere">
                 <img src="img/Accueil/banniere.png" alt="Voiture écologique verte">
                 <div class="banniere-texte">
-                    <h1>Voyagez ensemble,<br>Préservez la planète.</h1>
+                    <h1 class="animation-texte">Voyagez ensemble,<br>Préservez la planète.</h1>
                 </div>
             </section>
-
             <!-- BARRE DE RECHERCHE -->
             <section class="recherche">
                 <h2>Rechercher un covoiturage</h2>
                 <form action="Covoiturages.html" method="get" autocomplete="on">
+                    <!-- Départ -->
                     <div class="choix">
                         <label for="depart"><span class="material-symbols-outlined" aria-label="Départ" role="img">home_pin</span>Départ</label>
                         <input type="text" name="depart" id="depart" required>
                     </div>
-
+                    <!-- Déstination -->
                     <div class="choix">
-                        <label for="destination"><span class="material-symbols-outlined" aria-label="Déstination" role="img">location_on</span>Déstination</label>
+                        <label for="destination"><span class="material-symbols-outlined" aria-label="Déstination" role="img">location_on</span>Destination</label>
                         <input type="text" name="destination" id="destination" required>
                     </div>
-
+                    <!-- Date -->
                     <div class="choix">
                         <label for="date"><span class="material-symbols-outlined" aria-label="Calendrier" role="img">calendar_month</span>Date</label>
-                        <input type="date" name="date" id="date" required>
+                        <input type="text" name="date" id="date" required>
                     </div>
-
-                    <select name="passagers">
-                        <option value="1">1 passager</option>
-                        <option value="2">2 passagers</option>
-                        <option value="3">3 passagers</option>
-                        <option value="4">4 passagers</option>
-                        <option value="5">5 passagers</option>
-                        <option value="6">6 passagers</option>
-                        <option value="7">7 passagers</option>
-                        <option value="8">8 passagers</option>
-                    </select>
-
+                    <!-- Passagers -->
+                    <div class="choix">
+                        <label for="passagers" class="form-label">
+                            <span class="material-symbols-outlined" aria-label="passager" role="img">group</span>
+                            <span class="visually-hidden">Passagers</span>
+                        </label>
+                        <select name="passagers" id="passagers">
+                            <option value="1" selected>1 passager</option>
+                            <option value="2">2 passagers</option>
+                            <option value="3">3 passagers</option>
+                            <option value="4">4 passagers</option>
+                            <option value="5">5 passagers</option>
+                            <option value="6">6 passagers</option>
+                            <option value="7">7 passagers</option>
+                            <option value="8">8 passagers</option>
+                        </select>
+                    </div>
+                    <!-- Bouton -->           
                     <button type="submit">Rechercher</button>
                 </form>
             </section>
@@ -83,7 +102,7 @@
             <!-- CARDS TEXTE -->
             <section class="valeurs">
                 <div class="card">
-                    <span class="material-icons" aria-label="Mains serrés" role="img">handshake</span>
+                    <span class="material-icons" aria-label="Mains serrées" role="img">handshake</span>
                     <h3>Simple, humain et responsable</h3>
                     <p>Une plateforme pensée pour des trajets entre personnes de confiance, engagées dans une démarche solidaire. L’interface va à l’essentiel : trouver un trajet, échanger facilement, voyager sereinement.</p>     
                 </div>
@@ -100,27 +119,53 @@
             </section>
 
             <!-- FLECHE VERS LE BAS -->
-            <a href="#ecoride" class="scroll-bas" aria-label="Aller à la section Ecoride"><span class="material-symbols-outlined">output_circle</span></a>
-
+            <div class="scroll-container">
+                <a href="#ecoride" class="scroll-bas" aria-label="Aller à la section Ecoride" title="Aller à la section Ecoride"><span class="material-symbols-outlined">output_circle</span></a>
+            </div>
             <!-- 3 IMAGES AVEC TEXTES -->
-                <section class="galerie">
-                    <h3>Le covoiturage, bien plus qu’un simple trajet</h3>   
-                    <figure>
-                        <img src="img/Accueil/img_liberte.png" alt="Tête sur une fenêtre ouverte en montagne">
-                        <figcaption>Respirez la liberté, partagez la route.</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="img/Accueil/img_groupe_voiture.png" alt="Groupe dans un véhicule">
-                        <figcaption>Un trajet, des rencontres, moins d’impact.</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="img/Accueil/img_echange_vehicule.png" alt="Échange entre deux adultes sans un véhicule">
-                        <figcaption>Connectés, complices, responsables.</figcaption>
-                    </figure>
+                <section class="galerie" id="galerie">
+                    <h3>Le covoiturage, bien plus qu'un simple trajet</h3>
+                    <div class="card">
+                        <div class="carousel-container">
+                            <!-- Radio buttons cachés pour la navigation -->
+                            <input type="radio" name="carousel" id="slide1" class="carousel-radio" checked>
+                            <input type="radio" name="carousel" id="slide2" class="carousel-radio">
+                            <input type="radio" name="carousel" id="slide3" class="carousel-radio">
+                                                    
+                            <!-- Flèches de navigation simplifiées -->
+                            <label for="slide1" class="carousel-nav prev">‹</label>
+                            <label for="slide2" class="carousel-nav next">›</label>
+                            <label for="slide2" class="carousel-nav prev">‹</label>
+                            <label for="slide3" class="carousel-nav next">›</label>
+                            <label for="slide2" class="carousel-nav prev">‹</label>
+                                                
+                            <div class="carousel-track">
+                                <figure class="carousel-slide">
+                                    <img src="img/Accueil/img_liberte.jpg" alt="Tête sur une fenêtre ouverte en montagne">
+                                    <figcaption>Respirez la liberté, partagez la route.</figcaption>
+                                </figure>
+                                <figure class="carousel-slide">
+                                    <img src="img/Accueil/img_group.jpg" alt="Groupe dans un véhicule">
+                                    <figcaption>Un trajet, des rencontres, moins d'impact.</figcaption>
+                                </figure>
+                                <figure class="carousel-slide">
+                                    <img src="img/Accueil/img_echange.jpg" alt="Échange entre deux adultes sans un véhicule">
+                                    <figcaption>Connectés, complices, responsables.</figcaption>
+                                </figure>
+                            </div>
+                            
+                            <!-- Indicateurs cliquables -->
+                            <div class="carousel-indicators">
+                                <label for="slide1" class="indicator-label"></label>
+                                <label for="slide2" class="indicator-label"></label>
+                                <label for="slide3" class="indicator-label"></label>
+                            </div>
+                        </div>
+                    </div>
                 </section>
 
             <!-- TEXTE DE PRESENTATION DE LA START-UP -->
-            <section class="presentation" id="ecoride">
+            <section class="presentation card" id="ecoride">
                 <h2>Découvrez EcoRide</h2>
                 <p>
                     Chez EcoRide, nous croyons qu’il est possible de se déplacer autrement, de façon plus responsable, plus humaine et plus économique.<br>  
@@ -135,18 +180,27 @@
         <!-- FOOTER -->
         <footer>
             <div class="footer-contenu">
-                <a href="index.html" class="logo">Ecoride</a>
+                <a href="index.html" class="logo hover-underline gradient-hover">
+                <img src="./img/logo.svg" alt="EcoRide logo">
+                <span>EcoRide</span>
+                </a>
+
                 <div class="footer-infos">
-                    <p><strong>Informations</strong><br>
-                    mail : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a><br>
-                    <a href="Mentionslegales.html">Mentions légales</a></p>
+                <strong><span class="material-symbols-outlined" aria-label="Informations" role="img">info</span> Informations</strong>
+                <p>
+                    <a href="Contact.html">contact@ecoride.fr</a><br>
+                    <a href="Mentionslegales.html">Mentions légales</a>
+                </p>
                 </div>
+
                 <div class="footer-menu">
-                    <p><strong>Menu</strong><br>
+                <strong><span class="material-symbols-outlined" aria-label="Menu" role="img">menu</span> Menu</strong>
+                <p>
                     <a href="Covoiturages.html">Covoiturages</a><br>
                     <a href="Rechercher.html">Rechercher</a><br>
-                    <a href="Inscription.html">Inscription</a></p>
-                </div>                    
+                    <a href="Inscription.html">Inscription</a>
+                </p>
+                </div>
             </div>
         </footer>
     </body>

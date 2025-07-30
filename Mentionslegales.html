@@ -3,29 +3,44 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !">
         <title>EcoRide - Mentions légales</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+        <script type="module" src="./js/script.js"></script>
     </head>
+    
     <body>
-
         <!-- HEADER -->
         <header>
+            <!-- MENU -->
             <div class="menu">
                 <!-- Logo cliquable -->
-                <a href="index.html" class="logo">Ecoride</a>
+                <a href="index.html" class="logo hover-underline gradient-hover"><img src="./img/logo.svg" alt="Logo EcoRide"><span>EcoRide</span></a>
             
                 <!-- Navigation principale -->
-                <nav>
-                <ul>
-                    <li><a href="Covoiturages.html">Covoiturages</a></li>
-                    <li><a href="Contact.html">Contact</a></li>
-                    <li><a href="Rechercher.html">Rechercher</a></li>
-                </ul>
+                <nav aria-label="Menu principal">
+                    <ul class="nav">
+                        <li class="nav-item"><a href="Covoiturages.html" class="hover-underline gradient-hover">Covoiturages</a></li>
+                        <li class="nav-item"><a href="Contact.html" class="hover-underline gradient-hover">Contact</a></li>
+                        <li class="nav-item"><a href="Rechercher.html" class="hover-underline gradient-hover">Rechercher</a></li>
+                    </ul>
                 </nav>
             
                 <!-- Bouton profil avec menu déroulant -->
                 <div class="bouton-profile">
-                    <button id="menu-deroulant">Profil ▼</button>
+                    <button id="menu-deroulant">
+                        <span class="material-symbols-outlined burger-icon">menu</span>
+                        <span class="material-symbols-outlined" aria-label="menu-deroulant" role="img">account_circle</span>
+                    </button>
+                    <nav class="mobile-nav-menu" id="mobile-nav-menu">
+                        <ul>
+                            <li><a href="Covoiturages.html">Covoiturages</a></li>
+                            <li><a href="Contact.html">Contact</a></li>
+                            <li><a href="Rechercher.html">Rechercher</a></li>
+                        </ul>
+                    </nav>
                     <div id="menu-profile" class="menu-profile">
                         <a href="Connexion.html">Se connecter</a>
                         <a href="Inscription.html">S’inscrire</a>
@@ -35,48 +50,67 @@
         </header>
 
         <!-- MAIN -->
-        <main class="mentions">
-            <h1>Mentions légales - EcoRide</h1>
+        <main id="contenu" class="mentions">
+            <section class="intro">
+                <h1>Mentions légales - EcoRide</h1>
                 <p><em>Ce site et cette application sont réalisés dans le cadre d’un projet scolaire fictif. Aucun service réel de covoiturage n’est proposé. Les informations présentées n’ont pas de valeur contractuelle.</em></p>
                 <br>
                 <p>Nom de l'application : EcoRide <br>Responsable de publication : Sandy Podvin <br>Adresse e-mail de contact : contact@ecoride.fr</p>
-            <h2>1. Propriété intellectuelle</h2>
+            </section>
+
+            <section class="propriete">
+                <h2>1. Propriété intellectuelle</h2>
                 <p>L’ensemble des éléments présents sur le site et l’application EcoRide (textes, images, graphismes, logo, icônes…) sont protégés par les lois françaises sur la propriété intellectuelle.
                 Toute reproduction ou représentation, même partielle, est interdite sans l'autorisation écrite préalable du responsable de publication.</p>
+            </section>
 
-            <h2>2. Données personnelles</h2>
+            <section class="donnees">
+                <h2>2. Données personnelles</h2>
                 <p>Les données personnelles collectées (nom, email, préférences de covoiturage, etc.) sont utilisées uniquement pour permettre le bon fonctionnement de l’application (inscription, réservation de trajets, gestion du compte utilisateur).</p>
                 <p>Conformément au RGPD, vous disposez d’un droit d’accès, de rectification, de suppression et d’opposition aux données vous concernant.
                 Vous pouvez exercer ce droit en envoyant un mail à : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a></p>
                 <p>Les données sont conservées pendant la durée d’activité du compte et ne sont transmises à aucun tiers.</p>
+            </section>
 
-            <h2>3. Cookies</h2>
+            <section class="cookies">
+                <h2>3. Cookies</h2>
                 <p>EcoRide utilise des cookies pour améliorer votre expérience de navigation et mesurer l’audience.
                 En poursuivant la navigation, vous acceptez l’utilisation de ces cookies. Vous pouvez les désactiver depuis les paramètres de votre navigateur.</p>
+            </section>
 
-            <h2>4. Limitation de responsabilité</h2>
+            <section class="limitation">
+                <h2>4. Limitation de responsabilité</h2>
                 <p>L’application EcoRide propose un service de mise en relation entre particuliers.
                 Elle ne peut être tenue responsable des litiges ou incidents survenus durant un covoiturage.
                 Les utilisateurs sont invités à signaler tout comportement inapproprié.</p>
+            </section>
         </main>
 
         <!-- FOOTER -->
         <footer>
             <div class="footer-contenu">
-                <a href="index.html" class="logo">Ecoride</a>
+                <a href="index.html" class="logo hover-underline gradient-hover">
+                <img src="./img/logo.svg" alt="EcoRide logo">
+                <span>EcoRide</span>
+                </a>
+
                 <div class="footer-infos">
-                    <p><strong>Informations</strong><br>
-                    mail : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a><br>
-                    <a href="Mentionslegales.html">Mentions légales</a></p>
+                <strong><span class="material-symbols-outlined" aria-label="Informations" role="img">info</span> Informations</strong>
+                <p>
+                    <a href="Contact.html">contact@ecoride.fr</a><br>
+                    <a href="Mentionslegales.html">Mentions légales</a>
+                </p>
                 </div>
+
                 <div class="footer-menu">
-                    <p><strong>Menu</strong><br>
+                <strong><span class="material-symbols-outlined" aria-label="Menu" role="img">menu</span> Menu</strong>
+                <p>
                     <a href="Covoiturages.html">Covoiturages</a><br>
                     <a href="Rechercher.html">Rechercher</a><br>
-                    <a href="Inscription.html">Inscription</a></p>
-                </div>                    
+                    <a href="Inscription.html">Inscription</a>
+                </p>
+                </div>
             </div>
         </footer>
     </body>
 </html>
-       

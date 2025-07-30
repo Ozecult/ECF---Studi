@@ -1,0 +1,189 @@
+/* Barre de recherche */
+.recherche {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Titre h2 caché */
+.recherche h2 {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Formulaire */
+.recherche form {
+    display: grid;
+    align-items: center;
+    justify-items: flex-start;
+    width: calc(100% - 2rem);
+    max-width: calc(100% - 2rem);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    background-color: var(--vert-fond-de-page);
+    border: 2px solid var(--vert-clair);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    font-weight: 400;
+    font-size: 1rem;
+    height: 45px;
+    box-sizing: border-box;
+}
+
+/* Champs de formulaire */
+.recherche .choix {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    font-weight: 400;
+    font-size: 1rem;
+    height: 30px;
+    gap: 0.2rem;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+}
+
+    /* Bordures verticales entre les champs */
+.recherche .choix:not(:last-child) {
+  border-right: 2px solid var(--vert-clair);
+}
+
+.recherche .choix:nth-child(4) {
+  border-right: none;
+}
+
+/* Style des champs input et select */
+.recherche .choix input,
+.recherche .choix select {
+    display: flex;
+    align-items: center;
+    padding-left: 0.75rem;
+    width: 100%;
+    height: 100%;
+    padding: 0 0.5rem;
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--noir-primaire);
+}
+
+/* Label */
+.recherche label {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    height: 100%;
+}
+
+.recherche label span,
+.recherche label {
+    line-height: 1;
+}
+
+.recherche label .material-symbols-outlined {
+    font-size: 1.4rem;
+    position: relative;
+    top: 1px;
+    color: var(--vert-fonce);
+}
+
+    /* masque du label "Nombre de passager" */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/*Style bouton recherche*/
+.recherche form button {
+    color: var(--noir-primaire);
+    font-weight: 400;
+    font-size: 1rem;
+    background-color: var(--vert-clair);
+    height: 100%;
+    cursor: pointer;
+    border-radius: 0;
+    width: 100%;
+    }
+
+.recherche form button:hover {
+    background-color: var(--vert-fonce);
+    color: white;
+}
+/* ------------------------ */
+/*       MEDIA QUERIES      */
+/* ------------------------ */
+
+@media (max-width: 840px) {
+    .recherche {
+        padding: 0;
+    }
+    
+    .recherche form {
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        font-size: 0.9rem;
+        height: 42px;
+    }
+}
+
+@media (max-width: 768px) { 
+    .recherche form {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 0.6rem;
+        height: auto;
+        padding: 1rem;
+        border: 1.5px solid var(--vert-clair);
+        max-width: 50%;
+        min-width: 280px;
+    }
+    
+    .recherche .choix {
+        border-right: none !important;
+        border-bottom: 1px solid var(--vert-clair);
+        height: 40px;
+        width: 100%;
+        min-width: 200px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 12px;
+    }
+    
+    .recherche form button {
+        border-left: none;
+        height: 40px;
+        max-width: 60%;
+        border-radius: 20px;
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .recherche form {
+        max-width: 50%;
+        padding: 0.75rem;
+    }
+    
+    .recherche .choix input,
+    .recherche .choix select {
+        font-size: 0.9rem;
+    }
+}

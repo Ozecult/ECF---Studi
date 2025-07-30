@@ -3,28 +3,43 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !">
         <title>EcoRide - Contact</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+        <script type="module" src="./js/script.js"></script>
     </head>
     <body>
         <!-- HEADER -->
         <header>
+            <!-- MENU -->
             <div class="menu">
                 <!-- Logo cliquable -->
-                <a href="index.html" class="logo">Ecoride</a>
+                <a href="index.html" class="logo hover-underline gradient-hover"><img src="./img/logo.svg" alt="Logo EcoRide"><span>EcoRide</span></a>
             
                 <!-- Navigation principale -->
-                <nav>
-                <ul>
-                    <li><a href="Covoiturages.html">Covoiturages</a></li>
-                    <li><a href="Contact.html">Contact</a></li>
-                    <li><a href="Rechercher.html">Rechercher</a></li>
-                </ul>
+                <nav aria-label="Menu principal">
+                    <ul class="nav">
+                        <li class="nav-item"><a href="Covoiturages.html" class="hover-underline gradient-hover">Covoiturages</a></li>
+                        <li class="nav-item"><a href="Contact.html" class="hover-underline gradient-hover">Contact</a></li>
+                        <li class="nav-item"><a href="Rechercher.html" class="hover-underline gradient-hover">Rechercher</a></li>
+                    </ul>
                 </nav>
             
                 <!-- Bouton profil avec menu déroulant -->
                 <div class="bouton-profile">
-                    <button id="menu-deroulant">Profil ▼</button>
+                    <button id="menu-deroulant">
+                        <span class="material-symbols-outlined burger-icon">menu</span>
+                        <span class="material-symbols-outlined" aria-label="menu-deroulant" role="img">account_circle</span>
+                    </button>
+                    <nav class="mobile-nav-menu" id="mobile-nav-menu">
+                        <ul>
+                            <li><a href="Covoiturages.html">Covoiturages</a></li>
+                            <li><a href="Contact.html">Contact</a></li>
+                            <li><a href="Rechercher.html">Rechercher</a></li>
+                        </ul>
+                    </nav>
                     <div id="menu-profile" class="menu-profile">
                         <a href="Connexion.html">Se connecter</a>
                         <a href="Inscription.html">S’inscrire</a>
@@ -34,82 +49,88 @@
         </header>
 
         <!-- MAIN -->
-         <main class="contact">
-            <form action="confirmation.html" method="get" class="form-contact" autocomplete="on">
-                <!-- email -->
-                <div class="form-group">
-                    <label for="email">Adresse email</label>
-                    <br>
-                    <input type="email" name="email" id="email" required>
-                </div>
+         <main id="contenu" class="contact">
+            <h1>Contactez-nous</h1>
+            <form class="form-contact card" action="confirmation.html" method="post" class="form-contact" autocomplete="on">
+                <fieldset>
+                    <legend>Formulaire</legend>
+                    <!-- email -->
+                    <div class="form-group card">
+                        <label for="email"><span class="material-symbols-outlined" aria-label="Email" role="img">email</span>Adresse email</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
 
-                <!-- Téléphone -->
-                <div class="form-group">
-                    <label for="tel">Numéro de téléphone</label>
-                    <br>
-                    <input type="tel" name="tel" id="tel" required placeholder="06 00 00 00 00">
-                </div>
+                    <!-- Téléphone -->
+                    <div class="form-group card">
+                        <label for="tel"><span class="material-symbols-outlined" aria-label="Téléphone" role="img">phone</span>Numéro de téléphone</label>
+                        <input type="tel" name="tel" id="tel" required placeholder="06 00 00 00 00">
+                    </div>
 
-                <!-- Prénom -->
-                <div class="form-group">
-                    <label for="prenom">Prénom</label>
-                    <br>
-                    <input type="text" name="prenom" id="prenom" required>
-                </div>
+                    <!-- Prénom -->
+                    <div class="form-group card">
+                        <label for="prenom"><span class="material-symbols-outlined" aria-label="Prénom" role="img">person</span>Prénom</label>
+                        <input type="text" name="prenom" id="prenom" required>
+                    </div>
 
-                <!-- Nom -->
-                <div class="form-group">
-                    <label for="nom">Nom de famille</label>
-                    <br>
-                    <input type="text" name="nom" id="nom" required>
-                </div>
-                
-                <!-- Sujet -->
-                <div class="form-group">
-                    <label for="sujet">Sujet</label>
-                    <br>
-                    <select name="sujet" id="sujet" required>
-                        <option value="">-- aucune sélection --</option>
-                        <option value="question">Question générale</option>
-                        <option value="compte">Problème de compte</option>
-                        <option value="trajet">Problème avec un covoiturage</option>
-                        <option value="conducteur">Signaler un conducteur</option>
-                        <option value="passager">Signaler un passager</option>
-                        <option value="avis">Demande de suppression d’avis</option>
-                        <option value="bug">Bug ou problème technique</option>
-                        <option value="autre">Autre demande</option>
-                    </select>                
-                </div>
+                    <!-- Nom -->
+                    <div class="form-group card">
+                        <label for="nom"><span class="material-symbols-outlined" aria-label="Nom" role="img">badge</span>Nom de famille</label>
+                        <input type="text" name="nom" id="nom" required>
+                    </div>
+                    
+                    <!-- Sujet -->
+                    <div class="form-group card">
+                        <label for="sujet"><span class="material-symbols-outlined" aria-label="Sujet" role="img">topic</span>Sujet</label>
+                        <select name="sujet" id="sujet" required>
+                            <option value="">-- aucune sélection --</option>
+                            <option value="question">Question générale</option>
+                            <option value="compte">Problème de compte</option>
+                            <option value="trajet">Problème avec un covoiturage</option>
+                            <option value="conducteur">Signaler un conducteur</option>
+                            <option value="passager">Signaler un passager</option>
+                            <option value="avis">Demande de suppression d’avis</option>
+                            <option value="bug">Bug ou problème technique</option>
+                            <option value="autre">Autre demande</option>
+                        </select>                
+                    </div>
 
-                <!-- Champ texte -->
-                <div class="form-group">
-                    <label for="champtext">Description</label>
-                    <br>
-                    <textarea id="champtext" name="champtext" rows="5" cols="33" placeholder="Veuillez indiquer ici l'objet de votre demande"></textarea>
-                </div>
-                
-                <!-- Bouton soumettre -->
-                <div class="button">
-                    <button class="boutton" type="submit">Soumettre</button>
-                </div>
+                    <!-- Champ texte -->
+                    <div class="form-group card">
+                        <label for="champtext"><span class="material-symbols-outlined" aria-label="Description" role="img">description</span>Description</label>
+                        <textarea id="champtext" name="champtext" rows="5" maxlength="800" placeholder="Veuillez indiquer ici l'objet de votre demande"></textarea>
+                    </div>
+                    
+                    <!-- Bouton soumettre -->
+                    <div class="button card">
+                        <button class="button" type="submit">Soumettre</button>
+                    </div>
+                </fieldset>
             </form>
         </main>
-
         <!-- FOOTER -->
         <footer>
             <div class="footer-contenu">
-                <a href="index.html" class="logo">Ecoride</a>
+                <a href="index.html" class="logo hover-underline gradient-hover">
+                <img src="./img/logo.svg" alt="EcoRide logo">
+                <span>EcoRide</span>
+                </a>
+
                 <div class="footer-infos">
-                    <p><strong>Informations</strong><br>
-                    mail : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a><br>
-                    <a href="Mentionslegales.html">Mentions légales</a></p>
+                <strong><span class="material-symbols-outlined" aria-label="Informations" role="img">info</span> Informations</strong>
+                <p>
+                    <a href="Contact.html">contact@ecoride.fr</a><br>
+                    <a href="Mentionslegales.html">Mentions légales</a>
+                </p>
                 </div>
+
                 <div class="footer-menu">
-                    <p><strong>Menu</strong><br>
+                <strong><span class="material-symbols-outlined" aria-label="Menu" role="img">menu</span> Menu</strong>
+                <p>
                     <a href="Covoiturages.html">Covoiturages</a><br>
                     <a href="Rechercher.html">Rechercher</a><br>
-                    <a href="Inscription.html">Inscription</a></p>
-                </div>                    
+                    <a href="Inscription.html">Inscription</a>
+                </p>
+                </div>
             </div>
         </footer>
     </body>

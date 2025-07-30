@@ -1,0 +1,462 @@
+/*-------------------*/
+/* LAYOUT DE LA PAGE */
+/*-------------------*/
+.employe {
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: 1fr;
+}
+
+/* Section Avis à valider */
+.choix-avis {
+  display: grid;
+  gap: 2rem;
+}
+
+.choix-avis h1 {
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+/* Articles avis individuels */
+.avis_a_valider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 2rem;
+  position: relative;
+}
+
+/* Photo + Prénom */
+.avis_a_valider .ligne-profil {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Photo de profil */
+.avis_a_valider .photo-profil,
+.avis_a_valider .material-symbols-outlined[role="img"] {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  font-size: 60px;
+  color: var(--vert-fonce);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Pseudo */
+.avis_a_valider .pseudo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--noir-primaire);
+  margin: 0;
+}
+
+/* Ligne 2: Commentaire + étoiles */
+.avis_a_valider .ligne-commentaire {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.avis_a_valider p:not(.pseudo) {
+  font-size: 1.3rem;
+  color: var(--noir-secondaire);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Étoiles */
+.avis_a_valider .etoiles {
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+.avis_a_valider .etoiles .material-symbols-outlined {
+  font-size: 1.5rem;
+  color: var(--vert-fonce);
+  width: auto;
+  height: auto;
+}
+
+/* Boutons */
+.avis_a_valider .boutons-avis {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.avis_a_valider .button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+  background: linear-gradient(135deg, var(--vert-clair), var(--vert-fond-menu-footer));
+  color: var(--vert-fonce);
+}
+
+.avis_a_valider .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+/* Section trajets signalés */
+.litiges {
+  display: grid;
+  gap: 2rem;
+}
+
+/* Masque partie -1024px */
+.litiges-mobile {
+  display: none;
+}
+
+.litiges h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Tableau litiges */
+.litiges table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--vert-fond-structure);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.litiges thead {
+  background: var(--vert-fond-de-page);
+}
+
+.litiges th {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  font-weight: 500;
+  color: var(--vert-fonce);
+  font-size: 1.1rem;
+  border-bottom: 3px solid var(--vert-clair);
+  border-right: 1px solid var(--vert-clair);
+}
+
+.litiges th:last-child {
+  border-right: none;
+}
+
+.litiges th .material-symbols-outlined {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.litiges tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.litiges tbody tr:nth-child(even) {
+  background-color: var(--vert-fond-de-page);
+}
+
+.litiges tbody tr:hover {
+  background-color: var(--vert-fond-structure);
+}
+
+.litiges td {
+  padding: 1.2rem 1rem;
+  font-size: 1rem;
+  color: var(--noir-primaire);
+  border-bottom: 1px solid var(--vert-fond-structure);
+  border-right: 1px solid var(--vert-clair);
+}
+
+.litiges td:last-child {
+  border-right: none;
+}
+
+.litiges tbody tr:last-child td {
+  border-bottom: none;
+}
+/*****************/
+/* MEDIA QUERIES */
+/****************/
+@media (max-width: 1024px) {
+  .employe {
+    gap: 3rem;
+  }
+  
+  .choix-avis h1 {
+    font-size: 2.2rem;
+  }
+  
+  .litiges h2 {
+    font-size: 1.8rem;
+  }
+  
+  .avis_a_valider {
+    padding: 1.5rem;
+  }
+
+  /* Tableau à la verticale */
+  .litiges table {
+    display: none;
+  }
+  
+  .litiges-mobile {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .trajet-carte {
+    background: var(--vert-fond-structure);
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--vert-clair);
+    overflow: hidden;
+  }
+  
+  .trajet-info {
+    display: block;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 2px solid var(--vert-clair);
+  }
+  
+  .trajet-info:last-child {
+    border-bottom: none;
+  }
+  
+  /* Ligne 1 */
+  .trajet-info-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .trajet-info .material-symbols-outlined {
+    font-size: 1.2rem;
+    color: var(--vert-fonce);
+    flex-shrink: 0;
+  }
+  
+  .trajet-info .label {
+    font-weight: 600;
+    color: var(--vert-fonce);
+    font-size: 1rem;
+  }
+  
+  /* Ligne 2 */
+  .trajet-info .value {
+    color: var(--noir-primaire);
+    font-size: 1rem;
+    font-weight: 500;
+    padding-top: 0.2rem;
+  }
+}
+/*-------*/
+/* 768px */
+/*-------*/
+@media (max-width: 768px) {
+  .employe {
+    gap: 2rem;
+  }
+  
+  .choix-avis h1 {
+    font-size: 2.2rem;
+  }
+  
+  .litiges h2 {
+    font-size: 1.6rem;
+  }
+  
+  /* Avis */
+  .avis_a_valider {
+    gap: 0.8rem;
+    padding: 1.5rem;
+  }
+  
+  .avis_a_valider .ligne-profil {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .avis_a_valider .photo-profil,
+  .avis_a_valider .material-symbols-outlined[role="img"] {
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+  }
+  
+  .avis_a_valider .pseudo {
+    font-size: 1.3rem;
+  }
+  
+  .avis_a_valider .ligne-commentaire {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .avis_a_valider p:not(.pseudo) {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  
+  .avis_a_valider .etoiles .material-symbols-outlined {
+    font-size: 1.3rem;
+  }
+  
+  /* Boutons */
+  .avis_a_valider .button {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Tableau */
+  .trajet-info {
+    padding: 0.8rem 1.2rem;
+    border-bottom: 3px solid var(--vert-clair);
+  }
+  
+  .trajet-info .material-symbols-outlined {
+    font-size: 1.1rem;
+  }
+  
+  .trajet-info .label {
+    font-size: 0.95rem;
+  }
+  
+  .trajet-info .value {
+    font-size: 0.95rem;
+  }
+}
+
+/*-------*/
+/* 480px */
+/*-------*/
+@media (max-width: 480px) {
+  .employe {
+    gap: 1.5rem;
+  }
+  
+  .choix-avis h1 {
+    font-size: 2rem;
+  }
+  
+  .litiges h2 {
+    font-size: 1.5rem;
+  }
+  
+  .avis_a_valider {
+    padding: 1rem;
+  }
+  
+  .avis_a_valider .pseudo {
+    font-size: 1.2rem;
+  }
+  
+  .avis_a_valider p:not(.pseudo) {
+    font-size: 1rem;
+  }
+  
+  .avis_a_valider .button {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  
+  /* Trajets */
+  .trajet-info {
+    padding: 0.7rem 1rem;
+    border-bottom: 2px solid var(--vert-clair);
+  }
+  
+  .trajet-info .material-symbols-outlined {
+    font-size: 1rem;
+  }
+  
+  .trajet-info .label {
+    font-size: 0.9rem;
+  }
+  
+  .trajet-info .value {
+    font-size: 0.9rem;
+  }
+}
+
+/*-------*/
+/* 360px */
+/*-------*/
+@media (max-width: 360px) {
+  .choix-avis h1 {
+    font-size: 1.8rem;
+  }
+  
+  .litiges h2 {
+    font-size: 1.4rem;
+  }
+  
+  .avis_a_valider .ligne-profil {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .avis_a_valider .photo-profil,
+  .avis_a_valider .material-symbols-outlined[role="img"] {
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+  }
+  
+  .avis_a_valider .pseudo {
+    font-size: 1.1rem;
+  }
+  
+  .avis_a_valider .ligne-commentaire {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .avis_a_valider .etoiles .material-symbols-outlined {
+    font-size: 1.1rem;
+  }
+  
+  .avis_a_valider p:not(.pseudo) {
+    font-size: 0.9rem;
+  }
+
+  .avis_a_valider .button {
+    min-width: 50px;
+  }
+  
+  .trajet-info {
+    padding: 0.5rem 0.3rem;
+  }
+  
+  .trajet-info .material-symbols-outlined {
+    font-size: 0.9rem;
+  }
+  
+  .trajet-info .label {
+    font-size: 0.8rem;
+  }
+  
+  .trajet-info .value {
+    font-size: 0.8rem;
+  }
+}

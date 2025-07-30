@@ -1,0 +1,467 @@
+/*--------*
+ * LAYOUT *
+ *--------*/
+ 
+.page-details {
+  display: grid;
+  gap: 4rem;
+}
+
+.page-details .disposition {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 450px);
+  gap: 6rem;
+  align-items: start;
+}
+
+.page-details .info-user {
+  display: contents;
+}
+
+/*----------------------*
+ *  CARD PROFIL CONDUCTEUR 
+ *----------------------*/
+.page-details .card-profil {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: center;
+}
+
+.page-details .card-profil h2 {
+  margin-bottom: 2rem;
+  color: var(--noir-primaire);
+}
+
+/* header commun (profil + avis + réservation) */
+.page-details .header-card,
+.page-details .avis-item h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* profil utilisateur */
+.page-details .user-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.page-details .profil .pseudo {
+  margin: 0 0 1rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--noir-primaire);
+}
+
+.page-details .profil > p {
+  font-style: italic;
+  margin-bottom: 2rem;
+  color: var(--noir-secondaire);
+}
+
+/* étoiles */
+.page-details .etoiles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.page-details .etoiles .material-symbols-outlined {
+  font-size: 2rem;
+  color: var(--vert-fonce);
+}
+
+/* infos trajets (profil & réservation) */
+.page-details .infos-trajets {
+  list-style: none;
+  margin: 0;
+  padding: 2rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(to right, var(--vert-clair), var(--vert-fond-menu-footer)) 1;
+}
+
+.page-details .infos-trajets li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  color: var(--noir-primaire);
+  border-radius: 8px;
+  border-left: 4px solid var(--vert-clair);
+}
+
+.page-details .infos-trajets .material-symbols-outlined,
+.page-details .infos-trajets .material-icons {
+  font-size: 1.3rem;
+  color: var(--vert-fonce);
+  vertical-align: middle;
+  line-height: 1;
+  margin: 0;
+}
+
+/*----*
+ * AVIS
+ *----*/
+.page-details .avis {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+
+.page-details .avis h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.page-details .avis-item.card {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  border-left: 4px solid var(--vert-fonce);
+  position: relative; /* clearfix inutile */
+}
+
+.page-details .avis-item .photo-profil,
+.page-details .avis-item .material-symbols-outlined[aria-label="Photo profil"] {
+  float: left;
+  width: 60px;
+  height: 60px;
+  margin: 0 1rem 1rem 0;
+}
+
+.page-details .avis-item .etoiles {
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+}
+
+.page-details .avis-item .etoiles .material-symbols-outlined {
+  font-size: 1.5rem;
+}
+
+/*----------------------*
+ * SECTION RÉSERVATION  *
+ *----------------------*/
+.page-details .reservation {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  text-align: center;
+  /* on laisse la largeur naturelle pour éviter l’overflow */
+}
+
+.page-details .reservation h2 {
+  margin-bottom: 2rem;
+  color: var(--noir-primaire);
+}
+
+.page-details .date-trajet {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.page-details .heure-depart,
+.page-details .heure-arrivee {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--noir-primaire);
+}
+
+.page-details .reservation .photo-profil {
+  margin: 2rem 0;
+}
+
+.page-details .reservation .infos-trajets {
+  margin-bottom: auto;
+}
+
+.page-details .reservation .infos-trajets li {
+  justify-content: center;
+  font-weight: 500;
+}
+
+/* bouton validation */
+.page-details .bouton-validation {
+  width: 100%;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--vert-clair), var(--vert-fond-menu-footer));
+  color: var(--vert-fonce);
+  box-shadow: 0 4px 15px rgba(47, 62, 47, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+.page-details .bouton-validation:hover {
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.page-details .bouton-validation:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(47, 62, 47, 0.3);
+}
+
+.page-details .bouton-validation .material-symbols-outlined {
+  font-size: 1.3rem;
+}
+
+/* ------------------------ */
+/*       MEDIA QUERIES      */
+/* ------------------------ */
+@media (max-width: 1024px) {
+  .page-details .disposition {
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+  }
+
+  .page-details .reservation {
+    padding: 1.5rem;
+  }
+
+  .page-details .header-card {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .page-details .time-bar {
+    font-size: 0.9rem;
+  }
+
+  .page-details .barre-verte {
+    height: 4px;
+  }
+
+  .page-details .trajet-infos {
+    font-size: 0.95rem;
+  }
+
+  .page-details .trajet-infos div {
+    margin: 0.5rem 0;
+    text-align: left;
+  }
+
+  .page-details .date-trajet {
+    font-size: 0.9rem;
+  }
+  
+  .page-details .profil .pseudo {
+    font-size: 1.6rem;
+  }
+
+  .page-details .infos-trajets li {
+    font-size: 1rem;
+  }
+
+  .page-details .infos-trajets {
+    gap: 0.8rem;
+  }
+
+  .page-details h2 {
+    font-size: 1.7rem;
+  }
+
+  .page-details h3 {
+    font-size: 1rem;
+  }
+
+  .page-details .profil > p,
+  .page-details .avis-item p {
+    font-size: 1.1rem;
+  }
+  
+  .page-details .etoiles {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-details {
+    gap: 2rem;
+  }
+
+  .page-details .disposition {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 2rem;
+  }
+
+  .page-details .info-user {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  /* Ordre des éléments : 1. Réservation, 2. Profil, 3. Avis */
+  .page-details .reservation {
+    grid-column: 1;
+    grid-row: 1;
+    position: static;
+    align-self: auto;
+    width: 100%;
+    max-width: none;
+    order: 1;
+    padding: 1.5rem;
+    margin: 0 0 2rem 0;
+  }
+
+  .page-details .card {
+    position: relative;
+  }
+  
+  .page-details .card-profil {
+    grid-column: 1;
+    grid-row: 2;
+    order: 2;
+  }
+
+  .page-details .avis {
+    grid-column: 1;
+    grid-row: 3;
+    order: 3;
+  }
+
+  .page-details .trajet-infos div {
+    margin: 0.8rem 0;
+  }
+
+  .page-details .date-trajet {
+    font-size: 1rem;
+  }
+
+  .page-details .reservation .photo-profil {
+    margin: 1rem 0 1rem 0;
+  }
+
+  .page-details .bouton-validation {
+    margin-top: 1rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+   
+  .page-details .reservation {
+    padding: 1rem;
+    width: auto;
+  }
+
+  .page-details {
+    gap: 1.5rem;
+    overflow-x: hidden;
+  }  
+
+  .avis-item .photo-profil {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .profil .pseudo {
+    font-size: 1.5rem;
+  }
+  
+  .etoiles .material-symbols-outlined {
+    font-size: 1.2rem;
+  }
+
+  .page-details .etoiles {
+    font-size: 0.8rem;
+  }  
+
+  .page-details .reservation {
+    margin: 0;
+  }
+
+  .page-details .heure-depart, 
+  .page-details .heure-arrivee {
+    font-size: 0.9rem;
+  }
+  
+  .bouton-validation {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  main h2 {
+    font-size: 1.7rem;
+  }
+  
+  main h3 {
+    font-size: 1.4rem;
+  }
+  
+  .page-details .user-img {
+    gap: 0;
+  }
+
+  .page-details .user-img .photo-profil {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .header-card {
+    gap: 0.5rem;
+  }
+
+  .page-details .infos-trajets li {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .page-details .infos-trajets {
+    gap: 0.6rem;
+  }
+
+  .page-details .profil > p,
+  .page-details .avis-item p {
+    font-size: 0.8rem;
+  }
+
+  /* Réduction des icônes */
+  .page-details .infos-trajets .material-symbols-outlined,
+  .page-details .infos-trajets .material-icons {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .page-details .user-img {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .page-details .etoiles {
+    width: auto;
+    justify-content: center;
+  }
+
+  .page-details .user-img .etoiles .material-symbols-outlined {
+    font-size: 1rem;
+  }
+}
+
+/* CLEARFIX pour les éléments flottants */
+.avis-item::after {
+  content: "";
+  display: table;
+  clear: both;
+}

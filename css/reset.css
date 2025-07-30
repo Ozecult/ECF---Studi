@@ -1,0 +1,51 @@
+/* Définir box-sizing sur tous les éléments pour inclure les bordures et padding dans les tailles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Supprimer les marges et paddings par défaut de tous les éléments */
+body,
+h1, h2, h3, h4, h5, h6,
+p, figure, blockquote,
+dl, dd, ul, ol,
+pre, form, fieldset, legend {
+  margin: 0;
+  padding: 0;
+}
+
+/* Supprimer les puces des listes */
+ul, ol {
+  list-style: none;
+}
+
+/* Supprimer la décoration des liens */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Uniformiser les polices des champs de formulaire */
+input, button, textarea, select {
+  font: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* Rendre les balises HTML5 block pour les vieux navigateurs */
+article, aside, footer, header, nav, section, main {
+  display: block;
+}
+
+/* Définir un comportement de défilement fluide */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Supprimer l'icone par défaut du select */
+select {
+  -webkit-appearance: none; /* @affected Chrome */
+  -moz-appearance: none; /* @affected Firefox */
+}
