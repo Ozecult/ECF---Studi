@@ -1,547 +1,683 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !">
-        <title>EcoRide - Covoiturages</title>
-        <link rel="stylesheet" href="./css/style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-        <script type="module" src="./js/script.js"></script>
-    </head>
-    <body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
+    />
+    <title>EcoRide - Covoiturages</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <script type="module" src="./js/script.js"></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <!-- MENU -->
+      <div class="menu">
+        <!-- Logo cliquable -->
+        <a href="index.html" class="logo hover-underline gradient-hover"
+          ><img src="./img/logo.svg" alt="Logo EcoRide" /><span
+            >EcoRide</span
+          ></a
+        >
 
-        <!-- HEADER -->
-        <header>
-            <!-- MENU -->
-            <div class="menu">
-                <!-- Logo cliquable -->
-                <a href="index.html" class="logo hover-underline gradient-hover"><img src="./img/logo.svg" alt="Logo EcoRide"><span>EcoRide</span></a>
-            
-                <!-- Navigation principale -->
-                <nav aria-label="Menu principal">
-                    <ul class="nav">
-                        <li class="nav-item"><a href="Covoiturages.html" class="hover-underline gradient-hover">Covoiturages</a></li>
-                        <li class="nav-item"><a href="Contact.html" class="hover-underline gradient-hover">Contact</a></li>
-                        <li class="nav-item"><a href="Rechercher.html" class="hover-underline gradient-hover">Rechercher</a></li>
-                    </ul>
-                </nav>
-            
-                <!-- Bouton profil avec menu déroulant -->
-                <div class="bouton-profile">
-                    <button id="menu-deroulant">
-                        <span class="material-symbols-outlined burger-icon">menu</span>
-                        <span class="material-symbols-outlined" aria-label="menu-deroulant" role="img">account_circle</span>
-                    </button>
-                    <nav class="mobile-nav-menu" id="mobile-nav-menu">
-                        <ul>
-                            <li><a href="Covoiturages.html">Covoiturages</a></li>
-                            <li><a href="Contact.html">Contact</a></li>
-                            <li><a href="Rechercher.html">Rechercher</a></li>
-                        </ul>
-                    </nav>
-                    <div id="menu-profile" class="menu-profile">
-                        <a href="Connexion.html">Se connecter</a>
-                        <a href="Inscription.html">S’inscrire</a>
-                    </div>
+        <!-- Navigation principale -->
+        <nav aria-label="Menu principal">
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="Covoiturages.html" class="hover-underline gradient-hover"
+                >Covoiturages</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="Contact.html" class="hover-underline gradient-hover"
+                >Contact</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="Rechercher.html" class="hover-underline gradient-hover"
+                >Rechercher</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Bouton profil avec menu déroulant -->
+        <div class="bouton-profile">
+          <button id="menu-deroulant">
+            <span class="material-symbols-outlined burger-icon">menu</span>
+            <span
+              class="material-symbols-outlined"
+              aria-label="menu-deroulant"
+              role="img"
+              >account_circle</span
+            >
+          </button>
+          <nav class="mobile-nav-menu" id="mobile-nav-menu">
+            <ul>
+              <li><a href="Covoiturages.html">Covoiturages</a></li>
+              <li><a href="Contact.html">Contact</a></li>
+              <li><a href="Rechercher.html">Rechercher</a></li>
+            </ul>
+          </nav>
+          <div id="menu-profile" class="menu-profile">
+            <a href="Connexion.html">Se connecter</a>
+            <a href="Inscription.html">S’inscrire</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main id="contenu" class="covoiturages">
+      <!-- BARRE DE RECHERCHE -->
+      <section class="recherche">
+        <h2>Rechercher un covoiturage</h2>
+        <form action="Covoiturages.html" method="get" autocomplete="on">
+          <!-- Départ -->
+          <div class="choix">
+            <label for="depart">
+              <span
+                class="material-symbols-outlined"
+                aria-label="Départ"
+                role="img"
+                >home_pin</span
+              >
+              <span>Départ</span>
+            </label>
+            <input type="text" name="depart" id="depart" required />
+            <div class="suggestions" id="suggestions-depart"></div>
+          </div>
+
+          <!-- Destination -->
+          <div class="choix">
+            <label for="destination">
+              <span
+                class="material-symbols-outlined"
+                aria-label="Destination"
+                role="img"
+                >location_on</span
+              >
+              <span>Destination</span>
+            </label>
+            <input type="text" name="destination" id="destination" required />
+            <div class="suggestions" id="suggestions-destination"></div>
+          </div>
+          <!-- Date -->
+          <div class="choix" data-field="date">
+            <label for="date">
+              <span
+                class="material-symbols-outlined"
+                aria-label="Calendrier"
+                role="img"
+                >calendar_month</span
+              >
+            </label>
+            <input type="text" name="date" id="date" required />
+          </div>
+
+          <!-- Passagers -->
+          <div class="choix" data-field="passagers">
+            <label for="passagers" class="form-label">
+              <span
+                class="material-symbols-outlined"
+                aria-label="passager"
+                role="img"
+                >group</span
+              >
+              <span class="visually-hidden">Passagers</span>
+            </label>
+            <select name="passagers" id="passagers">
+              <option value="1" selected>1 passager</option>
+              <option value="2">2 passagers</option>
+              <option value="3">3 passagers</option>
+              <option value="4">4 passagers</option>
+              <option value="5">5 passagers</option>
+              <option value="6">6 passagers</option>
+              <option value="7">7 passagers</option>
+              <option value="8">8 passagers</option>
+            </select>
+          </div>
+          <!-- Bouton -->
+          <button id="cherche" type="submit">Rechercher</button>
+        </form>
+      </section>
+
+      <!--TITRE -->
+      <h1>Résultats disponibles</h1>
+
+      <div class="zone-principale">
+        <!-- FILTRES -->
+        <aside class="filtres">
+          <button class="filtres-toggle">Filtres</button>
+
+          <div class="filtres-content" id="filtres-content">
+            <h3>Filtres <button type="reset">Tout effacer</button></h3>
+
+            <form method="get" class="form-filtres card">
+              <!-- Horaire de départ -->
+              <fieldset>
+                <legend>Horaire de départ</legend>
+                <div class="horaire card">
+                  <div class="field-group">
+                    <input type="checkbox" id="nuit" name="nuit" value="N" />
+                    <label for="nuit">Nuit (00h-06h)</label>
+                  </div>
+
+                  <div class="field-group">
+                    <input type="checkbox" id="matin" name="matin" value="M" />
+                    <label for="matin">Matin (06h-12h)</label>
+                  </div>
+
+                  <div class="field-group">
+                    <input type="checkbox" id="am" name="am" value="A" />
+                    <label for="am">Après-midi (12h-18h)</label>
+                  </div>
+
+                  <div class="field-group">
+                    <input type="checkbox" id="soir" name="soir" value="S" />
+                    <label for="soir">Soir (18h-00h)</label>
+                  </div>
                 </div>
-            </div>
-        </header>
+              </fieldset>
 
-        <!-- MAIN -->
-        <main id="contenu" class="covoiturages">
-            <!-- BARRE DE RECHERCHE -->
-            <section class="recherche">
-                <h2>Rechercher un covoiturage</h2>
-                <form action="Covoiturages.html" method="get" autocomplete="on">
-                    <!-- Départ -->
-                    <div class="choix">
-                        <label for="depart"><span class="material-symbols-outlined" aria-label="Départ" role="img">home_pin</span>Départ</label>
-                        <input type="text" name="depart" id="depart" required>
+              <!-- Type de motorisation -->
+              <fieldset>
+                <legend>Type de motorisation</legend>
+                <div class="moteur card">
+                  <div class="field-group">
+                    <input type="checkbox" id="elec" name="elec" value="E" />
+                    <label for="elec">Électrique</label>
+                  </div>
+
+                  <div class="field-group">
+                    <input type="checkbox" id="therm" name="therm" value="T" />
+                    <label for="therm">Thermique</label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!--Durée du trajet -->
+              <fieldset>
+                <legend>Durée du trajet</legend>
+                <div class="time card">
+                  <div class="range-container">
+                    <span>0 min</span>
+                    <input
+                      type="range"
+                      id="duree"
+                      name="duree"
+                      min="0"
+                      max="480"
+                      step="15"
+                      value="0"
+                    />
+                    <label for="duree"></label>
+                    <span>8h</span>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- Prix du voyage -->
+              <fieldset>
+                <legend>Prix du voyage en crédits</legend>
+                <div class="price card">
+                  <div class="range-container">
+                    <span>0</span>
+                    <input
+                      type="range"
+                      id="prix"
+                      name="prix"
+                      min="0"
+                      max="50"
+                      step="1"
+                      value="0"
+                    />
+                    <label for="prix"></label>
+                    <span>50</span>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- Note covoitureur-->
+              <fieldset>
+                <legend>Note covoitureur</legend>
+                <div class="etoiles card">
+                  <span class="material-symbols-outlined" aria-hidden="true"
+                    >star</span
+                  >
+                  <span class="material-symbols-outlined" aria-hidden="true"
+                    >star</span
+                  >
+                  <span class="material-symbols-outlined" aria-hidden="true"
+                    >star</span
+                  >
+                  <span class="material-symbols-outlined" aria-hidden="true"
+                    >star</span
+                  >
+                  <span class="material-symbols-outlined" aria-hidden="true"
+                    >star</span
+                  >
+                </div>
+              </fieldset>
+
+              <div class="button-search">
+                <button type="submit" class="btn-recherche">Rechercher</button>
+              </div>
+            </form>
+          </div>
+        </aside>
+
+        <!-- RESULTATS COVOITURAGES-->
+        <section class="resultats">
+          <h3>Résultats de covoiturage</h3>
+
+          <div class="resultats-container">
+            <!-- Résultat 1 -->
+            <article class="card-covoit card">
+              <div class="card-header">
+                <!-- Conducteur et étoiles -->
+                <div class="container-info">
+                  <!-- Photo et détails -->
+                  <div class="conducteur-info">
+                    <h3>Elisa</h3>
+                    <div class="etoiles-card">
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
                     </div>
-                    <!-- Déstination -->
-                    <div class="choix">
-                        <label for="destination"><span class="material-symbols-outlined" aria-label="Déstination" role="img">location_on</span>Destination</label>
-                        <input type="text" name="destination" id="destination" required>
-                    </div>
-                    <!-- Date -->
-                    <div class="choix">
-                        <label for="date"><span class="material-symbols-outlined" aria-label="Calendrier" role="img">calendar_month</span>Date</label>
-                        <input type="text" name="date" id="date" required>
-                    </div>
-                    <!-- Passagers -->
-                    <div class="choix">
-                        <label for="passagers" class="form-label">
-                            <span class="material-symbols-outlined" aria-label="passager" role="img">group</span>
-                            <span class="visually-hidden">Passagers</span>
-                        </label>
-                        <select name="passagers" id="passagers">
-                            <option value="1" selected>1 passager</option>
-                            <option value="2">2 passagers</option>
-                            <option value="3">3 passagers</option>
-                            <option value="4">4 passagers</option>
-                            <option value="5">5 passagers</option>
-                            <option value="6">6 passagers</option>
-                            <option value="7">7 passagers</option>
-                            <option value="8">8 passagers</option>
-                        </select>
-                    </div>
-                    <!-- Bouton -->           
-                    <button type="submit">Rechercher</button>
-                </form>
-            </section>
+                    <a href="Details.html" class="details">Détails</a>
+                  </div>
+                  <!-- photo -->
+                  <img
+                    src="img/Covoiturages/Elisa.png"
+                    alt="Photo de profil"
+                    class="photo-profil"
+                    width="80"
+                    height="80"
+                  />
+                </div>
+                <!-- Zone infos trajets -->
+                <div class="card-main">
+                  <!-- Date trajet -->
+                  <div class="date-trajet">
+                    <span>Vendredi 30 mai 2025</span>
+                  </div>
+                  <!-- Barre de temps -->
+                  <div class="time-bar">
+                    <span class="heure-depart">06h00</span>
+                    <div class="barre-verte"></div>
+                    <span class="heure-arrivee">08h35</span>
+                  </div>
+                  <!-- Trajet -->
+                  <div class="trajet-infos">
+                    <div><strong>Lille :</strong> Gare Lille Europe</div>
+                    <div><strong>Paris :</strong> Gare de Lyon</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Informations du bas -->
+              <div class="card-footer">
+                <div class="card-footer-left">
+                  <div class="footer-item">
+                    <span class="material-icons">electric_car</span>
+                    <span>Véhicule électrique !</span>
+                  </div>
 
-            <!--TITRE -->
-            <h1>Résultats disponibles</h1>
-            
-            <div class="zone-principale">
-                <!-- FILTRES -->
-                <aside class="filtres">
-                    <button class="filtres-toggle">Filtres</button>
+                  <div class="footer-separator"></div>
 
-                    <div class="filtres-content" id="filtres-content">                    
-                        <h3>Filtres <button type="reset">Tout effacer</button></h3>
+                  <div class="footer-item">
+                    <span class="material-icons">power_off</span>
+                    <span>Pas besoin de recharge !</span>
+                  </div>
 
-                        <form method="get" class="form-filtres card">
-                            <!-- Horaire de départ -->
-                            <fieldset>
-                                <legend>Horaire de départ</legend>
-                                <div class="horaire card">
-                                    <div class="field-group">
-                                        <input type="checkbox" id="nuit" name="nuit" value="N">
-                                        <label for="nuit">Nuit (00h-06h)</label>
-                                    </div>
-                                    
-                                    <div class="field-group">
-                                        <input type="checkbox" id="matin" name="matin" value="M">
-                                        <label for="matin">Matin (06h-12h)</label>
-                                    </div>
+                  <div class="footer-separator"></div>
 
-                                    <div class="field-group">
-                                        <input type="checkbox" id="am" name="am" value="A">
-                                        <label for="am">Après-midi (12h-18h)</label>
-                                    </div>
-
-                                    <div class="field-group">
-                                        <input type="checkbox" id="soir" name="soir" value="S">
-                                        <label for="soir">Soir (18h-00h)</label>
-                                    </div>
-                                </div>
-                            </fieldset>
-
-                            <!-- Type de motorisation -->
-                            <fieldset>
-                                <legend>Type de motorisation</legend>
-                                <div class="moteur card">
-                                    <div class="field-group">
-                                        <input type="checkbox" id="elec" name="elec" value="E">
-                                        <label for="elec">Électrique</label>
-                                    </div>
-                                    
-                                    <div class="field-group">
-                                        <input type="checkbox" id="therm" name="therm" value="T">
-                                        <label for="therm">Thermique</label>
-                                    </div>
-                                </div>
-                            </fieldset>
-
-                            <!--Durée du trajet -->
-                            <fieldset>
-                                <legend>Durée du trajet</legend>
-                                <div class="time card">
-                                    <div class="range-container">                                
-                                        <span>0 min</span>
-                                        <input type="range" id="duree" name="duree" min="0" max="300" step="10" value="0">
-                                        <label for="duree"></label>
-                                        <span>5h</span> 
-                                    </div>                               
-                                </div>
-                            </fieldset>
-
-                            <!-- Prix du voyage -->
-                            <fieldset>
-                                <legend>Prix du voyage en crédits</legend>
-                                <div class="price card">
-                                    <div class="range-container">                                
-                                        <span>0</span>
-                                        <input type="range" id="prix" name="prix" min="0" max="50" step="1" value="0">
-                                        <label for="prix"></label>
-                                        <span>50</span>
-                                    </div>                                 
-                                </div>
-                            </fieldset>
-
-                            <!-- Note covoitureur-->
-                            <fieldset>
-                                <legend>Note covoitureur</legend>
-                                <div class="etoiles card">
-                                    <span class="material-symbols-outlined" aria-hidden="true">star_border</span>
-                                    <span class="material-symbols-outlined" aria-hidden="true">star_border</span>
-                                    <span class="material-symbols-outlined" aria-hidden="true">star_border</span>
-                                    <span class="material-symbols-outlined" aria-hidden="true">star_border</span>
-                                    <span class="material-symbols-outlined" aria-hidden="true">star_border</span>
-                                </div> 
-                            </fieldset>
-
-                            <div class="button-search">
-                                <button type="submit" class="btn-recherche">Rechercher</button>
-                            </div>
-                        </form>
-                    </div>
-                </aside>
-            
-                <!-- RESULTATS COVOITURAGES-->
-                <section class="resultats">
-                    <h3>Résultats de covoiturage</h3>
-
-                    <div class="resultats-container">
-                        <!-- Résultat 1 -->
-                        <article class="card-covoit card">
-                            <div class="card-header">                                
-                                <!-- Conducteur et étoiles -->
-                                <div class="container-info">
-                                    <!-- Photo et détails -->
-                                    <div class="conducteur-info">
-                                        <h3>Elisa</h3>
-                                        <div class="etoiles-card">
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                        </div>
-                                        <a href="Details.html" class="details">Détails</a>
-                                    </div>
-                                    <!-- photo -->
-                                    <img src="img/Covoiturages/Elisa.png" alt="Photo de profil" class="photo-profil" width="80" height="80">
-                                </div>
-                                <!-- Zone infos trajets -->
-                                <div class="card-main">
-                                    <!-- Date trajet -->
-                                    <div class="date-trajet">
-                                        <span>Vendredi 30 mai 2025</span>
-                                    </div>
-                                    <!-- Barre de temps --> 
-                                    <div class="time-bar">
-                                        <span class="heure-depart">06h00</span>
-                                        <div class="barre-verte"></div>
-                                        <span class="heure-arrivee">08h35</span>
-                                    </div>
-                                    <!-- Trajet -->
-                                    <div class="trajet-infos">
-                                        <div><strong>Lille :</strong> Gare Lille Europe</div>
-                                        <div><strong>Paris :</strong> Gare de Lyon</div>
-                                    </div>                             
-                                </div>                                                    
-                            </div>
-                            <!-- Informations du bas -->
-                            <div class="card-footer">
-                                <div class="card-footer-left">
-                                    <div class="footer-item">
-                                        <span class="material-icons">electric_car</span>
-                                        <span>Véhicule électrique !</span>
-                                    </div>
-                                    
-                                    <div class="footer-separator"></div>
-                                    
-                                    <div class="footer-item">
-                                        <span class="material-icons">power_off</span>
-                                        <span>Pas besoin de recharge !</span>
-                                    </div>
-                                    
-                                    <div class="footer-separator"></div>
-                                    
-                                    <div class="footer-item">
-                                        <span class="material-icons">group</span>
-                                        <span>Place(s) restante(s) : 2</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="prix-final">16 crédits</div>
-                            </div>
-                        </article>
-
-                        <!-- Résultat 2 -->
-                        <article class="card-covoit card">
-                            <div class="card-header">                                
-                                <!-- Conducteur et étoiles -->
-                                <div class="container-info">
-                                    <!-- Photo et détails -->
-                                    <div class="conducteur-info">
-                                        <h3>Marc</h3>
-                                        <div class="etoiles-card">
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                        </div>
-                                        <a href="Details.html" class="details">Détails</a>
-                                    </div>
-                                    <!-- photo -->
-                                    <img src="img/Covoiturages/Marc.png" alt="Photo de profil" class="photo-profil" width="80" height="80">
-                                </div>
-                                <!-- Zone infos trajets -->
-                                <div class="card-main">
-                                    <!-- Date trajet -->
-                                    <div class="date-trajet">
-                                        <span>Vendredi 30 mai 2025</span>
-                                    </div>
-                                    <!-- Barre de temps --> 
-                                    <div class="time-bar">
-                                        <span class="heure-depart">06h35</span>
-                                        <div class="barre-verte"></div>
-                                        <span class="heure-arrivee">09h10</span>
-                                    </div>
-                                    <!-- Trajet -->
-                                    <div class="trajet-infos">
-                                        <div><strong>Lille :</strong> Gare Lille Europe</div>
-                                        <div><strong>Paris :</strong> Gare de Lyon</div>
-                                    </div>                             
-                                </div>                                                    
-                            </div>
-                            <!-- Informations du bas -->
-                            <div class="card-footer">
-                                <div class="card-footer-left">
-                                    <div class="footer-item">
-                                        <span class="material-icons">local_gas_station</span>
-                                        <span>Véhicule thermique</span>
-                                    </div>
-                                    
-                                    <div class="footer-separator"></div>                                    
-                                    
-                                    <div class="footer-item">
-                                        <span class="material-icons">group</span>
-                                        <span>Place(s) restante(s) : 1</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="prix-final">16 crédits</div>
-                            </div>
-                        </article>
-
-                        <!-- Résultat 3 -->
-                        <article class="card-covoit card">
-                            <div class="card-header">                                
-                                <!-- Conducteur et étoiles -->
-                                <div class="container-info">
-                                    <!-- Photo et détails -->
-                                    <div class="conducteur-info">
-                                        <h3>Jennifer</h3>
-                                        <div class="etoiles-card">
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                        </div>
-                                        <a href="Details.html" class="details">Détails</a>
-                                    </div>
-                                    <!-- photo -->
-                                    <img src="img/Covoiturages/Jennifer.png" alt="Photo de profil" class="photo-profil" width="80" height="80">
-                                </div>
-                                <!-- Zone infos trajets -->
-                                <div class="card-main">
-                                    <!-- Date trajet -->
-                                    <div class="date-trajet">
-                                        <span>Vendredi 30 mai 2025</span>
-                                    </div>
-                                    <!-- Barre de temps --> 
-                                    <div class="time-bar">
-                                        <span class="heure-depart">06h45</span>
-                                        <div class="barre-verte"></div>
-                                        <span class="heure-arrivee">09h23</span>
-                                    </div>
-                                    <!-- Trajet -->
-                                    <div class="trajet-infos">
-                                        <div><strong>Lille :</strong> Gare Lille Europe</div>
-                                        <div><strong>Paris :</strong> Gare de Lyon</div>
-                                    </div>                             
-                                </div>                                                    
-                            </div>
-                            <!-- Informations du bas -->
-                            <div class="card-footer">
-                                <div class="card-footer-left">
-                                    <div class="footer-item">
-                                        <span class="material-icons">local_gas_station</span>
-                                        <span>Véhicule thermique</span>
-                                    </div>
-                                    
-                                    <div class="footer-separator"></div>                                    
-                                    
-                                    <div class="footer-item">
-                                        <span class="material-icons">group</span>
-                                        <span>Place(s) restante(s) : 1</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="prix-final">17 crédits</div>
-                            </div>
-                        </article>
-
-                        <!-- Résultat 4 -->
-                        <article class="card-covoit card">
-                            <div class="card-header">                                
-                                <!-- Conducteur et étoiles -->
-                                <div class="container-info">
-                                    <!-- Photo et détails -->
-                                    <div class="conducteur-info">
-                                        <h3>Paul</h3>
-                                        <div class="etoiles-card">
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                        </div>
-                                        <a href="Details.html" class="details">Détails</a>
-                                    </div>
-                                    <!-- photo -->
-                                    <img src="img/Covoiturages/Paul.png" alt="Photo de profil" class="photo-profil" width="80" height="80">
-                                </div>
-                                <!-- Zone infos trajets -->
-                                <div class="card-main">
-                                    <!-- Date trajet -->
-                                    <div class="date-trajet">
-                                        <span>Vendredi 30 mai 2025</span>
-                                    </div>
-                                    <!-- Barre de temps --> 
-                                    <div class="time-bar">
-                                        <span class="heure-depart">07h15</span>
-                                        <div class="barre-verte"></div>
-                                        <span class="heure-arrivee">09h57</span>
-                                    </div>
-                                    <!-- Trajet -->
-                                    <div class="trajet-infos">
-                                        <div><strong>Lille :</strong> Gare Lille Europe</div>
-                                        <div><strong>Paris :</strong> Gare de Lyon</div>
-                                    </div>                             
-                                </div>                                                    
-                            </div>
-                            <!-- Informations du bas -->
-                            <div class="card-footer">
-                                <div class="card-footer-left">
-                                    <div class="footer-item">
-                                        <span class="material-icons">electric_car</span>
-                                        <span>Véhicule électrique !</span>
-                                    </div>
-                                    
-                                    <div class="footer-separator"></div>
-                                    
-                                    <div class="footer-item">
-                                        <span class="material-icons">power_off</span>
-                                        <span>Pas besoin de recharge !</span>
-                                    </div>
-                                    
-                                    <div class="footer-separator"></div>
-                                    
-                                    <div class="footer-item">
-                                        <span class="material-icons">group</span>
-                                        <span>Place(s) restante(s) : 3</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="prix-final">17 crédits</div>
-                            </div>
-                        </article>
-
-                        <!-- Résultat 5 -->
-                        <article class="card-covoit card">
-                            <div class="card-header">                                
-                                <!-- Conducteur et étoiles -->
-                                <div class="container-info">
-                                    <!-- Photo et détails -->
-                                    <div class="conducteur-info">
-                                        <h3>Léa</h3>
-                                        <div class="etoiles-card">
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                            <span class="material-symbols-outlined">star</span>
-                                        </div>
-                                        <a href="Details.html" class="details">Détails</a>
-                                    </div>
-                                    <!-- photo -->
-                                    <img src="img/Covoiturages/Léa.png" alt="Photo de profil" class="photo-profil" width="80" height="80">
-                                </div>
-                                <!-- Zone infos trajets -->
-                                <div class="card-main">
-                                    <!-- Date trajet -->
-                                    <div class="date-trajet">
-                                        <span>Vendredi 30 mai 2025</span>
-                                    </div>
-                                    <!-- Barre de temps --> 
-                                    <div class="time-bar">
-                                        <span class="heure-depart">08h00</span>
-                                        <div class="barre-verte"></div>
-                                        <span class="heure-arrivee">10h47</span>
-                                    </div>
-                                    <!-- Trajet -->
-                                    <div class="trajet-infos">
-                                        <div><strong>Lille :</strong> Gare Lille Europe</div>
-                                        <div><strong>Paris :</strong> Gare de Lyon</div>
-                                    </div>                             
-                                </div>                                                    
-                            </div>
-                            <!-- Informations du bas -->
-                            <div class="card-footer">
-                                <div class="card-footer-left">
-                                    <div class="footer-item">
-                                        <span class="material-icons">electric_car</span>
-                                        <span>Véhicule électrique !</span>
-                                    </div>
-                                    
-                                    <div class="footer-separator"></div>
-                                    
-                                    <div class="footer-item">
-                                        <span class="material-icons">power_off</span>
-                                        <span>Pas besoin de recharge !</span>
-                                    </div>
-                                    
-                                    <div class="footer-separator"></div>
-                                    
-                                    <div class="footer-item">
-                                        <span class="material-icons">group</span>
-                                        <span>Place(s) restante(s) : 2</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="prix-final">18 crédits</div>
-                            </div>
-                        </article>
-                    </div>
-                </section> 
-            </div>
-        </main>
-
-        <!-- FOOTER -->
-        <footer>
-            <div class="footer-contenu">
-                <a href="index.html" class="logo hover-underline gradient-hover">
-                <img src="./img/logo.svg" alt="EcoRide logo">
-                <span>EcoRide</span>
-                </a>
-
-                <div class="footer-infos">
-                <strong><span class="material-symbols-outlined" aria-label="Informations" role="img">info</span> Informations</strong>
-                <p>
-                    <a href="Contact.html">contact@ecoride.fr</a><br>
-                    <a href="Mentionslegales.html">Mentions légales</a>
-                </p>
+                  <div class="footer-item">
+                    <span class="material-icons">group</span>
+                    <span>Place(s) restante(s) : 2</span>
+                  </div>
                 </div>
 
-                <div class="footer-menu">
-                <strong><span class="material-symbols-outlined" aria-label="Menu" role="img">menu</span> Menu</strong>
-                <p>
-                    <a href="Covoiturages.html">Covoiturages</a><br>
-                    <a href="Rechercher.html">Rechercher</a><br>
-                    <a href="Inscription.html">Inscription</a>
-                </p>
+                <div class="prix-final">16 crédits</div>
+              </div>
+            </article>
+
+            <!-- Résultat 2 -->
+            <article class="card-covoit card">
+              <div class="card-header">
+                <!-- Conducteur et étoiles -->
+                <div class="container-info">
+                  <!-- Photo et détails -->
+                  <div class="conducteur-info">
+                    <h3>Marc</h3>
+                    <div class="etoiles-card">
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <a href="Details.html" class="details">Détails</a>
+                  </div>
+                  <!-- photo -->
+                  <img
+                    src="img/Covoiturages/Marc.png"
+                    alt="Photo de profil"
+                    class="photo-profil"
+                    width="80"
+                    height="80"
+                  />
                 </div>
-            </div>
-        </footer>
-    </body>
+                <!-- Zone infos trajets -->
+                <div class="card-main">
+                  <!-- Date trajet -->
+                  <div class="date-trajet">
+                    <span>Vendredi 30 mai 2025</span>
+                  </div>
+                  <!-- Barre de temps -->
+                  <div class="time-bar">
+                    <span class="heure-depart">06h35</span>
+                    <div class="barre-verte"></div>
+                    <span class="heure-arrivee">09h10</span>
+                  </div>
+                  <!-- Trajet -->
+                  <div class="trajet-infos">
+                    <div><strong>Lille :</strong> Gare Lille Europe</div>
+                    <div><strong>Paris :</strong> Gare de Lyon</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Informations du bas -->
+              <div class="card-footer">
+                <div class="card-footer-left">
+                  <div class="footer-item">
+                    <span class="material-icons">local_gas_station</span>
+                    <span>Véhicule thermique</span>
+                  </div>
+
+                  <div class="footer-separator"></div>
+
+                  <div class="footer-item">
+                    <span class="material-icons">group</span>
+                    <span>Place(s) restante(s) : 1</span>
+                  </div>
+                </div>
+
+                <div class="prix-final">16 crédits</div>
+              </div>
+            </article>
+
+            <!-- Résultat 3 -->
+            <article class="card-covoit card">
+              <div class="card-header">
+                <!-- Conducteur et étoiles -->
+                <div class="container-info">
+                  <!-- Photo et détails -->
+                  <div class="conducteur-info">
+                    <h3>Jennifer</h3>
+                    <div class="etoiles-card">
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <a href="Details.html" class="details">Détails</a>
+                  </div>
+                  <!-- photo -->
+                  <img
+                    src="img/Covoiturages/Jennifer.png"
+                    alt="Photo de profil"
+                    class="photo-profil"
+                    width="80"
+                    height="80"
+                  />
+                </div>
+                <!-- Zone infos trajets -->
+                <div class="card-main">
+                  <!-- Date trajet -->
+                  <div class="date-trajet">
+                    <span>Vendredi 30 mai 2025</span>
+                  </div>
+                  <!-- Barre de temps -->
+                  <div class="time-bar">
+                    <span class="heure-depart">06h45</span>
+                    <div class="barre-verte"></div>
+                    <span class="heure-arrivee">09h23</span>
+                  </div>
+                  <!-- Trajet -->
+                  <div class="trajet-infos">
+                    <div><strong>Lille :</strong> Gare Lille Europe</div>
+                    <div><strong>Paris :</strong> Gare de Lyon</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Informations du bas -->
+              <div class="card-footer">
+                <div class="card-footer-left">
+                  <div class="footer-item">
+                    <span class="material-icons">local_gas_station</span>
+                    <span>Véhicule thermique</span>
+                  </div>
+
+                  <div class="footer-separator"></div>
+
+                  <div class="footer-item">
+                    <span class="material-icons">group</span>
+                    <span>Place(s) restante(s) : 1</span>
+                  </div>
+                </div>
+
+                <div class="prix-final">17 crédits</div>
+              </div>
+            </article>
+
+            <!-- Résultat 4 -->
+            <article class="card-covoit card">
+              <div class="card-header">
+                <!-- Conducteur et étoiles -->
+                <div class="container-info">
+                  <!-- Photo et détails -->
+                  <div class="conducteur-info">
+                    <h3>Paul</h3>
+                    <div class="etoiles-card">
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <a href="Details.html" class="details">Détails</a>
+                  </div>
+                  <!-- photo -->
+                  <img
+                    src="img/Covoiturages/Paul.png"
+                    alt="Photo de profil"
+                    class="photo-profil"
+                    width="80"
+                    height="80"
+                  />
+                </div>
+                <!-- Zone infos trajets -->
+                <div class="card-main">
+                  <!-- Date trajet -->
+                  <div class="date-trajet">
+                    <span>Vendredi 30 mai 2025</span>
+                  </div>
+                  <!-- Barre de temps -->
+                  <div class="time-bar">
+                    <span class="heure-depart">07h15</span>
+                    <div class="barre-verte"></div>
+                    <span class="heure-arrivee">09h57</span>
+                  </div>
+                  <!-- Trajet -->
+                  <div class="trajet-infos">
+                    <div><strong>Lille :</strong> Gare Lille Europe</div>
+                    <div><strong>Paris :</strong> Gare de Lyon</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Informations du bas -->
+              <div class="card-footer">
+                <div class="card-footer-left">
+                  <div class="footer-item">
+                    <span class="material-icons">electric_car</span>
+                    <span>Véhicule électrique !</span>
+                  </div>
+
+                  <div class="footer-separator"></div>
+
+                  <div class="footer-item">
+                    <span class="material-icons">power_off</span>
+                    <span>Pas besoin de recharge !</span>
+                  </div>
+
+                  <div class="footer-separator"></div>
+
+                  <div class="footer-item">
+                    <span class="material-icons">group</span>
+                    <span>Place(s) restante(s) : 3</span>
+                  </div>
+                </div>
+
+                <div class="prix-final">17 crédits</div>
+              </div>
+            </article>
+
+            <!-- Résultat 5 -->
+            <article class="card-covoit card">
+              <div class="card-header">
+                <!-- Conducteur et étoiles -->
+                <div class="container-info">
+                  <!-- Photo et détails -->
+                  <div class="conducteur-info">
+                    <h3>Léa</h3>
+                    <div class="etoiles-card">
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                      <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <a href="Details.html" class="details">Détails</a>
+                  </div>
+                  <!-- photo -->
+                  <img
+                    src="img/Covoiturages/Léa.png"
+                    alt="Photo de profil"
+                    class="photo-profil"
+                    width="80"
+                    height="80"
+                  />
+                </div>
+                <!-- Zone infos trajets -->
+                <div class="card-main">
+                  <!-- Date trajet -->
+                  <div class="date-trajet">
+                    <span>Vendredi 30 mai 2025</span>
+                  </div>
+                  <!-- Barre de temps -->
+                  <div class="time-bar">
+                    <span class="heure-depart">08h00</span>
+                    <div class="barre-verte"></div>
+                    <span class="heure-arrivee">10h47</span>
+                  </div>
+                  <!-- Trajet -->
+                  <div class="trajet-infos">
+                    <div><strong>Lille :</strong> Gare Lille Europe</div>
+                    <div><strong>Paris :</strong> Gare de Lyon</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Informations du bas -->
+              <div class="card-footer">
+                <div class="card-footer-left">
+                  <div class="footer-item">
+                    <span class="material-icons">electric_car</span>
+                    <span>Véhicule électrique !</span>
+                  </div>
+
+                  <div class="footer-separator"></div>
+
+                  <div class="footer-item">
+                    <span class="material-icons">power_off</span>
+                    <span>Pas besoin de recharge !</span>
+                  </div>
+
+                  <div class="footer-separator"></div>
+
+                  <div class="footer-item">
+                    <span class="material-icons">group</span>
+                    <span>Place(s) restante(s) : 2</span>
+                  </div>
+                </div>
+
+                <div class="prix-final">18 crédits</div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-contenu">
+        <a href="index.html" class="logo hover-underline gradient-hover">
+          <img src="./img/logo.svg" alt="EcoRide logo" />
+          <span>EcoRide</span>
+        </a>
+
+        <div class="footer-infos">
+          <strong
+            ><span
+              class="material-symbols-outlined"
+              aria-label="Informations"
+              role="img"
+              >info</span
+            >
+            Informations</strong
+          >
+          <p>
+            <a href="Contact.html">contact@ecoride.fr</a><br />
+            <a href="Mentionslegales.html">Mentions légales</a>
+          </p>
+        </div>
+
+        <div class="footer-menu">
+          <strong
+            ><span
+              class="material-symbols-outlined"
+              aria-label="Menu"
+              role="img"
+              >menu</span
+            >
+            Menu</strong
+          >
+          <p>
+            <a href="Covoiturages.html">Covoiturages</a><br />
+            <a href="Rechercher.html">Rechercher</a><br />
+            <a href="Inscription.html">Inscription</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

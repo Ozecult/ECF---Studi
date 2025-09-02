@@ -1,360 +1,696 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !">
-        <title>EcoRide - Voyagez ensemble, préservez la planète</title>
-        <link rel="stylesheet" href="./css/style.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-        <script type="module" src="./js/script.js"></script>
-    </head>
-    <body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
+    />
+    <title>EcoRide - Voyagez ensemble, préservez la planète</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script type="module" src="./js/script.js"></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <!-- MENU -->
+      <div class="menu">
+        <!-- Logo cliquable -->
+        <a href="index.html" class="logo hover-underline gradient-hover"
+          ><img src="./img/logo.svg" alt="Logo EcoRide" /><span
+            >EcoRide</span
+          ></a
+        >
 
-        <!-- HEADER -->
-        <header>
-            <!-- MENU -->
-            <div class="menu">
-                <!-- Logo cliquable -->
-                <a href="index.html" class="logo hover-underline gradient-hover"><img src="./img/logo.svg" alt="Logo EcoRide"><span>EcoRide</span></a>
-            
-                <!-- Navigation principale -->
-                <nav aria-label="Menu principal">
-                    <ul class="nav">
-                        <li class="nav-item"><a href="Covoiturages.html" class="hover-underline gradient-hover">Covoiturages</a></li>
-                        <li class="nav-item"><a href="Contact.html" class="hover-underline gradient-hover">Contact</a></li>
-                        <li class="nav-item"><a href="Rechercher.html" class="hover-underline gradient-hover">Rechercher</a></li>
-                    </ul>
-                </nav>
-            
-                <!-- Bouton profil avec menu déroulant -->
-                <div class="bouton-profile">
-                    <button id="menu-deroulant">
-                        <span class="material-symbols-outlined burger-icon">menu</span>
-                        <span class="material-symbols-outlined" aria-label="menu-deroulant" role="img">account_circle</span>
-                    </button>
-                    <nav class="mobile-nav-menu" id="mobile-nav-menu">
-                        <ul>
-                            <li><a href="Covoiturages.html">Covoiturages</a></li>
-                            <li><a href="Contact.html">Contact</a></li>
-                            <li><a href="Rechercher.html">Rechercher</a></li>
-                        </ul>
-                    </nav>
-                    <div id="menu-profile" class="menu-profile">
-                        <a href="Connexion.html">Se connecter</a>
-                        <a href="Inscription.html">S’inscrire</a>
-                    </div>
-                </div>
+        <!-- Navigation principale -->
+        <nav aria-label="Menu principal">
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="Covoiturages.html" class="hover-underline gradient-hover"
+                >Covoiturages</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="Contact.html" class="hover-underline gradient-hover"
+                >Contact</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="Rechercher.html" class="hover-underline gradient-hover"
+                >Rechercher</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Bouton profil avec menu déroulant -->
+        <div class="bouton-profile">
+          <button id="menu-deroulant">
+            <span class="material-symbols-outlined burger-icon">menu</span>
+            <span
+              class="material-symbols-outlined"
+              aria-label="menu-deroulant"
+              role="img"
+              >account_circle</span
+            >
+          </button>
+          <nav class="mobile-nav-menu" id="mobile-nav-menu">
+            <ul>
+              <li><a href="Covoiturages.html">Covoiturages</a></li>
+              <li><a href="Contact.html">Contact</a></li>
+              <li><a href="Rechercher.html">Rechercher</a></li>
+            </ul>
+          </nav>
+          <div id="menu-profile" class="menu-profile">
+            <a href="Connexion.html">Se connecter</a>
+            <a href="Inscription.html">S’inscrire</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="utilisateur">
+      <h1>Tableau de bord</h1>
+
+      <!-- Résumé -->
+      <section class="resume card">
+        <!-- crédits -->
+        <div class="header-profil">
+          <div class="profil-credits">
+            <h2>Bienvenue Paul</h2>
+            <p><strong>Nombre de crédits : 48</strong></p>
+          </div>
+          <!-- photo de profil -->
+          <div class="profil-photo">
+            <span
+              class="material-symbols-outlined"
+              aria-label="Photo profil"
+              role="img"
+              >account_circle</span
+            >
+            <p>Changer sa photo de profil</p>
+          </div>
+        </div>
+
+        <!-- rôle -->
+        <div class="role-choice">
+          <h2>Choississez votre rôle</h2>
+          <div class="button">
+            <button class="button" type="button" aria-label="chauffeur">
+              Chauffeur
+            </button>
+            <button class="button" type="button" aria-label="passager">
+              Passager
+            </button>
+            <button class="button" type="button" aria-label="duo">
+              Les deux
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Informations chauffeur -->
+      <section class="informations-chauffeur card">
+        <h2>Pour être chauffeur, veuillez rensigner ces informations</h2>
+
+        <div class="vehicule-preferences">
+          <!-- Véhicule(s) -->
+          <form method="post" class="vehicule card" autocomplete="on">
+            <fieldset class="type-vehicule">
+              <legend>Véhicule :</legend>
+
+              <div class="vehicule">
+                <label for="marque"
+                  ><span
+                    class="material-icons"
+                    aria-label="Véhicule thermique"
+                    role="img"
+                    >drive_eta</span
+                  >Marque :</label
+                >
+                <input type="text" name="marque" id="marque" required />
+              </div>
+
+              <div class="vehicule">
+                <label for="modele"
+                  ><span
+                    class="material-symbols-outlined"
+                    aria-label="volant"
+                    role="img"
+                    >search_hands_free</span
+                  >Modèle :</label
+                >
+                <input type="text" name="modele" id="modele" required />
+              </div>
+
+              <div class="vehicule">
+                <label for="couleur"
+                  ><span
+                    class="material-symbols-outlined"
+                    aria-label="couleur"
+                    role="img"
+                    >colors</span
+                  >Couleur :</label
+                >
+                <input type="text" name="couleur" id="couleur" required />
+              </div>
+
+              <div class="vehicule">
+                <label for="energie"
+                  ><span
+                    class="material-symbols-outlined"
+                    aria-label="energie"
+                    role="img"
+                    >drive_eta</span
+                  >Énergie :</label
+                >
+                <select id="energie" name="energie" required>
+                  <option value="" disabled selected>
+                    -- Sélectionnez une énergie --
+                  </option>
+                  <option value="electrique">Électrique</option>
+                  <option value="thermique">Thermique</option>
+                  <option value="hybride">Hybride</option>
+                  <option value="gpl">GPL</option>
+                </select>
+              </div>
+
+              <div class="vehicule">
+                <label for="immatriculation"
+                  ><span
+                    class="material-symbols-outlined"
+                    aria-label="immatriculation"
+                    role="img"
+                    >app_registration</span
+                  >Immatriculation :</label
+                >
+                <input
+                  type="text"
+                  name="immatriculation"
+                  id="immatriculation"
+                  required
+                />
+              </div>
+
+              <div class="vehicule">
+                <label for="circulation"
+                  ><span
+                    class="material-symbols-outlined"
+                    aria-label="Calendrier"
+                    role="img"
+                    >calendar_month</span
+                  >1ère mise en circulation :</label
+                >
+                <input
+                  type="date"
+                  name="circulation"
+                  id="circulation"
+                  required
+                />
+              </div>
+
+              <div class="vehicule">
+                <label for="places"
+                  ><span
+                    class="material-symbols-outlined"
+                    aria-label="Places dispo"
+                    role="img"
+                    >groups</span
+                  >Places disponibles :</label
+                >
+                <input type="text" name="places" id="places" required />
+              </div>
+
+              <button type="submit">Ajouter le véhicule</button>
+              <button
+                type="button"
+                class="btn-ajouter-vehicule"
+                aria-label="Ajouter un véhicule"
+              >
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >add</span
+                >
+                Ajouter un autre véhicule
+              </button>
+            </fieldset>
+          </form>
+
+          <!-- Préférences -->
+          <div class="preferences-container card">
+            <fieldset class="preferences-all">
+              <legend>Préférences :</legend>
+
+              <div class="preferences">
+                <input type="checkbox" id="fumeur" name="fumeur" />
+                <label for="fumeur"
+                  ><span
+                    class="material-symbols-outlined"
+                    aria-label="Cigarette"
+                    role="img"
+                    >smoking_rooms</span
+                  >Fumeur</label
+                >
+              </div>
+
+              <div class="preferences">
+                <input type="checkbox" id="animaux" name="animaux" />
+                <label for="animaux"
+                  ><span
+                    class="material-symbols-outlined"
+                    aria-label="Animaux"
+                    role="img"
+                    >pets</span
+                  >Animaux de compagnie</label
+                >
+              </div>
+
+              <div class="preferences">
+                <input type="checkbox" id="enfant" name="enfant" />
+                <label for="enfant"
+                  ><span
+                    class="material-symbols-outlined"
+                    aria-label="Enfant"
+                    role="img"
+                    >account_child</span
+                  >Enfant</label
+                >
+              </div>
+
+              <div class="preferences">
+                <input type="checkbox" id="musique" name="musique" />
+                <label for="musique"
+                  ><span
+                    class="material-symbols-outlined"
+                    aria-label="Musique"
+                    role="img"
+                    >genres</span
+                  >Musique</label
+                >
+              </div>
+
+              <button
+                type="button"
+                class="btn-ajouter-preference"
+                aria-label="Ajouter une préférence"
+              >
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >add</span
+                >
+                Ajouter une préférence
+              </button>
+            </fieldset>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ajouter un voyage -->
+      <form method="post" class="voyage card" autocomplete="on">
+        <fieldset class="add-voyage">
+          <legend>Ajouter un voyage</legend>
+
+          <div class="voyage-fields">
+            <div class="voyage">
+              <label for="depart"
+                ><span
+                  class="material-symbols-outlined"
+                  aria-label="Départ"
+                  role="img"
+                  >home_pin</span
+                >Départ</label
+              >
+              <input type="text" name="depart" id="depart" required />
             </div>
-        </header>
 
-        <!-- MAIN -->
-        <main class="utilisateur">
-            <h1>Tableau de bord</h1>
-    
-            <!-- Résumé -->
-            <section class="resume card">    
-                <!-- crédits -->
-                <div class="header-profil">
-                    <div class="profil-credits">
-                        <h2>Bienvenue Paul</h2>
-                        <p><strong>Nombre de crédits : 48</strong></p>
-                    </div>                
-                    <!-- photo de profil -->
-                    <div class="profil-photo">
-                        <span class="material-symbols-outlined" aria-label="Photo profil" role="img">account_circle</span>
-                        <p>Changer sa photo de profil</p>
-                    </div>
-                </div>
-
-                <!-- rôle -->
-                <div class="role-choice">
-                    <h2>Choississez votre rôle</h2>
-                    <div class="button">
-                        <button class="button" type="button" aria-label="chauffeur">Chauffeur</button>
-                        <button class="button" type="button" aria-label="passager">Passager</button>
-                        <button class="button" type="button" aria-label="duo">Les deux</button>
-                    </div>
-                </div>
-            </section>
-                
-            <!-- Informations chauffeur -->
-            <section class="informations-chauffeur card">
-                <h2>Pour être chauffeur, veuillez rensigner ces informations</h2>
-
-                <div class="vehicule-preferences">
-                    <!-- Véhicule(s) -->                
-                    <form method="post" class="vehicule card" autocomplete="on">
-                        <fieldset class="type-vehicule">
-                            <legend>Véhicule :</legend>
-
-                            <div class="vehicule">
-                                <label for="marque"><span class="material-icons" aria-label="Véhicule thermique" role="img">drive_eta</span>Marque :</label>
-                                <input type="text" name="marque" id="marque" required>
-                            </div>
-
-                            <div class="vehicule">
-                                <label for="modele"><span class="material-symbols-outlined" aria-label="volant" role="img">search_hands_free</span>Modèle :</label>
-                                <input type="text" name="modele" id="modele" required>
-                            </div>
-
-                            <div class="vehicule">
-                                <label for="couleur"><span class="material-symbols-outlined" aria-label="couleur" role="img">colors</span>Couleur :</label>
-                                <input type="text" name="couleur" id="couleur" required>
-                            </div>
-
-                            <div class="vehicule">
-                                <label for="energie"><span class="material-symbols-outlined" aria-label="energie" role="img">drive_eta</span>Énergie :</label>
-                                <select id="energie" name="energie" required>
-                                    <option value="" disabled selected>-- Sélectionnez une énergie --</option>
-                                    <option value="electrique">Électrique</option>
-                                    <option value="thermique">Thermique</option>
-                                    <option value="hybride">Hybride</option>
-                                    <option value="gpl">GPL</option>
-                                </select>
-                            </div>
-
-                            <div class="vehicule">
-                                <label for="immatriculation"><span class="material-symbols-outlined" aria-label="immatriculation" role="img">app_registration</span>Immatriculation :</label>
-                                <input type="text" name="immatriculation" id="immatriculation" required>                            
-                            </div>
-
-                            <div class="vehicule">
-                                <label for="circulation"><span class="material-symbols-outlined" aria-label="Calendrier" role="img">calendar_month</span>1ère mise en circulation :</label>
-                                <input type="date" name="circulation" id="circulation" required>
-                            </div>
-
-                            <div class="vehicule">
-                                <label for="places"><span class="material-symbols-outlined" aria-label="Places dispo" role="img">groups</span>Places disponibles :</label>
-                                <input type="text" name="places" id="places" required>
-                            </div>
-
-                            <button type="submit">Ajouter le véhicule</button>
-                            <button type="button" class="btn-ajouter-vehicule" aria-label="Ajouter un véhicule">
-                                <span class="material-symbols-outlined" aria-hidden="true">add</span> Ajouter un autre véhicule
-                            </button>
-                        </fieldset>
-                    </form>
-
-                    <!-- Préférences -->
-                    <div class="preferences-container card">
-                        <fieldset class="preferences-all">
-                            <legend>Préférences :</legend>
-
-                            <div class="preferences">
-                                <input type="checkbox" id="fumeur" name="fumeur">
-                                <label for="fumeur"><span class="material-symbols-outlined" aria-label="Cigarette" role="img">smoking_rooms</span>Fumeur</label>
-                            </div>
-
-                            <div class="preferences">
-                                <input type="checkbox" id="animaux" name="animaux">
-                                <label for="animaux"><span class="material-symbols-outlined" aria-label="Animaux" role="img">pets</span>Animaux de compagnie</label>
-                            </div>
-
-                            <div class="preferences">
-                                <input type="checkbox" id="enfant" name="enfant">
-                                <label for="enfant"><span class="material-symbols-outlined" aria-label="Enfant" role="img">account_child</span>Enfant</label>
-                            </div>
-
-                            <div class="preferences">
-                                <input type="checkbox" id="musique" name="musique">
-                                <label for="musique"><span class="material-symbols-outlined" aria-label="Musique" role="img">genres</span>Musique</label>
-                            </div>
-
-                            <button type="button" class="btn-ajouter-preference" aria-label="Ajouter une préférence">
-                                <span class="material-symbols-outlined" aria-hidden="true">add</span> Ajouter une préférence
-                            </button>
-                        </fieldset>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Ajouter un voyage -->
-            <form method="post" class="voyage card" autocomplete="on">
-                <fieldset class="add-voyage">
-                    <legend>Ajouter un voyage</legend>
-                    
-                    <div class="voyage-fields">
-                        <div class="voyage">
-                            <label for="depart"><span class="material-symbols-outlined" aria-label="Départ" role="img">home_pin</span>Départ</label>
-                            <input type="text" name="depart" id="depart" required>
-                        </div>
-
-                        <div class="voyage">
-                            <label for="arrivee"><span class="material-symbols-outlined" aria-label="Arrivée" role="img">location_on</span>Arrivée</label>
-                            <input type="text" name="arrivee" id="arrivee" required>
-                        </div>
-
-                        <div class="voyage">
-                            <label for="fixer-prix"><span class="material-symbols-outlined" aria-label="Prix" role="img">euro_symbol</span>Fixer le prix</label>
-                            <input type="text" name="fixer-prix" id="fixer-prix" required>
-                        </div>
-
-                        <div class="voyage">
-                            <label for="choix-vehicule"><span class="material-icons" aria-label="Véhicule thermique" role="img">drive_eta</span>Véhicule</label>
-                            <select name="choix-vehicule" id="choix-vehicule" required>
-                                <option value="">-- Sélectionnez un véhicule --</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="btn-ajouter-voyage-container">
-                        <button type="button" class="btn-ajouter-voyage" aria-label="Ajouter un voyage">
-                            <span class="material-symbols-outlined" aria-hidden="true">add</span>
-                        </button>
-                        <span class="btn-ajouter-voyage-text">Ajouter le voyage</span>
-                    </div>
-
-                    <p>Afin de garantir le bon fonctionnement de la plateforme, 2 crédits vous seront débités.</p>
-                </fieldset>
-            </form>
-
-            <!-- Trajets à venir -->
-            <section class="trajets card">
-                <h3>Trajets à venir</h3>
-                <table class="a-venir card">
-                    <!-- colonnes -->
-                    <thead>
-                        <tr>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Calendrier" role="img">calendar_month</span>Date</th>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Trajet" role="img">route</span>Trajet</th>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Profil" role="img">person</span>Conducteur</th>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Heure" role="img">schedule</span>Heure</th>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Statut" role="img">radio_button_partial</span>Statut</th>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Prix" role="img">euro_symbol</span>Crédits</th>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Action" role="img">touch_app</span>Action</th>
-                        </tr>
-                    </thead>
-                    <!-- lignes -->  
-                    <tbody>
-                        <!-- ligne 1 -->
-                        <tr>
-                            <td>04/06/2025</td>
-                            <td>Lille --> Paris</td>
-                            <td>Elisa</td>
-                            <td>8h30 / 11h</td>
-                            <td>Réservé</td>
-                            <td>18</td>
-                            <td><button type="button" aria-label="Annuler ce trajet">Annuler</button></td>
-                        </tr>
-                        <!-- ligne 2 -->
-                        <tr>
-                            <td>05/06/2025</td>
-                            <td>Lyon --> Marseille</td>
-                            <td>Romain</td>
-                            <td>14h / 17h</td>
-                            <td>Confirmé</td>
-                            <td>17</td>
-                            <td><button type="button" aria-label="Annuler ce trajet">Annuler</button></td>
-                        </tr>
-                        <!-- ligne 3 -->
-                        <tr>
-                            <td>06/06/2025</td>
-                            <td>Nantes --> Bordeaux</td>
-                            <td>Vous-même</td>
-                            <td>10h / 13h</td>
-                            <td>En attente</td>
-                            <td>19</td>
-                            <td><button type="button" aria-label="Démarrer ce trajet">Démarrer</button></td>
-                        </tr>
-                    </tbody>                                                          
-                </table>
-
-                <!-- Trajets passés -->
-                <h3>Trajets passés</h3>
-                <table class="t-passes card">
-                    <!-- colonnes -->
-                    <thead>
-                        <tr>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Calendrier" role="img">calendar_month</span>Date</th>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Trajet" role="img">route</span>Trajet</th>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Profil" role="img">person</span>Conducteur</th>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Heure" role="img">schedule</span>Heure</th>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Statut" role="img">radio_button_partial</span>Statut</th>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Prix" role="img">euro_symbol</span>Crédits</th>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Avis" role="img">hotel_class</span>Avis</th>
-                        </tr>
-                    </thead>
-                    <!-- lignes -->  
-                    <tbody>
-                        <!-- ligne 1 -->
-                        <tr>
-                            <td>01/06/2025</td>
-                            <td>Lille --> Reims</td>
-                            <td>Elisa</td>
-                            <td>9h / 11h</td>
-                            <td>Terminé</td>
-                            <td>16</td>
-                            <td>
-                                <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                                <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                                <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                                <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                                <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                            </td>
-                        </tr>
-                        <!-- ligne 2 -->
-                        <tr>
-                            <td>30/05/2025</td>
-                            <td>Paris --> Dijon</td>
-                            <td>Vous-même</td>
-                            <td>16h / 18h</td>
-                            <td>Terminé</td>
-                            <td>16</td>
-                            <td>
-                                <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                                <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                                <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                                <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                                <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                            </td>
-                        </tr>
-                        <!-- ligne 3 -->
-                        <tr>
-                            <td>28/05/2025</td>
-                            <td>Toulouse --> Agen</td>
-                            <td>Benjamin</td>
-                            <td>12h / 13h</td>
-                            <td>Annulé</td>
-                            <td>12</td>
-                            <td>
-                                <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                                <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                                <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                                <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                                <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                            </td>                        
-                        </tr>
-                    </tbody>                                                          
-                </table>
-            </section>
-        </main>
-        <!-- FOOTER -->
-        <footer>
-            <div class="footer-contenu">
-                <a href="index.html" class="logo hover-underline gradient-hover">
-                <img src="./img/logo.svg" alt="EcoRide logo">
-                <span>EcoRide</span>
-                </a>
-
-                <div class="footer-infos">
-                <strong><span class="material-symbols-outlined" aria-label="Informations" role="img">info</span> Informations</strong>
-                <p>
-                    <a href="Contact.html">contact@ecoride.fr</a><br>
-                    <a href="Mentionslegales.html">Mentions légales</a>
-                </p>
-                </div>
-
-                <div class="footer-menu">
-                <strong><span class="material-symbols-outlined" aria-label="Menu" role="img">menu</span> Menu</strong>
-                <p>
-                    <a href="Covoiturages.html">Covoiturages</a><br>
-                    <a href="Rechercher.html">Rechercher</a><br>
-                    <a href="Inscription.html">Inscription</a>
-                </p>
-                </div>
+            <div class="voyage">
+              <label for="arrivee"
+                ><span
+                  class="material-symbols-outlined"
+                  aria-label="Arrivée"
+                  role="img"
+                  >location_on</span
+                >Arrivée</label
+              >
+              <input type="text" name="arrivee" id="arrivee" required />
             </div>
-        </footer>
-    </body>
+
+            <div class="voyage">
+              <label for="fixer-prix"
+                ><span
+                  class="material-symbols-outlined"
+                  aria-label="Prix"
+                  role="img"
+                  >euro_symbol</span
+                >Fixer le prix</label
+              >
+              <input type="text" name="fixer-prix" id="fixer-prix" required />
+            </div>
+
+            <div class="voyage">
+              <label for="choix-vehicule"
+                ><span
+                  class="material-icons"
+                  aria-label="Véhicule thermique"
+                  role="img"
+                  >drive_eta</span
+                >Véhicule</label
+              >
+              <select name="choix-vehicule" id="choix-vehicule" required>
+                <option value="">-- Sélectionnez un véhicule --</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="btn-ajouter-voyage-container">
+            <button
+              type="button"
+              class="btn-ajouter-voyage"
+              aria-label="Ajouter un voyage"
+            >
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >add</span
+              >
+            </button>
+            <span class="btn-ajouter-voyage-text">Ajouter le voyage</span>
+          </div>
+
+          <p>
+            Afin de garantir le bon fonctionnement de la plateforme, 2 crédits
+            vous seront débités.
+          </p>
+        </fieldset>
+      </form>
+
+      <!-- Trajets à venir -->
+      <section class="trajets card">
+        <h3>Trajets à venir</h3>
+        <table class="a-venir card">
+          <!-- colonnes -->
+          <thead>
+            <tr>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Calendrier"
+                  role="img"
+                  >calendar_month</span
+                >Date
+              </th>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Trajet"
+                  role="img"
+                  >route</span
+                >Trajet
+              </th>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Profil"
+                  role="img"
+                  >person</span
+                >Conducteur
+              </th>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Heure"
+                  role="img"
+                  >schedule</span
+                >Heure
+              </th>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Statut"
+                  role="img"
+                  >radio_button_partial</span
+                >Statut
+              </th>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Prix"
+                  role="img"
+                  >euro_symbol</span
+                >Crédits
+              </th>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Action"
+                  role="img"
+                  >touch_app</span
+                >Action
+              </th>
+            </tr>
+          </thead>
+          <!-- lignes -->
+          <tbody>
+            <!-- ligne 1 -->
+            <tr>
+              <td>04/06/2025</td>
+              <td>Lille --> Paris</td>
+              <td>Elisa</td>
+              <td>8h30 / 11h</td>
+              <td>Réservé</td>
+              <td>18</td>
+              <td>
+                <button type="button" aria-label="Annuler ce trajet">
+                  Annuler
+                </button>
+              </td>
+            </tr>
+            <!-- ligne 2 -->
+            <tr>
+              <td>05/06/2025</td>
+              <td>Lyon --> Marseille</td>
+              <td>Romain</td>
+              <td>14h / 17h</td>
+              <td>Confirmé</td>
+              <td>17</td>
+              <td>
+                <button type="button" aria-label="Annuler ce trajet">
+                  Annuler
+                </button>
+              </td>
+            </tr>
+            <!-- ligne 3 -->
+            <tr>
+              <td>06/06/2025</td>
+              <td>Nantes --> Bordeaux</td>
+              <td>Vous-même</td>
+              <td>10h / 13h</td>
+              <td>En attente</td>
+              <td>19</td>
+              <td>
+                <button type="button" aria-label="Démarrer ce trajet">
+                  Démarrer
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Trajets passés -->
+        <h3>Trajets passés</h3>
+        <table class="t-passes card">
+          <!-- colonnes -->
+          <thead>
+            <tr>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Calendrier"
+                  role="img"
+                  >calendar_month</span
+                >Date
+              </th>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Trajet"
+                  role="img"
+                  >route</span
+                >Trajet
+              </th>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Profil"
+                  role="img"
+                  >person</span
+                >Conducteur
+              </th>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Heure"
+                  role="img"
+                  >schedule</span
+                >Heure
+              </th>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Statut"
+                  role="img"
+                  >radio_button_partial</span
+                >Statut
+              </th>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Prix"
+                  role="img"
+                  >euro_symbol</span
+                >Crédits
+              </th>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Avis"
+                  role="img"
+                  >hotel_class</span
+                >Avis
+              </th>
+            </tr>
+          </thead>
+          <!-- lignes -->
+          <tbody>
+            <!-- ligne 1 -->
+            <tr>
+              <td>01/06/2025</td>
+              <td>Lille --> Reims</td>
+              <td>Elisa</td>
+              <td>9h / 11h</td>
+              <td>Terminé</td>
+              <td>16</td>
+              <td>
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >star</span
+                >
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >star</span
+                >
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >star</span
+                >
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >star</span
+                >
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >star</span
+                >
+              </td>
+            </tr>
+            <!-- ligne 2 -->
+            <tr>
+              <td>30/05/2025</td>
+              <td>Paris --> Dijon</td>
+              <td>Vous-même</td>
+              <td>16h / 18h</td>
+              <td>Terminé</td>
+              <td>16</td>
+              <td>
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >star</span
+                >
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >star</span
+                >
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >star</span
+                >
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >star</span
+                >
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >star</span
+                >
+              </td>
+            </tr>
+            <!-- ligne 3 -->
+            <tr>
+              <td>28/05/2025</td>
+              <td>Toulouse --> Agen</td>
+              <td>Benjamin</td>
+              <td>12h / 13h</td>
+              <td>Annulé</td>
+              <td>12</td>
+              <td>
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >star</span
+                >
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >star</span
+                >
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >star</span
+                >
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >star</span
+                >
+                <span class="material-symbols-outlined" aria-hidden="true"
+                  >star</span
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-contenu">
+        <a href="index.html" class="logo hover-underline gradient-hover">
+          <img src="./img/logo.svg" alt="EcoRide logo" />
+          <span>EcoRide</span>
+        </a>
+
+        <div class="footer-infos">
+          <strong
+            ><span
+              class="material-symbols-outlined"
+              aria-label="Informations"
+              role="img"
+              >info</span
+            >
+            Informations</strong
+          >
+          <p>
+            <a href="Contact.html">contact@ecoride.fr</a><br />
+            <a href="Mentionslegales.html">Mentions légales</a>
+          </p>
+        </div>
+
+        <div class="footer-menu">
+          <strong
+            ><span
+              class="material-symbols-outlined"
+              aria-label="Menu"
+              role="img"
+              >menu</span
+            >
+            Menu</strong
+          >
+          <p>
+            <a href="Covoiturages.html">Covoiturages</a><br />
+            <a href="Rechercher.html">Rechercher</a><br />
+            <a href="Inscription.html">Inscription</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

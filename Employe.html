@@ -1,333 +1,577 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !">
-        <title>EcoRide - Espace employé</title>
-        <link rel="stylesheet" href="./css/style.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-        <script type="module" src="./js/script.js"></script>
-    </head>
-    <body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
+    />
+    <title>EcoRide - Espace employé</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script type="module" src="./js/script.js"></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <!-- MENU -->
+      <div class="menu">
+        <!-- Logo cliquable -->
+        <a href="index.html" class="logo hover-underline gradient-hover"
+          ><img src="./img/logo.svg" alt="Logo EcoRide" /><span
+            >EcoRide</span
+          ></a
+        >
 
-        <!-- HEADER -->
-        <header>
-            <!-- MENU -->
-            <div class="menu">
-                <!-- Logo cliquable -->
-                <a href="index.html" class="logo hover-underline gradient-hover"><img src="./img/logo.svg" alt="Logo EcoRide"><span>EcoRide</span></a>
-            
-                <!-- Navigation principale -->
-                <nav aria-label="Menu principal">
-                    <ul class="nav">
-                        <li class="nav-item"><a href="Covoiturages.html" class="hover-underline gradient-hover">Covoiturages</a></li>
-                        <li class="nav-item"><a href="Contact.html" class="hover-underline gradient-hover">Contact</a></li>
-                        <li class="nav-item"><a href="Rechercher.html" class="hover-underline gradient-hover">Rechercher</a></li>
-                    </ul>
-                </nav>
-            
-                <!-- Bouton profil avec menu déroulant -->
-                <div class="bouton-profile">
-                    <button id="menu-deroulant">
-                        <span class="material-symbols-outlined burger-icon">menu</span>
-                        <span class="material-symbols-outlined" aria-label="menu-deroulant" role="img">account_circle</span>
-                    </button>
-                    <nav class="mobile-nav-menu" id="mobile-nav-menu">
-                        <ul>
-                            <li><a href="Covoiturages.html">Covoiturages</a></li>
-                            <li><a href="Contact.html">Contact</a></li>
-                            <li><a href="Rechercher.html">Rechercher</a></li>
-                        </ul>
-                    </nav>
-                    <div id="menu-profile" class="menu-profile">
-                        <a href="Connexion.html">Se connecter</a>
-                        <a href="Inscription.html">S’inscrire</a>
-                    </div>
-                </div>
+        <!-- Navigation principale -->
+        <nav aria-label="Menu principal">
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="Covoiturages.html" class="hover-underline gradient-hover"
+                >Covoiturages</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="Contact.html" class="hover-underline gradient-hover"
+                >Contact</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="Rechercher.html" class="hover-underline gradient-hover"
+                >Rechercher</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Bouton profil avec menu déroulant -->
+        <div class="bouton-profile">
+          <button id="menu-deroulant">
+            <span class="material-symbols-outlined burger-icon">menu</span>
+            <span
+              class="material-symbols-outlined"
+              aria-label="menu-deroulant"
+              role="img"
+              >account_circle</span
+            >
+          </button>
+          <nav class="mobile-nav-menu" id="mobile-nav-menu">
+            <ul>
+              <li><a href="Covoiturages.html">Covoiturages</a></li>
+              <li><a href="Contact.html">Contact</a></li>
+              <li><a href="Rechercher.html">Rechercher</a></li>
+            </ul>
+          </nav>
+          <div id="menu-profile" class="menu-profile">
+            <a href="Connexion.html">Se connecter</a>
+            <a href="Inscription.html">S’inscrire</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="employe">
+      <!-- Avis à valider -->
+      <section class="choix-avis card">
+        <h1>Avis à valider</h1>
+        <!-- Avis 1 -->
+        <article class="avis_a_valider card">
+          <div class="ligne-profil">
+            <img
+              src="img/Covoiturages/Elisa.png"
+              alt="Photo de profil d'Elisa"
+              class="photo-profil"
+              width="60"
+              height="60"
+            />
+            <p class="pseudo">Elisa</p>
+          </div>
+
+          <div class="ligne-commentaire">
+            <p>"Très bon trajet, conducteur ponctuel !"</p>
+            <div class="etoiles">
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >star</span
+              >
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >star</span
+              >
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >star</span
+              >
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >star</span
+              >
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >star</span
+              >
             </div>
-        </header>
+          </div>
 
-        <!-- MAIN -->
-        <main class="employe">
-            <!-- Avis à valider -->
-            <section class="choix-avis card">
-                <h1>Avis à valider</h1>
-                <!-- Avis 1 -->
-                <article class="avis_a_valider card">
-                    <div class="ligne-profil">
-                        <img src="img/Covoiturages/Elisa.png" alt="Photo de profil d'Elisa" class="photo-profil" width="60" height="60">
-                        <p class="pseudo">Elisa</p>
-                    </div>
+          <div class="boutons-avis">
+            <button
+              class="button"
+              type="button"
+              aria-label="Valider l’avis de Elisa"
+            >
+              Valider
+            </button>
+            <button
+              class="button"
+              type="button"
+              aria-label="Refuser l’avis de Elisa"
+            >
+              Refuser
+            </button>
+          </div>
+        </article>
 
-                    <div class="ligne-commentaire">
-                        <p>"Très bon trajet, conducteur ponctuel !"</p>
-                        <div class="etoiles">
-                            <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                            <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                            <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                            <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                            <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                        </div>
-                    </div>                   
-                    
-                    <div class="boutons-avis">
-                        <button class="button" type="button" aria-label="Valider l’avis de Elisa">Valider</button>
-                        <button class="button" type="button" aria-label="Refuser l’avis de Elisa">Refuser</button>
-                    </div>
-                </article>
+        <!-- Avis 2 -->
+        <article class="avis_a_valider card">
+          <div class="ligne-profil">
+            <span
+              class="material-symbols-outlined"
+              aria-label="Icône profil"
+              role="img"
+              >account_circle</span
+            >
+            <p class="pseudo">Marc</p>
+          </div>
 
-                <!-- Avis 2 -->
-                <article class="avis_a_valider card">
-                    <div class="ligne-profil">
-                        <span class="material-symbols-outlined" aria-label="Icône profil" role="img">account_circle</span>
-                        <p class="pseudo">Marc</p>
-                    </div>
-
-                    <div class="ligne-commentaire">
-                        <p>"Très bon covoiturage, bonne ambiance dans la voiture et échanges agréables"</p>
-                        <div class="etoiles">
-                            <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                            <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                            <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                            <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                            <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                        </div>
-                    </div>
-                    
-                    <div class="boutons-avis">
-                        <button class="button" type="button" aria-label="Valider l’avis de Marc">Valider</button>
-                        <button class="button" type="button" aria-label="Refuser l’avis de Marc">Refuser</button>
-                    </div>
-                </article>
-
-                <!-- Avis 3 -->
-                <article class="avis_a_valider card">
-                    <div class="ligne-profil">
-                        <img src="img/Employe/Alexandre.png" alt="Photo de profil d'Alexandre" class="photo-profil" width="60" height="60">
-                        <p class="pseudo">Alexandre</p>
-                    </div>
-
-                    <div class="ligne-commentaire">
-                        <p>"Super trajet, conducteur ponctuel et sympa. Voiture propre, je recommande !"</p>
-                        <div class="etoiles">
-                            <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                            <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                            <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                            <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                            <span class="material-symbols-outlined" aria-hidden="true">star</span>
-                        </div>
-                    </div>
-                    
-                    <div class="boutons-avis">
-                        <button class="button" type="button" aria-label="Valider l’avis d'Alexandre'">Valider</button>
-                        <button class="button" type="button" aria-label="Refuser l’avis d'Alexandre">Refuser</button>
-                    </div>
-                </article>                
-            </section>
-            
-            <!-- Trajets signalés -->
-            <section class="litiges card">
-                <h2>Trajets signalés</h2>
-
-                <table>
-                    <!-- colonnes -->
-                    <thead>
-                        <tr>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Calendrier" role="img">calendar_month</span>Date</th>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Trajet" role="img">route</span>Trajet</th>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Profil" role="img">person</span>Conducteur</th>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Profil" role="img">person</span>Passager</th>
-                            <th scope="col"><span class="material-symbols-outlined" aria-label="Commentaire" role="img">chat</span>Motif</th>
-                        </tr>
-                    </thead>
-                    <!-- lignes -->  
-                    <tbody>
-                        <!-- ligne 1 -->
-                        <tr>
-                            <td>04/06/2025</td>
-                            <td>n°175 : Lille --> Paris</td>
-                            <td>Elisa : elisadurez@gmail.com</td>
-                            <td>Marc : marc.scallone@orange.fr</td>
-                            <td>Comportement</td>
-                        </tr>
-                        <!-- ligne 2 -->
-                        <tr>
-                            <td>06/06/2025</td>
-                            <td>n°223 : Lyon --> Dijon</td>
-                            <td>Romain : romain.balland@wanadoo.fr</td>
-                            <td>Sophie : s.deprez@gmail.com</td>
-                            <td>Retard</td>
-                        </tr>
-                        <!-- ligne 3 -->
-                        <tr>
-                            <td>28/05/2025</td>
-                            <td>n°29 : Toulouse --> Agen</td>
-                            <td>Benjamin : benjaminprez@orange.fr</td>
-                            <td>Eric : ericmahieu@gmail.com</td>
-                            <td>Retard</td>
-                        </tr>
-                    </tbody>                                                          
-                </table>
-                <!-- VERSION 1024px -->
-                <div class="litiges-mobile">
-                    <!-- Carte 1 -->
-                    <div class="trajet-carte">
-                        <div class="trajet-info">
-                            <div class="trajet-info-header">
-                                <span class="material-symbols-outlined" aria-label="Calendrier" role="img">calendar_month</span>
-                                <span class="label">Date</span>
-                            </div>
-                            <div class="value">04/06/2025</div>
-                        </div>
-                        
-                        <div class="trajet-info">
-                            <div class="trajet-info-header">
-                                <span class="material-symbols-outlined" aria-label="Trajet" role="img">route</span>
-                                <span class="label">Trajet</span>
-                            </div>
-                            <div class="value">n°175 : Lille --> Paris</div>
-                        </div>
-                        
-                        <div class="trajet-info">
-                            <div class="trajet-info-header">
-                                <span class="material-symbols-outlined" aria-label="Profil" role="img">person</span>
-                                <span class="label">Conducteur</span>
-                            </div>
-                            <div class="value">Elisa : elisadurez@gmail.com</div>
-                        </div>
-                        
-                        <div class="trajet-info">
-                            <div class="trajet-info-header">
-                                <span class="material-symbols-outlined" aria-label="Profil" role="img">person</span>
-                                <span class="label">Passager</span>
-                            </div>
-                            <div class="value">Marc : marc.scallone@orange.fr</div>
-                        </div>
-                        
-                        <div class="trajet-info">
-                            <div class="trajet-info-header">
-                                <span class="material-symbols-outlined" aria-label="Commentaire" role="img">chat</span>
-                                <span class="label">Motif</span>
-                            </div>
-                            <div class="value">Comportement</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Carte 2 -->
-                    <div class="trajet-carte">
-                        <div class="trajet-info">
-                            <div class="trajet-info-header">
-                                <span class="material-symbols-outlined" aria-label="Calendrier" role="img">calendar_month</span>
-                                <span class="label">Date</span>
-                            </div>
-                            <div class="value">06/06/2025</div>
-                        </div>
-                        
-                        <div class="trajet-info">
-                            <div class="trajet-info-header">
-                                <span class="material-symbols-outlined" aria-label="Trajet" role="img">route</span>
-                                <span class="label">Trajet</span>
-                            </div>
-                            <div class="value">n°223 : Lyon --> Dijon</div>
-                        </div>
-                        
-                        <div class="trajet-info">
-                            <div class="trajet-info-header">
-                                <span class="material-symbols-outlined" aria-label="Profil" role="img">person</span>
-                                <span class="label">Conducteur</span>
-                            </div>
-                            <div class="value">Romain : romain.balland@wanadoo.fr</div>
-                        </div>
-                        
-                        <div class="trajet-info">
-                            <div class="trajet-info-header">
-                                <span class="material-symbols-outlined" aria-label="Profil" role="img">person</span>
-                                <span class="label">Passager</span>
-                            </div>
-                            <div class="value">Sophie : s.deprez@gmail.com</div>
-                        </div>
-                        
-                        <div class="trajet-info">
-                            <div class="trajet-info-header">
-                                <span class="material-symbols-outlined" aria-label="Commentaire" role="img">chat</span>
-                                <span class="label">Motif</span>
-                            </div>
-                            <div class="value">Retard</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Carte 3 -->
-                    <div class="trajet-carte">
-                        <div class="trajet-info">
-                            <div class="trajet-info-header">
-                                <span class="material-symbols-outlined" aria-label="Calendrier" role="img">calendar_month</span>
-                                <span class="label">Date</span>
-                            </div>
-                            <div class="value">28/05/2025</div>
-                        </div>
-                        
-                        <div class="trajet-info">
-                            <div class="trajet-info-header">
-                                <span class="material-symbols-outlined" aria-label="Trajet" role="img">route</span>
-                                <span class="label">Trajet</span>
-                            </div>
-                            <div class="value">n°29 : Toulouse --> Agen</div>
-                        </div>
-                        
-                        <div class="trajet-info">
-                            <div class="trajet-info-header">
-                                <span class="material-symbols-outlined" aria-label="Profil" role="img">person</span>
-                                <span class="label">Conducteur</span>
-                            </div>
-                            <div class="value">Benjamin : benjaminprez@orange.fr</div>
-                        </div>
-                        
-                        <div class="trajet-info">
-                            <div class="trajet-info-header">
-                                <span class="material-symbols-outlined" aria-label="Profil" role="img">person</span>
-                                <span class="label">Passager</span>
-                            </div>
-                            <div class="value">Eric : ericmahieu@gmail.com</div>
-                        </div>
-                        
-                        <div class="trajet-info">
-                            <div class="trajet-info-header">
-                                <span class="material-symbols-outlined" aria-label="Commentaire" role="img">chat</span>
-                                <span class="label">Motif</span>
-                            </div>
-                            <div class="value">Retard</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-        <!-- FOOTER -->
-        <footer>
-            <div class="footer-contenu">
-                <a href="index.html" class="logo hover-underline gradient-hover">
-                <img src="./img/logo.svg" alt="EcoRide logo">
-                <span>EcoRide</span>
-                </a>
-
-                <div class="footer-infos">
-                <strong><span class="material-symbols-outlined" aria-label="Informations" role="img">info</span> Informations</strong>
-                <p>
-                    <a href="Contact.html">contact@ecoride.fr</a><br>
-                    <a href="Mentionslegales.html">Mentions légales</a>
-                </p>
-                </div>
-
-                <div class="footer-menu">
-                <strong><span class="material-symbols-outlined" aria-label="Menu" role="img">menu</span> Menu</strong>
-                <p>
-                    <a href="Covoiturages.html">Covoiturages</a><br>
-                    <a href="Rechercher.html">Rechercher</a><br>
-                    <a href="Inscription.html">Inscription</a>
-                </p>
-                </div>
+          <div class="ligne-commentaire">
+            <p>
+              "Très bon covoiturage, bonne ambiance dans la voiture et échanges
+              agréables"
+            </p>
+            <div class="etoiles">
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >star</span
+              >
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >star</span
+              >
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >star</span
+              >
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >star</span
+              >
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >star</span
+              >
             </div>
-        </footer>
-    </body>
-</html>    
+          </div>
+
+          <div class="boutons-avis">
+            <button
+              class="button"
+              type="button"
+              aria-label="Valider l’avis de Marc"
+            >
+              Valider
+            </button>
+            <button
+              class="button"
+              type="button"
+              aria-label="Refuser l’avis de Marc"
+            >
+              Refuser
+            </button>
+          </div>
+        </article>
+
+        <!-- Avis 3 -->
+        <article class="avis_a_valider card">
+          <div class="ligne-profil">
+            <img
+              src="img/Employe/Alexandre.png"
+              alt="Photo de profil d'Alexandre"
+              class="photo-profil"
+              width="60"
+              height="60"
+            />
+            <p class="pseudo">Alexandre</p>
+          </div>
+
+          <div class="ligne-commentaire">
+            <p>
+              "Super trajet, conducteur ponctuel et sympa. Voiture propre, je
+              recommande !"
+            </p>
+            <div class="etoiles">
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >star</span
+              >
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >star</span
+              >
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >star</span
+              >
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >star</span
+              >
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >star</span
+              >
+            </div>
+          </div>
+
+          <div class="boutons-avis">
+            <button
+              class="button"
+              type="button"
+              aria-label="Valider l’avis d'Alexandre'"
+            >
+              Valider
+            </button>
+            <button
+              class="button"
+              type="button"
+              aria-label="Refuser l’avis d'Alexandre"
+            >
+              Refuser
+            </button>
+          </div>
+        </article>
+      </section>
+
+      <!-- Trajets signalés -->
+      <section class="litiges card">
+        <h2>Trajets signalés</h2>
+
+        <table>
+          <!-- colonnes -->
+          <thead>
+            <tr>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Calendrier"
+                  role="img"
+                  >calendar_month</span
+                >Date
+              </th>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Trajet"
+                  role="img"
+                  >route</span
+                >Trajet
+              </th>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Profil"
+                  role="img"
+                  >person</span
+                >Conducteur
+              </th>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Profil"
+                  role="img"
+                  >person</span
+                >Passager
+              </th>
+              <th scope="col">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Commentaire"
+                  role="img"
+                  >chat</span
+                >Motif
+              </th>
+            </tr>
+          </thead>
+          <!-- lignes -->
+          <tbody>
+            <!-- ligne 1 -->
+            <tr>
+              <td>04/06/2025</td>
+              <td>n°175 : Lille --> Paris</td>
+              <td>Elisa : elisadurez@gmail.com</td>
+              <td>Marc : marc.scallone@orange.fr</td>
+              <td>Comportement</td>
+            </tr>
+            <!-- ligne 2 -->
+            <tr>
+              <td>06/06/2025</td>
+              <td>n°223 : Lyon --> Dijon</td>
+              <td>Romain : romain.balland@wanadoo.fr</td>
+              <td>Sophie : s.deprez@gmail.com</td>
+              <td>Retard</td>
+            </tr>
+            <!-- ligne 3 -->
+            <tr>
+              <td>28/05/2025</td>
+              <td>n°29 : Toulouse --> Agen</td>
+              <td>Benjamin : benjaminprez@orange.fr</td>
+              <td>Eric : ericmahieu@gmail.com</td>
+              <td>Retard</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- VERSION 1024px -->
+        <div class="litiges-mobile">
+          <!-- Carte 1 -->
+          <div class="trajet-carte">
+            <div class="trajet-info">
+              <div class="trajet-info-header">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Calendrier"
+                  role="img"
+                  >calendar_month</span
+                >
+                <span class="label">Date</span>
+              </div>
+              <div class="value">04/06/2025</div>
+            </div>
+
+            <div class="trajet-info">
+              <div class="trajet-info-header">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Trajet"
+                  role="img"
+                  >route</span
+                >
+                <span class="label">Trajet</span>
+              </div>
+              <div class="value">n°175 : Lille --> Paris</div>
+            </div>
+
+            <div class="trajet-info">
+              <div class="trajet-info-header">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Profil"
+                  role="img"
+                  >person</span
+                >
+                <span class="label">Conducteur</span>
+              </div>
+              <div class="value">Elisa : elisadurez@gmail.com</div>
+            </div>
+
+            <div class="trajet-info">
+              <div class="trajet-info-header">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Profil"
+                  role="img"
+                  >person</span
+                >
+                <span class="label">Passager</span>
+              </div>
+              <div class="value">Marc : marc.scallone@orange.fr</div>
+            </div>
+
+            <div class="trajet-info">
+              <div class="trajet-info-header">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Commentaire"
+                  role="img"
+                  >chat</span
+                >
+                <span class="label">Motif</span>
+              </div>
+              <div class="value">Comportement</div>
+            </div>
+          </div>
+
+          <!-- Carte 2 -->
+          <div class="trajet-carte">
+            <div class="trajet-info">
+              <div class="trajet-info-header">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Calendrier"
+                  role="img"
+                  >calendar_month</span
+                >
+                <span class="label">Date</span>
+              </div>
+              <div class="value">06/06/2025</div>
+            </div>
+
+            <div class="trajet-info">
+              <div class="trajet-info-header">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Trajet"
+                  role="img"
+                  >route</span
+                >
+                <span class="label">Trajet</span>
+              </div>
+              <div class="value">n°223 : Lyon --> Dijon</div>
+            </div>
+
+            <div class="trajet-info">
+              <div class="trajet-info-header">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Profil"
+                  role="img"
+                  >person</span
+                >
+                <span class="label">Conducteur</span>
+              </div>
+              <div class="value">Romain : romain.balland@wanadoo.fr</div>
+            </div>
+
+            <div class="trajet-info">
+              <div class="trajet-info-header">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Profil"
+                  role="img"
+                  >person</span
+                >
+                <span class="label">Passager</span>
+              </div>
+              <div class="value">Sophie : s.deprez@gmail.com</div>
+            </div>
+
+            <div class="trajet-info">
+              <div class="trajet-info-header">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Commentaire"
+                  role="img"
+                  >chat</span
+                >
+                <span class="label">Motif</span>
+              </div>
+              <div class="value">Retard</div>
+            </div>
+          </div>
+
+          <!-- Carte 3 -->
+          <div class="trajet-carte">
+            <div class="trajet-info">
+              <div class="trajet-info-header">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Calendrier"
+                  role="img"
+                  >calendar_month</span
+                >
+                <span class="label">Date</span>
+              </div>
+              <div class="value">28/05/2025</div>
+            </div>
+
+            <div class="trajet-info">
+              <div class="trajet-info-header">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Trajet"
+                  role="img"
+                  >route</span
+                >
+                <span class="label">Trajet</span>
+              </div>
+              <div class="value">n°29 : Toulouse --> Agen</div>
+            </div>
+
+            <div class="trajet-info">
+              <div class="trajet-info-header">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Profil"
+                  role="img"
+                  >person</span
+                >
+                <span class="label">Conducteur</span>
+              </div>
+              <div class="value">Benjamin : benjaminprez@orange.fr</div>
+            </div>
+
+            <div class="trajet-info">
+              <div class="trajet-info-header">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Profil"
+                  role="img"
+                  >person</span
+                >
+                <span class="label">Passager</span>
+              </div>
+              <div class="value">Eric : ericmahieu@gmail.com</div>
+            </div>
+
+            <div class="trajet-info">
+              <div class="trajet-info-header">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Commentaire"
+                  role="img"
+                  >chat</span
+                >
+                <span class="label">Motif</span>
+              </div>
+              <div class="value">Retard</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-contenu">
+        <a href="index.html" class="logo hover-underline gradient-hover">
+          <img src="./img/logo.svg" alt="EcoRide logo" />
+          <span>EcoRide</span>
+        </a>
+
+        <div class="footer-infos">
+          <strong
+            ><span
+              class="material-symbols-outlined"
+              aria-label="Informations"
+              role="img"
+              >info</span
+            >
+            Informations</strong
+          >
+          <p>
+            <a href="Contact.html">contact@ecoride.fr</a><br />
+            <a href="Mentionslegales.html">Mentions légales</a>
+          </p>
+        </div>
+
+        <div class="footer-menu">
+          <strong
+            ><span
+              class="material-symbols-outlined"
+              aria-label="Menu"
+              role="img"
+              >menu</span
+            >
+            Menu</strong
+          >
+          <p>
+            <a href="Covoiturages.html">Covoiturages</a><br />
+            <a href="Rechercher.html">Rechercher</a><br />
+            <a href="Inscription.html">Inscription</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

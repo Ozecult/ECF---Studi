@@ -1,15 +1,15 @@
 /* Cards */
 .card {
-    flex: 1;
-    min-width: 280px;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    z-index: 1;
-    background-color: var(--vert-fond-de-page)
+  flex: 1;
+  min-width: 300px;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1;
+  background-color: var(--vert-fond-de-page);
 }
 
 .card::before {
@@ -19,7 +19,12 @@
   left: -4px;
   right: -4px;
   bottom: -4px;
-  background: linear-gradient(60deg, var(--vert-clair), var(--vert-fond-de-page), var(--vert-clair));
+  background: linear-gradient(
+    60deg,
+    var(--vert-clair),
+    var(--vert-fond-de-page),
+    var(--vert-clair)
+  );
   background-size: 300% 300%;
   border-radius: 16px;
   z-index: -1;
@@ -58,6 +63,20 @@
   text-align: center;
 }
 
+.card .etoiles .material-symbols-outlined {
+  font-size: 1.5rem !important; /* Taille plus petite pour les étoiles */
+  color: var(--vert-fonce) !important; /* Couleur par défaut */
+  margin: 0 !important; /* Pas de marge */
+  display: inline !important; /* En ligne, pas en bloc */
+  text-align: initial !important; /* Pas de centrage */
+  cursor: pointer; /* Curseur cliquable */
+  transition: color 0.2s ease, transform 0.1s ease; /* Animation douce */
+}
+
+.card .etoiles .material-symbols-outlined:hover {
+  transform: scale(1.1); /* Effet de survol */
+}
+
 .card h3 {
   margin: 0 0 1rem 0;
   line-height: 1.3;
@@ -66,17 +85,21 @@
 }
 
 .card h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 150px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--vert-fond-de-page), var(--vert-clair));
-    border-radius: 2px;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 150px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--vert-fond-de-page),
+    var(--vert-clair)
+  );
+  border-radius: 2px;
 }
 
-.card p{
+.card p {
   line-height: 1.5;
   margin: 0;
 }

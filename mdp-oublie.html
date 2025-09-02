@@ -1,111 +1,191 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !">
-        <title>EcoRide - Un oubli ?</title>
-        <link rel="stylesheet" href="./css/style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-        <script type="module" src="./js/script.js"></script>
-    </head>
-    <body>
-        <!-- HEADER -->
-        <header>
-            <!-- MENU -->
-            <div class="menu">
-                <!-- Logo cliquable -->
-                <a href="index.html" class="logo hover-underline gradient-hover"><img src="./img/logo.svg" alt="Logo EcoRide"><span>EcoRide</span></a>
-            
-                <!-- Navigation principale -->
-                <nav aria-label="Menu principal">
-                    <ul class="nav">
-                        <li class="nav-item"><a href="Covoiturages.html" class="hover-underline gradient-hover">Covoiturages</a></li>
-                        <li class="nav-item"><a href="Contact.html" class="hover-underline gradient-hover">Contact</a></li>
-                        <li class="nav-item"><a href="Rechercher.html" class="hover-underline gradient-hover">Rechercher</a></li>
-                    </ul>
-                </nav>
-            
-                <!-- Bouton profil avec menu déroulant -->
-                <div class="bouton-profile">
-                    <button id="menu-deroulant">
-                        <span class="material-symbols-outlined burger-icon">menu</span>
-                        <span class="material-symbols-outlined" aria-label="menu-deroulant" role="img">account_circle</span>
-                    </button>
-                    <nav class="mobile-nav-menu" id="mobile-nav-menu">
-                        <ul>
-                            <li><a href="Covoiturages.html">Covoiturages</a></li>
-                            <li><a href="Contact.html">Contact</a></li>
-                            <li><a href="Rechercher.html">Rechercher</a></li>
-                        </ul>
-                    </nav>
-                    <div id="menu-profile" class="menu-profile">
-                        <a href="Connexion.html">Se connecter</a>
-                        <a href="Inscription.html">S’inscrire</a>
-                    </div>
-                </div>
-            </div>
-        </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
+    />
+    <title>EcoRide - Un oubli ?</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script type="module" src="./js/script.js"></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <!-- MENU -->
+      <div class="menu">
+        <!-- Logo cliquable -->
+        <a href="index.html" class="logo hover-underline gradient-hover"
+          ><img src="./img/logo.svg" alt="Logo EcoRide" /><span
+            >EcoRide</span
+          ></a
+        >
 
-        <!-- MAIN -->
-        <main class="password">
-            <h1>Je réinitialise mon mot de passe</h1>
+        <!-- Navigation principale -->
+        <nav aria-label="Menu principal">
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="Covoiturages.html" class="hover-underline gradient-hover"
+                >Covoiturages</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="Contact.html" class="hover-underline gradient-hover"
+                >Contact</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="Rechercher.html" class="hover-underline gradient-hover"
+                >Rechercher</a
+              >
+            </li>
+          </ul>
+        </nav>
 
-            <form action="index.html" class="mdp-oublie card" method="post" autocomplete="on">
-                <div class="form-group card">
-                    <label for="email"><span class="material-symbols-outlined" aria-label="Email" role="img">email</span>Entrez votre adresse email :</label>
-                    <input type="email" name="email" id="email" required>
-                </div>
-                <div class="button card">
-                    <button type="submit">Réinitialiser mon mot de passe</button>
-                </div>
-            </form>
-             <!-- CARDS TEXTE -->
-            <section class="valeurs">
-                <div class="card">
-                    <span class="material-icons" aria-label="Mains serrées" role="img">handshake</span>
-                    <h3>Simple, humain et responsable</h3>
-                    <p>Une plateforme pensée pour des trajets entre personnes de confiance, engagées dans une démarche solidaire. L’interface va à l’essentiel : trouver un trajet, échanger facilement, voyager sereinement.</p>     
-                </div>
-                <div class="card">
-                    <span class="material-icons" aria-label="Balance" role="img">balance</span>
-                    <h3>Économique et sans surprises</h3>
-                    <p>Partage équitable des frais entre conducteurs et passagers. Pas de commissions opaques, pas de publicité invasive : tout est transparent pour favoriser la confiance et l’accessibilité.</p>     
-                </div>
-                <div class="card">
-                    <span class="material-icons" aria-label="Ecologique" role="img">volunteer_activism</span>
-                    <h3>Écologique par essence</h3>
-                    <p>EcoRide met en avant les véhicules électriques, mais accepte aussi les thermiques pour maximiser les trajets partagés. Chaque trajet évite des émissions grâce au covoiturage, et vous pouvez suivre votre impact carbone évité.</p>     
-                </div>
-            </section>
-        </main>
-        <!-- FOOTER -->
-        <footer>
-            <div class="footer-contenu">
-                <a href="index.html" class="logo hover-underline gradient-hover">
-                <img src="./img/logo.svg" alt="EcoRide logo">
-                <span>EcoRide</span>
-                </a>
+        <!-- Bouton profil avec menu déroulant -->
+        <div class="bouton-profile">
+          <button id="menu-deroulant">
+            <span class="material-symbols-outlined burger-icon">menu</span>
+            <span
+              class="material-symbols-outlined"
+              aria-label="menu-deroulant"
+              role="img"
+              >account_circle</span
+            >
+          </button>
+          <nav class="mobile-nav-menu" id="mobile-nav-menu">
+            <ul>
+              <li><a href="Covoiturages.html">Covoiturages</a></li>
+              <li><a href="Contact.html">Contact</a></li>
+              <li><a href="Rechercher.html">Rechercher</a></li>
+            </ul>
+          </nav>
+          <div id="menu-profile" class="menu-profile">
+            <a href="Connexion.html">Se connecter</a>
+            <a href="Inscription.html">S’inscrire</a>
+          </div>
+        </div>
+      </div>
+    </header>
 
-                <div class="footer-infos">
-                <strong><span class="material-symbols-outlined" aria-label="Informations" role="img">info</span> Informations</strong>
-                <p>
-                    <a href="Contact.html">contact@ecoride.fr</a><br>
-                    <a href="Mentionslegales.html">Mentions légales</a>
-                </p>
-                </div>
+    <!-- MAIN -->
+    <main class="password">
+      <h1>Je réinitialise mon mot de passe</h1>
 
-                <div class="footer-menu">
-                <strong><span class="material-symbols-outlined" aria-label="Menu" role="img">menu</span> Menu</strong>
-                <p>
-                    <a href="Covoiturages.html">Covoiturages</a><br>
-                    <a href="Rechercher.html">Rechercher</a><br>
-                    <a href="Inscription.html">Inscription</a>
-                </p>
-                </div>
-            </div>
-        </footer>
-    </body>
+      <form
+        action="index.html"
+        class="mdp-oublie card"
+        method="post"
+        autocomplete="on"
+      >
+        <div class="form-group card">
+          <label for="email"
+            ><span
+              class="material-symbols-outlined"
+              aria-label="Email"
+              role="img"
+              >email</span
+            >Entrez votre adresse email :</label
+          >
+          <input type="email" name="email" id="email" required />
+        </div>
+        <div class="button card">
+          <button type="submit">Réinitialiser mon mot de passe</button>
+        </div>
+      </form>
+      <!-- CARDS TEXTE -->
+      <section class="valeurs">
+        <div class="card">
+          <span class="material-icons" aria-label="Mains serrées" role="img"
+            >handshake</span
+          >
+          <h3>Simple, humain et responsable</h3>
+          <p>
+            Une plateforme pensée pour des trajets entre personnes de confiance,
+            engagées dans une démarche solidaire. L’interface va à l’essentiel :
+            trouver un trajet, échanger facilement, voyager sereinement.
+          </p>
+        </div>
+        <div class="card">
+          <span class="material-icons" aria-label="Balance" role="img"
+            >balance</span
+          >
+          <h3>Économique et sans surprises</h3>
+          <p>
+            Partage équitable des frais entre conducteurs et passagers. Pas de
+            commissions opaques, pas de publicité invasive : tout est
+            transparent pour favoriser la confiance et l’accessibilité.
+          </p>
+        </div>
+        <div class="card">
+          <span class="material-icons" aria-label="Ecologique" role="img"
+            >volunteer_activism</span
+          >
+          <h3>Écologique par essence</h3>
+          <p>
+            EcoRide met en avant les véhicules électriques, mais accepte aussi
+            les thermiques pour maximiser les trajets partagés. Chaque trajet
+            évite des émissions grâce au covoiturage, et vous pouvez suivre
+            votre impact carbone évité.
+          </p>
+        </div>
+      </section>
+    </main>
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-contenu">
+        <a href="index.html" class="logo hover-underline gradient-hover">
+          <img src="./img/logo.svg" alt="EcoRide logo" />
+          <span>EcoRide</span>
+        </a>
+
+        <div class="footer-infos">
+          <strong
+            ><span
+              class="material-symbols-outlined"
+              aria-label="Informations"
+              role="img"
+              >info</span
+            >
+            Informations</strong
+          >
+          <p>
+            <a href="Contact.html">contact@ecoride.fr</a><br />
+            <a href="Mentionslegales.html">Mentions légales</a>
+          </p>
+        </div>
+
+        <div class="footer-menu">
+          <strong
+            ><span
+              class="material-symbols-outlined"
+              aria-label="Menu"
+              role="img"
+              >menu</span
+            >
+            Menu</strong
+          >
+          <p>
+            <a href="Covoiturages.html">Covoiturages</a><br />
+            <a href="Rechercher.html">Rechercher</a><br />
+            <a href="Inscription.html">Inscription</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
