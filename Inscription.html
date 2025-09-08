@@ -93,6 +93,47 @@
         >
           <fieldset>
             <legend>Vos identifiants</legend>
+            <!-- Prénom -->
+            <div class="form-group card">
+              <label for="prenom">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Prénom"
+                  role="img"
+                  >person</span
+                >
+                Entrez votre prénom
+              </label>
+              <input
+                type="text"
+                name="prenom"
+                id="prenom"
+                required
+                autocomplete="given-name"
+              />
+              <div class="error-text" id="error-prenom"></div>
+            </div>
+
+            <!-- Nom -->
+            <div class="form-group card">
+              <label for="nom">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Nom"
+                  role="img"
+                  >badge</span
+                >
+                Entrez votre nom
+              </label>
+              <input
+                type="text"
+                name="nom"
+                id="nom"
+                required
+                autocomplete="family-name"
+              />
+              <div class="error-text" id="error-nom"></div>
+            </div>
             <!-- email -->
             <div class="form-group card">
               <label for="email"

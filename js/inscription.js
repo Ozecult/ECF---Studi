@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Sélection du formulaire par son ID
   const form = document.getElementById("form-inscription");
   const btnInscription = document.getElementById("btn-inscription");
 
@@ -14,8 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelector(".formulaire-inscription")
     );
 
-  // Validation en temps réel
-  const champs = ["email", "password", "password2"];
+  // Validation en temps réel - AJOUT DES NOUVEAUX CHAMPS
+  const champs = ["prenom", "nom", "email", "password", "password2"];
 
   champs.forEach((champ) => {
     const input = document.getElementById(champ);
@@ -24,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
       input.addEventListener("input", () => {
         if (champ === "password") {
           verifierForceMotDePasse();
-          // Si password2 a déjà du contenu, revérifier la correspondance
           const confirm = document.getElementById("password2");
           if (confirm && confirm.value) {
             verifierConfirmationMotDePasse();
@@ -40,17 +38,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // Soumission du formulaire
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
-
     if (await validerFormulaire()) {
       await soumettreFormulaire();
     }
   });
 
-  // Validation
+  // Validation - AJOUT DE LA VALIDATION POUR NOM ET PRENOM
   function validerChamp(nomChamp) {
     const input = document.getElementById(nomChamp);
     const errorDiv = document.getElementById(`error-${nomChamp}`);
-    let isValid = true; // Correction : était TextTrackCue
+    let isValid = true;
     let message = "";
 
     // Nettoyer l'état précédent
@@ -58,6 +55,32 @@ document.addEventListener("DOMContentLoaded", function () {
     if (errorDiv) errorDiv.style.display = "none";
 
     switch (nomChamp) {
+      case "prenom":
+        if (!input.value.trim()) {
+          message = "Le prénom est obligatoire";
+          isValid = false;
+        } else if (input.value.trim().length < 2) {
+          message = "Le prénom doit contenir au moins 2 caractères";
+          isValid = false;
+        } else if (!/^[a-zA-ZÀ-ÿ\-\s']+$/.test(input.value.trim())) {
+          message = "Le prénom ne doit contenir que des lettres";
+          isValid = false;
+        }
+        break;
+
+      case "nom":
+        if (!input.value.trim()) {
+          message = "Le nom est obligatoire";
+          isValid = false;
+        } else if (input.value.trim().length < 2) {
+          message = "Le nom doit contenir au moins 2 caractères";
+          isValid = false;
+        } else if (!/^[a-zA-ZÀ-ÿ\-\s']+$/.test(input.value.trim())) {
+          message = "Le nom ne doit contenir que des lettres";
+          isValid = false;
+        }
+        break;
+
       case "email":
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!input.value.trim()) {
@@ -127,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
       case 0:
       case 1:
       case 2:
-        message = "Mot de passe faible"; // Correction : ajout du =
+        message = "Mot de passe faible";
         classe = "strength-weak";
         break;
       case 3:
@@ -151,16 +174,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const password = document.getElementById("password").value;
     const confirm = document.getElementById("password2").value;
 
-    // Ne valider que si les deux champs ont du contenu
-    // et si l'utilisateur a fini de taper (pas en cours de frappe)
     if (confirm && confirm.length > 0 && password && password.length > 0) {
-      // Ajouter un petit délai pour éviter la validation pendant la frappe
       clearTimeout(window.passwordTimeout);
       window.passwordTimeout = setTimeout(() => {
         if (password !== confirm) {
           validerChamp("password2");
         } else {
-          // Si les mots de passe correspondent, effacer l'erreur
           const input = document.getElementById("password2");
           const errorDiv = document.getElementById("error-password2");
           if (input && errorDiv) {
@@ -169,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
             errorDiv.style.display = "none";
           }
         }
-      }, 500); // Attendre 500ms après la dernière frappe
+      }, 500);
     }
   }
 
@@ -191,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
         errorCgu.textContent = "Vous devez accepter les conditions générales";
         errorCgu.style.display = "block";
       }
-      isValid = false; // Correction : était FontFaceSetLoadEvent
+      isValid = false;
     } else {
       if (errorCgu) errorCgu.style.display = "none";
     }
@@ -262,6 +281,11 @@ document.addEventListener("DOMContentLoaded", function () {
             success: true,
             message: "Email de validation envoyé",
             validationToken: generateValidationToken(),
+            userData: {
+              prenom: data.prenom,
+              nom: data.nom,
+              email: data.email,
+            },
           });
         }
       }, 1500);
@@ -299,7 +323,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function afficherMessage(message, type) {
     messageGlobal.textContent = message;
     messageGlobal.className = `message-global ${type}`;
-    messageGlobal.style.display = "block"; // Correction : était CSSLayerBlockRule"block"
+    messageGlobal.style.display = "block";
 
     // Masquer après 5 secondes si succès
     if (type === "success") {
@@ -350,7 +374,6 @@ function togglePassword(fieldId) {
 
 // Fonction pour gérer la validation d'email (à appeler depuis une page de validation)
 function validerEmail(token) {
-  // Cette fonction serait appelée depuis une page de validation d'email
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (token && token.length > 10) {

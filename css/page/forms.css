@@ -1,5 +1,5 @@
 /*===========================================
-   CONTENEUR PRINCIPAL ET STRUCTURE
+   CONTENEUR PRINCIPAL
    ==========================================*/
 .connexion {
   display: flex;
@@ -155,7 +155,7 @@ input:required:valid:not(:focus):not(:placeholder-shown) {
 }
 
 /*===========================================
-   CHECKBOXES (VERSION OPTIMISÉE)
+   CHECKBOXES
    ==========================================*/
 .form-group:has(input[type="checkbox"]) {
   display: flex;
