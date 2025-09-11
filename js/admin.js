@@ -298,7 +298,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!container) return;
 
     const data = obtenirDonneesCovoiturages("jour");
-    creerWidget(container, data, "var(--vert-clair)", "covoiturages");
+    creerWidget(container, data, "var(--vert-fonce)", "Covoiturages");
   }
 
   function creerWidgetCredits() {
@@ -306,76 +306,199 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!container) return;
 
     const data = obtenirDonneesCredits("jour");
-    creerWidget(container, data, "var(--vert-fonce)", "crédits");
+    creerWidget(container, data, "var(--vert-fonce)", "Crédits");
   }
 
   function creerWidget(container, data, couleur, type) {
+    console.log("creerWidget appelée pour", type);
     const widgetDiv = document.createElement("div");
     widgetDiv.className = "widget-stats";
+
+    // Styles responsive basés sur la taille de l'écran
+    const isMobile = window.innerWidth <= 480;
+    const isTablet = window.innerWidth <= 768;
+
+    const paddingValue = isMobile ? "1rem" : isTablet ? "1.5rem" : "2rem";
+    const minHeightValue = isMobile ? "120px" : isTablet ? "150px" : "180px";
+
     widgetDiv.style.cssText = `
-      background: linear-gradient(135deg, var(--vert-fond-structure), var(--vert-fond-de-page));
-      border: 1px solid var(--vert-clair);
-      border-radius: 12px;
-      padding: 20px;
-      margin: 10px 0;
-      position: relative;
-      min-height: 120px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    `;
+    background: linear-gradient(135deg, var(--vert-fond-structure), var(--vert-fond-de-page));
+    padding: ${paddingValue};
+    margin: 0;
+    position: relative;
+    min-height: ${minHeightValue};
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: block;
+  `;
 
     const total = data.values.reduce((sum, val) => sum + val, 0);
     const moyenne = Math.round(total / data.values.length);
     const maximum = Math.max(...data.values);
 
+    // Layout responsive pour le contenu
+    const headerLayout = isMobile ? "column" : "row";
+    const gridColumns = isMobile ? "1fr" : isTablet ? "1fr 1fr" : "1fr 1fr 1fr";
+    const fontSize = isMobile ? "20px" : "24px";
+    const titleFontSize = isMobile ? "14px" : "16px";
+
     widgetDiv.innerHTML = `
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-        <h3 style="margin: 0; color: ${couleur}; font-size: 16px;">${
+    <div style="display: flex; flex-direction: ${headerLayout}; justify-content: space-between; align-items: center; margin-bottom: 15px; gap: ${
+      isMobile ? "8px" : "0"
+    };">
+      <h3 style="margin: 0; color: ${couleur}; font-size: ${titleFontSize};">${
       container.querySelector("p")?.textContent || type
     }</h3>
-        <span style="background: ${couleur}; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">
-          Total: ${total}
-        </span>
-      </div>
-      
-      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 15px;">
-        <div style="text-align: center;">
-          <div style="font-size: 24px; font-weight: bold; color: ${couleur};">${
+      <span style="background: ${couleur}; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">
+        Total: ${total}
+      </span>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: ${gridColumns}; gap: ${
+      isMobile ? "10px" : "15px"
+    }; margin-bottom: 15px;">
+      <div style="text-align: center;">
+        <div style="font-size: ${fontSize}; font-weight: bold; color: ${couleur};">${
       data.values[data.values.length - 1]
     }</div>
-          <div style="font-size: 12px; color: var(--noir-secondaire); text-transform: uppercase;">Aujourd'hui</div>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-size: 24px; font-weight: bold; color: ${couleur};">${moyenne}</div>
-          <div style="font-size: 12px; color: var(--noir-secondaire); text-transform: uppercase;">Moyenne</div>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-size: 24px; font-weight: bold; color: ${couleur};">${maximum}</div>
-          <div style="font-size: 12px; color: var(--noir-secondaire); text-transform: uppercase;">Maximum</div>
-        </div>
+        <div style="font-size: 12px; color: var(--noir-secondaire); text-transform: uppercase;">Aujourd'hui</div>
       </div>
-      
-      <div style="display: flex; gap: 2px; height: 6px; background: var(--vert-fond-de-page); border-radius: 3px; overflow: hidden;">
-        ${data.values
-          .map(
-            (val) => `
-          <div style="flex: 1; background: ${couleur}; opacity: ${
-              0.3 + (val / maximum) * 0.7
-            };"></div>
-        `
-          )
-          .join("")}
+      <div style="text-align: center;">
+        <div style="font-size: ${fontSize}; font-weight: bold; color: ${couleur};">${moyenne}</div>
+        <div style="font-size: 12px; color: var(--noir-secondaire); text-transform: uppercase;">Moyenne</div>
       </div>
-      
-      <div style="margin-top: 10px; font-size: 11px; color: var(--noir-secondaire); text-align: center;">
-        ${data.labels.join(" • ")}
+      ${
+        !isMobile || gridColumns === "1fr"
+          ? `
+      <div style="text-align: center;">
+        <div style="font-size: ${fontSize}; font-weight: bold; color: ${couleur};">${maximum}</div>
+        <div style="font-size: 12px; color: var(--noir-secondaire); text-transform: uppercase;">Maximum</div>
       </div>
-    `;
+      `
+          : ""
+      }
+    </div>
+    
+    <div style="display: flex; gap: 2px; height: 6px; background: var(--vert-fond-de-page); border-radius: 3px; overflow: hidden; margin-bottom: 10px;">
+      ${data.values
+        .map(
+          (val) => `
+        <div style="flex: 1; background: ${couleur}; opacity: ${
+            0.3 + (val / maximum) * 0.7
+          };"></div>
+      `
+        )
+        .join("")}
+    </div>
+    
+    <div style="margin-top: 10px; font-size: ${
+      isMobile ? "10px" : "11px"
+    }; color: var(--noir-secondaire); text-align: center; line-height: 1.4;">
+      ${data.labels.join(isMobile ? " | " : " • ")}
+    </div>
+  `;
 
-    // Remplacer le contenu du container
+    // Remplacer le contenu du container en préservant la largeur complète
     const p = container.querySelector("p");
+    container.style.padding = "0";
+    container.classList.add("has-widget-stats");
     container.innerHTML = "";
     if (p) container.appendChild(p);
     container.appendChild(widgetDiv);
+  }
+
+  // Fonction pour gérer le redimensionnement
+  function handleResize() {
+    // Réinitialiser les widgets lors du redimensionnement
+    const periodeSelect = document.getElementById("periode-select");
+    if (periodeSelect) {
+      const periode = periodeSelect.value || "jour";
+
+      // Recréer les widgets avec les nouvelles dimensions
+      const covoituragesContainer =
+        document.getElementById("graph-covoiturages");
+      const creditsContainer = document.getElementById("graph-credits");
+
+      if (covoituragesContainer) {
+        const data = obtenirDonneesCovoiturages(periode);
+        creerWidget(
+          covoituragesContainer,
+          data,
+          "var(--vert-fonce)",
+          "Covoiturages"
+        );
+      }
+
+      if (creditsContainer) {
+        const data = obtenirDonneesCredits(periode);
+        creerWidget(creditsContainer, data, "var(--vert-fonce)", "Crédits");
+      }
+    }
+  }
+
+  // Ajouter l'écouteur de redimensionnement avec debounce
+  let resizeTimeout;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(handleResize, 150);
+  });
+
+  // Fonction améliorée pour créer les widgets de statistiques
+  function creerWidgetStatistiques() {
+    const sectionStats = document.querySelector(".statistiques");
+    if (!sectionStats) return;
+
+    // S'assurer que la section utilise toute la largeur
+    sectionStats.style.width = "100%";
+    sectionStats.style.boxSizing = "border-box";
+
+    // Supprimer les anciens graphiques s'ils existent
+    const anciennesStats = sectionStats.querySelectorAll(".graphique");
+    anciennesStats.forEach((graph) => {
+      const p = graph.querySelector("p");
+      if (p) {
+        graph.innerHTML = "";
+        graph.appendChild(p);
+        // S'assurer que le container du graphique utilise toute la largeur
+        graph.style.width = "100%";
+        graph.style.boxSizing = "border-box";
+      }
+    });
+
+    // Créer les widgets de statistiques
+    creerWidgetCovoiturages();
+    creerWidgetCredits();
+  }
+
+  // Fonction améliorée pour le changement de période
+  function changerPeriode() {
+    const periodeSelect = document.getElementById("periode-select");
+    const periode = periodeSelect?.value;
+    if (!periode) return;
+
+    // Mettre à jour les widgets avec responsivité
+    const covoituragesContainer = document.getElementById("graph-covoiturages");
+    const creditsContainer = document.getElementById("graph-credits");
+
+    if (covoituragesContainer) {
+      const data = obtenirDonneesCovoiturages(periode);
+      creerWidget(
+        covoituragesContainer,
+        data,
+        "var(--vert-fonce)",
+        "Covoiturages"
+      );
+    }
+
+    if (creditsContainer) {
+      const data = obtenirDonneesCredits(periode);
+      creerWidget(creditsContainer, data, "var(--vert-fonce)", "Crédits");
+    }
+
+    // Mettre à jour le total général
+    mettreAJourTotalCredits(periode);
   }
 
   function obtenirDonneesCovoiturages(periode) {
@@ -436,14 +559,14 @@ document.addEventListener("DOMContentLoaded", function () {
       creerWidget(
         covoituragesContainer,
         data,
-        "var(--vert-clair)",
-        "covoiturages"
+        "var(--vert-fonce)",
+        "Covoiturages"
       );
     }
 
     if (creditsContainer) {
       const data = obtenirDonneesCredits(periode);
-      creerWidget(creditsContainer, data, "var(--vert-fonce)", "crédits");
+      creerWidget(creditsContainer, data, "var(--vert-fonce)", "Crédits");
     }
 
     // Mettre à jour le total général si nécessaire
@@ -915,3 +1038,7 @@ styles.textContent = `
   });
 `;
 document.head.appendChild(styles);
+// Gérer le redimensionnement
+window.addEventListener("resize", function () {
+  setTimeout(() => changerPeriode(), 100);
+});

@@ -8,7 +8,7 @@
       content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
     />
     <title>EcoRide - Covoiturages</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -21,141 +21,16 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
       rel="stylesheet"
     />
-    <script type="module" src="./js/script.js"></script>
+    <script type="module" src="../js/script.js"></script>
   </head>
   <body>
     <!-- HEADER -->
-    <header>
-      <!-- MENU -->
-      <div class="menu">
-        <!-- Logo cliquable -->
-        <a href="index.html" class="logo hover-underline gradient-hover"
-          ><img src="./img/logo.svg" alt="Logo EcoRide" /><span
-            >EcoRide</span
-          ></a
-        >
-
-        <!-- Navigation principale -->
-        <nav aria-label="Menu principal">
-          <ul class="nav">
-            <li class="nav-item">
-              <a href="Covoiturages.html" class="hover-underline gradient-hover"
-                >Covoiturages</a
-              >
-            </li>
-            <li class="nav-item">
-              <a href="Contact.html" class="hover-underline gradient-hover"
-                >Contact</a
-              >
-            </li>
-            <li class="nav-item">
-              <a href="Rechercher.html" class="hover-underline gradient-hover"
-                >Rechercher</a
-              >
-            </li>
-          </ul>
-        </nav>
-
-        <!-- Bouton profil avec menu déroulant -->
-        <div class="bouton-profile">
-          <button id="menu-deroulant">
-            <span class="material-symbols-outlined burger-icon">menu</span>
-            <span
-              class="material-symbols-outlined"
-              aria-label="menu-deroulant"
-              role="img"
-              >account_circle</span
-            >
-          </button>
-          <nav class="mobile-nav-menu" id="mobile-nav-menu">
-            <ul>
-              <li><a href="Covoiturages.html">Covoiturages</a></li>
-              <li><a href="Contact.html">Contact</a></li>
-              <li><a href="Rechercher.html">Rechercher</a></li>
-            </ul>
-          </nav>
-          <div id="menu-profile" class="menu-profile">
-            <a href="Connexion.html">Se connecter</a>
-            <a href="Inscription.html">S’inscrire</a>
-          </div>
-        </div>
-      </div>
-    </header>
+    <?php require 'header.php'; ?>
 
     <!-- MAIN -->
     <main id="contenu" class="covoiturages">
       <!-- BARRE DE RECHERCHE -->
-      <section class="recherche">
-        <h2>Rechercher un covoiturage</h2>
-        <form action="Covoiturages.html" method="get" autocomplete="on">
-          <!-- Départ -->
-          <div class="choix">
-            <label for="depart">
-              <span
-                class="material-symbols-outlined"
-                aria-label="Départ"
-                role="img"
-                >home_pin</span
-              >
-              <span>Départ</span>
-            </label>
-            <input type="text" name="depart" id="depart" required />
-            <div class="suggestions" id="suggestions-depart"></div>
-          </div>
-
-          <!-- Destination -->
-          <div class="choix">
-            <label for="destination">
-              <span
-                class="material-symbols-outlined"
-                aria-label="Destination"
-                role="img"
-                >location_on</span
-              >
-              <span>Destination</span>
-            </label>
-            <input type="text" name="destination" id="destination" required />
-            <div class="suggestions" id="suggestions-destination"></div>
-          </div>
-          <!-- Date -->
-          <div class="choix" data-field="date">
-            <label for="date">
-              <span
-                class="material-symbols-outlined"
-                aria-label="Calendrier"
-                role="img"
-                >calendar_month</span
-              >
-            </label>
-            <input type="text" name="date" id="date" required />
-          </div>
-
-          <!-- Passagers -->
-          <div class="choix" data-field="passagers">
-            <label for="passagers" class="form-label">
-              <span
-                class="material-symbols-outlined"
-                aria-label="passager"
-                role="img"
-                >group</span
-              >
-              <span class="visually-hidden">Passagers</span>
-            </label>
-            <select name="passagers" id="passagers">
-              <option value="1" selected>1 passager</option>
-              <option value="2">2 passagers</option>
-              <option value="3">3 passagers</option>
-              <option value="4">4 passagers</option>
-              <option value="5">5 passagers</option>
-              <option value="6">6 passagers</option>
-              <option value="7">7 passagers</option>
-              <option value="8">8 passagers</option>
-            </select>
-          </div>
-          <!-- Bouton -->
-          <button id="cherche" type="submit">Rechercher</button>
-        </form>
-      </section>
+      <?php require 'barrerecherche.php'; ?>
 
       <!--TITRE -->
       <h1>Résultats disponibles</h1>
@@ -302,11 +177,11 @@
                       <span class="material-symbols-outlined">star</span>
                       <span class="material-symbols-outlined">star</span>
                     </div>
-                    <a href="Details.html" class="details">Détails</a>
+                    <a href="details.php" class="details">Détails</a>
                   </div>
                   <!-- photo -->
                   <img
-                    src="img/Covoiturages/Elisa.png"
+                    src="../img/Covoiturages/Elisa.png"
                     alt="Photo de profil"
                     class="photo-profil"
                     width="80"
@@ -374,11 +249,11 @@
                       <span class="material-symbols-outlined">star</span>
                       <span class="material-symbols-outlined">star</span>
                     </div>
-                    <a href="Details.html" class="details">Détails</a>
+                    <a href="details.php" class="details">Détails</a>
                   </div>
                   <!-- photo -->
                   <img
-                    src="img/Covoiturages/Marc.png"
+                    src="../img/Covoiturages/Marc.png"
                     alt="Photo de profil"
                     class="photo-profil"
                     width="80"
@@ -439,11 +314,11 @@
                       <span class="material-symbols-outlined">star</span>
                       <span class="material-symbols-outlined">star</span>
                     </div>
-                    <a href="Details.html" class="details">Détails</a>
+                    <a href="details.php" class="details">Détails</a>
                   </div>
                   <!-- photo -->
                   <img
-                    src="img/Covoiturages/Jennifer.png"
+                    src="../img/Covoiturages/Jennifer.png"
                     alt="Photo de profil"
                     class="photo-profil"
                     width="80"
@@ -504,11 +379,11 @@
                       <span class="material-symbols-outlined">star</span>
                       <span class="material-symbols-outlined">star</span>
                     </div>
-                    <a href="Details.html" class="details">Détails</a>
+                    <a href="details.php" class="details">Détails</a>
                   </div>
                   <!-- photo -->
                   <img
-                    src="img/Covoiturages/Paul.png"
+                    src="../img/Covoiturages/Paul.png"
                     alt="Photo de profil"
                     class="photo-profil"
                     width="80"
@@ -576,11 +451,11 @@
                       <span class="material-symbols-outlined">star</span>
                       <span class="material-symbols-outlined">star</span>
                     </div>
-                    <a href="Details.html" class="details">Détails</a>
+                    <a href="details.php" class="details">Détails</a>
                   </div>
                   <!-- photo -->
                   <img
-                    src="img/Covoiturages/Léa.png"
+                    src="../img/Covoiturages/Léa.png"
                     alt="Photo de profil"
                     class="photo-profil"
                     width="80"
@@ -638,46 +513,6 @@
     </main>
 
     <!-- FOOTER -->
-    <footer>
-      <div class="footer-contenu">
-        <a href="index.html" class="logo hover-underline gradient-hover">
-          <img src="./img/logo.svg" alt="EcoRide logo" />
-          <span>EcoRide</span>
-        </a>
-
-        <div class="footer-infos">
-          <strong
-            ><span
-              class="material-symbols-outlined"
-              aria-label="Informations"
-              role="img"
-              >info</span
-            >
-            Informations</strong
-          >
-          <p>
-            <a href="Contact.html">contact@ecoride.fr</a><br />
-            <a href="Mentionslegales.html">Mentions légales</a>
-          </p>
-        </div>
-
-        <div class="footer-menu">
-          <strong
-            ><span
-              class="material-symbols-outlined"
-              aria-label="Menu"
-              role="img"
-              >menu</span
-            >
-            Menu</strong
-          >
-          <p>
-            <a href="Covoiturages.html">Covoiturages</a><br />
-            <a href="Rechercher.html">Rechercher</a><br />
-            <a href="Inscription.html">Inscription</a>
-          </p>
-        </div>
-      </div>
-    </footer>
+    <?php require 'footer.php'; ?>
   </body>
 </html>

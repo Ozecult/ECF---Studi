@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Rediriger vers la page de connexion après 5 secondes
       setTimeout(() => {
-        window.location.href = "Connexion.html";
+        window.location.href = "../php/connexion.php";
       }, 5000);
     } catch (error) {
       // En cas d'erreur

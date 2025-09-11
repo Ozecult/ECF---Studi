@@ -123,36 +123,91 @@ fieldset legend {
   margin-bottom: 2rem;
 }
 
+/* Container des graphiques responsive */
+.statistiques {
+  width: 100%;
+}
+
 /* Graphiques */
 .graphique {
-  background: white;
+  width: 100%;
+  background: var(--vert-fond-de-page);
   border-radius: 8px;
-  padding: 2rem;
+  padding: 0; /* Enlever le padding quand contient un widget */
   margin-bottom: 1.5rem;
   text-align: center;
   border: 1px solid var(--vert-fonce);
   min-height: 200px;
   display: flex;
-  align-items: center;
+  align-items: stretch; /* Permettre au contenu de s'étendre */
   justify-content: center;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.graphique p {
-  font-size: 1.2rem;
-  color: var(--noir-secondaire);
-  font-style: italic;
+.graphique:hover {
+  border-color: var(--vert-clair);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.graphique.has-widget-stats {
+  display: block;
+  padding: 0;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.graphique.has-widget-stats .widget-stats {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
   margin: 0;
+  box-sizing: border-box;
+  min-height: 100%;
+}
+
+.graphique .widget-stats {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+
+#graph-covoiturages .widget-stats,
+#graph-credits .widget-stats {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  display: block;
+  box-sizing: border-box;
+}
+
+/* Widgets statistiques générés par JavaScript */
+.widget-stats {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+/* Layout en grille pour les graphiques côte à côte sur desktop */
+.graphiques-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
 }
 
 /* Total crédits */
 .statistiques > p {
   text-align: center;
   margin-top: 1.5rem;
+  grid-column: 1 / -1;
 }
 
 .statistiques > p strong {
@@ -310,6 +365,15 @@ fieldset legend {
   .card {
     padding: 1.5rem;
   }
+
+  .graphique {
+    padding: 1.8rem;
+    min-height: 200px;
+  }
+
+  .graphique p {
+    font-size: 1.1rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -413,6 +477,7 @@ fieldset legend {
   }
 
   .graphique {
+    width: 100%;
     padding: 1.5rem;
     min-height: 150px;
   }
@@ -421,6 +486,34 @@ fieldset legend {
     font-size: 1.1rem;
     flex-direction: column;
     gap: 0.3rem;
+  }
+
+  /* Widgets */
+  .widget-stats {
+    padding: 1rem !important;
+    min-height: 150px !important;
+  }
+
+  .widget-stats h3 {
+    font-size: 15px !important;
+  }
+
+  .widget-stats > div:first-child {
+    flex-direction: column;
+    align-items: center !important;
+    gap: 10px;
+  }
+  /* Sélecteurs et contrôles */
+  .selecteur-periode {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+
+  .selecteur-periode select,
+  .selecteur-periode button {
+    width: 100%;
+    max-width: none;
   }
 }
 
@@ -447,6 +540,21 @@ fieldset legend {
   .graphique {
     padding: 1rem;
     min-height: 120px;
+  }
+
+  .graphique p {
+    font-size: 0.9rem;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .widget-stats {
+    padding: 0.8rem !important;
+    min-height: 120px !important;
+  }
+
+  .widget-stats h3 {
+    font-size: 13px !important;
   }
 
   /* Mobile */
@@ -506,5 +614,14 @@ fieldset legend {
 
   .user-info .value {
     font-size: 0.8rem;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .graphique {
+    transition: all 0.3s ease;
+  }
+
+  .widget-stats {
+    transition: all 0.3s ease;
   }
 }

@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Redirection après 2 secondes
       setTimeout(() => {
-        window.location.href = result.redirectUrl || "index.html";
+        window.location.href = result.redirectUrl || "../php/index.php";
       }, 2000);
     } catch (error) {
       // Vérifier si c'est une erreur spécifique à un champ
@@ -273,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Gestion du formulaire "Mot de passe oublié"
   const lienMotDePasseOublie = document.querySelector(
-    'a[href="mdp-oublie.html"]'
+    'a[href="mdp-oublie.php"]'
   );
   if (lienMotDePasseOublie) {
     lienMotDePasseOublie.addEventListener("click", function (e) {
@@ -281,11 +281,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const email = document.getElementById("email").value;
       if (email) {
         // Pré-remplir l'email dans l'URL
-        window.location.href = `mdp-oublie.html?email=${encodeURIComponent(
+        window.location.href = `mdp-oublie.php?email=${encodeURIComponent(
           email
         )}`;
       } else {
-        window.location.href = "mdp-oublie.html";
+        window.location.href = "mdp-oublie.php";
       }
     });
   }

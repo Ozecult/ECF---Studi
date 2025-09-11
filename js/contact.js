@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Redirection après 5 secondes
       setTimeout(() => {
-        window.location.href = "index.html";
+        window.location.href = "../php/index.php";
       }, 5000);
     } catch (error) {
       // En cas d'erreur

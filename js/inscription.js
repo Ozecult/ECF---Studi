@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Redirection après 3 secondes pour laisser le temps de lire
       setTimeout(() => {
-        window.location.href = "Connexion.html";
+        window.location.href = "../php/connexion.php";
       }, 3000);
     } catch (error) {
       // Vérifier si c'est une erreur spécifique à un champ
