@@ -6,3 +6,5 @@ import "./connexion.js";
 import "./contact.js";
 import "./mdp-oublie.js";
 import "./utilisateur.js";
+import "./employe.js";
+import "./admin.js";

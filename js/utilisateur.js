@@ -872,6 +872,7 @@ document.addEventListener("DOMContentLoaded", function () {
       case "success":
         notification.style.background =
           "linear-gradient(135deg, var(--vert-clair), var(--vert-fond-menu-footer))";
+        notification.style.border = "2px solid var(--vert-fonce)";
         break;
       case "error":
         notification.style.background =
