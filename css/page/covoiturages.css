@@ -568,7 +568,31 @@
   }
 
   .filtres h3 {
-    display: none;
+    /* Structure du conteneur */
+    margin: 0 0 1rem 0;
+    padding: 0;
+    text-align: center;
+    height: 40px; /* Hauteur fixe pour le bouton */
+    line-height: 40px;
+    position: relative;
+  }
+
+  /* Cache UNIQUEMENT le texte, pas le bouton */
+  .filtres h3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--vert-fond-de-page); /* Même couleur que le fond */
+    z-index: 1;
+  }
+
+  .filtres h3 button[type="reset"] {
+    position: relative;
+    z-index: 2; /* Au-dessus du masque */
+    font-size: 0.8rem;
   }
 
   .filtres .form-filtres fieldset {

@@ -8,7 +8,7 @@
       content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
     />
     <title>EcoRide - Détails du covoiturage</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="/ecoride/css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -21,16 +21,16 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
-    <script type="module" src="../js/script.js"></script>
+    <script type="module" src="/ecoride/js/script.js"></script>
   </head>
   <body>
     <!-- HEADER -->
-    <?php require 'header.php'; ?>
+    <?php require __DIR__ . '/header.php'; ?>
 
     <!-- MAIN -->
     <main id="contenu" class="page-details">
       <!-- BARRE DE RECHERCHE -->
-      <?php require 'barrerecherche.php'; ?>
+      <?php require __DIR__ . '/barrerecherche.php'; ?>
 
       <!-- RESUME DU COVOITURAGE -->
       <div class="disposition">
@@ -43,7 +43,7 @@
               <div class="header-card">
                 <div class="user-img">
                   <img
-                    src="../img/Covoiturages/Elisa.png"
+                    src="/ecoride/img/Covoiturages/Elisa.png"
                     alt="Photo de profil"
                     class="photo-profil"
                     width="100"
@@ -122,7 +122,7 @@
 
               <div class="user-img">
                 <img
-                  src="../img/Détails/profil1.png"
+                  src="/ecoride/img/Détails/profil1.png"
                   alt="Photo de profil"
                   class="photo-profil"
                   width="60"
@@ -159,7 +159,7 @@
               <h3>Avis de Jean</h3>
               <div class="user-img">
                 <img
-                  src="../img/Détails/profil2.png"
+                  src="/ecoride/img/Détails/profil2.png"
                   alt="Photo de profil"
                   class="photo-profil"
                   width="60"
@@ -234,7 +234,7 @@
 
               <div class="user-img">
                 <img
-                  src="../img/Détails/profil3.png"
+                  src="/ecoride/img/Détails/profil3.png"
                   alt="Photo de profil"
                   class="photo-profil"
                   width="60"
@@ -291,7 +291,7 @@
 
           <div class="user-img">
             <img
-              src="../img/Covoiturages/Elisa.png"
+              src="/ecoride/img/Covoiturages/Elisa.png"
               alt="Photo de profil"
               class="photo-profil"
               width="100"
@@ -330,6 +330,6 @@
     </main>
 
     <!-- FOOTER -->
-    <?php require 'footer.php'; ?>
+    <?php require __DIR__ . '/footer.php'; ?>
   </body>
 </html>

@@ -8,7 +8,7 @@
       content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
     />
     <title>EcoRide - Un oubli ?</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="/ecoride/css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -21,18 +21,18 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
-    <script type="module" src="../js/script.js"></script>
+    <script type="module" src="/ecoride/js/script.js"></script>
   </head>
   <body>
     <!-- HEADER -->
-    <?php require 'header.php'; ?>
+    <?php require __DIR__ . '/header.php'; ?>
 
     <!-- MAIN -->
     <main class="password">
       <h1>Je réinitialise mon mot de passe</h1>
 
       <form
-        action="index.html"
+        action="index.php?page=home"
         class="mdp-oublie card"
         method="post"
         autocomplete="on"
@@ -92,6 +92,6 @@
       </section>
     </main>
     <!-- FOOTER -->
-    <?php require 'footer.php'; ?>
+    <?php require __DIR__ . '/footer.php'; ?>
   </body>
 </html>

@@ -1,7 +1,7 @@
 <footer>
         <div class="footer-contenu">
-          <a href="index.php" class="logo hover-underline gradient-hover">
-            <img src="../img/logo.svg" alt="EcoRide logo" />
+          <a href="../php/index.php?page=home" class="logo hover-underline gradient-hover">
+            <img src="/ecoride/img/logo.svg" alt="EcoRide logo" />
             <span>EcoRide</span>
           </a>
 
@@ -16,8 +16,8 @@
               Informations</strong
             >
             <p>
-              <a href="contact.php">contact@ecoride.fr</a><br />
-              <a href="mentionslegales.php">Mentions légales</a>
+              <a href="../php/index.php?page=contact">contact@ecoride.fr</a><br />
+              <a href="../php/index.php?page=mentionslegales">Mentions légales</a>
             </p>
           </div>
 
@@ -32,9 +32,9 @@
               Menu</strong
             >
             <p>
-              <a href="covoiturages.php">Covoiturages</a><br />
-              <a href="rechercher.php">Rechercher</a><br />
-              <a href="inscription.php">Inscription</a>
+              <a href="../php/index.php?page=covoiturages">Covoiturages</a><br />
+              <a href="../php/index.php?page=rechercher">Rechercher</a><br />
+              <a href="../php/index.php?page=inscription">Inscription</a>
             </p>
           </div>
         </div>

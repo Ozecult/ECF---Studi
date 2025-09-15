@@ -8,7 +8,7 @@
       content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
     />
     <title>EcoRide - Rechercher</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="/ecoride/css/style.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -17,16 +17,16 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
-    <script type="module" src="../js/script.js"></script>
+    <script type="module" src="/ecoride/js/script.js"></script>
   </head>
   <body>
     <!-- HEADER -->
-    <?php require 'header.php'; ?>
+    <?php require __DIR__ . '/header.php'; ?>
 
     <!-- MAIN -->
     <main id="contenu" class="search">
       <!-- BARRE DE RECHERCHE -->
-      <?php require 'barrerecherche.php'; ?>
+      <?php require __DIR__ . '/barrerecherche.php'; ?>
 
       <!-- CARDS TEXTE -->
       <section class="valeurs">
@@ -68,6 +68,6 @@
     </main>
 
     <!-- FOOTER -->
-    <?php require 'footer.php'; ?>
+    <?php require __DIR__ . '/footer.php'; ?>
   </body>
 </html>

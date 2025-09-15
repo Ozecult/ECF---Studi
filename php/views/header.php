@@ -2,8 +2,8 @@
       <!-- MENU -->
       <div class="menu">
         <!-- Logo cliquable -->
-        <a href="index.php" class="logo hover-underline gradient-hover"
-          ><img src="../img/logo.svg" alt="Logo EcoRide" /><span
+        <a href="../php/index.php?page=home" class="logo hover-underline gradient-hover"
+          ><img src="/ecoride/img/logo.svg" alt="Logo EcoRide" /><span
             >EcoRide</span
           ></a
         >
@@ -12,17 +12,17 @@
         <nav aria-label="Menu principal">
           <ul class="nav">
             <li class="nav-item">
-              <a href="covoiturages.php" class="hover-underline gradient-hover"
+              <a href="../php/index.php?page=covoiturages" class="hover-underline gradient-hover"
                 >Covoiturages</a
               >
             </li>
             <li class="nav-item">
-              <a href="contact.php" class="hover-underline gradient-hover"
+              <a href="../php/index.php?page=contact" class="hover-underline gradient-hover"
                 >Contact</a
               >
             </li>
             <li class="nav-item">
-              <a href="rechercher.php" class="hover-underline gradient-hover"
+              <a href="../php/index.php?page=rechercher" class="hover-underline gradient-hover"
                 >Rechercher</a
               >
             </li>
@@ -42,14 +42,14 @@
           </button>
           <nav class="mobile-nav-menu" id="mobile-nav-menu">
             <ul>
-              <li><a href="covoiturages.php">Covoiturages</a></li>
-              <li><a href="contact.php">Contact</a></li>
-              <li><a href="rechercher.php">Rechercher</a></li>
+              <li><a href="../php/index.php?page=covoiturages">Covoiturages</a></li>
+              <li><a href="../php/index.php?page=contact">Contact</a></li>
+              <li><a href="../php/index.php?page=rechercher">Rechercher</a></li>
             </ul>
           </nav>
           <div id="menu-profile" class="menu-profile">
-            <a href="connexion.php">Se connecter</a>
-            <a href="inscription.php">S’inscrire</a>
+            <a href="../php/index.php?page=connexion">Se connecter</a>
+            <a href="../php/index.php?page=inscription">S’inscrire</a>
           </div>
         </div>
       </div>

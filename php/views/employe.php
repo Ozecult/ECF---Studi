@@ -8,7 +8,7 @@
       content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
     />
     <title>EcoRide - Espace employé</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="/ecoride/css/style.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -17,11 +17,11 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
-    <script type="module" src="../js/script.js"></script>
+    <script type="module" src="/ecoride/js/script.js"></script>
   </head>
   <body>
     <!-- HEADER -->
-    <?php require 'header.php'; ?>
+    <?php require __DIR__ . '/header.php'; ?>
 
     <!-- MAIN -->
     <main class="employe">
@@ -36,7 +36,7 @@
         >
           <div class="ligne-profil">
             <img
-              src="../img/Covoiturages/Elisa.png"
+              src="/ecoride/img/Covoiturages/Elisa.png"
               alt="Photo de profil d'Elisa"
               class="photo-profil"
               width="60"
@@ -154,7 +154,7 @@
         >
           <div class="ligne-profil">
             <img
-              src="../img/Employe/Alexandre.png"
+              src="/ecoride/img/Employe/Alexandre.png"
               alt="Photo de profil d'Alexandre"
               class="photo-profil"
               width="60"
@@ -495,6 +495,6 @@
       </section>
     </main>
     <!-- FOOTER -->
-    <?php require 'footer.php'; ?>
+    <?php require __DIR__ . '/footer.php'; ?>
   </body>
 </html>

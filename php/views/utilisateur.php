@@ -8,7 +8,7 @@
       content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
     />
     <title>EcoRide - Voyagez ensemble, préservez la planète</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="/ecoride/css/style.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -21,11 +21,11 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
       rel="stylesheet"
     />
-    <script type="module" src="../js/script.js"></script>
+    <script type="module" src="/ecoride/js/script.js"></script>
   </head>
   <body>
     <!-- HEADER -->
-    <?php require 'header.php'; ?>
+    <?php require __DIR__ . '/header.php'; ?>
 
     <!-- MAIN -->
     <main class="utilisateur">
@@ -554,21 +554,23 @@
               <td>Terminé</td>
               <td>16</td>
               <td>
-                <span class="material-symbols-outlined" aria-hidden="true"
-                  >star</span
-                >
-                <span class="material-symbols-outlined" aria-hidden="true"
-                  >star</span
-                >
-                <span class="material-symbols-outlined" aria-hidden="true"
-                  >star</span
-                >
-                <span class="material-symbols-outlined" aria-hidden="true"
-                  >star</span
-                >
-                <span class="material-symbols-outlined" aria-hidden="true"
-                  >star</span
-                >
+                <div class="etoile">
+                  <span class="material-symbols-outlined" aria-hidden="true"
+                    >star</span
+                  >
+                  <span class="material-symbols-outlined" aria-hidden="true"
+                    >star</span
+                  >
+                  <span class="material-symbols-outlined" aria-hidden="true"
+                    >star</span
+                  >
+                  <span class="material-symbols-outlined" aria-hidden="true"
+                    >star</span
+                  >
+                  <span class="material-symbols-outlined" aria-hidden="true"
+                    >star</span
+                  >
+                </div>
               </td>
             </tr>
             <!-- ligne 3 -->
@@ -580,21 +582,23 @@
               <td>Annulé</td>
               <td>12</td>
               <td>
-                <span class="material-symbols-outlined" aria-hidden="true"
-                  >star</span
-                >
-                <span class="material-symbols-outlined" aria-hidden="true"
-                  >star</span
-                >
-                <span class="material-symbols-outlined" aria-hidden="true"
-                  >star</span
-                >
-                <span class="material-symbols-outlined" aria-hidden="true"
-                  >star</span
-                >
-                <span class="material-symbols-outlined" aria-hidden="true"
-                  >star</span
-                >
+                <div class="etoile">
+                  <span class="material-symbols-outlined" aria-hidden="true"
+                    >star</span
+                  >
+                  <span class="material-symbols-outlined" aria-hidden="true"
+                    >star</span
+                  >
+                  <span class="material-symbols-outlined" aria-hidden="true"
+                    >star</span
+                  >
+                  <span class="material-symbols-outlined" aria-hidden="true"
+                    >star</span
+                  >
+                  <span class="material-symbols-outlined" aria-hidden="true"
+                    >star</span
+                  >
+                </div>
               </td>
             </tr>
           </tbody>
@@ -602,6 +606,6 @@
       </section>
     </main>
     <!-- FOOTER -->
-    <?php require 'footer.php'; ?>
+    <?php require __DIR__ . '/footer.php'; ?>
   </body>
 </html>

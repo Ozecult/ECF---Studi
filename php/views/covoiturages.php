@@ -8,7 +8,7 @@
       content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
     />
     <title>EcoRide - Covoiturages</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="/ecoride/css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -21,16 +21,16 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
       rel="stylesheet"
     />
-    <script type="module" src="../js/script.js"></script>
+    <script type="module" src="/ecoride/js/script.js"></script>
   </head>
   <body>
     <!-- HEADER -->
-    <?php require 'header.php'; ?>
+    <?php require __DIR__ . '/header.php'; ?>
 
     <!-- MAIN -->
     <main id="contenu" class="covoiturages">
       <!-- BARRE DE RECHERCHE -->
-      <?php require 'barrerecherche.php'; ?>
+      <?php require __DIR__ . '/barrerecherche.php'; ?>
 
       <!--TITRE -->
       <h1>Résultats disponibles</h1>
@@ -177,11 +177,11 @@
                       <span class="material-symbols-outlined">star</span>
                       <span class="material-symbols-outlined">star</span>
                     </div>
-                    <a href="details.php" class="details">Détails</a>
+                    <a href="../php/index.php?page=details" class="details">Détails</a>
                   </div>
                   <!-- photo -->
                   <img
-                    src="../img/Covoiturages/Elisa.png"
+                    src="/ecoride/img/Covoiturages/Elisa.png"
                     alt="Photo de profil"
                     class="photo-profil"
                     width="80"
@@ -249,11 +249,11 @@
                       <span class="material-symbols-outlined">star</span>
                       <span class="material-symbols-outlined">star</span>
                     </div>
-                    <a href="details.php" class="details">Détails</a>
+                    <a href="../php/index.php?page=details" class="details">Détails</a>
                   </div>
                   <!-- photo -->
                   <img
-                    src="../img/Covoiturages/Marc.png"
+                    src="/ecoride/img/Covoiturages/Marc.png"
                     alt="Photo de profil"
                     class="photo-profil"
                     width="80"
@@ -314,11 +314,11 @@
                       <span class="material-symbols-outlined">star</span>
                       <span class="material-symbols-outlined">star</span>
                     </div>
-                    <a href="details.php" class="details">Détails</a>
+                    <a href="../php/index.php?page=details" class="details">Détails</a>
                   </div>
                   <!-- photo -->
                   <img
-                    src="../img/Covoiturages/Jennifer.png"
+                    src="/ecoride/img/Covoiturages/Jennifer.png"
                     alt="Photo de profil"
                     class="photo-profil"
                     width="80"
@@ -379,11 +379,11 @@
                       <span class="material-symbols-outlined">star</span>
                       <span class="material-symbols-outlined">star</span>
                     </div>
-                    <a href="details.php" class="details">Détails</a>
+                    <a href="../php/index.php?page=details" class="details">Détails</a>
                   </div>
                   <!-- photo -->
                   <img
-                    src="../img/Covoiturages/Paul.png"
+                    src="/ecoride/img/Covoiturages/Paul.png"
                     alt="Photo de profil"
                     class="photo-profil"
                     width="80"
@@ -451,11 +451,11 @@
                       <span class="material-symbols-outlined">star</span>
                       <span class="material-symbols-outlined">star</span>
                     </div>
-                    <a href="details.php" class="details">Détails</a>
+                    <a href="../php/index.php?page=details" class="details">Détails</a>
                   </div>
                   <!-- photo -->
                   <img
-                    src="../img/Covoiturages/Léa.png"
+                    src="/ecoride/img/Covoiturages/Léa.png"
                     alt="Photo de profil"
                     class="photo-profil"
                     width="80"
@@ -511,8 +511,7 @@
         </section>
       </div>
     </main>
-
     <!-- FOOTER -->
-    <?php require 'footer.php'; ?>
+    <?php require __DIR__ . '/footer.php'; ?>
   </body>
 </html>

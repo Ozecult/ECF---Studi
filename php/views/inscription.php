@@ -8,7 +8,7 @@
       content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
     />
     <title>EcoRide - Inscription</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="/ecoride/css/style.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -17,11 +17,11 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
-    <script type="module" src="../js/script.js"></script>
+    <script type="module" src="/ecoride/js/script.js"></script>
   </head>
   <body>
     <!-- HEADER -->
-    <?php require 'header.php'; ?>
+    <?php require __DIR__ . '/header.php'; ?>
 
     <!-- MAIN-->
     <main id="contenu" class="inscription">
@@ -151,7 +151,7 @@
                 required
               />
               <label for="cgu"
-                >J'accepte les&nbsp;<a href="mentionslegales.php"
+                >J'accepte les&nbsp;<a href="../php/index.php?page=mentionslegales"
                   >CGU</a
                 ></label
               >
@@ -162,7 +162,7 @@
             <div class="button card">
               <button type="submit" id="btn-inscription">S'inscrire</button>
             </div>
-            <a href="connexion.php">Déjà un compte ?</a>
+            <a href="../php/index.php?page=connexion">Déjà un compte ?</a>
           </fieldset>
         </form>
         <aside class="info-rgpd">
@@ -182,6 +182,6 @@
     </main>
 
     <!-- FOOTER -->
-    <?php require 'footer.php'; ?>
+    <?php require __DIR__ . '/footer.php'; ?>
   </body>
 </html>

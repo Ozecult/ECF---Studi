@@ -8,7 +8,7 @@
       content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
     />
     <title>EcoRide - Connexion</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="/ecoride/css/style.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -17,11 +17,11 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
-    <script type="module" src="../js/script.js"></script>
+    <script type="module" src="/ecoride/js/script.js"></script>
   </head>
   <body>
     <!-- HEADER -->
-    <?php require 'header.php'; ?>
+    <?php require __DIR__ . '/header.php'; ?>
     <!-- MAIN -->
     <main id="contenu" class="connexion">
       <h1>Je me connecte</h1>
@@ -97,7 +97,7 @@
 
             <!-- Mot de passe oublié -->
             <div class="form-group">
-              <p><a href="mdp-oublie.php">Mot de passe oublié ?</a></p>
+              <p><a href="../php/index.php?page=mdp-oublie">Mot de passe oublié ?</a></p>
             </div>
 
             <!-- Bouton de connexion -->
@@ -112,7 +112,7 @@
             >
               <p>
                 Pas encore de compte ?
-                <a href="inscription.php">Créer un compte</a>
+                <a href="../php/index.php?page=inscription">Créer un compte</a>
               </p>
             </div>
           </fieldset>
@@ -120,6 +120,6 @@
       </section>
     </main>
     <!-- FOOTER -->
-    <?php require 'footer.php'; ?>
+    <?php require __DIR__ . '/footer.php'; ?>
   </body>
 </html>
