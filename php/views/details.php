@@ -213,9 +213,7 @@ else if ($trajetId) {
             <?php
             $dateDepart = new DateTime($trajetDetails['date_depart']);
             $heureDepart = $dateDepart->format('H\hi');
-            $heureArrivee = $trajetDetails['date_arrivee_estimee'] ? 
-              (new DateTime($trajetDetails['date_arrivee_estimee']))->format('H\hi') : 
-              '??h??';
+            $heureArrivee = '??h??';
             ?>
             
             <!-- Date trajet -->
