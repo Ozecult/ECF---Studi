@@ -13,10 +13,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
     <script type="module" src="/ecoride/js/script.js"></script>
   </head>
   <body>
@@ -28,9 +25,8 @@
       <h1>Contactez-nous</h1>
       <form
         class="form-contact card"
-        action="confirmation.html"
+        id="formContact"
         method="post"
-        class="form-contact"
         autocomplete="on"
       >
         <fieldset>
@@ -149,5 +145,37 @@
     </main>
     <!-- FOOTER -->
     <?php require __DIR__ . '/footer.php'; ?>
+    <!-- Script formulaire contact -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('formContact');
+        
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const formData = new FormData(form);
+          
+          try {
+            const response = await fetch('/ecoride/php/api/api-router.php?action=send-contact', {
+              method: 'POST',
+              body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+              alert('✅ ' + data.message);
+              form.reset();
+            } else {
+              alert('❌ ' + data.message);
+            }
+            
+          } catch (error) {
+            console.error('Erreur:', error);
+            alert('❌ Erreur lors de l\'envoi du message');
+          }
+        });
+      });
+      </script>
   </body>
 </html>

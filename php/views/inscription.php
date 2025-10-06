@@ -1,3 +1,13 @@
+<?php
+// inscription.php
+
+// Générer le CSRF token si inexistant
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+$csrfToken = $_SESSION['csrf_token'];
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -13,10 +23,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
     <script type="module" src="/ecoride/js/script.js"></script>
   </head>
   <body>
@@ -78,6 +85,25 @@
                 autocomplete="family-name"
               />
               <div class="error-text" id="error-nom"></div>
+            </div>
+            <!-- Pseudo -->
+            <div class="form-group card">
+              <label for="pseudo">
+                <span
+                  class="material-symbols-outlined"
+                  aria-label="Pseudo"
+                  role="img"
+                  >assignment_ind</span
+                >
+                Entrez votre pseudo
+              </label>
+              <input
+                type="text"
+                name="pseudo"
+                id="pseudo"
+                required
+              />
+              <div class="error-text" id="error-pseudo"></div>
             </div>
             <!-- email -->
             <div class="form-group card">
@@ -157,6 +183,9 @@
               >
               <div class="error-text" id="error-cgu"></div>
             </div>
+
+            <!-- CSRF Token -->
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken ?? ($_SESSION['csrf_token'] ?? ''), ENT_QUOTES) ?>">
 
             <!-- Boutton s'inscrire -->
             <div class="button card">

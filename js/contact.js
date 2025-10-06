@@ -1,8 +1,10 @@
 // Attendre que la page soit complètement chargée
 document.addEventListener("DOMContentLoaded", function () {
   // === SÉLECTION DES ÉLÉMENTS ===
-  const form = document.querySelector(".form-contact"); // Le formulaire de contact
-  const btnSubmit = form.querySelector("button[type='submit']"); // Le bouton envoyer
+  const form = document.querySelector(".form-contact");
+  if (!form) return;
+
+  const btnSubmit = form.querySelector("button[type='submit']");
 
   // === CRÉATION DU MESSAGE GLOBAL ===
   let messageGlobal = document.createElement("div");

@@ -1,0 +1,157 @@
+[18-Sep-2025 12:43:55 Europe/Berlin] Erreur de connexion BDD ecoRide: SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[18-Sep-2025 12:43:55 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Erreur de connexion à la base de données in C:\xampp\htdocs\ecoride\php\config\Database.php:51
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\config\Database.php(22): Database->connect()
+#1 C:\xampp\htdocs\ecoride\php\config\Database.php(27): Database->__construct()
+#2 C:\xampp\htdocs\ecoride\php\models\User.php(12): Database::getInstance()
+#3 C:\xampp\htdocs\ecoride\php\controllers\AuthController.php(10): User->__construct()
+#4 C:\xampp\htdocs\ecoride\php\index.php(20): AuthController->__construct()
+#5 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\config\Database.php on line 51
+[18-Sep-2025 12:44:50 Europe/Berlin] Erreur de connexion BDD ecoRide: SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[18-Sep-2025 12:44:50 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Erreur de connexion à la base de données in C:\xampp\htdocs\ecoride\php\config\Database.php:51
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\config\Database.php(22): Database->connect()
+#1 C:\xampp\htdocs\ecoride\php\config\Database.php(27): Database->__construct()
+#2 C:\xampp\htdocs\ecoride\php\models\User.php(12): Database::getInstance()
+#3 C:\xampp\htdocs\ecoride\php\controllers\AuthController.php(10): User->__construct()
+#4 C:\xampp\htdocs\ecoride\php\index.php(22): AuthController->__construct()
+#5 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\config\Database.php on line 51
+[18-Sep-2025 12:49:20 Europe/Berlin] Erreur de connexion BDD ecoRide: SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[18-Sep-2025 12:49:20 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Erreur de connexion à la base de données in C:\xampp\htdocs\ecoride\php\config\Database.php:51
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\config\Database.php(22): Database->connect()
+#1 C:\xampp\htdocs\ecoride\php\config\Database.php(27): Database->__construct()
+#2 C:\xampp\htdocs\ecoride\php\models\User.php(12): Database::getInstance()
+#3 C:\xampp\htdocs\ecoride\php\controllers\AuthController.php(10): User->__construct()
+#4 C:\xampp\htdocs\ecoride\php\index.php(22): AuthController->__construct()
+#5 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\config\Database.php on line 51
+[18-Sep-2025 12:50:09 Europe/Berlin] Erreur de connexion BDD ecoRide: SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[18-Sep-2025 12:50:09 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Erreur de connexion à la base de données in C:\xampp\htdocs\ecoride\php\config\Database.php:51
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\config\Database.php(22): Database->connect()
+#1 C:\xampp\htdocs\ecoride\php\config\Database.php(27): Database->__construct()
+#2 C:\xampp\htdocs\ecoride\php\models\User.php(12): Database::getInstance()
+#3 C:\xampp\htdocs\ecoride\php\controllers\AuthController.php(10): User->__construct()
+#4 C:\xampp\htdocs\ecoride\php\index.php(22): AuthController->__construct()
+#5 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\config\Database.php on line 51
+[18-Sep-2025 12:50:38 Europe/Berlin] Erreur de connexion BDD ecoRide: SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[18-Sep-2025 12:50:38 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Erreur de connexion à la base de données in C:\xampp\htdocs\ecoride\php\config\Database.php:46
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\config\Database.php(22): Database->connect()
+#1 C:\xampp\htdocs\ecoride\php\config\Database.php(28): Database->__construct()
+#2 C:\xampp\htdocs\ecoride\php\models\User.php(12): Database::getInstance()
+#3 C:\xampp\htdocs\ecoride\php\controllers\AuthController.php(10): User->__construct()
+#4 C:\xampp\htdocs\ecoride\php\index.php(22): AuthController->__construct()
+#5 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\config\Database.php on line 46
+[18-Sep-2025 12:53:29 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\ecoride\php\views\inscription.php on line 3
+[18-Sep-2025 13:52:36 Europe/Berlin] Erreur de connexion BDD ecoRide: SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[18-Sep-2025 13:52:36 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Erreur de connexion à la base de données in C:\xampp\htdocs\ecoride\php\config\Database.php:46
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\config\Database.php(22): Database->connect()
+#1 C:\xampp\htdocs\ecoride\php\config\Database.php(28): Database->__construct()
+#2 C:\xampp\htdocs\ecoride\php\models\User.php(12): Database::getInstance()
+#3 C:\xampp\htdocs\ecoride\php\controllers\AuthController.php(10): User->__construct()
+#4 C:\xampp\htdocs\ecoride\php\index.php(22): AuthController->__construct()
+#5 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\config\Database.php on line 46
+[18-Sep-2025 13:52:47 Europe/Berlin] Erreur de connexion BDD ecoRide: SQLSTATE[HY000] [2006] MySQL server has gone away
+[18-Sep-2025 13:52:47 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Erreur de connexion à la base de données in C:\xampp\htdocs\ecoride\php\config\Database.php:46
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\config\Database.php(22): Database->connect()
+#1 C:\xampp\htdocs\ecoride\php\config\Database.php(28): Database->__construct()
+#2 C:\xampp\htdocs\ecoride\php\models\User.php(12): Database::getInstance()
+#3 C:\xampp\htdocs\ecoride\php\controllers\AuthController.php(10): User->__construct()
+#4 C:\xampp\htdocs\ecoride\php\index.php(22): AuthController->__construct()
+#5 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\config\Database.php on line 46
+[18-Sep-2025 13:52:54 Europe/Berlin] Erreur de connexion BDD ecoRide: SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[18-Sep-2025 13:52:54 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Erreur de connexion à la base de données in C:\xampp\htdocs\ecoride\php\config\Database.php:46
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\config\Database.php(22): Database->connect()
+#1 C:\xampp\htdocs\ecoride\php\config\Database.php(28): Database->__construct()
+#2 C:\xampp\htdocs\ecoride\php\models\User.php(12): Database::getInstance()
+#3 C:\xampp\htdocs\ecoride\php\controllers\AuthController.php(10): User->__construct()
+#4 C:\xampp\htdocs\ecoride\php\index.php(22): AuthController->__construct()
+#5 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\config\Database.php on line 46
+[18-Sep-2025 14:24:01 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\ecoride\php\views\inscription.php on line 3
+[18-Sep-2025 14:37:58 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\ecoride\php\views\inscription.php on line 3
+[18-Sep-2025 14:38:00 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\ecoride\php\views\inscription.php on line 3
+[18-Sep-2025 14:42:11 Europe/Berlin] Erreur de connexion EcoRide: Email ou mot de passe incorrect
+[18-Sep-2025 14:42:25 Europe/Berlin] Erreur de connexion EcoRide: Veuillez vérifier votre email avant de vous connecter
+[18-Sep-2025 14:56:53 Europe/Berlin] Erreur de connexion EcoRide: Veuillez vérifier votre email avant de vous connecter
+[18-Sep-2025 14:57:15 Europe/Berlin] Erreur de connexion EcoRide: Veuillez vérifier votre email avant de vous connecter
+[18-Sep-2025 14:58:21 Europe/Berlin] Erreur de connexion EcoRide: Veuillez vérifier votre email avant de vous connecter
+[26-Sep-2025 09:00:43 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\ecoride\php\views\inscription.php on line 3
+[26-Sep-2025 09:01:56 Europe/Berlin] Erreur de connexion EcoRide: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ecoride.user_remember_tokens' doesn't exist
+[26-Sep-2025 10:49:14 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:14 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\ecoride\php\controllers\UserController.php:5
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\index.php(19): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:16 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:16 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\ecoride\php\controllers\UserController.php:5
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\index.php(19): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:18 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:18 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\ecoride\php\controllers\UserController.php:5
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\index.php(19): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:21 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:21 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\ecoride\php\controllers\UserController.php:5
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\index.php(19): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:23 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:23 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\ecoride\php\controllers\UserController.php:5
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\index.php(19): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:32 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:32 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\ecoride\php\controllers\UserController.php:5
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\index.php(19): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:38 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:38 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\ecoride\php\controllers\UserController.php:5
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\index.php(19): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:39 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:39 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\ecoride\php\controllers\UserController.php:5
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\index.php(19): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:40 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:40 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\ecoride\php\controllers\UserController.php:5
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\index.php(19): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:42 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:42 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\ecoride\php\controllers\UserController.php:5
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\index.php(19): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:47 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5
+[26-Sep-2025 10:49:47 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\ecoride\php\controllers/../models/Preference.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\ecoride\php\controllers\UserController.php:5
+Stack trace:
+#0 C:\xampp\htdocs\ecoride\php\index.php(19): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\ecoride\php\controllers\UserController.php on line 5

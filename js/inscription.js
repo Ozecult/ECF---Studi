@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("form-inscription");
+  if (!form) return;
   const btnInscription = document.getElementById("btn-inscription");
 
   // Créer un élément pour les messages globaux
@@ -218,86 +219,46 @@ document.addEventListener("DOMContentLoaded", function () {
     return isValid;
   }
 
+  // POST BDD
   async function soumettreFormulaire() {
     btnInscription.disabled = true;
     btnInscription.textContent = "Inscription en cours...";
 
     const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
 
     try {
-      // Simulation de l'envoi avec validation email
-      const result = await simulerInscription(data);
+      const response = await fetch("/ecoride/php/index.php?page=inscription", {
+        method: "POST",
+        body: formData,
+      });
 
-      // Succès avec demande de validation email
-      afficherMessage(
-        "Inscription réussie ! Un email de validation a été envoyé à votre adresse. Veuillez cliquer sur le lien pour activer votre compte.",
-        "success"
-      );
+      const result = await response.json();
 
-      form?.reset();
-      resetFormulaire();
+      if (result.success) {
+        afficherMessage(result.message || "Inscription réussie !", "success");
+        form.reset();
+        resetFormulaire();
 
-      // Redirection après 3 secondes pour laisser le temps de lire
-      setTimeout(() => {
-        window.location.href = "../php/index.php?page=connexion";
-      }, 3000);
-    } catch (error) {
-      // Vérifier si c'est une erreur spécifique à un champ
-      if (error.type === "email_exists" && error.field === "email") {
-        // Afficher l'erreur directement sous le champ email
-        afficherErreurChamp("email", error.message);
+        setTimeout(() => {
+          window.location.href = "/ecoride/php/index.php?page=connexion";
+        }, 3000);
       } else {
-        // Afficher les autres erreurs comme message global
-        afficherMessage(
-          error.message || "Erreur lors de l'inscription",
-          "error"
-        );
+        if (result.field) {
+          afficherErreurChamp(result.field, result.message);
+        } else {
+          afficherMessage(
+            result.message || "Erreur lors de l'inscription",
+            "error"
+          );
+        }
       }
+    } catch (error) {
+      console.error("Erreur lors de l'inscription:", error);
+      afficherMessage("Erreur réseau ou serveur", "error");
     } finally {
       btnInscription.disabled = false;
       btnInscription.textContent = "S'inscrire";
     }
-  }
-
-  // Simulation d'API avec validation email
-  function simulerInscription(data) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (data.email === "test@test.com") {
-          reject({
-            message: "Cet email est déjà utilisé",
-            type: "email_exists",
-            field: "email",
-          });
-        } else if (Math.random() > 0.8) {
-          reject({
-            message: "Erreur serveur, veuillez réessayer",
-            type: "server_error",
-          });
-        } else {
-          // Simulation de l'envoi d'email de validation
-          resolve({
-            success: true,
-            message: "Email de validation envoyé",
-            validationToken: generateValidationToken(),
-            userData: {
-              prenom: data.prenom,
-              nom: data.nom,
-              email: data.email,
-            },
-          });
-        }
-      }, 1500);
-    });
-  }
-
-  // Fonction pour générer un token de validation (simulation)
-  function generateValidationToken() {
-    return (
-      Math.random().toString(36).substring(2, 15) +
-      Math.random().toString(36).substring(2, 15)
-    );
   }
 
   // Fonction pour afficher une erreur spécifique à un champ

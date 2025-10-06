@@ -1,7 +1,7 @@
 /*--------*
  * LAYOUT *
  *--------*/
- 
+
 .page-details {
   display: grid;
   gap: 4rem;
@@ -84,7 +84,12 @@
   flex-direction: column;
   gap: 1rem;
   border-top: 3px solid transparent;
-  border-image: linear-gradient(to right, var(--vert-clair), var(--vert-fond-menu-footer)) 1;
+  border-image: linear-gradient(
+      to right,
+      var(--vert-clair),
+      var(--vert-fond-menu-footer)
+    )
+    1;
 }
 
 .page-details .infos-trajets li {
@@ -202,7 +207,11 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, var(--vert-clair), var(--vert-fond-menu-footer));
+  background: linear-gradient(
+    135deg,
+    var(--vert-clair),
+    var(--vert-fond-menu-footer)
+  );
   color: var(--vert-fonce);
   box-shadow: 0 4px 15px rgba(47, 62, 47, 0.3);
   transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
@@ -220,6 +229,19 @@
 
 .page-details .bouton-validation .material-symbols-outlined {
   font-size: 1.3rem;
+}
+
+.message-credits-insuffisants {
+  text-align: center;
+  padding: 2rem;
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+.message-credits-insuffisants p {
+  margin: 0.5rem 0;
 }
 
 /* ------------------------ */
@@ -260,7 +282,7 @@
   .page-details .date-trajet {
     font-size: 0.9rem;
   }
-  
+
   .page-details .profil .pseudo {
     font-size: 1.6rem;
   }
@@ -285,7 +307,7 @@
   .page-details .avis-item p {
     font-size: 1.1rem;
   }
-  
+
   .page-details .etoiles {
     font-size: 1rem;
   }
@@ -326,7 +348,7 @@
   .page-details .card {
     position: relative;
   }
-  
+
   .page-details .card-profil {
     grid-column: 1;
     grid-row: 2;
@@ -356,9 +378,7 @@
   }
 }
 
-
 @media (max-width: 480px) {
-   
   .page-details .reservation {
     padding: 1rem;
     width: auto;
@@ -367,47 +387,47 @@
   .page-details {
     gap: 1.5rem;
     overflow-x: hidden;
-  }  
+  }
 
   .avis-item .photo-profil {
     width: 50px;
     height: 50px;
   }
-  
+
   .profil .pseudo {
     font-size: 1.5rem;
   }
-  
+
   .etoiles .material-symbols-outlined {
     font-size: 1.2rem;
   }
 
   .page-details .etoiles {
     font-size: 0.8rem;
-  }  
+  }
 
   .page-details .reservation {
     margin: 0;
   }
 
-  .page-details .heure-depart, 
+  .page-details .heure-depart,
   .page-details .heure-arrivee {
     font-size: 0.9rem;
   }
-  
+
   .bouton-validation {
     padding: 0.8rem 1.5rem;
     font-size: 1.1rem;
   }
-  
+
   main h2 {
     font-size: 1.7rem;
   }
-  
+
   main h3 {
     font-size: 1.4rem;
   }
-  
+
   .page-details .user-img {
     gap: 0;
   }
@@ -416,7 +436,7 @@
     width: 50px;
     height: 50px;
   }
-  
+
   .header-card {
     gap: 0.5rem;
   }

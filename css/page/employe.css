@@ -104,7 +104,11 @@
   cursor: pointer;
   transition: all 0.3s ease;
   min-width: 100px;
-  background: linear-gradient(135deg, var(--vert-clair), var(--vert-fond-menu-footer));
+  background: linear-gradient(
+    135deg,
+    var(--vert-clair),
+    var(--vert-fond-menu-footer)
+  );
   color: var(--vert-fonce);
 }
 
@@ -114,82 +118,948 @@
   color: white;
 }
 
-/* Section trajets signalés */
-.litiges {
-  display: grid;
-  gap: 2rem;
+/* ===========================================
+   GESTION DES SIGNALEMENTS
+   =========================================== */
+
+.signalements-section {
+  margin-top: 2rem;
+  padding: 2rem;
 }
 
-/* Masque partie -1024px */
-.litiges-mobile {
+.signalements-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--noir-primaire);
+}
+
+.signalements-container {
+  margin-bottom: 3rem;
+}
+
+.signalements-container h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--noir-primaire);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.badge {
+  background: var(--vert-clair);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.badge-warning {
+  background: #f59e0b;
+}
+
+.badge-success {
+  background: #10b981;
+}
+
+/* Grid de signalements - Desktop */
+.signalements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.signalements-mobile {
   display: none;
 }
 
-.litiges h2 {
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-/* Tableau litiges */
-.litiges table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: var(--vert-fond-structure);
+/* Card signalement */
+.signalement-card {
+  background: white;
   border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  border-left: 4px solid var(--vert-clair);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.litiges thead {
+.signalement-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.signalement-card.en-cours {
+  border-left-color: #f59e0b;
+  background: #fffbeb;
+}
+
+/* Header */
+.signalement-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signalement-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--vert-fond-de-page);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--vert-fonce);
+}
+
+.signalement-type .material-symbols-outlined {
+  font-size: 1.2rem;
+}
+
+.signalement-type.type-comportement {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.signalement-type.type-securite {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.signalement-type.type-vehicule {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.signalement-type.type-itineraire {
+  background: #fef9c3;
+  color: #ca8a04;
+}
+
+.signalement-date {
+  font-size: 0.9rem;
+  color: var(--noir-secondaire);
+}
+
+/* Body */
+.signalement-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.signalement-trajet {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--noir-primaire);
+  font-weight: 500;
+}
+
+.signalement-trajet .material-symbols-outlined {
+  color: var(--vert-clair);
+}
+
+.signalement-description {
+  padding: 1rem;
+  background: var(--vert-fond-de-page);
+  border-radius: 8px;
+}
+
+.signalement-description strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--vert-fonce);
+}
+
+.signalement-description p {
+  margin: 0;
+  line-height: 1.5;
+  color: var(--noir-primaire);
+}
+
+.signalement-personnes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  font-size: 0.9rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--vert-fond-de-page);
+}
+
+.signalement-personnes strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--vert-fonce);
+}
+
+.commentaire-interne {
+  background: #fff7ed;
+  border: 1px solid #fb923c;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.commentaire-interne strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #ea580c;
+}
+
+.commentaire-interne p {
+  margin: 0;
+  color: var(--noir-primaire);
+}
+
+/* Footer */
+.signalement-footer {
+  margin-top: auto;
+}
+
+.btn-examiner,
+.btn-resoudre {
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(
+    135deg,
+    var(--vert-clair),
+    var(--vert-fond-menu-footer)
+  );
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-examiner:hover,
+.btn-resoudre:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(121, 156, 121, 0.4);
+}
+
+.btn-resoudre {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.btn-resoudre:hover {
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+/* Section signalements résolus */
+.signalements-resolus {
+  background: var(--vert-fond-structure);
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.search-box {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.5rem;
+  border: 2px solid var(--vert-fond-de-page);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+  background: white;
+  box-sizing: border-box;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: var(--vert-clair);
+  box-shadow: 0 0 0 3px rgba(121, 156, 121, 0.1);
+}
+
+.search-box .material-symbols-outlined {
+  position: absolute;
+  left: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--noir-secondaire);
+  pointer-events: none;
+}
+
+.signalements-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.signalements-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.signalements-list::-webkit-scrollbar-track {
+  background: var(--vert-fond-de-page);
+  border-radius: 4px;
+}
+
+.signalements-list::-webkit-scrollbar-thumb {
+  background: var(--vert-clair);
+  border-radius: 4px;
+}
+
+.signalements-list::-webkit-scrollbar-thumb:hover {
+  background: var(--vert-fonce);
+}
+
+.signalement-item-small {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+  border-left: 3px solid var(--vert-clair);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.signalement-item-small:hover {
+  transform: translateX(3px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   background: var(--vert-fond-de-page);
 }
 
-.litiges th {
-  padding: 1.5rem 1rem;
-  text-align: center;
-  font-weight: 500;
+.signalement-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.signalement-type-small {
+  background: var(--vert-fond-de-page);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
   color: var(--vert-fonce);
-  font-size: 1.1rem;
-  border-bottom: 3px solid var(--vert-clair);
-  border-right: 1px solid var(--vert-clair);
 }
 
-.litiges th:last-child {
-  border-right: none;
+.signalement-date-small {
+  font-size: 0.85rem;
+  color: var(--noir-secondaire);
 }
 
-.litiges th .material-symbols-outlined {
-  font-size: 1.2rem;
-  margin-right: 0.5rem;
-  vertical-align: middle;
+.signalement-item-body {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
 }
 
-.litiges tbody tr {
-  transition: background-color 0.3s ease;
+.signalement-item-personnes {
+  font-size: 0.85rem;
+  color: var(--noir-secondaire);
 }
 
-.litiges tbody tr:nth-child(even) {
-  background-color: var(--vert-fond-de-page);
+/* ===========================================
+   SECTIONS AVIS TRAITÉS
+   =========================================== */
+
+.avis-traites {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-.litiges tbody tr:hover {
-  background-color: var(--vert-fond-structure);
+.avis-section {
+  background: var(--vert-fond-structure);
+  border-radius: 12px;
+  padding: 1.5rem;
 }
 
-.litiges td {
-  padding: 1.2rem 1rem;
-  font-size: 1rem;
+.avis-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   color: var(--noir-primaire);
-  border-bottom: 1px solid var(--vert-fond-structure);
-  border-right: 1px solid var(--vert-clair);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.litiges td:last-child {
-  border-right: none;
+.avis-list {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
 }
 
-.litiges tbody tr:last-child td {
-  border-bottom: none;
+.avis-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.avis-list::-webkit-scrollbar-track {
+  background: var(--vert-fond-de-page);
+  border-radius: 4px;
+}
+
+.avis-list::-webkit-scrollbar-thumb {
+  background: var(--vert-clair);
+  border-radius: 4px;
+}
+
+.avis-traite {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--vert-clair);
+  transition: all 0.2s ease;
+}
+
+.avis-traite:hover {
+  transform: translateX(3px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.avis-traite.refuse {
+  border-left-color: #ef4444;
+}
+
+.avis-traite-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.avis-traite-user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.avis-traite-user img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--vert-clair);
+}
+
+.avis-traite-user .material-symbols-outlined {
+  font-size: 30px;
+  color: var(--vert-fonce);
+}
+
+.avis-traite-user span {
+  font-weight: 600;
+  color: var(--noir-primaire);
+}
+
+.avis-traite-date {
+  font-size: 0.85rem;
+  color: var(--noir-secondaire);
+}
+
+.avis-traite-content {
+  padding-left: 2.5rem;
+}
+
+.avis-traite-commentaire {
+  font-size: 0.95rem;
+  color: var(--noir-primaire);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.avis-traite-note {
+  display: flex;
+  gap: 0.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.avis-traite-note .material-symbols-outlined {
+  font-size: 1rem;
+  color: var(--vert-fonce);
+}
+
+.avis-traite-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--vert-fond-de-page);
+  font-size: 0.85rem;
+  color: var(--noir-secondaire);
+}
+
+.avis-traite-validateur {
+  font-style: italic;
+}
+
+.motif-refus {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  padding: 0.5rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.motif-refus strong {
+  color: #856404;
+}
+
+/* ===========================================
+   MODALS TRAJETS SIGNALES
+   =========================================== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: var(--vert-fond-structure);
+  border-radius: 16px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-header {
+  padding: 1.5rem;
+  border-bottom: 2px solid var(--vert-fond-de-page);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: var(--noir-primaire);
+  font-size: 1.5rem;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--noir-secondaire);
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.close-modal:hover {
+  background-color: var(--vert-fond-de-page);
+  color: var(--noir-primaire);
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+/* Sections détails dans modal */
+.detail-section {
+  margin-bottom: 1.5rem;
+}
+
+.detail-section h4 {
+  font-size: 1.2rem;
+  color: var(--vert-fonce);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.detail-section .material-symbols-outlined {
+  font-size: 1.5rem;
+}
+
+.detail-content {
+  background: var(--vert-fond-de-page);
+  padding: 1rem;
+  border-radius: 8px;
+  line-height: 1.6;
+  color: var(--noir-primaire);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.detail-grid-vertical {
+  grid-template-columns: 1fr !important;
+}
+
+.detail-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--vert-clair);
+}
+
+.detail-item strong {
+  display: block;
+  color: var(--vert-fonce);
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+}
+
+/* Champs de formulaire dans modal */
+.commentaire-field {
+  margin-top: 1.5rem;
+}
+
+.commentaire-field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--noir-primaire);
+}
+
+.commentaire-field textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid var(--vert-fond-de-page);
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  resize: vertical;
+  min-height: 100px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.commentaire-field textarea:focus {
+  outline: none;
+  border-color: var(--vert-clair);
+  box-shadow: 0 0 0 2px rgba(121, 156, 121, 0.2);
+}
+
+/* Option suspension */
+.suspension-option {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem;
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.suspension-option input[type="checkbox"] {
+  transform: scale(1.3);
+  cursor: pointer;
+  accent-color: #ffc107;
+}
+
+.suspension-option label {
+  cursor: pointer;
+  font-weight: 600;
+  color: #856404;
+  margin: 0;
+}
+
+/* Boutons du modal */
+.modal-actions-btns {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--vert-fond-de-page);
+  margin-top: 1.5rem;
+}
+
+.modal-actions-btns button {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-prendre-charge {
+  background: linear-gradient(
+    135deg,
+    var(--vert-clair),
+    var(--vert-fond-menu-footer)
+  );
+  color: white;
+  box-shadow: 0 2px 8px rgba(121, 156, 121, 0.3);
+}
+
+.btn-prendre-charge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(121, 156, 121, 0.4);
+}
+
+.btn-classer {
+  background: linear-gradient(135deg, #94a3b8, #64748b);
+  color: white;
+  box-shadow: 0 2px 8px rgba(100, 116, 139, 0.3);
+}
+
+.btn-classer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(100, 116, 139, 0.4);
+}
+
+.btn-resoudre-modal {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.btn-resoudre-modal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--noir-secondaire);
+}
+
+.empty-state .material-symbols-outlined {
+  font-size: 4rem;
+  color: var(--vert-fond-de-page);
+  margin-bottom: 1rem;
+}
+
+/* ===========================================
+   MESSAGES DE CONTACT
+   =========================================== */
+
+.messages-contact-section {
+  margin-top: 2rem;
+  padding: 2rem;
+}
+
+.messages-contact-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--noir-primaire);
+}
+
+.messages-container {
+  margin-bottom: 3rem;
+}
+
+.messages-container h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--noir-primaire);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.messages-list {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.message-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--vert-clair);
+  transition: all 0.3s ease;
+}
+
+.message-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--vert-fond-de-page);
+}
+
+.message-sujet {
+  font-weight: 600;
+  color: var(--vert-fonce);
+  font-size: 1rem;
+}
+
+.message-date {
+  color: var(--noir-secondaire);
+  font-size: 0.9rem;
+}
+
+.message-body {
+  margin-bottom: 1rem;
+}
+
+.message-contact {
+  background: var(--vert-fond-de-page);
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.message-texte {
+  line-height: 1.6;
+  color: var(--noir-primaire);
+}
+
+.message-texte p {
+  margin: 0;
+}
+
+.message-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-traiter-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(
+    135deg,
+    var(--vert-clair),
+    var(--vert-fond-menu-footer)
+  );
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-traiter-message:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(121, 156, 121, 0.4);
+}
+
+.message-detail-card {
+  background: var(--vert-fond-de-page);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.message-detail-card h4 {
+  margin-top: 0;
+  color: var(--vert-fonce);
+}
+
+.message-detail-card p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.message-original {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid #dee2e6;
+}
+
+.message-original strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--vert-fonce);
+}
+
+.message-item-small {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+  border-left: 3px solid var(--vert-clair);
+  transition: all 0.2s ease;
+}
+
+.message-item-small:hover {
+  transform: translateX(3px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.message-date-small {
+  font-size: 0.85rem;
+  color: var(--noir-secondaire);
+}
+
+.message-item-body {
+  font-size: 0.95rem;
+  color: var(--noir-primaire);
+  line-height: 1.4;
+}
+
+.message-repondu {
+  display: inline-block;
+  background: #10b981;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
 }
 /*****************/
 /* MEDIA QUERIES */
@@ -198,29 +1068,15 @@
   .employe {
     gap: 3rem;
   }
-  
+
   .choix-avis h1 {
     font-size: 2.2rem;
   }
-  
-  .litiges h2 {
-    font-size: 1.8rem;
-  }
-  
-  .avis_a_valider {
-    padding: 1.5rem;
+
+  .avis-traites {
+    grid-template-columns: 1fr;
   }
 
-  /* Tableau à la verticale */
-  .litiges table {
-    display: none;
-  }
-  
-  .litiges-mobile {
-    display: grid;
-    gap: 1.5rem;
-  }
-  
   .trajet-carte {
     background: var(--vert-fond-structure);
     border-radius: 12px;
@@ -229,18 +1085,18 @@
     border-left: 4px solid var(--vert-clair);
     overflow: hidden;
   }
-  
+
   .trajet-info {
     display: block;
     text-align: center;
     padding: 1rem 1.5rem;
     border-bottom: 2px solid var(--vert-clair);
   }
-  
+
   .trajet-info:last-child {
     border-bottom: none;
   }
-  
+
   /* Ligne 1 */
   .trajet-info-header {
     display: flex;
@@ -249,25 +1105,112 @@
     gap: 0.5rem;
     margin-bottom: 0.3rem;
   }
-  
+
   .trajet-info .material-symbols-outlined {
     font-size: 1.2rem;
     color: var(--vert-fonce);
     flex-shrink: 0;
   }
-  
+
   .trajet-info .label {
     font-weight: 600;
     color: var(--vert-fonce);
     font-size: 1rem;
   }
-  
+
   /* Ligne 2 */
   .trajet-info .value {
     color: var(--noir-primaire);
     font-size: 1rem;
     font-weight: 500;
     padding-top: 0.2rem;
+  }
+
+  .signalements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .signalements-grid {
+    display: none;
+  }
+
+  .signalements-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .trajet-carte {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border-left: 4px solid var(--vert-clair);
+  }
+
+  .trajet-info {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--vert-fond-de-page);
+  }
+
+  .trajet-info:last-of-type {
+    border-bottom: none;
+  }
+
+  .trajet-info-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .trajet-info-header .material-symbols-outlined {
+    color: var(--vert-clair);
+    font-size: 1.2rem;
+  }
+
+  .trajet-info-header .label {
+    font-weight: 600;
+    color: var(--vert-fonce);
+    font-size: 0.9rem;
+  }
+
+  .trajet-info .value {
+    color: var(--noir-primaire);
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .trajet-action {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--vert-fond-de-page);
+  }
+
+  .btn-examiner-mobile {
+    width: 100%;
+    padding: 0.8rem;
+    background: linear-gradient(
+      135deg,
+      var(--vert-clair),
+      var(--vert-fond-menu-footer)
+    );
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-actions-btns {
+    flex-direction: column;
   }
 }
 /*-------*/
@@ -277,73 +1220,122 @@
   .employe {
     gap: 2rem;
   }
-  
+
   .choix-avis h1 {
     font-size: 2.2rem;
   }
-  
+
   .litiges h2 {
     font-size: 1.6rem;
   }
-  
+
   /* Avis */
   .avis_a_valider {
     gap: 0.8rem;
     padding: 1.5rem;
   }
-  
+
   .avis_a_valider .ligne-profil {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .avis_a_valider .photo-profil,
   .avis_a_valider .material-symbols-outlined[role="img"] {
     width: 50px;
     height: 50px;
     font-size: 50px;
   }
-  
+
   .avis_a_valider .pseudo {
     font-size: 1.3rem;
   }
-  
+
   .avis_a_valider .ligne-commentaire {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .avis_a_valider p:not(.pseudo) {
     font-size: 1.1rem;
     text-align: center;
   }
-  
+
   .avis_a_valider .etoiles .material-symbols-outlined {
     font-size: 1.3rem;
   }
-  
+
   /* Boutons */
   .avis_a_valider .button {
     padding: 0.8rem 1rem;
     font-size: 0.9rem;
   }
-  
+
   /* Tableau */
   .trajet-info {
     padding: 0.8rem 1.2rem;
     border-bottom: 3px solid var(--vert-clair);
   }
-  
+
   .trajet-info .material-symbols-outlined {
     font-size: 1.1rem;
   }
-  
+
   .trajet-info .label {
     font-size: 0.95rem;
   }
-  
+
   .trajet-info .value {
     font-size: 0.95rem;
+  }
+
+  .signalements-section {
+    padding: 1rem;
+  }
+
+  .signalements-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .signalements-container h3 {
+    font-size: 1.2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .signalement-personnes {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-signalement {
+    width: 95%;
+  }
+
+  .modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .modal-header,
+  .modal-body {
+    padding: 1.5rem;
+  }
+
+  .modal-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-actions-btns {
+    flex-direction: column;
+  }
+
+  .modal-actions-btns button {
+    width: 100%;
   }
 }
 
@@ -354,47 +1346,84 @@
   .employe {
     gap: 1.5rem;
   }
-  
+
   .choix-avis h1 {
     font-size: 2rem;
   }
-  
+
   .litiges h2 {
     font-size: 1.5rem;
   }
-  
+
   .avis_a_valider {
     padding: 1rem;
   }
-  
+
   .avis_a_valider .pseudo {
     font-size: 1.2rem;
   }
-  
+
   .avis_a_valider p:not(.pseudo) {
     font-size: 1rem;
   }
-  
+
   .avis_a_valider .button {
     padding: 0.7rem 0.8rem;
     font-size: 0.85rem;
   }
-  
+
   /* Trajets */
   .trajet-info {
     padding: 0.7rem 1rem;
     border-bottom: 2px solid var(--vert-clair);
   }
-  
+
   .trajet-info .material-symbols-outlined {
     font-size: 1rem;
   }
-  
+
   .trajet-info .label {
     font-size: 0.9rem;
   }
-  
+
   .trajet-info .value {
+    font-size: 0.9rem;
+  }
+
+  .trajet-carte {
+    padding: 1rem;
+  }
+
+  .signalement-type {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .search-box input {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem 0.6rem 2.3rem;
+  }
+
+  .signalements-list {
+    max-height: 300px;
+  }
+
+  .modal {
+    width: 98%;
+    margin: 0.5rem;
+  }
+
+  .modal-header,
+  .modal-body {
+    padding: 1rem;
+  }
+
+  .modal-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .commentaire-field textarea {
+    min-height: 80px;
     font-size: 0.9rem;
   }
 }
@@ -406,36 +1435,36 @@
   .choix-avis h1 {
     font-size: 1.8rem;
   }
-  
+
   .litiges h2 {
     font-size: 1.4rem;
   }
-  
+
   .avis_a_valider .ligne-profil {
     flex-direction: column;
     gap: 0.3rem;
   }
-  
+
   .avis_a_valider .photo-profil,
   .avis_a_valider .material-symbols-outlined[role="img"] {
     width: 40px;
     height: 40px;
     font-size: 40px;
   }
-  
+
   .avis_a_valider .pseudo {
     font-size: 1.1rem;
   }
-  
+
   .avis_a_valider .ligne-commentaire {
     flex-direction: column;
     gap: 0.3rem;
   }
-  
+
   .avis_a_valider .etoiles .material-symbols-outlined {
     font-size: 1.1rem;
   }
-  
+
   .avis_a_valider p:not(.pseudo) {
     font-size: 0.9rem;
   }
@@ -443,19 +1472,19 @@
   .avis_a_valider .button {
     min-width: 50px;
   }
-  
+
   .trajet-info {
     padding: 0.5rem 0.3rem;
   }
-  
+
   .trajet-info .material-symbols-outlined {
     font-size: 0.9rem;
   }
-  
+
   .trajet-info .label {
     font-size: 0.8rem;
   }
-  
+
   .trajet-info .value {
     font-size: 0.8rem;
   }

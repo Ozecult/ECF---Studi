@@ -13,10 +13,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
     <script type="module" src="/ecoride/js/script.js"></script>
   </head>
   <body>
@@ -25,6 +22,24 @@
     <!-- MAIN -->
     <main id="contenu" class="connexion">
       <h1>Je me connecte</h1>
+      <!-- Messages de statut -->
+      <?php if (isset($_GET['logout'])): ?>
+        <div class="message-global success">
+            Vous avez été déconnecté avec succès.
+        </div>
+      <?php endif; ?>
+
+      <?php if (isset($_GET['registered'])): ?>
+        <div class="message-global success">
+            Inscription réussie ! Vous pouvez maintenant vous connecter.
+        </div>
+      <?php endif; ?>
+
+      <?php if (isset($_GET['verified'])): ?>
+        <div class="message-global success">
+            Email vérifié avec succès ! Vous pouvez maintenant vous connecter.
+        </div>
+      <?php endif; ?>
       <section class="formulaire-connexion">
         <form
           method="post"
@@ -78,7 +93,7 @@
                   placeholder="Votre mot de passe"
                 />
                 <button
-                  type="button"
+                  type="submit"
                   class="password-toggle-btn"
                   id="toggle-password"
                   aria-label="Afficher/masquer le mot de passe"
@@ -99,6 +114,9 @@
             <div class="form-group">
               <p><a href="../php/index.php?page=mdp-oublie">Mot de passe oublié ?</a></p>
             </div>
+
+            <!-- CSRF Token -->
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken ?? ($_SESSION['csrf_token'] ?? ''), ENT_QUOTES) ?>">
 
             <!-- Bouton de connexion -->
             <div class="button card">

@@ -1,8 +1,10 @@
 // Attendre que la page soit complètement chargée avant d'exécuter le script
 document.addEventListener("DOMContentLoaded", function () {
   // === SÉLECTION DES ÉLÉMENTS ===
-  const form = document.querySelector(".mdp-oublie"); // Le formulaire
-  const btnReset = form.querySelector("button[type='submit']"); // Le bouton de soumission
+  const form = document.querySelector(".mdp-oublie");
+  if (!form) return;
+
+  const btnReset = form.querySelector("button[type='submit']");
 
   // === CRÉATION DU MESSAGE GLOBAL ===
   let messageGlobal = document.createElement("div");

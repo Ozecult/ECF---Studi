@@ -31,7 +31,7 @@
             <div class="suggestions" id="suggestions-destination"></div>
           </div>
           <!-- Date -->
-          <div class="choix" data-field="date">
+          <div class="choix calendar" data-field="date">
             <label for="date">
               <span
                 class="material-symbols-outlined"

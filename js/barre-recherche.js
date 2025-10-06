@@ -10,34 +10,33 @@ document.addEventListener("DOMContentLoaded", function () {
   const labelDestination = document.querySelector('label[for="destination"]');
 
   // Fonction pour récuperer les villes avec l'API geo.api.gouv.fr
-  async function rechercherVilles(query) {
-    // Si la recherche fait moins de 2 caractères, on retourne un tableau vide
-    if (query.length < 2) {
+  // Fonction pour récupérer les adresses complètes avec l'API adresse
+  async function rechercherAdresses(query) {
+    if (query.length < 3) {
       return [];
     }
 
     try {
-      const url = `https://geo.api.gouv.fr/communes?nom=${encodeURIComponent(
+      const url = `https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(
         query
-      )}&fields=nom,code,codesPostaux,population&boost=population&limit=10`;
+      )}&limit=10`;
 
-      console.log("URL API:", url); // Debug
-
-      //Requête HTTP
       const response = await fetch(url);
 
-      // Si la requête a réussi
       if (!response.ok) {
         throw new Error("Erreur lors de la récupération des données");
       }
 
-      // On convertit la réponse en JSON
-      const villes = await response.json();
+      const data = await response.json();
 
-      console.log("Villes trouvées:", villes); // Debug
-
-      // On retourne le tableau des villes
-      return villes;
+      // Transformer les résultats pour correspondre au format attendu
+      return data.features.map((feature) => ({
+        nom: feature.properties.label, // Adresse complète
+        codePostal: feature.properties.postcode,
+        ville: feature.properties.city,
+        latitude: feature.geometry.coordinates[1],
+        longitude: feature.geometry.coordinates[0],
+      }));
     } catch (error) {
       console.error("Erreur API:", error);
       return [];
@@ -45,67 +44,45 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // FONCTION POUR CRÉER LA LISTE DE SUGGESTIONS
-  function creerListeSuggestions(villes, container, input) {
-    console.log("Création des suggestions pour:", villes.length, "villes"); // Debug
-
-    // On vide le conteneur des suggestions précédentes
+  function creerListeSuggestions(adresses, container, input) {
     container.innerHTML = "";
 
-    // Si pas de villes, on cache le conteneur et on sort de la fonction
-    if (villes.length === 0) {
+    if (adresses.length === 0) {
       container.style.display = "none";
-      console.log("Aucune ville trouvée, masquage du conteneur"); // Debug
       return;
     }
 
-    // Création d'un <ul> pour contenir nos suggestions
     const liste = document.createElement("ul");
     liste.className = "suggestions-list";
 
-    // On parcourt chaque ville retournée par l'API
-    villes.forEach((ville) => {
-      // Création d'un <li> pour chaque ville
+    adresses.forEach((adresse) => {
       const item = document.createElement("li");
       item.className = "suggestion-item";
 
-      // format de l'affichage de la ville et code postal
-      // ville.codesPostaux[0] récupère le premier code postal de la ville
-      const codePostal =
-        ville.codesPostaux && ville.codesPostaux[0]
-          ? ville.codesPostaux[0]
-          : "";
-      const texteAffiche = codePostal
-        ? `${ville.nom} (${codePostal})`
-        : ville.nom;
-      item.textContent = texteAffiche;
+      // Afficher l'adresse complète
+      item.textContent = adresse.nom; // Ex: "10 Rue de Rivoli, 75001 Paris"
 
-      // GESTION DU CLIC SUR UNE SUGGESTION
       item.addEventListener("click", function () {
-        // Ajout de la valeur sélectionnée dans l'input
-        input.value = texteAffiche;
-        // Masque des suggestions
+        input.value = adresse.nom;
+        // Stocker les coordonnées dans des champs cachés si besoin
+        input.dataset.latitude = adresse.latitude;
+        input.dataset.longitude = adresse.longitude;
         container.style.display = "none";
       });
 
-      // GESTION DU SURVOL AVEC LA SOURIS
       item.addEventListener("mouseenter", function () {
-        // Suppression de la classe 'active' de tous les autres éléments
         const autresItems = liste.querySelectorAll(".suggestion-item");
         autresItems.forEach((autreItem) =>
           autreItem.classList.remove("active")
         );
-        // Ajout de la classe 'active' à l'élément survolé
         this.classList.add("active");
       });
 
-      // Ajout de l'élément à la liste
       liste.appendChild(item);
     });
 
-    // Ajout de la liste au conteneur et affichage
     container.appendChild(liste);
     container.style.display = "block";
-    console.log("Suggestions affichées:", container.style.display); // Debug
   }
 
   // FONCTION POUR LES LABELS
@@ -154,9 +131,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // On recherche les villes correspondantes
-        const villes = await rechercherVilles(query);
+        const adresses = await rechercherAdresses(query);
         // Création de la liste de suggestions
-        creerListeSuggestions(villes, suggestionsContainer, input);
+        creerListeSuggestions(adresses, suggestionsContainer, input);
       }, 300);
     });
 
@@ -304,8 +281,10 @@ function createCustomCalendar() {
   let currentDate = new Date();
   let selectedDate = new Date();
   const today = new Date();
+  today.setHours(0, 0, 0, 0);
   const maxDate = new Date();
   maxDate.setFullYear(today.getFullYear() + 1);
+  maxDate.setHours(0, 0, 0, 0);
 
   // Initialiser avec la date d'aujourd'hui
   inputDate.value = formatDateForInput(today);

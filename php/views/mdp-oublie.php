@@ -17,10 +17,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
     <script type="module" src="/ecoride/js/script.js"></script>
   </head>
   <body>
@@ -49,6 +46,10 @@
           <input type="email" name="email" id="email" required />
           <div id="error-email" class="error-text" style="display: none"></div>
         </div>
+
+        <!-- CSRF Token -->
+        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken ?? ($_SESSION['csrf_token'] ?? ''), ENT_QUOTES) ?>">
+
         <div class="button card">
           <button type="submit">Réinitialiser mon mot de passe</button>
         </div>

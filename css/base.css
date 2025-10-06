@@ -246,6 +246,19 @@ main p {
   font-size: 1.3rem;
 }
 
+/* Étoiles remplies/vides - TOUTES PAGES */
+.etoiles-card .material-symbols-outlined.star-filled,
+.etoiles .material-symbols-outlined.star-filled,
+.avis-traite-note .material-symbols-outlined.star-filled {
+  font-variation-settings: "FILL" 1, "wght" 400 !important;
+}
+
+.etoiles-card .material-symbols-outlined.star-empty,
+.etoiles .material-symbols-outlined.star-empty,
+.avis-traite-note .material-symbols-outlined.star-empty {
+  font-variation-settings: "FILL" 0, "wght" 400 !important;
+}
+
 /*--------*/
 /* FOOTER */
 /*--------*/
