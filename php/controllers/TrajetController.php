@@ -17,15 +17,15 @@ class TrajetController {
       "t.statut = 'planifie'",
       "DATE(t.date_depart) = ?",
       "t.places_disponibles >= ?",
-      "(t.adresse_depart LIKE ? OR t.ville_depart_nom LIKE ?)",
-      "(t.adresse_arrivee LIKE ? OR t.ville_arrivee_nom LIKE ?)"
+      "t.adresse_depart LIKE ?",
+      "t.adresse_arrivee LIKE ?"
     ];
     
     $params = [
       $date,
       $passagers,
-      "%$villeDepartClean%", "%$villeDepartClean%",
-      "%$villeDestinationClean%", "%$villeDestinationClean%"
+      "%$villeDepartClean%",
+      "%$villeDestinationClean%"
     ];
     
     // Filtres motorisation
@@ -40,12 +40,7 @@ class TrajetController {
       $conditions[] = "t.prix_par_passager <= ?";
       $params[] = $_GET['prix_max'];
     }
-    
-    // Filtre durée
-    if (!empty($_GET['duree_max']) && $_GET['duree_max'] > 0) {
-      $conditions[] = "(t.duree_estimee_minutes <= ? OR t.duree_estimee_minutes IS NULL)";
-      $params[] = $_GET['duree_max'];
-    }
+
     
     // Filtres horaires
     $horaires = [];
@@ -81,26 +76,7 @@ class TrajetController {
     $stmt->execute($params);
     $trajets = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    // Calculer durée estimée si manquante
-    foreach ($trajets as &$trajet) {
-      if (empty($trajet['duree_estimee_minutes'])) {
-        $duree = $this->calculerDureeEstimee($trajet['distance_km']);
-        $trajet['duree_estimee_minutes'] = $duree;
-        
-        $dateDepart = new DateTime($trajet['date_depart']);
-        $dateDepart->modify("+{$duree} minutes");
-        $trajet['date_arrivee_estimee'] = $dateDepart->format('Y-m-d H:i:s');
-      }
-    }
-    
     return $trajets;
-  }
-  
-  private function calculerDureeEstimee($distanceKm) 
-  {
-    if (empty($distanceKm) || $distanceKm <= 0) return 120;
-    $vitesseMoyenne = 80;
-    return round(($distanceKm / $vitesseMoyenne) * 1.1 * 60);
   }
 
   //Page Détails
@@ -130,16 +106,6 @@ class TrajetController {
     $trajet = $stmt->fetch(PDO::FETCH_ASSOC);
     
     if (!$trajet) return null;
-    
-    // ✅ Calculer durée si manquante (comme dans rechercherTrajets)
-    if (empty($trajet['duree_estimee_minutes']) || empty($trajet['date_arrivee_estimee'])) {
-      $duree = $this->calculerDureeEstimee($trajet['distance_km']);
-      $trajet['duree_estimee_minutes'] = $duree;
-      
-      $dateDepart = new DateTime($trajet['date_depart']);
-      $dateDepart->modify("+{$duree} minutes");
-      $trajet['date_arrivee_estimee'] = $dateDepart->format('Y-m-d H:i:s');
-    }
     
     // Récupérer les préférences du conducteur
     $stmt = $this->db->prepare("

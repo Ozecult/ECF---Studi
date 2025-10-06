@@ -59,8 +59,7 @@ class Vehicule
   {
     $stmt = $this->db->prepare("
         SELECT id, marque, modele, couleur, energie, immatriculation, 
-            premiere_mise_en_circulation, nombre_places_disponibles, 
-            temps_recharge, est_actif, created_at
+            premiere_mise_en_circulation, nombre_places_disponibles, est_actif, created_at
         FROM VEHICULES 
         WHERE utilisateur_id = ? AND est_actif = 1
         ORDER BY created_at DESC
@@ -106,7 +105,7 @@ class Vehicule
         throw new Exception("Véhicule non trouvé ou accès non autorisé");
     }
     
-    $allowedFields = ['marque', 'modele', 'couleur', 'energie', 'nombre_places_disponibles', 'temps_recharge'];
+    $allowedFields = ['marque', 'modele', 'couleur', 'energie', 'nombre_places_disponibles'];
     $updateFields = [];
     $values = [];
     

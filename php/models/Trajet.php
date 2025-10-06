@@ -28,11 +28,10 @@ class Trajet
       
       $stmt = $this->db->prepare("
         INSERT INTO trajets 
-        (chauffeur_id, vehicule_id, ville_depart_id, ville_arrivee_id, 
-         adresse_depart, adresse_arrivee, date_depart, prix_par_passager, 
+        (chauffeur_id, vehicule_id, adresse_depart, adresse_arrivee, date_depart, prix_par_passager, 
          commission_plateforme, places_disponibles, places_totales, 
          statut, description, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'planifie', ?, NOW(), NOW())
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'planifie', ?, NOW(), NOW())
       ");
       
       $placesDisponibles = $vehicule['nombre_places_disponibles'];
@@ -40,8 +39,6 @@ class Trajet
       $result = $stmt->execute([
         $data['chauffeur_id'],
         $data['vehicule_id'],
-        NULL, // ville_depart_id
-        NULL, // ville_arrivee_id
         $data['adresse_depart'],
         $data['adresse_arrivee'],
         $data['date_depart'],
@@ -78,7 +75,6 @@ class Trajet
         t.adresse_depart,
         t.adresse_arrivee,
         t.date_depart,
-        t.date_arrivee_estimee,
         t.prix_par_passager,
         t.places_disponibles,
         t.places_totales,
