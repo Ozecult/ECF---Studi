@@ -72,11 +72,12 @@ switch ($page) {
 
     case 'covoiturages':
     case 'rechercher':
+        // ACCÈS SANS CONNEXION AUTORISÉ
+        include __DIR__ . "/views/{$page}.php";
+        break;
+
     case 'details':
-        if (!$authController->isLoggedIn()) {
-            header('Location: /ecoride/php/index.php?page=connexion&redirect=' . urlencode($_SERVER['REQUEST_URI']));
-            exit;
-        }
+        // Permet la visualisation, bloquer uniquement la réservation
         include __DIR__ . "/views/{$page}.php";
         break;
 

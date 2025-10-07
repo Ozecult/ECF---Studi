@@ -146,7 +146,7 @@ class Trajet
   
   /**
    * Annuler un trajet
-   */
+  */
   public function annulerTrajet($trajetId, $userId) 
   {
     try {
@@ -190,6 +190,28 @@ class Trajet
         }
         
         $this->db->commit();
+        
+        // ENVOYER EMAIL AUX PARTICIPANTS
+        require_once __DIR__ . '/../helpers/EmailSimulator.php';
+
+        $stmt = $this->db->prepare("
+          SELECT u.email, u.prenom
+          FROM reservations r
+          JOIN utilisateurs u ON r.passager_id = u.id
+          WHERE r.trajet_id = ?
+        ");
+        $stmt->execute([$trajetId]);
+        $participants = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($participants as $participant) {
+          EmailSimulator::emailAnnulationTrajet(
+            $participant['email'],
+            $participant['prenom'],
+            $trajet['adresse_depart'],
+            $trajet['adresse_arrivee'],
+            $trajet['date_depart']
+          );
+        }
         return true;
         
     } catch (Exception $e) {
@@ -223,19 +245,67 @@ class Trajet
    */
   public function terminerTrajet($trajetId, $chauffeurId) 
   {
-    $stmt = $this->db->prepare("
-      UPDATE trajets 
-      SET statut = 'termine', date_arrivee_reelle = NOW(), updated_at = NOW()
-      WHERE id = ? AND chauffeur_id = ? AND statut = 'en_cours'
-    ");
-    
-    $result = $stmt->execute([$trajetId, $chauffeurId]);
-    
-    if ($stmt->rowCount() === 0) {
-      throw new Exception("Impossible de terminer ce trajet");
+    $this->db->beginTransaction();
+    try {
+      // Récupérer infos trajet
+      $stmt = $this->db->prepare("
+        SELECT t.*, u.email as chauffeur_email, u.prenom as chauffeur_prenom
+        FROM trajets t
+        JOIN utilisateurs u ON t.chauffeur_id = u.id
+        WHERE t.id = ? AND t.chauffeur_id = ? AND t.statut = 'en_cours'
+      ");
+      $stmt->execute([$trajetId, $chauffeurId]);
+      $trajet = $stmt->fetch(PDO::FETCH_ASSOC);
+      
+      if (!$trajet) {
+        throw new Exception("Impossible de terminer ce trajet");
+      }
+      
+      // 1. Marquer le trajet comme terminé
+      $stmt = $this->db->prepare("
+        UPDATE trajets 
+        SET statut = 'termine', date_arrivee_reelle = NOW(), updated_at = NOW()
+        WHERE id = ?
+      ");
+      $stmt->execute([$trajetId]);
+      
+      // 2. VALIDER TOUTES LES RÉSERVATIONS (débiter passagers, créditer chauffeur)
+      $stmt = $this->db->prepare("
+        UPDATE reservations 
+        SET a_valide_trajet = TRUE, statut = 'terminee'
+        WHERE trajet_id = ? AND statut = 'confirmee'
+      ");
+      $stmt->execute([$trajetId]);
+      
+      // 3. ENVOYER EMAIL AUX PARTICIPANTS
+      require_once __DIR__ . '/../helpers/EmailSimulator.php';
+      
+      $stmt = $this->db->prepare("
+        SELECT u.email, u.prenom
+        FROM reservations r
+        JOIN utilisateurs u ON r.passager_id = u.id
+        WHERE r.trajet_id = ?
+      ");
+      $stmt->execute([$trajetId]);
+      $participants = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      
+      foreach ($participants as $participant) {
+        EmailSimulator::emailFinTrajet(
+          $participant['email'],
+          $participant['prenom'],
+          $trajet['adresse_depart'],
+          $trajet['adresse_arrivee'],
+          $trajet['date_depart']
+        );
+      }
+      
+      $this->db->commit();
+      return true;
+        
+    } catch (Exception $e) {
+        $this->db->rollBack();
+        throw $e;
     }
-    
-    return true;
   }
   
   // Méthodes utilitaires privées

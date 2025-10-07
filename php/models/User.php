@@ -2,6 +2,7 @@
 // models/User.php
 
 require_once __DIR__ . '/../config/Database.php';
+require_once __DIR__ . '/../models/ActivityLog.php';
 
 class User {
     private $db;
@@ -115,12 +116,21 @@ class User {
         $userId = $this->db->lastInsertId();
         
         // Log de création d'utilisateur
-        $this->logActivity($userId, 'user_created', 'UTILISATEURS', [
-          'email' => $data['email'],
-          'pseudo' => $data['pseudo']
+        $activityLog = new ActivityLog();
+        $activityLog->log($userId, 'user_created', [
+            'email' => $data['email'],
+            'pseudo' => $data['pseudo']
         ]);
 
         $this->db->commit();
+
+        // SIMULATION EMAIL INSCRIPTION
+        require_once __DIR__ . '/../utils/EmailSimulator.php';
+        EmailSimulator::emailInscription(
+            $data['email'],
+            $data['prenom'],
+            $data['pseudo']
+        );
 
         return [
           'id' => $userId,

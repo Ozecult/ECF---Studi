@@ -94,6 +94,65 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // API CALCUL TEMPS DE TRAJET
+  async function calculerHeureArrivee(trajet, elementHeureArrivee) {
+    const API_KEY =
+      "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6ImNlNzQwOWM0YWU2NjQyMTQ4OTYwYzliODc1OWQxZDRkIiwiaCI6Im11cm11cjY0In0=";
+
+    try {
+      // 1. Géocoder les adresses
+      const [geocodeDepart, geocodeArrivee] = await Promise.all([
+        fetch(
+          `https://api.openrouteservice.org/geocode/search?api_key=${API_KEY}&text=${encodeURIComponent(
+            trajet.adresse_depart
+          )}`
+        ),
+        fetch(
+          `https://api.openrouteservice.org/geocode/search?api_key=${API_KEY}&text=${encodeURIComponent(
+            trajet.adresse_arrivee
+          )}`
+        ),
+      ]);
+
+      const [dataDepart, dataArrivee] = await Promise.all([
+        geocodeDepart.json(),
+        geocodeArrivee.json(),
+      ]);
+
+      const coordDepart = dataDepart.features[0].geometry.coordinates;
+      const coordArrivee = dataArrivee.features[0].geometry.coordinates;
+
+      // 2. Calculer l'itinéraire
+      const route = await fetch(
+        `https://api.openrouteservice.org/v2/directions/driving-car?api_key=${API_KEY}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            coordinates: [coordDepart, coordArrivee],
+          }),
+        }
+      );
+
+      const routeData = await route.json();
+      const dureeSecondes = routeData.routes[0].summary.duration;
+      const dureeMinutes = Math.round(dureeSecondes / 60);
+
+      // 3. Calculer l'heure d'arrivée
+      const dateDepart = new Date(trajet.date_depart);
+      const arriveeDate = new Date(dateDepart.getTime() + dureeMinutes * 60000);
+      const heureArrivee = arriveeDate.toLocaleTimeString("fr-FR", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
+      elementHeureArrivee.textContent = heureArrivee;
+    } catch (error) {
+      console.error("Erreur calcul itinéraire:", error);
+      elementHeureArrivee.textContent = "~1h30"; // Fallback
+    }
+  }
+
   function afficherResultats(trajets) {
     resultatsContainer.innerHTML = trajets
       .map((trajet) => {
@@ -102,12 +161,6 @@ document.addEventListener("DOMContentLoaded", function () {
           hour: "2-digit",
           minute: "2-digit",
         });
-        const heureArrivee = trajet.date_arrivee_estimee
-          ? new Date(trajet.date_arrivee_estimee).toLocaleTimeString("fr-FR", {
-              hour: "2-digit",
-              minute: "2-digit",
-            })
-          : "??:??";
 
         const noteArrondie = Math.round(trajet.note_moyenne);
         const etoiles = Array(5)
@@ -123,64 +176,76 @@ document.addEventListener("DOMContentLoaded", function () {
         const isElectrique = trajet.energie === "electrique";
 
         return `
-      <article class="card-covoit card">
-        <div class="card-header">
-          <div class="container-info">
-            <div class="conducteur-info">
-              <h3>${trajet.conducteur_prenom}</h3>
-              <div class="etoiles-card">${etoiles}</div>
-              <a href="../php/index.php?page=details&trajet=${
-                trajet.id
-              }" class="details">Détails</a>
-            </div>
-            ${
-              trajet.photo_profil
-                ? `<img src="${trajet.photo_profil}" alt="Photo" class="photo-profil" width="80" height="80">`
-                : '<span class="material-symbols-outlined" style="font-size:80px;">account_circle</span>'
-            }
+    <article class="card-covoit card" data-trajet-id="${trajet.id}">
+      <div class="card-header">
+        <div class="container-info">
+          <div class="conducteur-info">
+            <h3>${trajet.conducteur_prenom}</h3>
+            <div class="etoiles-card">${etoiles}</div>
+            <a href="../php/index.php?page=details&trajet=${
+              trajet.id
+            }" class="details">Détails</a>
           </div>
-          <div class="card-main">
-            <div class="date-trajet">
-              <span>${dateDepart.toLocaleDateString("fr-FR", {
-                weekday: "long",
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              })}</span>
-            </div>
-            <div class="time-bar">
-              <span class="heure-depart">${heureDepart}</span>
-              <div class="barre-verte"></div>
-              <span class="heure-arrivee">${heureArrivee}</span>
-            </div>
-            <div class="trajet-infos">
-              <div><strong>Départ :</strong> ${trajet.adresse_depart}</div>
-              <div><strong>Arrivée :</strong> ${trajet.adresse_arrivee}</div>
-            </div>
+          ${
+            trajet.photo_profil
+              ? `<img src="${trajet.photo_profil}" alt="Photo" class="photo-profil" width="80" height="80">`
+              : '<span class="material-symbols-outlined" style="font-size:80px;">account_circle</span>'
+          }
+        </div>
+        <div class="card-main">
+          <div class="date-trajet">
+            <span>${dateDepart.toLocaleDateString("fr-FR", {
+              weekday: "long",
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}</span>
+          </div>
+          <div class="time-bar">
+            <span class="heure-depart">${heureDepart}</span>
+            <div class="barre-verte"></div>
+            <span class="heure-arrivee" data-trajet-id="${
+              trajet.id
+            }">Calcul...</span>
+          </div>
+          <div class="trajet-infos">
+            <div><strong>Départ :</strong> ${trajet.adresse_depart}</div>
+            <div><strong>Arrivée :</strong> ${trajet.adresse_arrivee}</div>
           </div>
         </div>
-        <div class="card-footer">
-          <div class="card-footer-left">
-            <div class="footer-item">
-              <span class="material-icons">${
-                isElectrique ? "electric_car" : "local_gas_station"
-              }</span>
-              <span>${
-                isElectrique ? "Véhicule électrique !" : "Véhicule thermique"
-              }</span>
-            </div>
-            <div class="footer-separator"></div>
-            <div class="footer-item">
-              <span class="material-icons">group</span>
-              <span>Place(s) restante(s) : ${trajet.places_disponibles}</span>
-            </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-footer-left">
+          <div class="footer-item">
+            <span class="material-icons">${
+              isElectrique ? "electric_car" : "local_gas_station"
+            }</span>
+            <span>${
+              isElectrique ? "Véhicule électrique !" : "Véhicule thermique"
+            }</span>
           </div>
-          <div class="prix-final">${trajet.prix_par_passager} crédits</div>
+          <div class="footer-separator"></div>
+          <div class="footer-item">
+            <span class="material-icons">group</span>
+            <span>Place(s) restante(s) : ${trajet.places_disponibles}</span>
+          </div>
         </div>
-      </article>
-    `;
+        <div class="prix-final">${trajet.prix_par_passager} crédits</div>
+      </div>
+    </article>
+  `;
       })
       .join("");
+
+    // Calculer les heures d'arrivée en parallèle APRÈS l'affichage
+    trajets.forEach((trajet) => {
+      const elementHeureArrivee = document.querySelector(
+        `.heure-arrivee[data-trajet-id="${trajet.id}"]`
+      );
+      if (elementHeureArrivee) {
+        calculerHeureArrivee(trajet, elementHeureArrivee);
+      }
+    });
   }
 
   // Toggle des filtres en responsive
@@ -231,8 +296,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Réinitialiser les étoiles
       reinitialiserEtoiles();
-
-      console.log("Filtres réinitialisés");
     });
   }
 
@@ -287,7 +350,6 @@ document.addEventListener("DOMContentLoaded", function () {
         etoile.style.fontVariationSettings = "'FILL' 0, 'wght' 400";
         etoile.style.setProperty("color", "var(--vert-fonce)", "important");
       });
-      console.log("Étoiles réinitialisées");
     };
 
     // Fonction pour définir le nombre d'étoiles pleines
@@ -312,16 +374,13 @@ document.addEventListener("DOMContentLoaded", function () {
     etoiles.forEach((etoile, index) => {
       etoile.addEventListener("click", function (e) {
         e.preventDefault();
-        console.log("Clic sur étoile", index + 1);
 
         if (noteSelectionnee === index + 1) {
           // Désélectionner si on clique sur la même étoile
           noteSelectionnee = 0;
-          console.log("Désélection");
         } else {
           // Nouvelle sélection
           noteSelectionnee = index + 1;
-          console.log("Sélection de", noteSelectionnee, "étoiles");
         }
 
         // Mise à jour de l'affichage

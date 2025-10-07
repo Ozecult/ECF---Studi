@@ -482,9 +482,10 @@ try {
             try {
                 // Récupérer infos trajet
                 $stmt = $db->prepare("
-                    SELECT chauffeur_id, prix_par_passager, places_disponibles 
-                    FROM trajets 
-                    WHERE id = ? AND statut = 'planifie'
+                    SELECT t.chauffeur_id, t.prix_par_passager, t.places_disponibles,
+                        t.adresse_depart, t.adresse_arrivee, t.date_depart
+                    FROM trajets t
+                    WHERE t.id = ? AND t.statut = 'planifie'
                 ");
                 $stmt->execute([$trajetId]);
                 $trajet = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -500,66 +501,34 @@ try {
                 $prixTotal = $trajet['prix_par_passager'] * $nombrePlaces;
                 
                 // Vérifier solde passager
-                $stmt = $db->prepare("SELECT credits FROM utilisateurs WHERE id = ?");
+                $stmt = $db->prepare("SELECT credits, email, prenom FROM utilisateurs WHERE id = ?");
                 $stmt->execute([$_SESSION['user_id']]);
-                $soldePassager = $stmt->fetchColumn();
+                $passager = $stmt->fetch(PDO::FETCH_ASSOC);
                 
-                if ($soldePassager < $prixTotal) {
+                if ($passager['credits'] < $prixTotal) {
                     throw new Exception("Crédits insuffisants");
                 }
                 
-                // Créer réservation
+                // CRÉER RÉSERVATION (trigger bloque les crédits, pas de débit)
                 $stmt = $db->prepare("
                     INSERT INTO reservations (trajet_id, passager_id, nombre_places, prix_total, statut, created_at)
                     VALUES (?, ?, ?, ?, 'confirmee', NOW())
                 ");
                 $stmt->execute([$trajetId, $_SESSION['user_id'], $nombrePlaces, $prixTotal]);
                 
-                // Débiter passager
-                $stmt = $db->prepare("UPDATE utilisateurs SET credits = credits - ? WHERE id = ?");
-                $stmt->execute([$prixTotal, $_SESSION['user_id']]);
-                
-                // Transaction passager
-                $stmt = $db->prepare("
-                    INSERT INTO transactions (utilisateur_id, type_transaction, montant, solde_avant, solde_apres, description, created_at)
-                    VALUES (?, 'debit', ?, ?, ?, ?, NOW())
-                ");
-                $stmt->execute([
-                    $_SESSION['user_id'],
-                    $prixTotal,
-                    $soldePassager,
-                    $soldePassager - $prixTotal,
-                    "Réservation trajet #$trajetId"
-                ]);
-                
-                // CRÉDITER LE CONDUCTEUR
-                $stmt = $db->prepare("SELECT credits FROM utilisateurs WHERE id = ?");
-                $stmt->execute([$trajet['chauffeur_id']]);
-                $soldeConducteur = $stmt->fetchColumn();
-                
-                $stmt = $db->prepare("UPDATE utilisateurs SET credits = credits + ? WHERE id = ?");
-                $stmt->execute([$prixTotal, $trajet['chauffeur_id']]);
-                
-                // Transaction conducteur
-                $stmt = $db->prepare("
-                    INSERT INTO transactions (utilisateur_id, type_transaction, montant, solde_avant, solde_apres, description, created_at)
-                    VALUES (?, 'credit', ?, ?, ?, ?, NOW())
-                ");
-                $stmt->execute([
-                    $trajet['chauffeur_id'],
-                    $prixTotal,
-                    $soldeConducteur,
-                    $soldeConducteur + $prixTotal,
-                    "Réservation reçue trajet #$trajetId"
-                ]);
-                
-                // Mettre à jour places
-                $stmt = $db->prepare("UPDATE trajets SET places_disponibles = places_disponibles - ? WHERE id = ?");
-                $stmt->execute([$nombrePlaces, $trajetId]);
+                // EMAIL CONFIRMATION
+                require_once __DIR__ . '/../helpers/EmailSimulator.php';
+                EmailSimulator::emailConfirmationReservation(
+                    $passager['email'],
+                    $passager['prenom'],
+                    $trajet['adresse_depart'],
+                    $trajet['adresse_arrivee'],
+                    $trajet['date_depart'],
+                    $prixTotal
+                );
                 
                 $db->commit();
                 
-                // Redirection classique
                 header('Location: /ecoride/php/index.php?page=details&trajet=' . $trajetId . '&success=reservation');
                 exit;
                 

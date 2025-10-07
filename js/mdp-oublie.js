@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // === SIMULATION D'API (À REMPLACER PAR  VRAIE API) ===
+  // === SIMULATION D'API (À REMPLACER PAR VRAIE API) ===
   function simulerResetPassword(data) {
     return new Promise((resolve, reject) => {
       // Simuler un délai de réseau
