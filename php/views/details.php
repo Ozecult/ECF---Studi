@@ -5,60 +5,97 @@ $userId = $_GET['user'] ?? null;
 
 // Mode "profil utilisateur seul"
 if ($userId && !$trajetId) {
-    require_once __DIR__ . '/../models/User.php';
-    require_once __DIR__ . '/../models/Preference.php';
-    
-    $userModel = new User();
-    $preferenceModel = new Preference();
-    
-    $userProfile = $userModel->getUserById($userId);
-    if (!$userProfile) {
-        echo "Utilisateur introuvable";
-        exit;
-    }
-    
-    $preferences = $preferenceModel->getPreferencesByUser($userId);
-    
-    // Récupérer les avis
-    require_once __DIR__ . '/../config/database.php';
-    $db = Database::getInstance()->getConnection();
-    $stmt = $db->prepare("
-        SELECT a.*, u.prenom as auteur_prenom, u.photo_profil as auteur_photo
-        FROM avis a
-        JOIN utilisateurs u ON a.evaluateur_id = u.id
-        WHERE a.evalue_id = ? AND a.statut = 'valide'
-        ORDER BY a.created_at DESC
-        LIMIT 10
-    ");
-    $stmt->execute([$userId]);
-    $avisUtilisateur = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    $noteArrondie = round($userProfile['note_moyenne'] ?? 0);
-    $modeProfilSeul = true;
+  require_once __DIR__ . '/../models/User.php';
+  require_once __DIR__ . '/../models/Preference.php';
+  
+  $userModel = new User();
+  $preferenceModel = new Preference();
+  
+  $userProfile = $userModel->getUserById($userId);
+  if (!$userProfile) {
+    echo "Utilisateur introuvable";
+    exit;
+  }
+  
+  $preferences = $preferenceModel->getPreferencesByUser($userId);
+  
+  // Récupérer les avis
+  require_once __DIR__ . '/../config/database.php';
+  $db = Database::getInstance()->getConnection();
+  $stmt = $db->prepare("
+    SELECT a.*, u.prenom as auteur_prenom, u.photo_profil as auteur_photo
+    FROM avis a
+    JOIN utilisateurs u ON a.evaluateur_id = u.id
+    WHERE a.evalue_id = ? AND a.statut = 'valide'
+    ORDER BY a.created_at DESC
+    LIMIT 10
+  ");
+  $stmt->execute([$userId]);
+  $avisUtilisateur = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+  $noteArrondie = round($userProfile['note_moyenne'] ?? 0);
+  $modeProfilSeul = true;
 }
 // Mode "détails trajet"
 else if ($trajetId) {
-    require_once __DIR__ . '/../controllers/TrajetController.php';
-    $trajetController = new TrajetController();
-    $trajetDetails = $trajetController->getTrajetDetails($trajetId);
+  require_once __DIR__ . '/../controllers/TrajetController.php';
+  $trajetController = new TrajetController();
+  $trajetDetails = $trajetController->getTrajetDetails($trajetId);
 
-    if (!$trajetDetails) {
-        echo "Trajet introuvable";
-        exit;
-    }
-
-    require_once __DIR__ . '/../models/User.php';
-    $userModel = new User();
-    $currentUser = $userModel->getUserById($_SESSION['user_id']);
-    $creditsUtilisateur = $currentUser['credits'] ?? 0;
-    $prixTrajet = $trajetDetails['prix_par_passager'];
-    $creditsInsuffisants = $creditsUtilisateur < $prixTrajet;
-    
-    $noteArrondie = round($trajetDetails['note_moyenne']);
-    $modeProfilSeul = false;
-} else {
-    header('Location: /ecoride/php/index.php?page=covoiturages');
+  if (!$trajetDetails) {
+    echo "Trajet introuvable";
     exit;
+  }
+
+  // VÉRIFIER SI L'UTILISATEUR EST CONNECTÉ AVANT D'ACCÉDER À SES DONNÉES
+  $creditsUtilisateur = 0;
+  $creditsInsuffisants = false;
+  
+  if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
+      require_once __DIR__ . '/../models/User.php';
+      $userModel = new User();
+      $currentUser = $userModel->getUserById($_SESSION['user_id']);
+      $creditsUtilisateur = $currentUser['credits'] ?? 0;
+      $prixTrajet = $trajetDetails['prix_par_passager'];
+      $creditsInsuffisants = $creditsUtilisateur < $prixTrajet;
+  }
+  
+  $noteArrondie = round($trajetDetails['note_moyenne']);
+  $modeProfilSeul = false;
+}
+// GESTION DU BOUTON RÉSERVER SELON CONNEXION
+if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
+  // Non connecté → bouton connexion
+  $boutonReserver = '
+  <a href="/ecoride/php/index.php?page=connexion&redirect=' . urlencode($_SERVER['REQUEST_URI']) . '" class="bouton-validation" style="text-decoration:none;display:flex;align-items:center;justify-content:center;gap:0.5rem;">
+    <span class="material-symbols-outlined">login</span>
+    <strong>Connectez-vous pour réserver</strong>
+  </a>';
+} else {
+  // Connecté → formulaire de réservation
+  if ($creditsInsuffisants) {
+    $boutonReserver = '
+    <div class="message-credits-insuffisants">
+      <span class="material-symbols-outlined" style="color:#dc3545;font-size:2rem;">error</span>
+      <p style="color:#dc3545;font-weight:600;">Crédits insuffisants</p>
+      <p style="color:var(--noir-secondaire);">
+        Vous avez <strong>' . $creditsUtilisateur . ' crédits</strong>, 
+        mais ce trajet coûte <strong>' . $prixTrajet . ' crédits</strong>
+      </p>
+      <button type="button" class="btn-recharge-details" style="padding:0.8rem 1.5rem;background:var(--vert-clair);color:white;border:none;border-radius:8px;display:inline-block;margin-top:1rem;cursor:pointer;font-weight:600;">
+          Recharger mes crédits
+      </button>
+    </div>';
+  } else {
+    $boutonReserver = '
+    <form method="post" action="/ecoride/php/api/api-router.php?action=reserver-trajet">
+      <input type="hidden" name="trajet_id" value="' . $trajetDetails['id'] . '">
+      <button class="bouton-validation" type="submit">
+        <span class="material-symbols-outlined">task_alt</span>
+        <strong>Payer ' . $prixTrajet . ' crédits</strong>
+      </button>
+    </form>';
+  }
 }
 ?>
 
@@ -261,27 +298,8 @@ else if ($trajetId) {
             </ul>
 
             <!-- Bouton réservation -->
-            <?php if ($creditsInsuffisants): ?>
-              <div class="message-credits-insuffisants">
-                <span class="material-symbols-outlined" style="color:#dc3545;font-size:2rem;">error</span>
-                <p style="color:#dc3545;font-weight:600;">Crédits insuffisants</p>
-                <p style="color:var(--noir-secondaire);">
-                  Vous avez <strong><?= $creditsUtilisateur ?> crédits</strong>, 
-                  mais ce trajet coûte <strong><?= $prixTrajet ?> crédits</strong>
-                </p>
-                <button type="button" class="btn-recharge-details" style="padding:0.8rem 1.5rem;background:var(--vert-clair);color:white;border:none;border-radius:8px;display:inline-block;margin-top:1rem;cursor:pointer;font-weight:600;">
-                  Recharger mes crédits
-                </button>
-              </div>
-            <?php else: ?>
-              <form method="post" action="/ecoride/php/api/api-router.php?action=reserver-trajet">
-                <input type="hidden" name="trajet_id" value="<?= $trajetDetails['id'] ?>">
-                <button class="bouton-validation" type="submit">
-                  <span class="material-symbols-outlined">task_alt</span>
-                  <strong>Payer <?= $prixTrajet ?> crédits</strong>
-                </button>
-              </form>
-            <?php endif; ?>
+            <?= $boutonReserver ?>
+
           </section>
         <?php endif; ?>
       </div>
@@ -342,45 +360,100 @@ else if ($trajetId) {
     <?php require __DIR__ . '/footer.php'; ?>
 
     <?php if (!$modeProfilSeul): ?>
-    <!-- Script modal seulement en mode trajet -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const btnRecharge = document.querySelector('.btn-recharge-details');
-        const modal = document.getElementById('modalRechargeDetails');
-        const closeBtn = document.getElementById('closeRechargeDetails');
-        const form = document.getElementById('formRechargeDetails');
-        
-        if (btnRecharge && modal) {
-          btnRecharge.addEventListener('click', () => modal.style.display = 'flex');
-          closeBtn?.addEventListener('click', () => modal.style.display = 'none');
-          modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.style.display = 'none';
-          });
+      <!-- Script modal + calcul heure d'arrivée -->
+      <script>
+          document.addEventListener('DOMContentLoaded', async function() {
+          // ========== MODAL RECHARGE ==========
+          const btnRecharge = document.querySelector('.btn-recharge-details');
+          const modal = document.getElementById('modalRechargeDetails');
+          const closeBtn = document.getElementById('closeRechargeDetails');
+          const form = document.getElementById('formRechargeDetails');
           
-          form?.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const pack = document.querySelector('input[name="pack"]:checked')?.value;
+          if (btnRecharge && modal) {
+            btnRecharge.addEventListener('click', () => modal.style.display = 'flex');
+            closeBtn?.addEventListener('click', () => modal.style.display = 'none');
+            modal.addEventListener('click', (e) => {
+              if (e.target === modal) modal.style.display = 'none';
+            });
             
-            try {
-              const response = await fetch('/ecoride/php/api/api-router.php?action=recharger-credits', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                body: `montant=${pack}`,
-                credentials: 'same-origin'
-              });
+            form?.addEventListener('submit', async function(e) {
+              e.preventDefault();
+              const pack = document.querySelector('input[name="pack"]:checked')?.value;
               
-              const data = await response.json();
-              if (data.success) {
-                modal.style.display = 'none';
-                window.location.reload();
+              try {
+                const response = await fetch('/ecoride/php/api/api-router.php?action=recharger-credits', {
+                  method: 'POST',
+                  headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                  body: `montant=${pack}`,
+                  credentials: 'same-origin'
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                  modal.style.display = 'none';
+                  window.location.reload();
+                }
+              } catch (error) {
+                alert('Erreur lors de la recharge');
               }
-            } catch (error) {
-              alert('Erreur lors de la recharge');
-            }
-          });
-        }
-      });
-    </script>
+            });
+          }
+          
+          // ========== CALCUL HEURE D'ARRIVÉE ==========
+          const adresseDepart = "<?= addslashes($trajetDetails['adresse_depart']) ?>";
+          const adresseArrivee = "<?= addslashes($trajetDetails['adresse_arrivee']) ?>";
+          const heureDepart = "<?= $dateDepart->format('H:i') ?>";
+          const heureArriveeElement = document.querySelector('.heure-arrivee');
+          
+          // Clé API OpenRouteService
+          const API_KEY = 'eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6ImNlNzQwOWM0YWU2NjQyMTQ4OTYwYzliODc1OWQxZDRkIiwiaCI6Im11cm11cjY0In0=';
+          
+          try {
+            // 1. Géocoder les adresses
+            const [geocodeDepart, geocodeArrivee] = await Promise.all([
+              fetch(`https://api.openrouteservice.org/geocode/search?api_key=${API_KEY}&text=${encodeURIComponent(adresseDepart)}`),
+              fetch(`https://api.openrouteservice.org/geocode/search?api_key=${API_KEY}&text=${encodeURIComponent(adresseArrivee)}`)
+            ]);
+            
+            const [dataDepart, dataArrivee] = await Promise.all([
+              geocodeDepart.json(),
+              geocodeArrivee.json()
+            ]);
+            
+            const coordDepart = dataDepart.features[0].geometry.coordinates;
+            const coordArrivee = dataArrivee.features[0].geometry.coordinates;
+            
+            // 2. Calculer l'itinéraire
+            const route = await fetch(`https://api.openrouteservice.org/v2/directions/driving-car?api_key=${API_KEY}`, {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({
+                coordinates: [coordDepart, coordArrivee]
+              })
+            });
+            
+            const routeData = await route.json();
+            const dureeSecondes = routeData.routes[0].summary.duration;
+            const dureeMinutes = Math.round(dureeSecondes / 60);
+            
+            // 3. Calculer l'heure d'arrivée
+            const [heures, minutes] = heureDepart.split(':').map(Number);
+            const departDate = new Date();
+            departDate.setHours(heures, minutes, 0, 0);
+            
+            const arriveeDate = new Date(departDate.getTime() + dureeMinutes * 60000);
+            const heureArrivee = String(arriveeDate.getHours()).padStart(2, '0') + 'h' + 
+                                String(arriveeDate.getMinutes()).padStart(2, '0');
+            
+            heureArriveeElement.textContent = heureArrivee;
+            
+          } catch (error) {
+            console.error('Erreur calcul itinéraire:', error);
+            // Fallback : estimation basique (100km = ~1h15)
+            heureArriveeElement.textContent = '~1h30';
+          }
+        });
+      </script>
     <?php endif; ?>
   </body>
 </html>

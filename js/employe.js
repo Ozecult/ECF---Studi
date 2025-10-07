@@ -616,8 +616,6 @@ document.addEventListener("DOMContentLoaded", function () {
           "#liste-avis-valides .avis-traite"
         );
 
-        console.log("Recherche valides:", query); // DEBUG
-
         items.forEach((item) => {
           const text = item.textContent.toLowerCase();
           if (query === "" || text.includes(query)) {
@@ -635,8 +633,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const items = document.querySelectorAll(
           "#liste-avis-refuses .avis-traite"
         );
-
-        console.log("Recherche refusés:", query); // DEBUG
 
         items.forEach((item) => {
           const text = item.textContent.toLowerCase();

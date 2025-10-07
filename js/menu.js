@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Vérification que les éléments existent
   if (!boutonMenu || !menuProfile || !menuNavigation) {
-    console.error("Éléments du menu non trouvés");
     return;
   }
 

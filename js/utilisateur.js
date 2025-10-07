@@ -170,24 +170,13 @@ document.addEventListener("DOMContentLoaded", function () {
       currentPage === "utilisateur" ||
       window.location.pathname.includes("utilisateur");
 
-    console.log(
-      "Page actuelle:",
-      currentPage,
-      "Est page utilisateur:",
-      isUserPage
-    );
-
     if (!isUserPage) {
-      console.log("Pas sur la page utilisateur, skip initialisation");
       return;
     }
 
     // Vérifier que les éléments nécessaires existent sur la page
     const profilCredits = document.querySelector(".profil-credits");
     if (!profilCredits) {
-      console.log(
-        "Éléments de la page utilisateur non trouvés, skip initialisation"
-      );
       return;
     }
 
@@ -220,8 +209,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function chargerDonneesUtilisateur() {
     try {
-      console.log("Début chargement données utilisateur...");
-
       const response = await fetch(
         "/ecoride/php/api/api-router.php?action=get-user-data",
         {
@@ -233,12 +220,6 @@ document.addEventListener("DOMContentLoaded", function () {
           },
         }
       );
-
-      console.log("Réponse reçue:", {
-        status: response.status,
-        statusText: response.statusText,
-        url: response.url,
-      });
 
       if (!response.ok) {
         if (response.status === 401) {
@@ -254,16 +235,12 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
           const errorData = await response.json();
           errorMessage = errorData.message || errorMessage;
-          console.log("Message d'erreur du serveur:", errorMessage);
-        } catch (e) {
-          console.log("Impossible de parser la réponse d'erreur");
-        }
+        } catch (e) {}
 
         throw new Error(`HTTP ${response.status}: ${errorMessage}`);
       }
 
       const data = await response.json();
-      console.log("Données reçues:", data);
 
       if (data.success) {
         userData = {
@@ -279,8 +256,6 @@ document.addEventListener("DOMContentLoaded", function () {
         mettreAJourSelectVehicules();
         // Mettre à jour les tableaux de trajets
         mettreAJourTableauxTrajets();
-
-        console.log("Données utilisateur chargées avec succès:", userData);
       } else {
         throw new Error(data.message || "Erreur lors du chargement");
       }
@@ -352,10 +327,6 @@ document.addEventListener("DOMContentLoaded", function () {
         defaultIcon.setAttribute("role", "img");
         defaultIcon.textContent = "account_circle";
         profilPhoto.replaceChild(defaultIcon, img);
-      };
-
-      img.onload = function () {
-        console.log("Image chargée avec succès:", userData.photo_profil);
       };
 
       // Ajouter un timestamp pour éviter le cache
@@ -604,23 +575,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form.vehicule");
     const btnAjouterVehicule = document.querySelector(".btn-ajouter-vehicule");
 
-    console.log("Form trouvé:", form); // DEBUG
-    console.log("Bouton trouvé:", btnAjouterVehicule); // DEBUG
-
     if (!form) {
       console.error("ERREUR: Formulaire véhicule non trouvé!");
       return;
     }
 
     form.addEventListener("submit", async function (e) {
-      console.log("=== DÉBUT SOUMISSION VÉHICULE ==="); // DEBUG
       e.preventDefault();
 
       const formData = new FormData(this);
-      console.log("FormData créé:", Object.fromEntries(formData)); // DEBUG
 
       try {
-        console.log("Envoi vers API..."); // DEBUG
         const response = await fetch(
           "/ecoride/php/api/api-router.php?action=add-vehicule",
           {
@@ -630,9 +595,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         );
 
-        console.log("Réponse reçue:", response.status); // DEBUG
         const data = await response.json();
-        console.log("Données:", data); // DEBUG
 
         if (data.success) {
           // Recharger les véhicules
@@ -716,7 +679,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Écouter les changements sur TOUTES les préférences
     preferences.forEach((checkbox) => {
       checkbox.addEventListener("change", async function () {
-        console.log("Changement détecté sur:", this.name, this.checked); // DEBUG
         await sauvegarderPreferences();
       });
     });
@@ -744,8 +706,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
-      console.log("Préférences à sauvegarder:", preferencesCochees); // DEBUG
-
       const response = await fetch(
         "/ecoride/php/api/api-router.php?action=update-preferences",
         {
@@ -760,9 +720,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       );
 
-      console.log("Réponse reçue:", response.status); // DEBUG
       const data = await response.json();
-      console.log("Données reçues:", data); // DEBUG
 
       if (!data.success) {
         throw new Error(data.message);

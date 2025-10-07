@@ -194,16 +194,6 @@
   opacity: 0.6;
 }
 
-@keyframes gradient-border {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
 /* Header du calendrier */
 .calendar-header {
   display: flex;
@@ -343,17 +333,6 @@
   animation: slideDown 0.3s ease-out;
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* ===PASSAGER=== */
 /* Conteneur du select passagers */
 .recherche .choix[data-field="passagers"] {
@@ -481,17 +460,6 @@
 .custom-select-dropdown.show {
   display: block;
   animation: slideDown 0.3s ease-out;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
 }
 
 /* Label */

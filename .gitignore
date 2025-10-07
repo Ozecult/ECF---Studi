@@ -1,2 +1,21 @@
 .vscode/
 node_modules/
+
+# Dependencies
+/vendor/
+/node_modules/
+
+# Configuration sensible
+php/config/config.php
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Uploads utilisateurs
+/uploads/photos/*
+!/uploads/photos/.gitkeep
+
+# Logs
+*.log

@@ -9,33 +9,33 @@
 }
 
 .banniere img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
 }
 
 .banniere .banniere-texte {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: var(--vert-fond-de-page);
-    text-shadow: 2px 2px 2px #000;
-    font-size: clamp(1rem, 3vw, 3rem);
-    font-weight: 600;
-    padding: 0 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--vert-fond-de-page);
+  text-shadow: 2px 2px 2px #000;
+  font-size: clamp(1rem, 3vw, 3rem);
+  font-weight: 600;
+  padding: 0 1rem;
 }
 
 /* MAIN */
 /* Valeurs */
 .valeurs {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin: 0 auto;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
 
 /* Scroll */
@@ -60,7 +60,7 @@
 }
 
 .scroll-bas::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -6px;
   left: -6px;
@@ -73,8 +73,8 @@
 }
 
 .scroll-bas:hover {
-    transform: translateY(5px);
-    box-shadow: 0 6px 20px var(--vert-clair);
+  transform: translateY(5px);
+  box-shadow: 0 6px 20px var(--vert-clair);
 }
 
 .scroll-bas:hover::before {
@@ -83,215 +83,190 @@
 }
 
 .scroll-bas .material-symbols-outlined {
-    color: var(--noir-primaire);
-    font-size: 1.5rem;
+  color: var(--noir-primaire);
+  font-size: 1.5rem;
 }
 
 /* Galerie */
 .galerie {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .galerie h3 {
-    margin: 0;
+  margin: 0;
 }
 
-  /* Carrousel*/
+/* Carrousel*/
 .carousel-container {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    height: 350px;
-    overflow: hidden;
-    border-radius: 15px;
-    margin: 0 auto;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 15px;
+  margin: 0 auto;
 }
 
 .carousel-radio {
-    display: none;
+  display: none;
 }
 
 .carousel-track {
-    display: flex;
-    width: 300%;
-    height: 100%;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  width: 300%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .carousel-slide {
-    width: 33.333%;
-    height: 100%;
-    position: relative;
-    margin: 0;
+  width: 33.333%;
+  height: 100%;
+  position: relative;
+  margin: 0;
 }
 
 .carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 12px;
 }
 
 .carousel-slide figcaption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-    color: white;
-    padding: 2rem;
-    font-size: 1.2rem;
-    font-weight: 500;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    margin: 0;
-    text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  text-align: center;
 }
 
-   /* Navigation radios */
+/* Navigation radios */
 #slide1:checked ~ .carousel-track {
-    transform: translateX(0%);
+  transform: translateX(0%);
 }
 
 #slide2:checked ~ .carousel-track {
-    transform: translateX(-33.333%);
+  transform: translateX(-33.333%);
 }
 
 #slide3:checked ~ .carousel-track {
-    transform: translateX(-66.666%);
+  transform: translateX(-66.666%);
 }
 
 #slide1:checked ~ .carousel-indicators .indicator-label[for="slide1"],
 #slide2:checked ~ .carousel-indicators .indicator-label[for="slide2"],
 #slide3:checked ~ .carousel-indicators .indicator-label[for="slide3"] {
-    background: var(--vert-clair);
-    transform: scale(1.2);
+  background: var(--vert-clair);
+  transform: scale(1.2);
 }
 
-      /* Slide 1 vers slide 2*/
+/* Slide 1 vers slide 2*/
 #slide1:checked ~ .carousel-nav[for="slide2"].next {
-    display: flex;
+  display: flex;
 }
 
-      /* Slide 2 vers slide 3 */
+/* Slide 2 vers slide 3 */
 #slide2:checked ~ .carousel-nav[for="slide1"].prev,
 #slide2:checked ~ .carousel-nav[for="slide3"].next {
-    display: flex;
+  display: flex;
 }
 
-      /* Slide 3 vers slide 2 */
+/* Slide 3 vers slide 2 */
 #slide3:checked ~ .carousel-nav[for="slide2"].prev {
-    display: flex;
+  display: flex;
 }
 
-  /* Carrousel nav */
+/* Carrousel nav */
 .carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none; /* Masquées par défaut */
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: var(--noir-primaire);
-    transition: all 0.3s ease;
-    z-index: 10;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    user-select: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none; /* Masquées par défaut */
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--noir-primaire);
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  user-select: none;
 }
 
 .carousel-nav:hover {
-    background: rgba(255, 255, 255, 1);
-    transform: translateY(-50%) scale(1.1);
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .carousel-nav.prev {
-    left: 20px;
+  left: 20px;
 }
 
 .carousel-nav.next {
-    right: 20px;
+  right: 20px;
 }
 
-  /* Indicateurs visuels */
+/* Indicateurs visuels */
 .carousel-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1.5rem;
 }
 
 .indicator-label {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
 }
 
 /* Présentation StartUP */
 .presentation {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .presentation p {
-    text-align: center;
+  text-align: center;
 }
 
 .presentation img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 12px;
 }
 
 /* ------------------------ */
 /*       ANIMATIONS         */
 /* ------------------------ */
- 
-  /* Animation texte */
-@keyframes fade-slide {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-  /* Animation du dégradé des cards */
-@keyframes gradient-border {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
 .animation-texte {
   animation: fade-slide 1.2s ease-out forwards;
@@ -308,77 +283,77 @@
 /*       MEDIA QUERIES      */
 /* ------------------------ */
 @media (max-width: 840px) {
-    .banniere {
-        aspect-ratio: auto;
-        margin: 0;
-        width: 100%;
-        max-width: 100%;
-    }
+  .banniere {
+    aspect-ratio: auto;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
   }
+}
 
 @media (max-width: 768px) {
-.banniere {
-        aspect-ratio: auto;
-        border-radius: 15px;
-    }
+  .banniere {
+    aspect-ratio: auto;
+    border-radius: 15px;
+  }
 
   .valeurs {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    
-  .card {
-        min-width: unset;
-    }
-  
-  .card .material-icons {
-        font-size: 2.5rem;
-    }
-    
-  .card h3 {
-        font-size: 1.2rem;
-    }
-  .galerie {
-        padding: 1rem;
-        gap: 1rem;
-    }
-    
-    .galerie h3 {
-        font-size: 1.5rem;
-    }
-    
-    .carousel-container {
-        height: 250px;
-        max-width: 100%;
-    }
-    
-    .carousel-nav {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-    
-    .carousel-nav.prev {
-        left: 10px;
-    }
-    
-    .carousel-nav.next {
-        right: 10px;
-    }
-
-    .carousel-slide figcaption {
-        padding: 1rem;
-        font-size: 1rem;
-    }
+    flex-direction: column;
+    gap: 1.5rem;
   }
+
+  .card {
+    min-width: unset;
+  }
+
+  .card .material-icons {
+    font-size: 2.5rem;
+  }
+
+  .card h3 {
+    font-size: 1.2rem;
+  }
+  .galerie {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .galerie h3 {
+    font-size: 1.5rem;
+  }
+
+  .carousel-container {
+    height: 250px;
+    max-width: 100%;
+  }
+
+  .carousel-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .carousel-nav.prev {
+    left: 10px;
+  }
+
+  .carousel-nav.next {
+    right: 10px;
+  }
+
+  .carousel-slide figcaption {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
 
 @media (max-width: 480px) {
-    .banniere {
-        aspect-ratio: auto;
-        border-radius: 10px;
-    }
-
-    .banniere-texte {
-      white-space: nowrap;
-    }
+  .banniere {
+    aspect-ratio: auto;
+    border-radius: 10px;
   }
+
+  .banniere-texte {
+    white-space: nowrap;
+  }
+}
