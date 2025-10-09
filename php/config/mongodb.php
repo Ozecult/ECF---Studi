@@ -7,14 +7,7 @@ class MongoDBConnection {
     private $database;
     
     private function __construct() {
-        $config = require __DIR__ . '/config.php';
-        
-        // Ajoute dans config.php :
-        // 'mongodb' => [
-        //     'uri' => 'mongodb+srv://username:password@cluster.mongodb.net/',
-        //     'database' => 'ecoride'
-        // ]
-        
+        $config = require __DIR__ . '/config.php';        
         $this->client = new MongoDB\Client($config['mongodb']['uri']);
         $this->database = $this->client->{$config['mongodb']['database']};
     }

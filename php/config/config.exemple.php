@@ -13,6 +13,13 @@ return [
             PDO::ATTR_EMULATE_PREPARES => false,
         ]
     ],
+
+    // Configuration MongoDB
+    'mongodb' => [
+        'uri' => $_ENV['MONGO_URI'] ?? 'mongodb://localhost:27017',
+        'database' => $_ENV['MONGO_DB'] ?? 'ecoride'
+    ],
+
     // Configuration de l'application
     'app' => [
         'name' => 'EcoRide',

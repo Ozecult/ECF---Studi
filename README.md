@@ -2,6 +2,11 @@
 
 # 🚗 EcoRide - Plateforme de Covoiturage Écologique
 
+![PHP Version](https://img.shields.io/badge/PHP-8.0+-777BB4?logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-5.7+-4479A1?logo=mysql&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Complete-success)
+![License](https://img.shields.io/badge/License-Academic-green)
+
 ![EcoRide Banner](img/logo.svg)
 
 Application web de covoiturage favorisant les véhicules électriques, développée dans le cadre de l'ECF - Titre Professionnel Développeur Web et Web Mobile (Studi 2025).
@@ -9,6 +14,7 @@ Application web de covoiturage favorisant les véhicules électriques, développ
 ## 📋 Table des matières
 
 - [À propos](#à-propos)
+- [Captures d'écran](#captures-décran)
 - [Technologies utilisées](#technologies-utilisées)
 - [Fonctionnalités](#fonctionnalités)
 - [Prérequis](#prérequis)
@@ -19,6 +25,8 @@ Application web de covoiturage favorisant les véhicules électriques, développ
 - [Sécurité](#sécurité)
 - [Déploiement](#déploiement)
 - [Documentation](#documentation)
+- [FAQ](#faq)
+- [License](#license)
 - [Auteur](#auteur)
 
 ## À propos
@@ -31,6 +39,28 @@ EcoRide est une plateforme de covoiturage qui encourage les déplacements écolo
 - Faciliter le covoiturage entre particuliers
 - Favoriser l'utilisation de véhicules électriques
 - Proposer une solution économique et transparente
+
+## Captures d'écran
+
+### Page d'accueil
+
+![Page d'accueil EcoRide](docs/screenshots/home.png)
+_Recherche de trajets et présentation des valeurs_
+
+### Recherche de covoiturages
+
+![Recherche](docs/screenshots/search.png)
+_Filtres avancés et résultats en temps réel_
+
+### Espace utilisateur
+
+![Profil](docs/screenshots/profile.png)
+_Gestion de profil, véhicules et trajets_
+
+### Espace administrateur
+
+![Dashboard admin](docs/screenshots/admin.png)
+_Statistiques et gestion des utilisateurs_
 
 ## Technologies utilisées
 
@@ -142,6 +172,7 @@ mysql -u root -p ecoride < database/schema.sql
 Importer les données de test :
 
 ```bash
+# Importer les données de test
 mysql -u root -p ecoride < database/data.sql
 ```
 
@@ -201,6 +232,7 @@ Option B : XAMPP/MAMP/WAMP
 
 ## Structure du projet
 
+```bash
 ecoride/
 ├── css/
 │ └── style.css # Styles globaux
@@ -258,6 +290,7 @@ ecoride/
 ├── .gitignore
 ├── composer.json
 └── README.md
+```
 
 ## Identifiants de test
 
@@ -291,11 +324,11 @@ Utilisateurs -> Peut réserver des trajets :
 ### Réserver un trajet (n'importe quel rôle peut le faire)
 
 1. Rechercher un trajet (page recherche, covoiturages ou barre de recherche)
-   2.Filtrer les résultats si besoin
-2. Cliquez sur "Détails"
-3. Vérifier les informations (avis, préférences, véhicule)
-4. Cliquez sur "Participer" si les crédits sont suffisants ou ajouter des crédits au compte
-5. Le trajet réservé est consultable depuis son espace utilisateur
+2. Filtrer les résultats si besoin
+3. Cliquez sur "Détails"
+4. Vérifier les informations (avis, préférences, véhicule)
+5. Cliquez sur "Participer" si les crédits sont suffisants ou ajouter des crédits au compte
+6. Le trajet réservé est consultable depuis son espace utilisateur
 
 ### Déroulement d'un trajet
 
@@ -347,7 +380,7 @@ Dans config.php :
 5. Configurer config.php avec les credentials serveur
 6. Vérifier les permissions sur /uploads/
 
-## Documentations
+## Documentation
 
 ### Documentation complète disponible dans le dossier /docs/ :
 
@@ -361,6 +394,59 @@ Dans config.php :
 
 Ce projet a été développé dans le cadre de l'Évaluation en Cours de Formation (ECF) pour le Titre Professionnel Développeur Web et Web Mobile (Studi - 2025).
 
+## FAQ
+
+### Questions générales
+
+**Q: Puis-je utiliser ce projet comme base pour mon propre site de covoiturage ?**  
+Ce projet académique est protégé par le droit d'auteur. Vous pouvez consulter le code pour apprendre et vous en inspirer, mais l'utilisation commerciale ou la copie intégrale nécessitent une autorisation écrite. Contactez sandypodvin@gmail.com pour toute demande spécifique.
+
+**Q: Le projet est-il en production ?**  
+R: Il s'agit d'un projet académique. Une version de démonstration est disponible sur 000webhost (temps de chargement lent dû à l'hébergement gratuit).
+
+**Q: MongoDB est-il obligatoire pour faire fonctionner l'application ?**  
+R: Non, MongoDB est optionnel. Il sert uniquement à stocker les logs d'activité. Sans MongoDB, l'application fonctionne normalement (les logs sont simplement désactivés).
+
+### Questions techniques
+
+**Q: Les emails de réinitialisation de mot de passe fonctionnent-ils ?**  
+R: Non, actuellement l'envoi d'emails est simulé via `error_log()`. En production, il faudrait implémenter PHPMailer ou un service SMTP.
+
+**Q: Pourquoi utiliser à la fois MySQL et MongoDB ?**  
+R: MySQL stocke les données structurées (utilisateurs, trajets, réservations), tandis que MongoDB stocke les logs non structurés (historique d'activité, audit). C'est une architecture polyglotte.
+
+**Q: Comment ajouter un nouveau rôle utilisateur ?**  
+R: Modifiez la table `roles` dans MySQL et ajoutez les permissions correspondantes dans `UserController.php`.
+
+**Q: Le projet est-il responsive ?**  
+R: Oui, l'application est entièrement responsive (mobile, tablette, desktop) selon la charte graphique.
+
+### Installation et déploiement
+
+**Q: J'ai une erreur "Connection refused" avec MongoDB**  
+R: C'est normal si vous n'avez pas configuré MongoDB. Commentez la ligne `ActivityLog::log()` dans les contrôleurs ou configurez votre URI MongoDB Atlas.
+
+**Q: Composer install échoue, que faire ?**  
+R: Vérifiez que vous avez PHP >= 8.0 et les extensions requises. Exécutez `php -v` et `php -m`.
+
+**Q: Comment changer le port du serveur PHP ?**  
+R: Utilisez `php -S localhost:VOTRE_PORT` (ex: `php -S localhost:3000`).
+
+### Sécurité
+
+**Q: Les mots de passe sont-ils sécurisés ?**  
+R: Oui, tous les mots de passe sont hashés avec Argon2ID (algorithme recommandé par l'OWASP). Ils ne sont jamais stockés en clair.
+
+**Q: Y a-t-il une protection contre les injections SQL ?**  
+R: Oui, 100% des requêtes utilisent des requêtes préparées (PDO prepared statements).
+
+**Q: Le projet a-t-il été audité en sécurité ?**  
+R: Il s'agit d'un projet académique. Les bonnes pratiques sont appliquées, mais un audit professionnel serait recommandé pour une mise en production réelle.
+
+---
+
+**Votre question n'est pas listée ?** Ouvrez une [issue sur GitHub](https://github.com/Ozecult/ECF---Studi/issues) !
+
 ## Auteur
 
 PODVIN Sandy
@@ -370,7 +456,13 @@ GitHub : https://github.com/Ozecult/ECF---Studi
 
 ## License
 
-Projet académique - Tous droits réservés © 2025
+**Projet académique - Tous droits réservés © 2025 PODVIN Sandy**
+
+Ce code est mis à disposition publiquement à des fins de **portfolio** et de **démonstration de compétences** dans le cadre de l'ECF Studi 2025.
+
+Utilisation éducative et consultation autorisées avec attribution. Usage commercial interdit sans autorisation écrite.
+
+Pour toute question : sandypodvin@gmail.com
 
 🐛 Problèmes connus
 

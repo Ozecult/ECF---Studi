@@ -168,8 +168,8 @@
           voyager ensemble, tout en préservant la planète.
         </p>
         <img
-          src="/ecoride/img/Accueil/img_tesla.png"
-          alt="Voiture électrique sur route avec éoliennes"
+          src="/ecoride/img/Accueil/img_startup.jpg"
+          alt="L'équipe EcoRide en image"
         />
       </section>
     </main>
