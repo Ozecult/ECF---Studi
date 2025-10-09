@@ -8,13 +8,13 @@
       content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
     />
     <title>EcoRide - Voyagez ensemble, préservez la planète</title>
-    <link rel="stylesheet" href="/ecoride/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-    <script type="module" src="/ecoride/js/script.js"></script>
+    <script type="module" src="/js/script.js"></script>
   </head>
   <body>
     <!-- HEADER -->
@@ -24,7 +24,7 @@
     <main id="contenu" class="accueil">
       <!-- H1 - BANNIERE -->
       <section class="banniere">
-        <img src="/ecoride/img/Accueil/banniere.png" alt="Voiture écologique verte" />
+        <img src="/img/Accueil/banniere.png" alt="Voiture écologique verte" />
         <div class="banniere-texte">
           <h1 class="animation-texte">
             Voyagez ensemble,<br />Préservez la planète.
@@ -118,14 +118,14 @@
             <div class="carousel-track">
               <figure class="carousel-slide">
                 <img
-                  src="/ecoride/img/Accueil/img_liberte.jpg"
+                  src="/img/Accueil/img_liberte.jpg"
                   alt="Tête sur une fenêtre ouverte en montagne"
                 />
                 <figcaption>Respirez la liberté, partagez la route.</figcaption>
               </figure>
               <figure class="carousel-slide">
                 <img
-                  src="/ecoride/img/Accueil/img_group.jpg"
+                  src="/img/Accueil/img_group.jpg"
                   alt="Groupe dans un véhicule"
                 />
                 <figcaption>
@@ -134,7 +134,7 @@
               </figure>
               <figure class="carousel-slide">
                 <img
-                  src="/ecoride/img/Accueil/img_echange.jpg"
+                  src="/img/Accueil/img_echange.jpg"
                   alt="Échange entre deux adultes sans un véhicule"
                 />
                 <figcaption>Connectés, complices, responsables.</figcaption>
@@ -168,7 +168,7 @@
           voyager ensemble, tout en préservant la planète.
         </p>
         <img
-          src="/ecoride/img/Accueil/img_startup.jpg"
+          src="/img/Accueil/img_startup.jpg"
           alt="L'équipe EcoRide en image"
         />
       </section>

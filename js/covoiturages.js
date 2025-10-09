@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
       try {
         const urlParams = new URLSearchParams(params);
         const response = await fetch(
-          `/ecoride/php/api/api-router.php?action=search-trajets&${urlParams}`
+          `/php/api/api-router.php?action=search-trajets&${urlParams}`
         );
         const data = await response.json();
 

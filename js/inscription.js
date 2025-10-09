@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch("/ecoride/php/index.php?page=inscription", {
+      const response = await fetch("/php/index.php?page=inscription", {
         method: "POST",
         body: formData,
       });
@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", function () {
         resetFormulaire();
 
         setTimeout(() => {
-          window.location.href = "/ecoride/php/index.php?page=connexion";
+          window.location.href = "/php/index.php?page=connexion";
         }, 3000);
       } else {
         if (result.field) {

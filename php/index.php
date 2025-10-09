@@ -52,7 +52,7 @@ switch ($page) {
 
     case 'utilisateur':
         if (!$authController->isLoggedIn()) {
-            header('Location: /ecoride/php/index.php?page=connexion&redirect=' . urlencode($_SERVER['REQUEST_URI']));
+            header('Location: /php/index.php?page=connexion&redirect=' . urlencode($_SERVER['REQUEST_URI']));
             exit;
         }
         $userController->showDashboard();
@@ -84,13 +84,13 @@ switch ($page) {
     case 'admin':
         // Vérifier que l'utilisateur est admin
         if (!$authController->isLoggedIn()) {
-            header('Location: /ecoride/php/index.php?page=connexion');
+            header('Location: /php/index.php?page=connexion');
             exit;
         }
     
         $user = $authController->getCurrentUser();
         if ($user['pseudo'] !== 'admin' && $user['email'] !== 'admin@ecoride.fr') {
-            header('Location: /ecoride/php/index.php?page=utilisateur');
+            header('Location: /php/index.php?page=utilisateur');
             exit;
         }
     
@@ -99,7 +99,7 @@ switch ($page) {
 
     case 'employe':
         if (!$authController->isLoggedIn()) {
-            header('Location: /ecoride/php/index.php?page=connexion');
+            header('Location: /php/index.php?page=connexion');
             exit;
         }
         

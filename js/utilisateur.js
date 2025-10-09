@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       try {
         const response = await fetch(
-          "/ecoride/php/api/api-router.php?action=update-bio",
+          "/php/api/api-router.php?action=update-bio",
           {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       try {
         const response = await fetch(
-          "/ecoride/php/api/api-router.php?action=recharger-credits",
+          "/php/api/api-router.php?action=recharger-credits",
           {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
   async function chargerDonneesUtilisateur() {
     try {
       const response = await fetch(
-        "/ecoride/php/api/api-router.php?action=get-user-data",
+        "/php/api/api-router.php?action=get-user-data",
         {
           method: "GET",
           credentials: "include",
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
           console.error("Erreur 401: Non authentifié");
           // Rediriger vers la page de connexion
           window.location.href =
-            "/ecoride/php/index.php?page=connexion&redirect=" +
+            "/php/index.php?page=connexion&redirect=" +
             encodeURIComponent(window.location.pathname);
           return;
         }
@@ -371,7 +371,7 @@ document.addEventListener("DOMContentLoaded", function () {
             afficherNotification("Upload en cours...", "info");
 
             const response = await fetch(
-              "/ecoride/php/api/api-router.php?action=upload-photo",
+              "/php/api/api-router.php?action=upload-photo",
               {
                 method: "POST",
                 body: formData,
@@ -506,7 +506,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
           const response = await fetch(
-            "/ecoride/php/api/api-router.php?action=update-role",
+            "/php/api/api-router.php?action=update-role",
             {
               method: "POST",
               headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -587,7 +587,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       try {
         const response = await fetch(
-          "/ecoride/php/api/api-router.php?action=add-vehicule",
+          "/php/api/api-router.php?action=add-vehicule",
           {
             method: "POST",
             body: formData,
@@ -626,7 +626,7 @@ document.addEventListener("DOMContentLoaded", function () {
   async function chargerVehicules() {
     try {
       const response = await fetch(
-        "/ecoride/php/api/api-router.php?action=get-vehicules",
+        "/php/api/api-router.php?action=get-vehicules",
         {
           credentials: "same-origin",
         }
@@ -707,7 +707,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       const response = await fetch(
-        "/ecoride/php/api/api-router.php?action=update-preferences",
+        "/php/api/api-router.php?action=update-preferences",
         {
           method: "POST",
           headers: {
@@ -752,7 +752,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       const response = await fetch(
-        "/ecoride/php/api/api-router.php?action=add-custom-preference",
+        "/php/api/api-router.php?action=add-custom-preference",
         {
           method: "POST",
           headers: {
@@ -833,7 +833,7 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.append("date_depart", dateDepart); // ✅ Utilise maintenant la vraie date
 
       const response = await fetch(
-        "/ecoride/php/api/api-router.php?action=create-trajet",
+        "/php/api/api-router.php?action=create-trajet",
         {
           method: "POST",
           body: formData,
@@ -909,7 +909,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const response = await fetch(
-        "/ecoride/php/api/api-router.php?action=terminer-trajet",
+        "/php/api/api-router.php?action=terminer-trajet",
         {
           method: "POST",
           headers: {
@@ -1072,7 +1072,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const response = await fetch(
-        "/ecoride/php/api/api-router.php?action=annuler-trajet",
+        "/php/api/api-router.php?action=annuler-trajet",
         {
           method: "POST",
           headers: {
@@ -1106,7 +1106,7 @@ document.addEventListener("DOMContentLoaded", function () {
   async function demarrerTrajet(trajetId) {
     try {
       const response = await fetch(
-        "/ecoride/php/api/api-router.php?action=demarrer-trajet",
+        "/php/api/api-router.php?action=demarrer-trajet",
         {
           method: "POST",
           headers: {
@@ -1525,7 +1525,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       const response = await fetch(
-        "/ecoride/php/api/api-router.php?action=soumettre-avis",
+        "/php/api/api-router.php?action=soumettre-avis",
         {
           method: "POST",
           body: formData,
@@ -1782,7 +1782,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
           const response = await fetch(
-            `/ecoride/php/api/api-router.php?action=get-participants&trajet_id=${trajetId}`,
+            `/php/api/api-router.php?action=get-participants&trajet_id=${trajetId}`,
             { credentials: "same-origin" }
           );
           const data = await response.json();
@@ -1910,13 +1910,13 @@ document.addEventListener("DOMContentLoaded", function () {
     container.innerHTML = participants
       .map(
         (p) => `
-    <div class="participant-item" onclick="window.location.href='/ecoride/php/index.php?page=details&user=${
+    <div class="participant-item" onclick="window.location.href='/php/index.php?page=details&user=${
       p.id
     }'">
-      <img src="${p.photo || "/ecoride/assets/images/default-avatar.png"}" 
+      <img src="${p.photo || "/assets/images/default-avatar.png"}" 
            alt="${p.prenom}" 
            class="participant-photo"
-           onerror="this.src='/ecoride/assets/images/default-avatar.png'">
+           onerror="this.src='/assets/images/default-avatar.png'">
       <div class="participant-info">
         <div class="participant-nom">${p.prenom} ${p.nom}</div>
         <div class="participant-note">

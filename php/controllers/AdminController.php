@@ -61,12 +61,12 @@ class AdminController {
           error_log("Erreur SQL: " . json_encode($errorInfo));
       }
       
-      header('Location: /ecoride/php/index.php?page=admin&success=employee_created');
+      header('Location: /php/index.php?page=admin&success=employee_created');
       exit;
       
     } catch (Exception $e) {
         error_log("Erreur createEmployee: " . $e->getMessage());
-        header('Location: /ecoride/php/index.php?page=admin&error=' . urlencode($e->getMessage()));
+        header('Location: /php/index.php?page=admin&error=' . urlencode($e->getMessage()));
         exit;
     }
   }

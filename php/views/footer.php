@@ -1,7 +1,7 @@
 <footer>
         <div class="footer-contenu">
           <a href="../php/index.php?page=home" class="logo hover-underline gradient-hover">
-            <img src="/ecoride/img/logo.svg" alt="EcoRide logo" />
+            <img src="/img/logo.svg" alt="EcoRide logo" />
             <span>EcoRide</span>
           </a>
 

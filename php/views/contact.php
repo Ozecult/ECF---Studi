@@ -8,13 +8,13 @@
       content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
     />
     <title>EcoRide - Contact</title>
-    <link rel="stylesheet" href="/ecoride/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-    <script type="module" src="/ecoride/js/script.js"></script>
+    <script type="module" src="/js/script.js"></script>
   </head>
   <body>
     <!-- HEADER -->
@@ -156,7 +156,7 @@
           const formData = new FormData(form);
           
           try {
-            const response = await fetch('/ecoride/php/api/api-router.php?action=send-contact', {
+            const response = await fetch('/php/api/api-router.php?action=send-contact', {
               method: 'POST',
               body: formData
             });

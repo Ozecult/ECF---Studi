@@ -6,7 +6,7 @@ if (!isset($authController)) {
 
 // Vérifier que l'utilisateur est connecté
 if (!$authController->isLoggedIn()) {
-    header('Location: /ecoride/php/index.php?page=connexion');
+    header('Location: /php/index.php?page=connexion');
     exit;
 }
 
@@ -39,13 +39,13 @@ $csrfToken = $authController->generateCSRFToken();
         content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
       />
       <title>EcoRide - Espace administrateur</title>
-      <link rel="stylesheet" href="/ecoride/css/style.css" />
+      <link rel="stylesheet" href="/css/style.css" />
       <link
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet"
       />
       <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-      <script type="module" src="/ecoride/js/script.js"></script>
+      <script type="module" src="/js/script.js"></script>
       <script>
         window.statsData = <?= json_encode([
           'trajets_aujourdhui' => $stats['trajets_aujourdhui'],
@@ -68,7 +68,7 @@ $csrfToken = $authController->generateCSRFToken();
           <h2>Créer un compte employé</h2>
 
           <!-- formulaire -->
-          <form method="post" action="/ecoride/php/api/api-router.php?action=create-employee" class="compte card" autocomplete="on">
+          <form method="post" action="/php/api/api-router.php?action=create-employee" class="compte card" autocomplete="on">
             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken ?? ($_SESSION['csrf_token'] ?? ''), ENT_QUOTES) ?>">
             <fieldset>
               <legend>Créer un compte employé</legend>
@@ -262,13 +262,13 @@ $csrfToken = $authController->generateCSRFToken();
                   <td>
                     <div class="actions-admin">
                       <?php if ($user['statut'] === 'actif'): ?>
-                        <form method="post" action="/ecoride/php/api/api-router.php?action=suspend-user" style="display:inline;">
+                        <form method="post" action="/php/api/api-router.php?action=suspend-user" style="display:inline;">
                           <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
                           <input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
                           <button type="submit" class="btn-suspend">Suspendre</button>
                         </form>
                       <?php else: ?>
-                        <form method="post" action="/ecoride/php/api/api-router.php?action=reactivate-user" style="display:inline;">
+                        <form method="post" action="/php/api/api-router.php?action=reactivate-user" style="display:inline;">
                           <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
                           <input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
                           <button type="submit" class="btn-reactivate">Réactiver</button>
@@ -276,7 +276,7 @@ $csrfToken = $authController->generateCSRFToken();
                       <?php endif; ?>
                       
                       <?php if ($hasDemandeSuspension): ?>
-                        <form method="post" action="/ecoride/php/api/api-router.php?action=ignorer-demande-suspension" style="display:inline;">
+                        <form method="post" action="/php/api/api-router.php?action=ignorer-demande-suspension" style="display:inline;">
                           <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
                           <input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
                           <button type="submit" class="btn-ignorer">Ignorer</button>
@@ -363,13 +363,13 @@ $csrfToken = $authController->generateCSRFToken();
                   </div>
                   <div class="value actions-admin-mobile">
                     <?php if ($user['statut'] === 'actif'): ?>
-                      <form method="post" action="/ecoride/php/api/api-router.php?action=suspend-user">
+                      <form method="post" action="/php/api/api-router.php?action=suspend-user">
                         <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
                         <input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
                         <button type="submit" class="btn-suspend">Suspendre</button>
                       </form>
                     <?php else: ?>
-                      <form method="post" action="/ecoride/php/api/api-router.php?action=reactivate-user">
+                      <form method="post" action="/php/api/api-router.php?action=reactivate-user">
                         <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
                         <input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
                         <button type="submit" class="btn-reactivate">Réactiver</button>
@@ -377,7 +377,7 @@ $csrfToken = $authController->generateCSRFToken();
                     <?php endif; ?>
                     
                     <?php if ($hasDemandeSuspension): ?>
-                      <form method="post" action="/ecoride/php/api/api-router.php?action=ignorer-demande-suspension">
+                      <form method="post" action="/php/api/api-router.php?action=ignorer-demande-suspension">
                         <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
                         <input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
                         <button type="submit" class="btn-ignorer">Ignorer</button>

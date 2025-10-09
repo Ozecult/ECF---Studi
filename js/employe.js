@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
           const response = await fetch(
-            "/ecoride/php/api/api-router.php?action=valider-avis",
+            "/php/api/api-router.php?action=valider-avis",
             {
               method: "POST",
               headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
           const response = await fetch(
-            "/ecoride/php/api/api-router.php?action=refuser-avis",
+            "/php/api/api-router.php?action=refuser-avis",
             {
               method: "POST",
               headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -414,7 +414,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const response = await fetch(
-        "/ecoride/php/api/api-router.php?action=prendre-en-charge-signalement",
+        "/php/api/api-router.php?action=prendre-en-charge-signalement",
         {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -455,7 +455,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const response = await fetch(
-        "/ecoride/php/api/api-router.php?action=classer-sans-suite",
+        "/php/api/api-router.php?action=classer-sans-suite",
         {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -502,7 +502,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const response = await fetch(
-        "/ecoride/php/api/api-router.php?action=resoudre-signalement",
+        "/php/api/api-router.php?action=resoudre-signalement",
         {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -656,7 +656,7 @@ document.addEventListener("DOMContentLoaded", function () {
     async function chargerMessagesContact() {
       try {
         const response = await fetch(
-          "/ecoride/php/api/api-router.php?action=get-messages-contact"
+          "/php/api/api-router.php?action=get-messages-contact"
         );
         const data = await response.json();
 
@@ -821,7 +821,7 @@ document.addEventListener("DOMContentLoaded", function () {
         formData.append("reponse", reponse);
 
         const response = await fetch(
-          "/ecoride/php/api/api-router.php?action=traiter-message-contact",
+          "/php/api/api-router.php?action=traiter-message-contact",
           {
             method: "POST",
             body: formData,

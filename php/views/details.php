@@ -67,7 +67,7 @@ else if ($trajetId) {
 if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
   // Non connecté → bouton connexion
   $boutonReserver = '
-  <a href="/ecoride/php/index.php?page=connexion&redirect=' . urlencode($_SERVER['REQUEST_URI']) . '" class="bouton-validation" style="text-decoration:none;display:flex;align-items:center;justify-content:center;gap:0.5rem;">
+  <a href="/php/index.php?page=connexion&redirect=' . urlencode($_SERVER['REQUEST_URI']) . '" class="bouton-validation" style="text-decoration:none;display:flex;align-items:center;justify-content:center;gap:0.5rem;">
     <span class="material-symbols-outlined">login</span>
     <strong>Connectez-vous pour réserver</strong>
   </a>';
@@ -88,7 +88,7 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
     </div>';
   } else {
     $boutonReserver = '
-    <form method="post" action="/ecoride/php/api/api-router.php?action=reserver-trajet">
+    <form method="post" action="/php/api/api-router.php?action=reserver-trajet">
       <input type="hidden" name="trajet_id" value="' . $trajetDetails['id'] . '">
       <button class="bouton-validation" type="submit">
         <span class="material-symbols-outlined">task_alt</span>
@@ -105,11 +105,11 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EcoRide - <?= $modeProfilSeul ? 'Profil de ' . htmlspecialchars($userProfile['prenom']) : 'Détails du covoiturage' ?></title>
-    <link rel="stylesheet" href="/ecoride/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-    <script type="module" src="/ecoride/js/script.js"></script>
+    <script type="module" src="/js/script.js"></script>
   </head>
   <body>
     <!-- HEADER -->
@@ -121,7 +121,7 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
         <div style="background:linear-gradient(135deg,var(--vert-clair),var(--vert-fond-menu-footer));color:white;padding:1.5rem;border-radius:12px;margin-bottom:2rem;text-align:center;box-shadow:0 4px 12px rgba(121,156,121,0.3);">
           <span class="material-symbols-outlined" style="font-size:2.5rem;display:block;margin-bottom:0.5rem;">check_circle</span>
           <strong style="font-size:1.2rem;">Réservation confirmée !</strong>
-          <p style="margin:0.5rem 0 0 0;">Vous pouvez consulter vos trajets dans votre <a href="/ecoride/php/index.php?page=utilisateur" style="color:white;text-decoration:underline;">espace personnel</a>.</p>
+          <p style="margin:0.5rem 0 0 0;">Vous pouvez consulter vos trajets dans votre <a href="/php/index.php?page=utilisateur" style="color:white;text-decoration:underline;">espace personnel</a>.</p>
         </div>
       <?php endif; ?>
 
@@ -381,7 +381,7 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
               const pack = document.querySelector('input[name="pack"]:checked')?.value;
               
               try {
-                const response = await fetch('/ecoride/php/api/api-router.php?action=recharger-credits', {
+                const response = await fetch('/php/api/api-router.php?action=recharger-credits', {
                   method: 'POST',
                   headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                   body: `montant=${pack}`,

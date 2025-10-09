@@ -23,7 +23,7 @@ class UserController {
     public function showDashboard() {
         // Vérifier que l'utilisateur est connecté
         if (!$this->isLoggedIn()) {
-            header('Location: /ecoride/php/index.php?page=connexion');
+            header('Location: /php/index.php?page=connexion');
             exit;
         }
         

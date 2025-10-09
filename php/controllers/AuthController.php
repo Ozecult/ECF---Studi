@@ -178,7 +178,7 @@ class AuthController {
       // $this->sendVerificationEmail($userData['email'], $result['verification_token']);
 
       $this->jsonResponse(true, "Inscription réussie. Vérifiez votre email.", 201, [
-          'redirect_url' => '/ecoride/php/index.php?page=connexion'
+          'redirect_url' => '/php/index.php?page=connexion'
       ]);
     } catch (Exception $e) {
         error_log("Erreur d'inscription EcoRide: " . $e->getMessage());
@@ -227,7 +227,7 @@ class AuthController {
     
     error_log("=== LOGOUT TERMINÉ ===");
     
-    header('Location: /ecoride/php/index.php?page=home');
+    header('Location: /php/index.php?page=home');
     exit;
 }
   /**
@@ -467,17 +467,17 @@ private function createSecureSession($user, $remember = false)
       if ($role) {
         // Redirection selon le rôle exact
         if ($role === 'administrateur') {
-          return '/ecoride/php/index.php?page=admin';
+          return '/php/index.php?page=admin';
         } elseif ($role === 'employe') {
-          return '/ecoride/php/index.php?page=employe';
+          return '/php/index.php?page=employe';
         }
       }
       
       // Tous les utilisateurs standards → page utilisateur
-      return '/ecoride/php/index.php?page=utilisateur';
+      return '/php/index.php?page=utilisateur';
     }
       
-    return '/ecoride/php/index.php?page=home';
+    return '/php/index.php?page=home';
   }
   /**
  * Récupérer le rôle exact d'un employé depuis la table roles
@@ -534,7 +534,7 @@ private function createSecureSession($user, $remember = false)
         $this->jsonResponse(false, "Authentification requise", 401);
       } else {
         $currentUrl = $_SERVER['REQUEST_URI'] ?? '/';
-        $this->redirect('/ecoride/php/index.php?page=connexion&redirect=' . urlencode($currentUrl));
+        $this->redirect('/php/index.php?page=connexion&redirect=' . urlencode($currentUrl));
       }
     }
   }

@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch("/ecoride/php/index.php?page=connexion", {
+      const response = await fetch("/php/index.php?page=connexion", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (result.redirect_url) {
             window.location.href = result.redirect_url;
           } else {
-            window.location.href = "/ecoride/php/index.php?page=utilisateur";
+            window.location.href = "/php/index.php?page=utilisateur";
           }
         }, 500);
       } else {

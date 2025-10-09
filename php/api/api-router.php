@@ -143,7 +143,7 @@ try {
             $uploadPath = $uploadDir . $filename;
             
             if (move_uploaded_file($file['tmp_name'], $uploadPath)) {
-                $photoUrl = '/ecoride/uploads/photos/' . $filename;
+                $photoUrl = '/uploads/photos/' . $filename;
                 
                 $updateSuccess = $userModel->updateUser($_SESSION['user_id'], ['photo_profil' => $photoUrl]);
                 
@@ -529,13 +529,13 @@ try {
                 
                 $db->commit();
                 
-                header('Location: /ecoride/php/index.php?page=details&trajet=' . $trajetId . '&success=reservation');
+                header('Location: /php/index.php?page=details&trajet=' . $trajetId . '&success=reservation');
                 exit;
                 
             } catch (Exception $e) {
                 $db->rollBack();
                 error_log("Erreur réservation: " . $e->getMessage());
-                header('Location: /ecoride/php/index.php?page=details&trajet=' . $trajetId . '&error=' . urlencode($e->getMessage()));
+                header('Location: /php/index.php?page=details&trajet=' . $trajetId . '&error=' . urlencode($e->getMessage()));
                 exit;
             }
             break;
@@ -788,7 +788,7 @@ try {
             $adminController = new AdminController();
             $adminController->suspendUser($userId);
             
-            header('Location: /ecoride/php/index.php?page=admin&success=user_suspended');
+            header('Location: /php/index.php?page=admin&success=user_suspended');
             exit;
             break;
         
@@ -815,7 +815,7 @@ try {
             $adminController = new AdminController();
             $adminController->reactivateUser($userId);
             
-            header('Location: /ecoride/php/index.php?page=admin&success=user_reactivated');
+            header('Location: /php/index.php?page=admin&success=user_reactivated');
             exit;
             break;
 
@@ -834,7 +834,7 @@ try {
             $userId = $_POST['user_id'] ?? '';
             
             if (empty($userId)) {
-                header('Location: /ecoride/php/index.php?page=admin&error=' . urlencode('ID utilisateur manquant'));
+                header('Location: /php/index.php?page=admin&error=' . urlencode('ID utilisateur manquant'));
                 exit;
             }
             
@@ -844,12 +844,12 @@ try {
             try {
                 $result = $adminController->ignorerDemandeSuspension($userId);
                 if ($result) {
-                    header('Location: /ecoride/php/index.php?page=admin&success=' . urlencode('Demande ignorée'));
+                    header('Location: /php/index.php?page=admin&success=' . urlencode('Demande ignorée'));
                 } else {
-                    header('Location: /ecoride/php/index.php?page=admin&error=' . urlencode('Erreur lors de l\'opération'));
+                    header('Location: /php/index.php?page=admin&error=' . urlencode('Erreur lors de l\'opération'));
                 }
             } catch (Exception $e) {
-                header('Location: /ecoride/php/index.php?page=admin&error=' . urlencode($e->getMessage()));
+                header('Location: /php/index.php?page=admin&error=' . urlencode($e->getMessage()));
             }
             exit;
             break;

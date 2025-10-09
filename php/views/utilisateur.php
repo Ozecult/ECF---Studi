@@ -1,7 +1,7 @@
 <?php
 // views/utilisateur.php - Version intégrée avec la BDD
 if (!isset($userData) || empty($userData['user'])) {
-    header('Location: /ecoride/php/index.php?page=connexion');
+    header('Location: /php/index.php?page=connexion');
     exit;
 }
 
@@ -22,7 +22,7 @@ $preferencesTypes = $userData['preferences_types'] ?? [];
       content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
     />
     <title>EcoRide - Tableau de bord</title>
-    <link rel="stylesheet" href="/ecoride/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
   </head>
@@ -671,7 +671,7 @@ $preferencesTypes = $userData['preferences_types'] ?? [];
     <script>
       // Passer les données PHP au JavaScript
       window.ecoRideData = {
-        apiUrl: '/ecoride/php/api/api-router.php',
+        apiUrl: '/php/api/api-router.php',
         user: <?= json_encode($user) ?>,
         vehicules: <?= json_encode($vehicules) ?>,
         preferences: <?= json_encode($preferences) ?>,
@@ -679,6 +679,6 @@ $preferencesTypes = $userData['preferences_types'] ?? [];
         trajetsPasses: <?= json_encode($trajetsPasses) ?>
       };
     </script>
-    <script type="module" src="/ecoride/js/script.js"></script>
+    <script type="module" src="/js/script.js"></script>
   </body>
 </html>

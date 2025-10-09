@@ -23,7 +23,7 @@ if ($isLoggedIn) {
   <div class="menu">
     <!-- Logo cliquable -->
     <a href="../php/index.php?page=home" class="logo hover-underline gradient-hover">
-      <img src="/ecoride/img/logo.svg" alt="Logo EcoRide" />
+      <img src="/img/logo.svg" alt="Logo EcoRide" />
       <span>EcoRide</span>
     </a>
    
