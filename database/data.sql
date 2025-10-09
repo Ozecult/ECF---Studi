@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3307
--- Généré le : mer. 08 oct. 2025 à 16:33
+-- Généré le : jeu. 09 oct. 2025 à 14:41
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -87,7 +87,9 @@ INSERT INTO `logs_activite` (`id`, `utilisateur_id`, `action`, `table_affectee`,
 (NULL, 7, 'successful_login', 'utilisateurs', NULL, '{\"timestamp\":\"2025-10-07 11:54:02\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0', '2025-10-07 09:54:02'),
 (NULL, 8, 'successful_login', 'utilisateurs', NULL, '{\"timestamp\":\"2025-10-07 11:56:41\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0', '2025-10-07 09:56:41'),
 (NULL, 6, 'successful_login', 'utilisateurs', NULL, '{\"timestamp\":\"2025-10-07 12:09:54\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0', '2025-10-07 10:09:54'),
-(NULL, 1, 'successful_login', 'utilisateurs', NULL, '{\"timestamp\":\"2025-10-07 12:11:04\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0', '2025-10-07 10:11:04');
+(NULL, 1, 'successful_login', 'utilisateurs', NULL, '{\"timestamp\":\"2025-10-07 12:11:04\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0', '2025-10-07 10:11:04'),
+(NULL, 2, 'successful_login', 'utilisateurs', NULL, '{\"timestamp\":\"2025-10-09 10:01:30\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0', '2025-10-09 08:01:30'),
+(NULL, 1, 'successful_login', 'utilisateurs', NULL, '{\"timestamp\":\"2025-10-09 10:02:28\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0', '2025-10-09 08:02:28');
 
 --
 -- Déchargement des données de la table `messages_contact`
@@ -334,8 +336,8 @@ INSERT INTO `transactions` (`id`, `utilisateur_id`, `type_transaction`, `montant
 --
 
 INSERT INTO `utilisateurs` (`id`, `prenom`, `nom`, `email`, `mot_de_passe`, `pseudo`, `photo_profil`, `bio`, `credits`, `note_moyenne`, `nombre_avis`, `est_chauffeur`, `est_passager`, `statut`, `token_reset_password`, `token_reset_expires_at`, `email_verifie`, `token_verification`, `derniere_connexion`, `created_at`, `updated_at`) VALUES
-(1, 'Sandy', 'Podvin', 'admin@ecoride.fr', '$argon2id$v=19$m=65536,t=4,p=1$ZUVEWUViMzkzRzE0dXNDbA$VclTTavJfwiiK4NxkUyI0oFNXd1+lMXYOCKGFsPIfCg', 'admin', NULL, NULL, 1039, 0.0, 0, 1, 1, 'actif', NULL, NULL, 1, NULL, '2025-10-07 10:11:04', '2025-09-30 06:43:30', '2025-10-07 10:11:04'),
-(2, 'Sandy', 'Podvin', 'sandypodvin@gmail.com', '$argon2id$v=19$m=65536,t=4,p=3$RGNYYlBXUW93VkdVdnNiUg$GwDkABszvhyF4TzUAOf02BB/d/+LiMADatkVzr8quCk', 'Ozecult', '/ecoride/uploads/photos/2_1759308971.jpg', 'J\'aime rencontrer des gens lors de mes voyages !', 182, 4.8, 5, 1, 1, 'actif', NULL, NULL, 1, '2437a3b88609510290bb12a5458dc3525da4af7d9ef01a95c17e4cc26ce68035', '2025-10-03 08:45:59', '2025-09-18 12:38:34', '2025-10-03 08:47:31'),
+(1, 'Sandy', 'Podvin', 'admin@ecoride.fr', '$argon2id$v=19$m=65536,t=4,p=1$ZUVEWUViMzkzRzE0dXNDbA$VclTTavJfwiiK4NxkUyI0oFNXd1+lMXYOCKGFsPIfCg', 'admin', NULL, NULL, 1039, 0.0, 0, 1, 1, 'actif', NULL, NULL, 1, NULL, '2025-10-09 08:02:28', '2025-09-30 06:43:30', '2025-10-09 08:02:28'),
+(2, 'Sandy', 'Podvin', 'sandypodvin@gmail.com', '$argon2id$v=19$m=65536,t=4,p=3$RGNYYlBXUW93VkdVdnNiUg$GwDkABszvhyF4TzUAOf02BB/d/+LiMADatkVzr8quCk', 'Ozecult', '/ecoride/uploads/photos/2_1759308971.jpg', 'J\'aime rencontrer des gens lors de mes voyages !', 182, 4.8, 5, 1, 1, 'actif', NULL, NULL, 1, '2437a3b88609510290bb12a5458dc3525da4af7d9ef01a95c17e4cc26ce68035', '2025-10-09 08:01:30', '2025-09-18 12:38:34', '2025-10-09 08:01:30'),
 (6, 'Kevin', 'Dupont', 'kevin.dupont@hotmail.fr', '$argon2id$v=19$m=65536,t=4,p=3$Z0M2N1k5YnpCYlJQRkNaUw$B6DXalTK5VsMtueMKGAvbZzkOSXhVp/Su1b/apPOERQ', 'kevind', NULL, NULL, 60, 0.0, 0, 0, 1, 'actif', NULL, NULL, 1, '6ea5c6324ed4d8db8a87064e58cf0898a0827ef9979a490f4f33de4bcf840d3a', '2025-10-07 10:09:54', '2025-09-30 12:14:52', '2025-10-07 10:09:54'),
 (7, 'Elisa', 'Portemont', 'elisa.portemont@orange.fr', '$argon2id$v=19$m=65536,t=4,p=3$S21WSEdlbFAuZjR0WDZLMw$O80cYsxwBfAXQUu0FM8Exv07Fx9W68K0RelawhPQRWw', 'Elisa', '/ecoride/uploads/photos/7_1759372283.png', 'Bonjour! Je suis une conductrice agréable et qui roule en toute sécurité.', 113, 4.3, 3, 1, 1, 'actif', NULL, NULL, 1, 'b80464a2ff91df185eebe39b06ce9adc6f57383690d12ae5478e4c7084ac76eb', '2025-10-07 09:54:02', '2025-10-01 14:57:08', '2025-10-07 09:56:32'),
 (8, 'Jessica', 'Bore', 'jessica.bore@gmail.com', '$argon2id$v=19$m=65536,t=4,p=3$YWR6dFQyNG1Jb080a2tGRw$zF5g1h68IivIU7t31ORHN3TI9Jmf3mYqDWCvNI1TRIs', 'jessica.bore@gmail.com', '/ecoride/uploads/photos/8_1759378193.png', 'Prudente et ponctuelle, j\'aime les échanges lors de mes voyages.', 128, 4.3, 3, 1, 1, 'actif', NULL, NULL, 1, '4d0ddc98262a91cb737b1726eb8d5e7b3d20278efb13751fe382ed9fd3a053bf', '2025-10-07 09:56:41', '2025-10-02 04:09:34', '2025-10-07 09:56:41'),
@@ -355,15 +357,6 @@ INSERT INTO `vehicules` (`id`, `utilisateur_id`, `marque`, `modele`, `couleur`, 
 (4, 9, 'Peugeot', '307', 'Grise', 'thermique', 'AA-789-DF', '2022-04-05', 3, 1, '2025-10-02 04:14:24', '2025-10-02 04:14:24'),
 (5, 10, 'Renault', 'Kadjar', 'Rouge', 'thermique', 'AZ-214-BC', '2022-10-02', 4, 1, '2025-10-02 04:17:12', '2025-10-02 04:17:12'),
 (6, 11, 'Tesla', '3', 'Blanche', 'electrique', 'ZZ-145-FD', '2025-05-05', 4, 1, '2025-10-02 04:20:53', '2025-10-02 04:20:53');
-
--- --------------------------------------------------------
-
---
--- Structure de la vue `v_stats_daily`
---
-DROP TABLE IF EXISTS `v_stats_daily`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_stats_daily`  AS SELECT cast(`trajets`.`created_at` as date) AS `date`, count(0) AS `nb_trajets`, sum(case when `trajets`.`statut` <> 'annule' then `trajets`.`prix_par_passager` * (`trajets`.`places_totales` - `trajets`.`places_disponibles`) * 0.1 else 0 end) AS `credits_gagnes` FROM `trajets` GROUP BY cast(`trajets`.`created_at` as date) ORDER BY cast(`trajets`.`created_at` as date) DESC ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

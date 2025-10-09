@@ -1,6 +1,11 @@
+<?php
+$phpSelf = $_SERVER['PHP_SELF'];
+$basePath = dirname($phpSelf);
+?>
+
 <section class="recherche">
         <h2>Rechercher un covoiturage</h2>
-        <form action="Covoiturages.html" method="get" autocomplete="on">
+        <form action="<?= $basePath ?>/index.php" method="get" autocomplete="on">
           <!-- Départ -->
           <div class="choix">
             <label for="depart">
@@ -65,6 +70,10 @@
               <option value="8">8 passagers</option>
             </select>
           </div>
+
+          <!-- Champ caché pour la page -->
+          <input type="hidden" name="page" value="covoiturages">
+        
           <!-- Bouton -->
           <button id="cherche" type="submit">Rechercher</button>
         </form>

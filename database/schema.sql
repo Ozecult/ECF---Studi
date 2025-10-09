@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3307
--- Généré le : mar. 07 oct. 2025 à 10:19
+-- Généré le : jeu. 09 oct. 2025 à 14:32
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -454,18 +454,6 @@ CREATE TABLE `vehicules` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
---
--- Doublure de structure pour la vue `v_stats_daily`
--- (Voir ci-dessous la vue réelle)
---
-CREATE TABLE `v_stats_daily` (
-`date` date
-,`nb_trajets` bigint(21)
-,`credits_gagnes` decimal(43,3)
-);
-
 --
 -- Index pour les tables déchargées
 --
@@ -708,95 +696,8 @@ ALTER TABLE `utilisateurs`
 ALTER TABLE `vehicules`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
--- --------------------------------------------------------
-
---
--- Structure de la vue `v_stats_daily`
---
-DROP TABLE IF EXISTS `v_stats_daily`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_stats_daily`  AS SELECT cast(`trajets`.`created_at` as date) AS `date`, count(0) AS `nb_trajets`, sum(case when `trajets`.`statut` <> 'annule' then `trajets`.`prix_par_passager` * (`trajets`.`places_totales` - `trajets`.`places_disponibles`) * 0.1 else 0 end) AS `credits_gagnes` FROM `trajets` GROUP BY cast(`trajets`.`created_at` as date) ORDER BY cast(`trajets`.`created_at` as date) DESC ;
-
---
--- Contraintes pour les tables déchargées
 --
 
---
--- Contraintes pour la table `avis`
---
-ALTER TABLE `avis`
-  ADD CONSTRAINT `avis_ibfk_1` FOREIGN KEY (`reservation_id`) REFERENCES `reservations` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `avis_ibfk_2` FOREIGN KEY (`evaluateur_id`) REFERENCES `utilisateurs` (`id`),
-  ADD CONSTRAINT `avis_ibfk_3` FOREIGN KEY (`evalue_id`) REFERENCES `utilisateurs` (`id`),
-  ADD CONSTRAINT `avis_ibfk_4` FOREIGN KEY (`validateur_id`) REFERENCES `employes` (`id`),
-  ADD CONSTRAINT `avis_ibfk_5` FOREIGN KEY (`trajet_id`) REFERENCES `trajets` (`id`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `employes`
---
-ALTER TABLE `employes`
-  ADD CONSTRAINT `employes_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateurs` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `employes_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
-
---
--- Contraintes pour la table `messages_contact`
---
-ALTER TABLE `messages_contact`
-  ADD CONSTRAINT `messages_contact_ibfk_1` FOREIGN KEY (`employe_assigne_id`) REFERENCES `employes` (`id`);
-
---
--- Contraintes pour la table `notifications`
---
-ALTER TABLE `notifications`
-  ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateurs` (`id`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `preferences_utilisateurs`
---
-ALTER TABLE `preferences_utilisateurs`
-  ADD CONSTRAINT `preferences_utilisateurs_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateurs` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `preferences_utilisateurs_ibfk_2` FOREIGN KEY (`preference_type_id`) REFERENCES `preferences_types` (`id`);
-
---
--- Contraintes pour la table `reservations`
---
-ALTER TABLE `reservations`
-  ADD CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`trajet_id`) REFERENCES `trajets` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `reservations_ibfk_2` FOREIGN KEY (`passager_id`) REFERENCES `utilisateurs` (`id`);
-
---
--- Contraintes pour la table `signalements`
---
-ALTER TABLE `signalements`
-  ADD CONSTRAINT `signalements_ibfk_1` FOREIGN KEY (`trajet_id`) REFERENCES `trajets_old` (`id`),
-  ADD CONSTRAINT `signalements_ibfk_2` FOREIGN KEY (`signaleur_id`) REFERENCES `utilisateurs` (`id`),
-  ADD CONSTRAINT `signalements_ibfk_3` FOREIGN KEY (`signale_id`) REFERENCES `utilisateurs` (`id`),
-  ADD CONSTRAINT `signalements_ibfk_4` FOREIGN KEY (`employe_assigne_id`) REFERENCES `employes` (`id`);
-
---
--- Contraintes pour la table `trajets`
---
-ALTER TABLE `trajets`
-  ADD CONSTRAINT `trajets_ibfk_1` FOREIGN KEY (`chauffeur_id`) REFERENCES `utilisateurs` (`id`),
-  ADD CONSTRAINT `trajets_ibfk_2` FOREIGN KEY (`vehicule_id`) REFERENCES `vehicules` (`id`);
-
---
--- Contraintes pour la table `transactions`
---
-ALTER TABLE `transactions`
-  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateurs` (`id`);
-
---
--- Contraintes pour la table `user_remember_tokens`
---
-ALTER TABLE `user_remember_tokens`
-  ADD CONSTRAINT `user_remember_tokens_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateurs` (`id`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `vehicules`
---
-ALTER TABLE `vehicules`
-  ADD CONSTRAINT `vehicules_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateurs` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
