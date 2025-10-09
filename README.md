@@ -49,12 +49,12 @@ _Recherche de trajets et présentation des valeurs_
 
 ### Recherche de covoiturages
 
-![Recherche](docs/screenshots/search.png)
+![Recherche](docs/screenshots/covoiturages.png)
 _Filtres avancés et résultats en temps réel_
 
 ### Espace utilisateur
 
-![Profil](docs/screenshots/profile.png)
+![Profil](docs/screenshots/utilisateur.png)
 _Gestion de profil, véhicules et trajets_
 
 ### Espace administrateur
@@ -294,15 +294,30 @@ ecoride/
 
 ## Identifiants de test
 
-Admin -> 'administrateur@ecoride.fr', '@Admin1234!' -> Accès complet
-Employés -> 'kevin.dupont@hotmail.fr', '@Employe2025!' -> Validation avis, gestion signalements et messages de contact
-Utilisateurs -> Peut réserver des trajets :
-'elisa.portemont@orange.fr', '@Elisa2025!'
-'joelle.garcia@hotmail.fr', '@Joelle2025!'
-'jessica.bore@gmail.com', '@Jessica2025!'
-'maxime.bernard@gmail.com', '@Maxime2025!'
-'thierry.marchand@gmail.com', '@Thierry2025!'
-'francois.gaillant@gmail.com', '@Francois2025!'
+### Administrateur
+
+- **Email :** `administrateur@ecoride.fr`
+- **Mot de passe :** `@Admin1234!`
+- **Accès :** Complet (création employés, suspension utilisateurs, statistiques)
+
+### Employé
+
+- **Email :** `kevin.dupont@hotmail.fr`
+- **Mot de passe :** `@Employe2025!`
+- **Accès :** Validation avis, gestion signalements et messages de contact
+
+### Utilisateurs (peuvent réserver des trajets)
+
+| Email                         | Mot de passe     |
+| ----------------------------- | ---------------- |
+| `elisa.portemont@orange.fr`   | `@Elisa2025!`    |
+| `joelle.garcia@hotmail.fr`    | `@Joelle2025!`   |
+| `jessica.bore@gmail.com`      | `@Jessica2025!`  |
+| `maxime.bernard@gmail.com`    | `@Maxime2025!`   |
+| `thierry.marchand@gmail.com`  | `@Thierry2025!`  |
+| `francois.gaillant@gmail.com` | `@Francois2025!` |
+
+> **💡 Note :** Ces identifiants sont à usage exclusif de démonstration. En production, tous les mots de passe doivent être modifiés.
 
 ## Utilisation
 
