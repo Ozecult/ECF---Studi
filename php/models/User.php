@@ -215,7 +215,7 @@ class User {
     {
       $stmt = $this->db->prepare("
         SELECT COUNT(*) as tentatives
-        FROM LOGS_ACTIVITE 
+        FROM logs_activite 
         WHERE JSON_UNQUOTE(JSON_EXTRACT(details, '$.email')) = ?
         AND action = 'failed_login'
         AND created_at > DATE_SUB(NOW(), INTERVAL ? SECOND)
@@ -233,7 +233,7 @@ class User {
     private function logFailedAttempt($email, $userId = null)
     {
       $stmt = $this->db->prepare("
-        INSERT INTO LOGS_ACTIVITE 
+        INSERT INTO logs_activite 
         (utilisateur_id, action, table_affectee, details, ip_address, user_agent, created_at)
         VALUES (?, 'failed_login', 'UTILISATEURS', ?, ?, ?, NOW())
       ");
@@ -257,7 +257,7 @@ class User {
     private function resetFailedAttempts($email)
     {
       $stmt = $this->db->prepare("
-        UPDATE LOGS_ACTIVITE 
+        UPDATE logs_activite 
         SET details = JSON_SET(details, '$.resolved', true)
         WHERE JSON_UNQUOTE(JSON_EXTRACT(details, '$.email')) = ?
         AND action = 'failed_login'
@@ -334,7 +334,7 @@ class User {
     private function logActivity($userId, $action, $table, $details = [])
     {
       $stmt = $this->db->prepare("
-        INSERT INTO LOGS_ACTIVITE 
+        INSERT INTO logs_activite 
         (utilisateur_id, action, table_affectee, details, ip_address, user_agent, created_at)
         VALUES (?, ?, ?, ?, ?, ?, NOW())
       ");
