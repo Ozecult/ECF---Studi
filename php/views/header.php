@@ -24,6 +24,7 @@ if ($isLoggedIn) {
     <!-- Logo cliquable -->
     <a href="../php/index.php?page=home" class="logo hover-underline gradient-hover">
       <img src="/img/logo.svg" alt="Logo EcoRide" />
+      <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
       <span>EcoRide</span>
     </a>
    

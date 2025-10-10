@@ -2,6 +2,7 @@
         <div class="footer-contenu">
           <a href="../php/index.php?page=home" class="logo hover-underline gradient-hover">
             <img src="/img/logo.svg" alt="EcoRide logo" />
+            <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
             <span>EcoRide</span>
           </a>
 
