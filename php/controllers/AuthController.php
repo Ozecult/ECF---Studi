@@ -484,7 +484,7 @@ private function createSecureSession($user, $remember = false)
  */
   private function getEmployeeRole($userId) 
   {
-    require_once __DIR__ . '/../config/database.php';
+    require_once __DIR__ . '/../config/Database.php';
     $stmt = Database::getInstance()->getConnection()->prepare("
       SELECT r.nom 
       FROM employes e 

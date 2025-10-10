@@ -56,7 +56,7 @@ function jsonResponse($success, $message, $data = [], $httpCode = 200)
 $action = $_GET['action'] ?? '';
 
 try {
-    require_once __DIR__ . '/../config/database.php';
+    require_once __DIR__ . '/../config/Database.php';
     $db = Database::getInstance()->getConnection();
     
     switch ($action) {
