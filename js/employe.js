@@ -650,6 +650,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // GESTION DES MESSAGES DE CONTACT
   // ===========================================
   function gererMessagesContact() {
+    if (!window.location.href.includes("page=employe")) {
+      return;
+    }
+
     chargerMessagesContact();
 
     // Charger les messages
