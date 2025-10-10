@@ -60,7 +60,7 @@ class Vehicule
     $stmt = $this->db->prepare("
         SELECT id, marque, modele, couleur, energie, immatriculation, 
             premiere_mise_en_circulation, nombre_places_disponibles, est_actif, created_at
-        FROM VEHICULES 
+        FROM vehicules 
         WHERE utilisateur_id = ? AND est_actif = 1
         ORDER BY created_at DESC
     ");
@@ -76,7 +76,7 @@ class Vehicule
   {
     $sql = "
         SELECT v.*, u.pseudo as proprietaire
-        FROM VEHICULES v
+        FROM vehicules v
         JOIN UTILISATEURS u ON v.utilisateur_id = u.id
         WHERE v.id = ? AND v.est_actif = 1
     ";
@@ -151,7 +151,7 @@ class Vehicule
   {
     $stmt = $this->db->prepare("
         SELECT COUNT(*) 
-        FROM VEHICULES 
+        FROM vehicules 
         WHERE immatriculation = ? AND est_actif = 1
     ");
     
