@@ -3,6 +3,15 @@
 $trajetId = $_GET['trajet'] ?? null;
 $userId = $_GET['user'] ?? null;
 
+// Variables par défaut
+$trajetDetails       = null;
+$prixTrajet          = 0;
+$creditsInsuffisants = false;
+$creditsUtilisateur  = 0;
+$modeProfilSeul      = false;
+$noteArrondie        = 0;
+$boutonReserver      = '';
+
 // Mode "profil utilisateur seul"
 if ($userId && !$trajetId) {
   require_once __DIR__ . '/../models/User.php';
@@ -56,11 +65,11 @@ else if ($trajetId) {
       $userModel = new User();
       $currentUser = $userModel->getUserById($_SESSION['user_id']);
       $creditsUtilisateur = $currentUser['credits'] ?? 0;
-      $prixTrajet = $trajetDetails['prix_par_passager'];
+      $prixTrajet = $trajetDetails['prix_par_passager'] ?? 0;
       $creditsInsuffisants = $creditsUtilisateur < $prixTrajet;
   }
   
-  $noteArrondie = round($trajetDetails['note_moyenne']);
+  $noteArrondie = round($trajetDetails['note_moyenne'] ?? 0);
   $modeProfilSeul = false;
 }
 // GESTION DU BOUTON RÉSERVER SELON CONNEXION
@@ -73,57 +82,59 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
   </a>';
 } else {
   // Connecté → formulaire de réservation
-  if ($creditsInsuffisants) {
-    $boutonReserver = '
-    <div class="message-credits-insuffisants">
-      <span class="material-symbols-outlined" style="color:#dc3545;font-size:2rem;">error</span>
-      <p style="color:#dc3545;font-weight:600;">Crédits insuffisants</p>
-      <p style="color:var(--noir-secondaire);">
-        Vous avez <strong>' . $creditsUtilisateur . ' crédits</strong>, 
-        mais ce trajet coûte <strong>' . $prixTrajet . ' crédits</strong>
-      </p>
-      <button type="button" class="btn-recharge-details" style="padding:0.8rem 1.5rem;background:var(--vert-clair);color:white;border:none;border-radius:8px;display:inline-block;margin-top:1rem;cursor:pointer;font-weight:600;">
-          Recharger mes crédits
-      </button>
-    </div>';
-  } else {
-    // Formulaire avec sélecteur de passagers
-    $placesDisponibles = $trajetDetails['places_disponibles'] ?? 4;
-    
-    $boutonReserver = '
-    <form method="post" action="/php/api/api-router.php?action=reserver-trajet" id="form-reservation">
-      <input type="hidden" name="trajet_id" value="' . $trajetDetails['id'] . '">
-      
-      <!-- Sélecteur nombre de passagers -->
-      <div style="margin:1rem 0;">
-        <label style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;font-weight:600;">
-          <span class="material-symbols-outlined">group</span>
-          Nombre de passagers
-        </label>
-        <select name="nombre_places" id="nombre_passagers" style="width:100%;padding:0.8rem;border:2px solid var(--vert-clair);border-radius:8px;font-size:1rem;">
-          ';
-          
-    for ($i = 1; $i <= min($placesDisponibles, 8); $i++) {
-      $boutonReserver .= '<option value="' . $i . '">' . $i . ' passager' . ($i > 1 ? 's' : '') . '</option>';
-    }
-    
-    $boutonReserver .= '
-        </select>
-      </div>
-      
-      <!-- Prix détails -->
-      <div style="background:var(--vert-fond);padding:1rem;border-radius:8px;margin:1rem 0;">
-        <p style="margin:0.3rem 0;">Prix par passager : <strong>' . $prixTrajet . ' crédits</strong></p>
-        <p style="margin:0.3rem 0;font-size:1.2rem;color:var(--vert-clair);">
-          Prix total : <strong id="prix-total-affiche">' . $prixTrajet . '</strong> crédits
+  if ($trajetDetails) {
+    if ($creditsInsuffisants) {
+      $boutonReserver = '
+      <div class="message-credits-insuffisants">
+        <span class="material-symbols-outlined" style="color:#dc3545;font-size:2rem;">error</span>
+        <p style="color:#dc3545;font-weight:600;">Crédits insuffisants</p>
+        <p style="color:var(--noir-secondaire);">
+          Vous avez <strong>' . $creditsUtilisateur . ' crédits</strong>, 
+          mais ce trajet coûte <strong>' . $prixTrajet . ' crédits</strong>
         </p>
-      </div>
+        <button type="button" class="btn-recharge-details" style="padding:0.8rem 1.5rem;background:var(--vert-clair);color:white;border:none;border-radius:8px;display:inline-block;margin-top:1rem;cursor:pointer;font-weight:600;">
+            Recharger mes crédits
+        </button>
+      </div>';
+    } else {
+      // Formulaire avec sélecteur de passagers
+      $placesDisponibles = $trajetDetails['places_disponibles'] ?? 4;
       
-      <button class="bouton-validation" type="submit">
-        <span class="material-symbols-outlined">task_alt</span>
-        <strong>Payer <span id="prix-bouton">' . $prixTrajet . '</span> crédits</strong>
-      </button>
-    </form>';
+      $boutonReserver = '
+      <form method="post" action="/php/api/api-router.php?action=reserver-trajet" id="form-reservation">
+        <input type="hidden" name="trajet_id" value="' . $trajetDetails['id'] . '">
+        
+        <!-- Sélecteur nombre de passagers -->
+        <div style="margin:1rem 0;">
+          <label style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;font-weight:600;">
+            <span class="material-symbols-outlined">group</span>
+            Nombre de passagers
+          </label>
+          <select name="nombre_places" id="nombre_passagers" style="width:100%;padding:0.8rem;border:2px solid var(--vert-clair);border-radius:8px;font-size:1rem;">
+            ';
+            
+      for ($i = 1; $i <= min($placesDisponibles, 8); $i++) {
+        $boutonReserver .= '<option value="' . $i . '">' . $i . ' passager' . ($i > 1 ? 's' : '') . '</option>';
+      }
+      
+      $boutonReserver .= '
+          </select>
+        </div>
+        
+        <!-- Prix détails -->
+        <div style="background:var(--vert-fond);padding:1rem;border-radius:8px;margin:1rem 0;">
+          <p style="margin:0.3rem 0;">Prix par passager : <strong>' . $prixTrajet . ' crédits</strong></p>
+          <p style="margin:0.3rem 0;font-size:1.2rem;color:var(--vert-clair);">
+            Prix total : <strong id="prix-total-affiche">' . $prixTrajet . '</strong> crédits
+          </p>
+        </div>
+        
+        <button class="bouton-validation" type="submit">
+          <span class="material-symbols-outlined">task_alt</span>
+          <strong>Payer <span id="prix-bouton">' . $prixTrajet . '</span> crédits</strong>
+        </button>
+      </form>';
+    }
   }
 }
 ?>
