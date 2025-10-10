@@ -77,7 +77,7 @@ class Vehicule
     $sql = "
         SELECT v.*, u.pseudo as proprietaire
         FROM vehicules v
-        JOIN UTILISATEURS u ON v.utilisateur_id = u.id
+        JOIN utilisateurs u ON v.utilisateur_id = u.id
         WHERE v.id = ? AND v.est_actif = 1
     ";
     

@@ -89,7 +89,7 @@ class User {
 
         // Insérer l'utilisateur
         $stmt = $this->db->prepare("
-          INSERT INTO UTILISATEURS 
+          INSERT INTO utilisateurs 
           (prenom, nom, email, mot_de_passe, pseudo, photo_profil, bio, credits, est_chauffeur, 
           est_passager, statut, token_verification, email_verifie, created_at, updated_at)
           VALUES (?, ?, ?, ?, ?, NULL, NULL, ?, ?, ?, 'actif', ?, true, NOW(), NOW())

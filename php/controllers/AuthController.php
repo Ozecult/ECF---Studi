@@ -636,7 +636,7 @@ private function createSecureSession($user, $remember = false)
         
         // Sauvegarder le token
         $stmt = Database::getInstance()->prepare("
-            UPDATE UTILISATEURS 
+            UPDATE utilisateurs 
             SET token_reset_password = ?, token_reset_expires_at = ?
             WHERE id = ?
         ");

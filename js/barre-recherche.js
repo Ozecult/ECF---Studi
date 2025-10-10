@@ -87,21 +87,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // FONCTION POUR LES LABELS
   function gererAffichageLabel(input, label) {
-    // texte du label
+    if (!input || !label || !(label instanceof Element)) {
+      return;
+    }
+
+    // texte du label (on protège aussi textLabel)
     const textLabel = label.querySelector(
       "span:not(.material-symbols-outlined)"
     );
 
-    if (input.value.length > 0) {
+    if (input.value && input.value.trim().length > 0) {
       // masque du text label
-      if (textLabel) {
-        textLabel.style.display = "none";
-      }
+      if (textLabel) textLabel.style.display = "none";
     } else {
       // On réaffiche le texte
-      if (textLabel) {
-        textLabel.style.display = "inline";
-      }
+      if (textLabel) textLabel.style.display = "inline";
     }
   }
 
@@ -163,8 +163,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Si on a déjà saisi du texte, on relance la recherche
       if (this.value.length >= 2) {
-        rechercherVilles(this.value).then((villes) => {
-          creerListeSuggestions(villes, suggestionsContainer, input);
+        rechercherAdresses(this.value).then((adresses) => {
+          creerListeSuggestions(adresses, suggestionsContainer, input);
         });
       }
     });
