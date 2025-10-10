@@ -24,7 +24,7 @@ class Vehicule
       }
       
       $stmt = $this->db->prepare("
-          INSERT INTO VEHICULES 
+          INSERT INTO vehicules 
           (utilisateur_id, marque, modele, couleur, energie, immatriculation, 
             premiere_mise_en_circulation, nombre_places_disponibles, est_actif, created_at, updated_at)
           VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, NOW(), NOW())
