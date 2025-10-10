@@ -92,7 +92,7 @@ class Trajet
         END as conducteur,
         r.id as reservation_id,
         r.statut as statut_reservation,
-        (SELECT COUNT(*) FROM reservations WHERE trajet_id = t.id AND statut = 'confirmee') as nb_participants
+        (SELECT COALESCE(SUM(nombre_places), 0) FROM reservations WHERE trajet_id = t.id AND statut = 'confirmee') as nb_participants
       FROM trajets t
       LEFT JOIN vehicules v ON t.vehicule_id = v.id
       LEFT JOIN utilisateurs u_chauffeur ON t.chauffeur_id = u_chauffeur.id
@@ -127,7 +127,7 @@ class Trajet
         COALESCE(a_trajet.motif_refus, a_reservation.motif_refus) as avis_motif_refus,
         COALESCE(a_trajet.note, a_reservation.note) as note,
         COALESCE(a_trajet.commentaire, a_reservation.commentaire) as commentaire,
-        (SELECT COUNT(*) FROM reservations WHERE trajet_id = t.id AND statut = 'confirmee') as nb_participants
+        (SELECT COALESCE(SUM(nombre_places), 0) FROM reservations WHERE trajet_id = t.id AND statut = 'confirmee') as nb_participants
       FROM trajets t
       LEFT JOIN utilisateurs u ON t.chauffeur_id = u.id
       LEFT JOIN reservations r ON r.trajet_id = t.id AND r.passager_id = ?

@@ -166,14 +166,14 @@ CREATE DATABASE ecoride CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 Importer la structure :
 
 ```bash
-mysql -u root -p ecoride < database/schema.sql
+mysql -u root -p < database/schema.sql
 ```
 
 Importer les données de test :
 
 ```bash
 # Importer les données de test
-mysql -u root -p ecoride < database/data.sql
+mysql -u root -p < database/data.sql
 ```
 
 4. Configurer l'application
@@ -224,7 +224,7 @@ php -S localhost:8000
 Option B : XAMPP/MAMP/WAMP
 
 - Placer le projet dans htdocs/ ou www/
-- Accéder via http://localhost/ecoride/php/index.php
+- Accéder via http://localhost:8000/index.php
 
 7. Accéder à l'application
    Ouvrir dans le navigateur :
@@ -368,8 +368,8 @@ ecoride/
 
 ### Environnement de production
 
-Hébergeur : https://www.hostinger.com/special/000webhost
-URL en ligne :
+Hébergeur : https://www.alwaysdata.com
+URL en ligne : https://ecoride-ecologique.alwaysdata.net/php/index.php?page=home
 
 ### Configuration de production
 
