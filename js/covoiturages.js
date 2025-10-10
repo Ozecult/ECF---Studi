@@ -42,6 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
         // Durée max
         const dureeMax = document.getElementById("duree")?.value;
         if (dureeMax && dureeMax > 0) params.duree_max = dureeMax;
+
+        // Note minimum (étoiles)
+        if (window.noteSelectionnee && window.noteSelectionnee > 0) {
+          params.note_min = window.noteSelectionnee;
+        }
       }
 
       return params;
@@ -338,11 +343,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const etoiles = etoilesFiltre.querySelectorAll(
       ".material-symbols-outlined"
     );
-    let noteSelectionnee = 0;
+    window.noteSelectionnee = 0;
 
     // Fonction pour réinitialiser les étoiles
     window.reinitialiserEtoiles = function () {
-      noteSelectionnee = 0;
+      window.noteSelectionnee = 0;
       etoiles.forEach((etoile) => {
         // Utiliser "star" comme icône de base
         etoile.textContent = "star";
@@ -375,16 +380,13 @@ document.addEventListener("DOMContentLoaded", function () {
       etoile.addEventListener("click", function (e) {
         e.preventDefault();
 
-        if (noteSelectionnee === index + 1) {
-          // Désélectionner si on clique sur la même étoile
-          noteSelectionnee = 0;
+        if (window.noteSelectionnee === index + 1) {
+          window.noteSelectionnee = 0;
         } else {
-          // Nouvelle sélection
-          noteSelectionnee = index + 1;
+          window.noteSelectionnee = index + 1;
         }
 
-        // Mise à jour de l'affichage
-        definirEtoiles(noteSelectionnee);
+        definirEtoiles(window.noteSelectionnee);
       });
 
       // Effet de survol

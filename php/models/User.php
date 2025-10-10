@@ -125,7 +125,7 @@ class User {
         $this->db->commit();
 
         // SIMULATION EMAIL INSCRIPTION
-        require_once __DIR__ . '/../utils/EmailSimulator.php';
+        require_once __DIR__ . '/../helpers/EmailSimulator.php';
         EmailSimulator::emailInscription(
             $data['email'],
             $data['prenom'],
