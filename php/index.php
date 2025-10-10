@@ -1,5 +1,7 @@
 <?php
 // index.php
+session_name('ECORIDE_SESSION');
+session_start();
 ob_start();
 
 // Configuration et autoloader

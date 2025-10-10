@@ -296,7 +296,7 @@ ecoride/
 
 ### Administrateur
 
-- **Email :** `administrateur@ecoride.fr`
+- **Email :** `admin@ecoride.fr`
 - **Mot de passe :** `@Admin1234!`
 - **Accès :** Complet (création employés, suspension utilisateurs, statistiques)
 

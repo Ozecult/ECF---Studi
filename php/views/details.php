@@ -246,22 +246,75 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
           <!-- Section RESERVATION seulement en mode trajet -->
           <section class="reservation card">
             <h2>Réservation</h2>
+
+            <?php if (!empty($creditsInsuffisants)): ?>
+              <div class="alert alert-warning">Crédits insuffisants</div>
+            <?php endif; ?>
+
             
             <?php
-            $dateDepart = new DateTime($trajetDetails['date_depart']);
+            // Création/validation de l'objet DateTime
+            try {
+                $dateDepart = new \DateTime($trajetDetails['date_depart'] ?? 'now');
+            } catch (\Exception $e) {
+                // en cas de chaîne invalide on prend la date actuelle pour éviter erreurs
+                $dateDepart = new \DateTime();
+            }
+
+            // Heures (conservées comme avant)
             $heureDepart = $dateDepart->format('H\hi');
-            $heureArrivee = '??h??';
+            $heureArrivee = '??h??'; // garde ta logique ici si tu veux calculer réelle
+
+            // Formatage de la date en français : priorité à Intl, sinon fallback traduit
+            $dateFormatee = '';
+
+            // Utilise IntlDateFormatter si disponible
+            if (extension_loaded('intl') && class_exists(\IntlDateFormatter::class)) {
+                $tzName = $dateDepart->getTimezone() ? $dateDepart->getTimezone()->getName() : 'Europe/Paris';
+                $fmt = new \IntlDateFormatter(
+                    'fr_FR',
+                    \IntlDateFormatter::FULL,   // on utilisera le pattern pour contrôler le rendu
+                    \IntlDateFormatter::NONE,
+                    $tzName,
+                    \IntlDateFormatter::GREGORIAN,
+                    "EEEE d MMMM y"             // ex: "vendredi 10 octobre 2025"
+                );
+                $dateFormatee = $fmt->format($dateDepart);
+                if ($dateFormatee === false) {
+                    $dateFormatee = '';
+                }
+            }
+
+            // Fallback si Intl absent ou erreur : formater en anglais puis traduire
+            if (empty($dateFormatee)) {
+                $raw = $dateDepart->format('l d F Y'); // ex: "Friday 10 October 2025"
+                $jours = [
+                    'Sunday'=>'dimanche','Monday'=>'lundi','Tuesday'=>'mardi','Wednesday'=>'mercredi',
+                    'Thursday'=>'jeudi','Friday'=>'vendredi','Saturday'=>'samedi'
+                ];
+                $mois = [
+                    'January'=>'janvier','February'=>'février','March'=>'mars','April'=>'avril',
+                    'May'=>'mai','June'=>'juin','July'=>'juillet','August'=>'août',
+                    'September'=>'septembre','October'=>'octobre','November'=>'novembre','December'=>'décembre'
+                ];
+                $parts = preg_split('/\s+/', $raw); // [0]=dayName [1]=dayNum [2]=monthName [3]=year
+                $dayName = $jours[$parts[0]] ?? $parts[0];
+                $dayNum = $parts[1] ?? '';
+                $monthName = $mois[$parts[2]] ?? $parts[2];
+                $year = $parts[3] ?? '';
+                $dateFormatee = trim("$dayName $dayNum $monthName $year");
+            }
             ?>
-            
+
             <!-- Date trajet -->
             <div class="date-trajet">
-              <span><?= strftime('%A %d %B %Y', $dateDepart->getTimestamp()) ?></span>
+              <span><?= htmlspecialchars($dateFormatee, ENT_QUOTES, 'UTF-8') ?></span>
             </div>
 
             <div class="time-bar">
-              <span class="heure-depart"><?= $heureDepart ?></span>
+              <span class="heure-depart"><?= htmlspecialchars($heureDepart, ENT_QUOTES, 'UTF-8') ?></span>
               <div class="barre-verte"></div>
-              <span class="heure-arrivee"><?= $heureArrivee ?></span>
+              <span class="heure-arrivee"><?= htmlspecialchars($heureArrivee, ENT_QUOTES, 'UTF-8') ?></span>
             </div>
 
             <!-- Trajet -->
@@ -296,6 +349,12 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
                 </li>
               <?php endif; ?>
             </ul>
+
+            <?php if (isset($prixTrajet) && is_numeric($prixTrajet)): ?>
+              <p class="prix"><?= htmlspecialchars((string)$prixTrajet, ENT_QUOTES, 'UTF-8') ?> crédits</p>
+            <?php elseif (!empty($trajetDetails['prix_par_passager']) && is_numeric($trajetDetails['prix_par_passager'])): ?>
+              <p class="prix"><?= htmlspecialchars((string)$trajetDetails['prix_par_passager'], ENT_QUOTES, 'UTF-8') ?> crédits</p>
+            <?php endif; ?>
 
             <!-- Bouton réservation -->
             <?= $boutonReserver ?>
