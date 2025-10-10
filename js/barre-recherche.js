@@ -107,6 +107,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // FONCTION PRINCIPALE POUR INPUT
   function configurerAutocompletion(input, suggestionsContainer, label) {
+    // VÉRIFIER QUE LES ÉLÉMENTS EXISTENT
+    if (!input || !suggestionsContainer || !label) {
+      console.warn("Éléments manquants pour autocomplétion");
+      return;
+    }
+
     // Variable pour stocker le timer
     let timeoutId;
 
@@ -224,6 +230,18 @@ document.addEventListener("DOMContentLoaded", function () {
     suggestionsDestination,
     labelDestination
   );
+
+  if (inputDepart && suggestionsDepart && labelDepart) {
+    configurerAutocompletion(inputDepart, suggestionsDepart, labelDepart);
+  }
+
+  if (inputDestination && suggestionsDestination && labelDestination) {
+    configurerAutocompletion(
+      inputDestination,
+      suggestionsDestination,
+      labelDestination
+    );
+  }
 
   // AFFICHAGE DES LABELS AU CHARGEMENT DE LA PAGE
   gererAffichageLabel(inputDepart, labelDepart);
@@ -455,6 +473,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const selectContainer = document.querySelector(
     '.choix[data-field="passagers"]'
   );
+
+  if (!selectContainer) {
+    return; // ⬅️ Pas de select sur cette page
+  }
+
   const originalSelect = selectContainer.querySelector("select");
 
   if (originalSelect) {
