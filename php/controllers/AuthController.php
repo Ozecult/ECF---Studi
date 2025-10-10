@@ -586,8 +586,8 @@ private function createSecureSession($user, $remember = false)
   {
     $stmt = Database::getInstance()->prepare("
       SELECT r.nom 
-      FROM EMPLOYES e 
-      JOIN ROLES r ON e.role_id = r.id 
+      FROM employes e 
+      JOIN roles r ON e.role_id = r.id 
       WHERE e.utilisateur_id = ? AND e.statut = 'actif'
     ");
     

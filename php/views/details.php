@@ -20,7 +20,7 @@ if ($userId && !$trajetId) {
   $preferences = $preferenceModel->getPreferencesByUser($userId);
   
   // Récupérer les avis
-  require_once __DIR__ . '/../config/database.php';
+  require_once __DIR__ . '/../config/Database.php';
   $db = Database::getInstance()->getConnection();
   $stmt = $db->prepare("
     SELECT a.*, u.prenom as auteur_prenom, u.photo_profil as auteur_photo
