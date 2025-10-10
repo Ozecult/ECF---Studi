@@ -87,12 +87,41 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
       </button>
     </div>';
   } else {
+    // Formulaire avec sélecteur de passagers
+    $placesDisponibles = $trajetDetails['places_disponibles'] ?? 4;
+    
     $boutonReserver = '
-    <form method="post" action="/php/api/api-router.php?action=reserver-trajet">
+    <form method="post" action="/php/api/api-router.php?action=reserver-trajet" id="form-reservation">
       <input type="hidden" name="trajet_id" value="' . $trajetDetails['id'] . '">
+      
+      <!-- Sélecteur nombre de passagers -->
+      <div style="margin:1rem 0;">
+        <label style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;font-weight:600;">
+          <span class="material-symbols-outlined">group</span>
+          Nombre de passagers
+        </label>
+        <select name="nombre_places" id="nombre_passagers" style="width:100%;padding:0.8rem;border:2px solid var(--vert-clair);border-radius:8px;font-size:1rem;">
+          ';
+          
+    for ($i = 1; $i <= min($placesDisponibles, 8); $i++) {
+      $boutonReserver .= '<option value="' . $i . '">' . $i . ' passager' . ($i > 1 ? 's' : '') . '</option>';
+    }
+    
+    $boutonReserver .= '
+        </select>
+      </div>
+      
+      <!-- Prix détails -->
+      <div style="background:var(--vert-fond);padding:1rem;border-radius:8px;margin:1rem 0;">
+        <p style="margin:0.3rem 0;">Prix par passager : <strong>' . $prixTrajet . ' crédits</strong></p>
+        <p style="margin:0.3rem 0;font-size:1.2rem;color:var(--vert-clair);">
+          Prix total : <strong id="prix-total-affiche">' . $prixTrajet . '</strong> crédits
+        </p>
+      </div>
+      
       <button class="bouton-validation" type="submit">
         <span class="material-symbols-outlined">task_alt</span>
-        <strong>Payer ' . $prixTrajet . ' crédits</strong>
+        <strong>Payer <span id="prix-bouton">' . $prixTrajet . '</span> crédits</strong>
       </button>
     </form>';
   }
@@ -455,6 +484,23 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
               } catch (error) {
                 alert('Erreur lors de la recharge');
               }
+            });
+          }
+
+          // ========== CALCUL PRIX PAR PASSAGERS ========== 
+          const selectPassagers = document.getElementById('nombre_passagers');
+          const prixTotalAffiche = document.getElementById('prix-total-affiche');
+          const prixBouton = document.getElementById('prix-bouton');
+          
+          if (selectPassagers && prixTotalAffiche && prixBouton) {
+            const prixUnitaire = parseInt(prixTotalAffiche.textContent);
+            
+            selectPassagers.addEventListener('change', function() {
+              const nbPassagers = parseInt(this.value);
+              const prixTotal = nbPassagers * prixUnitaire;
+              
+              prixTotalAffiche.textContent = prixTotal;
+              prixBouton.textContent = prixTotal;
             });
           }
           

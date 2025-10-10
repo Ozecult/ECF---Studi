@@ -130,9 +130,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // nouveau timer qui se déclenche après 300ms
       timeoutId = setTimeout(async function () {
-        // si la recherche fait moins de 2 caractères, pas de suggestions
         if (query.length < 2) {
-          suggestionsContainer.style.display = "none";
+          if (suggestionsContainer) {
+            suggestionsContainer.style.display = "none";
+          }
           return;
         }
 
@@ -145,9 +146,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ÉVÉNEMENT : QUAND L'INPUT PERD LE FOCUS
     input.addEventListener("blur", function () {
-      // Masque des suggestions après un petit délai
       setTimeout(() => {
-        suggestionsContainer.style.display = "none";
+        if (suggestionsContainer) {
+          // ✅
+          suggestionsContainer.style.display = "none";
+        }
       }, 200);
 
       // Affichage du label
@@ -224,13 +227,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // INITIALISATION
   // Autocomplétion pour les deux champs
-  configurerAutocompletion(inputDepart, suggestionsDepart, labelDepart);
-  configurerAutocompletion(
-    inputDestination,
-    suggestionsDestination,
-    labelDestination
-  );
-
   if (inputDepart && suggestionsDepart && labelDepart) {
     configurerAutocompletion(inputDepart, suggestionsDepart, labelDepart);
   }
@@ -250,8 +246,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // CACHER LES SUGGESTIONS SI ON CLIQUE AILLEURS
   document.addEventListener("click", function (e) {
     if (!e.target.closest(".choix")) {
-      suggestionsDepart.style.display = "none";
-      suggestionsDestination.style.display = "none";
+      if (suggestionsDepart) suggestionsDepart.style.display = "none";
+      if (suggestionsDestination) suggestionsDestination.style.display = "none";
     }
   });
 });
