@@ -7,14 +7,32 @@
       name="description"
       content="EcoRide facilite vos trajets en covoiturage avec une approche responsable, humaine et économique. Rejoignez une communauté engagée pour la planète !"
     />
+    <meta name="keywords" content="covoiturage, covoiturage écologique, trajet partagé, véhicule électrique, mobilité durable, transport responsable, EcoRide">
+    <meta name="author" content="EcoRide">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ecoride-ecologique.alwaysdata.net/php/index.php?page=home">
+
+    <!-- Open Graph pour les réseaux sociaux -->
+    <meta property="og:title" content="EcoRide - Voyagez ensemble, préservez la planète">
+    <meta property="og:description" content="Plateforme de covoiturage écologique pour des trajets responsables et économiques">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ecoride-ecologique.alwaysdata.net/php/index.php?page=home">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EcoRide - Voyagez ensemble, préservez la planète">
+    <meta name="twitter:description" content="Plateforme de covoiturage écologique pour des trajets responsables et économiques">
+    <meta name="twitter:image" content="https://ecoride-ecologique.alwaysdata.net/img/Accueil/banniere.png">
+
     <title>EcoRide - Voyagez ensemble, préservez la planète</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-    <script type="module" src="/js/script.js"></script>
+    <!-- Preconnect pour charger plus vite -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
+    <script type="module" src="/js/script.js" defer></script>
   </head>
   <body>
     <!-- HEADER -->
@@ -120,6 +138,7 @@
                 <img
                   src="/img/Accueil/img_liberte.jpg"
                   alt="Tête sur une fenêtre ouverte en montagne"
+                  loading="lazy"
                 />
                 <figcaption>Respirez la liberté, partagez la route.</figcaption>
               </figure>
@@ -127,6 +146,7 @@
                 <img
                   src="/img/Accueil/img_group.jpg"
                   alt="Groupe dans un véhicule"
+                  loading="lazy"
                 />
                 <figcaption>
                   Un trajet, des rencontres, moins d'impact.
@@ -136,6 +156,7 @@
                 <img
                   src="/img/Accueil/img_echange.jpg"
                   alt="Échange entre deux adultes sans un véhicule"
+                  loading="lazy"
                 />
                 <figcaption>Connectés, complices, responsables.</figcaption>
               </figure>
@@ -170,6 +191,7 @@
         <img
           src="/img/Accueil/img_startup.jpg"
           alt="L'équipe EcoRide en image"
+          loading="lazy"
         />
       </section>
     </main>

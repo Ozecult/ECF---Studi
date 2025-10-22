@@ -5,6 +5,6 @@ import "./inscription.js";
 import "./connexion.js";
 import "./contact.js";
 import "./mdp-oublie.js";
-import "./utilisateur.js";
+import "./utilisateur.min.js";
 import "./employe.js";
 import "./admin.js";
