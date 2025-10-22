@@ -19,6 +19,7 @@ Application web de covoiturage favorisant les véhicules électriques, développ
 - [Fonctionnalités](#fonctionnalités)
 - [Prérequis](#prérequis)
 - [Installation locale](#installation-locale)
+- [Installation avec Docker](#installation-avec-docker-alternative-moderne)
 - [Structure du projet](#structure-du-projet)
 - [Identifiants de test](#identifiants-de-test)
 - [Utilisation](#utilisation)
@@ -230,6 +231,39 @@ Option B : XAMPP/MAMP/WAMP
    Ouvrir dans le navigateur :
    http://localhost:8000/php/index.php
 
+## Installation avec Docker (Alternative moderne)
+
+Docker permet de démarrer l'application en 1 commande sans installer XAMPP.
+
+### Démarrage rapide
+
+```bash
+docker-compose up -d
+```
+
+**Accès aux services :**
+
+| Service                 | URL                                 | Identifiants                        |
+| ----------------------- | ----------------------------------- | ----------------------------------- |
+| **Application EcoRide** | http://localhost:8080/php/index.php | Voir identifiants de test ci-dessus |
+| **PhpMyAdmin**          | http://localhost:8081               | root / root_password_2025           |
+| **Mongo Express**       | http://localhost:8082               | admin / admin                       |
+
+### Commandes utiles
+
+```bash
+# Arrêter les services
+docker-compose down
+
+# Voir les logs
+docker-compose logs -f
+
+# Redémarrer
+docker-compose restart
+```
+
+📚 **Documentation complète :** [README_DOCKER.md](README_DOCKER.md)
+
 ## Structure du projet
 
 ```bash
@@ -243,7 +277,6 @@ ecoride/
 │ │ └── api-router.php # Routeur API REST
 │ ├── config/
 │ │ ├── config.php # Configuration (git-ignored)
-│ │ ├── config.example.php # Template config
 │ │ ├── Database.php # Singleton MySQL
 │ │ └── mongodb.php # Connexion MongoDB
 │ ├── controllers/
@@ -289,6 +322,10 @@ ecoride/
 ├── docs/ # Documentation PDF
 ├── .gitignore
 ├── composer.json
+├── .env.example
+├── Dockerfile
+├── .dockerignore
+├── .docker-compose.yml
 └── README.md
 ```
 

@@ -1,0 +1,134 @@
+version: "3.8"
+
+services:
+  # Service PHP/Apache
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ecoride_web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+      - ./uploads:/var/www/html/uploads
+    environment:
+      - DB_HOST=mysql
+      - DB_NAME=ecoride
+      - DB_USERNAME=ecoride_user
+      - DB_PASSWORD=ecoride_password_2025
+      - DB_PORT=3306
+      - MONGO_URI=mongodb://mongo:27017
+      - MONGO_DB=ecoride
+      - APP_ENV=development
+      - APP_DEBUG=true
+      - APP_URL=http://localhost:8080
+    depends_on:
+      mysql:
+        condition: service_healthy
+      mongo:
+        condition: service_started
+    networks:
+      - ecoride_network
+    restart: unless-stopped
+
+  # Service MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: ecoride_mysql
+    command: --sql-mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password_2025
+      MYSQL_DATABASE: ecoride
+      MYSQL_USER: ecoride_user
+      MYSQL_PASSWORD: ecoride_password_2025
+      MYSQL_CHARACTER_SET_SERVER: utf8mb4
+      MYSQL_COLLATION_SERVER: utf8mb4_unicode_ci
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./database/data.sql:/docker-entrypoint-initdb.d/02-data.sql
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-p$$MYSQL_ROOT_PASSWORD",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ecoride_network
+    restart: unless-stopped
+
+  # Service MongoDB
+  mongo:
+    image: mongo:7.0
+    container_name: ecoride_mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin_password_2025
+      MONGO_INITDB_DATABASE: ecoride
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - ecoride_network
+    restart: unless-stopped
+
+  # Service PhpMyAdmin (interface graphique)
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: ecoride_phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: root_password_2025
+      UPLOAD_LIMIT: 50M
+    depends_on:
+      - mysql
+    networks:
+      - ecoride_network
+    restart: unless-stopped
+
+  # Service Mongo Express (interface graphique)
+  mongo-express:
+    image: mongo-express:latest
+    container_name: ecoride_mongo_express
+    ports:
+      - "8082:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin_password_2025
+      ME_CONFIG_MONGODB_URL: mongodb://admin:admin_password_2025@mongo:27017/
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: admin
+    depends_on:
+      - mongo
+    networks:
+      - ecoride_network
+    restart: unless-stopped
+
+# Volumes
+volumes:
+  mysql_data:
+    driver: local
+  mongo_data:
+    driver: local
+
+# Réseau
+networks:
+  ecoride_network:
+    driver: bridge

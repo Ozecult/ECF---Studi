@@ -1,0 +1,44 @@
+# Dépendances
+/vendor/
+node_modules/
+
+# Fichiers de configuration locaux
+.env
+php/config/config.php
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Logs
+*.log
+logs/
+
+# Cache
+cache/
+tmp/
+
+# Documentation développeur
+docs/
+README.md
+
+# Uploads
+uploads/
+
+# Données de test
+database/
+
+# Fichiers Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
