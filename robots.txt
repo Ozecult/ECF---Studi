@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Bloquer les pages privées
+Disallow: /php/api/
+Disallow: /php/config/
+Disallow: /php/controllers/
+Disallow: /php/models/
+Disallow: /php/helpers/
+Disallow: /utilisateur
+Disallow: /admin
+Disallow: /employe
+
+Sitemap: https://ecoride-ecologique.alwaysdata.net/sitemap.xml

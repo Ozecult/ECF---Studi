@@ -44,7 +44,7 @@ class AdminController {
       ];
       
       $result = $userModel->create($userData);
-      $userId = $result['id']; // ✅ 'id' et non 'user_id'
+      $userId = $result['id'];
       error_log("userId récupéré: $userId (type: " . gettype($userId) . ")");
       
       // Créer l'entrée employé
